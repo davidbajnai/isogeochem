@@ -15,6 +15,7 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 Imports: 
+    shades,
     reconPlots (>= 0.1.0)
-Remotes:  
+Remotes: 
     andrewheiss/reconPlots
