@@ -1,7 +1,7 @@
 
 # isogeochem: Tools For Carbonate Isotope Geochemistry
 
-**Author:** [Andrew Heiss](https://www.andrewheiss.com/)<br/>
+**Author:** [David Bajnai](https://www.davidbajnai.eu/)<br/>
 **License:** [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 <!-- badges: start -->
@@ -10,7 +10,7 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 <!-- badges: end -->
 
-The goal of isogeochem is to ...
+This package is a collection of functions that makes working with stable oxygen and clumped isotope data easier.
 
 ## Installation
 
