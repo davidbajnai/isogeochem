@@ -1,5 +1,17 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # isogeochem: Tools For Carbonate Isotope Geochemistry
 
@@ -7,18 +19,13 @@
 **License:** [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 <!-- badges: start -->
-
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project.org/package=isogeochem)
-[![License: CC BY
-4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project.org/package=isogeochem)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![R-CMD-check](https://github.com/davidbajnai/isogeochem/workflows/R-CMD-check/badge.svg)](https://github.com/davidbajnai/isogeochem/actions)
 <!-- badges: end -->
 
-This package is a collection of functions that makes working with stable
-oxygen and clumped isotope data easier.
+This package is a collection of functions that makes working with stable oxygen and clumped isotope data easier.
 
 ## Installation
 
@@ -31,8 +38,7 @@ devtools::install_github("davidbajnai/isogeochem")
 
 ## Example 1: Triple oxygen isotopes
 
-The `d17O()` and `d18O()` functions calculate equilbrium oxygen isotope
-values for given temperature and ambient water composition.
+The `d17O()` and `d18O()` functions calculate equilbrium oxygen isotope values for given temperature and ambient water composition.
 
 ``` r
 library(isogeochem)
@@ -49,8 +55,7 @@ points(prime(d17O(10,-1)[,1]), d17O(10,-1)[,3], pch = 19, col="purple")
 
 ## Example 2: Dual clumped isotope thermometry
 
-The `D47()` and `D48()` functions calculate equilbrium oxygen clumped
-isotope values for given temperature.
+The `D47()` and `D48()` functions calculate equilbrium oxygen clumped isotope values for given temperature.
 
 ``` r
 library(isogeochem)
