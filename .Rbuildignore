@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^\.github$
 ^README\.Rmd$
+[.]pdf$
+^LICENSE\.md$
