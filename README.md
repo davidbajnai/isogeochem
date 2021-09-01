@@ -27,7 +27,7 @@ install.packages("devtools")
 devtools::install_github("davidbajnai/isogeochem")
 ```
 
-## Example 1: Triple oxygen isotopes
+## Example 1: Dual clumped isotope thermometry
 
 The `d17O()` and `d18O()` functions calculate equilibrium oxygen isotope
 values for given temperature and ambient water composition.
@@ -56,10 +56,10 @@ text(  D48(temps), D47(temps), paste(temp,"°C"),
 
 ![Example 1](tools/README-example1.png)
 
-## Example 2: Dual clumped isotope thermometry
+## Example 2: Triple oxygen isotopes
 
-The `D47()` and `D48()` functions calculate equilibrium oxygen clumped
-isotope values for given temperature.
+The `d17O()` and `d18O()` functions calculate equilibrium oxygen isotope
+values for given a temperature and ambient water composition.
 
 ``` r
 library(isogeochem)
