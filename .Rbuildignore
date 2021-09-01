@@ -3,4 +3,7 @@
 ^\.github$
 ^README\.Rmd$
 [.]pdf$
+[.]png$
+[.]html$
 ^LICENSE\.md$
+^tools$
