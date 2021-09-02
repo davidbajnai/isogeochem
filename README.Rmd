@@ -24,10 +24,16 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/davidbajnai/isogeochem/workflows/R-CMD-check/badge.svg)](https://github.com/davidbajnai/isogeochem/actions)
 <!-- badges: end -->
 
-This package is a collection of functions that makes working with stable oxygen and clumped isotope data easier.
+This collection of functions makes working with stable oxygen and clumped isotope data simpler and more reproducible.
+
+## Under developement
+
+This package is under development and has to be reviewed for accuracy.<br/>
+I appreciate constructive feedback!
 
 ## Installation
 
+This package is not on CRAN yet.<br/>
 You can install the development version from Github with devtools:
 
 ``` r
@@ -37,11 +43,11 @@ devtools::install_github("davidbajnai/isogeochem")
 
 ## Example 1: Dual clumped isotope thermometry
 
-The `d17O()` and `d18O()` functions calculate equilibrium oxygen isotope values for given temperature and ambient water composition.
+The `D47` and `D48()` functions calculate equilibrium carbonate clumped isotope values (∆<sub>47</sub>, ∆<sub>48</sub>) for a given temperature.
 
 ``` r
 library(isogeochem)
-if (!require("shades")) install.packages("shades"); library(shades)
+if (!require("shades")) install.packages("shades")
 
 # Model equilibrium carbonate
 temp  = seq(0, 100, 10) # temperature range: 0—100 °C
@@ -64,11 +70,11 @@ text(  D48(temps), D47(temps), paste(temp,"°C"),
 
 ## Example 2: Triple oxygen isotopes
 
-The `d17O()` and `d18O()` functions calculate equilibrium oxygen isotope values for given a temperature and ambient water composition.
+The `d17O()` function calculates equilibrium carbonate oxygen isotope values (δ<sup>18</sup>O, δ<sup>17</sup>O, ∆<sup>17</sup>O) for a given temperature and ambient water composition. Use the `mix_d17O()` function to calculate mixing curves in triple oxygen isotope space, e.g., for modeling diagenesis.
 
 ``` r
 library(isogeochem)
-if (!require("shades")) install.packages("shades"); library(shades)
+if (!require("shades")) install.packages("shades")
 
 # Model equilibrium carbonate
 temp  = seq(0, 50, 10) # temperature range: 0—50 °C

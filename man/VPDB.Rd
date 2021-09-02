@@ -9,15 +9,19 @@ VPDB(d18O_VSMOW, eq = "IUPAC")
 \arguments{
 \item{d18O_VSMOW}{d18O values expressed on the VSMOW scale (parts per mille).}
 
-\item{eq}{Defines the equation used for the conversion. Options are \emph{"IUPAC"}, and \emph{"Coplen83"}.
-The default is \emph{"IUPAC"}: the IUPAC recommended equation listed in Brand et al. (2014) and Kim et al. (2015).
-To use the equation listed in Coplen et al. (1983) and the Hoefs book, set the parameter to \emph{"Coplen83"}.}
+\item{eq}{Equation used for the conversion. Options are \code{"IUPAC"}, and \code{"Coplen83"}.
+The default is \code{"IUPAC"}: the IUPAC recommended equation listed in Brand et al. (2014) and Kim et al. (2015).
+To use the equation listed in Coplen et al. (1983) and the Hoefs book, set the parameter to \code{"Coplen83"}.}
 }
 \value{
 Returns d18O values expressed on the VPDB scale (parts per mille).
 }
 \description{
 \code{VPDB()} converts d18O values expressed on the VSMOW scale to the VPDB scale.
+}
+\details{
+The IUPAC recommended equation to convert between the scales is:
+\deqn{\delta^{18}O_{VPDB} = 0.97001 \times \delta^{18}O_{VSMOW} - 29.99 }
 }
 \examples{
 VPDB(0) # Returns -29.99

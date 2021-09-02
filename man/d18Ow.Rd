@@ -4,15 +4,19 @@
 \alias{d18Ow}
 \title{Calculate water d18O value}
 \usage{
-d18Ow(temperature, d18O_carbonate_VSMOW, eq = "Daeron19")
+d18Ow(temp, d18Oc_VSMOW, min = "calcite", eq = "Daeron19")
 }
 \arguments{
-\item{temperature}{Crystallization temperature, in degrees Celsius.}
+\item{temp}{Crystallization temperature, in degrees Celsius.}
 
-\item{d18O_carbonate_VSMOW}{Carbonate d18O value expressed on the VSMOW scale (parts per mille).}
+\item{d18Oc_VSMOW}{Carbonate d18O value expressed on the VSMOW scale (parts per mille).}
 
-\item{eq}{Defines the equation used for the calculation. Options are \emph{"FO77", "KO97", "Coplen07", "Watkins13"}, and \emph{"Daeron19"}.
-Default is \emph{"Daeron19"}.}
+\item{min}{Mineralogy. Options are \code{"calcite"} (default), \code{"aragonite"}, and \code{"dolomite"}.}
+
+\item{eq}{Equation used to calculate the equilibrium 18O/16O oxygen isotope
+fractionation factor between calcium carbonate and water. Options depend on mineralogy.
+For calcite choose from \code{"Daeron19"} (default), \code{"Watkins13"}, \code{"Coplen07"}, \code{"KO97"} , and \code{"FO77"}.
+For aragonite and dolomite the eq need not be specified.}
 }
 \value{
 Returns the water d18O value expressed on the VSMOW scale (parts per mille).
@@ -25,21 +29,17 @@ from the d18O value of a carbonate and its crystallization temperature.
 Use \code{\link[=VPDB]{VPDB()}} and \code{\link[=VSMOW]{VSMOW()}} to convert between the VSMOW and VPDB scales.
 }
 \examples{
-d18Ow(33.7,14.58,"Coplen07") # Returns -13.54
+d18Ow(33.7, 14.58, "calcite", "Coplen07") # Returns -13.54
+d18Ow(25, VSMOW(-7.47), "aragonite") # Returns -6.53
+d18Ow(25, 20.43, "dolomite") # Returns -10.69
 }
 \references{
-O'Neil, J. R., Clayton, R. N., & Mayeda, T. K. (1969). Oxygen isotope fractionation in divalent metal carbonates. The Journal of Chemical Physics, 51(12), 5547-5558. \url{https://www.doi.org/10.1063/1.1671982}
-
-Friedman, I., & O'Neil, J. R. (1977). Compilation of stable isotope fractionation factors of geochemical interest. U.S. Geological Survey Professional Paper, 440-KK, 1-12. \url{https://www.doi.org/10.3133/pp440KK}
-
-Kim, S.-T., & O'Neil, J. R. (1997). Equilibrium and nonequilibrium oxygen isotope effects in synthetic carbonates. Geochimica et Cosmochimica Acta, 61(16), 3461-3475. \url{https://www.doi.org/10.1016/S0016-7037(97)00169-5}
-
-Coplen, T. B. (2007). Calibration of the calcite–water oxygen-isotope geothermometer at Devils Hole, Nevada, a natural laboratory. Geochimica et Cosmochimica Acta, 71(16), 3948-3957. \url{https://www.doi.org/10.1016/j.gca.2007.05.028}
-
-Watkins, J. M., Nielsen, L. C., Ryerson, F. J., & DePaolo, D. J. (2013). The influence of kinetics on the oxygen isotope composition of calcium carbonate. Earth and Planetary Science Letters, 375, 349-360. \url{https://www.doi.org/10.1016/j.epsl.2013.05.054}
-
-Daëron, M., Drysdale, R. N., Peral, M., Huyghe, D., Blamart, D., Coplen, T. B., et al. (2019). Most Earth-surface calcites precipitate out of isotopic equilibrium. Nature Communications, 10, 429. \url{https://www.doi.org/10.1038/s41467-019-08336-5}
+References are listed at \code{\link[=a18_c_w]{a18_c_w()}}.
 }
 \seealso{
-\code{\link[=d18O]{d18O()}} \code{\link[=temp_d18O]{temp_d18O()}}
+\code{\link[=a18_c_w]{a18_c_w()}}
+
+\code{\link[=d18O]{d18O()}}
+
+\code{\link[=temp_d18O]{temp_d18O()}}
 }

@@ -4,20 +4,20 @@
 \alias{D47}
 \title{Carbonate D47 for given temperatures}
 \usage{
-D47(temperature, eq = "Fiebig21")
+D47(temp, eq = "Fiebig21")
 }
 \arguments{
-\item{temperature}{Carbonate growth temperature in degrees Celsius.}
+\item{temp}{Carbonate growth temperature in degrees Celsius.}
 
-\item{eq}{Defines the equation used for the calculation. Options are \emph{"Petersen19"} and \emph{"Fiebig21"}.
-Default is \emph{"Fiebig21"}, which refers to the CDES90 calibration in Fiebig et al. (2021).
-\emph{"Petersen19"} refers to the synthetic-only D47-RFACBr,WD "UNICAL" calibration of Petersen et al. (2019).}
+\item{eq}{Equation used for the calculation. Options are \code{"Fiebig21"} (default) and \code{"Petersen19"}.
+\code{"Fiebig21"} refers to the CDES90 calibration in Fiebig et al. (2021).
+\code{"Petersen19"} refers to the synthetic-only D47-RFACBr,WD "UNICAL" calibration of Petersen et al. (2019).}
 }
 \value{
 Returns carbonate D47 values expressed on the CDES90 scale: referenced to 90°C acid digestion.
 }
 \description{
-\code{D47()} calculates carbonate D47 values for given temperatures.
+\code{D47()} calculates carbonate D47 values for a given temperature.
 }
 \examples{
 D47(33.7) # Returns 0.5713

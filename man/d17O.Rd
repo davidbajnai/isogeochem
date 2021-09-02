@@ -4,28 +4,30 @@
 \alias{d17O}
 \title{Triple oxygen isotope values}
 \usage{
-d17O(temperature, d18Ow_VSMOW, eq18 = "Daeron19", lambda = 0.528)
+d17O(temp, d18Ow_VSMOW, eq18 = "Daeron19", lambda = 0.528)
 }
 \arguments{
-\item{temperature}{Carbonate growth temperature in degrees Celsius.}
+\item{temp}{Calcite growth temperature in degrees Celsius.}
 
 \item{d18Ow_VSMOW}{Water d18O value expressed on the VSMOW scale (parts per mille).}
 
-\item{eq18}{Defines the equation used to calculate the equilibrium 18O/16O oxygen isotope
-fractionation factor between water and calcium carbonate. Options are \emph{"KO97", "Coplen07", "Watkins13"}, and \emph{"Daeron19"}.
-Default is \emph{"Daeron19"}. See also \code{\link[=alpha18_cc_water]{alpha18_cc_water()}}.}
+\item{eq18}{Equation used to calculate the equilibrium 18O/16O oxygen isotope
+fractionation factor between calcite and water.
+Options are \code{"Daeron19"} (default), \code{"Watkins13"}, \code{"Coplen07"}, \code{"KO97"} , and \code{"FO77"}.}
 
-\item{lambda}{Triple oxygen isotope reference slope. Default is 0.528.}
+\item{lambda}{Triple oxygen isotope reference slope. Default is \code{0.528}.}
 }
 \value{
-Returns a data frame with the carbonate d18O, d17Oand D17O values expressed on the VSMOW scale (all in parts per mille).
+Returns a data frame with the carbonate d18O, d17O, and D17O values expressed on the VSMOW scale (all in parts per mille).
 }
 \description{
-\code{d17O()} calculates carbonate d18O, d17O, and D17O values for given temperatures.
+\code{d17O()} calculates calcite d18O, d17O, and D17O values for given temperatures.
 }
 \details{
 \deqn{\theta_{A/B} = \frac{\alpha^{17}_{A/B}}{\alpha^{18}_{A/B}}}
+
 \deqn{ \delta'^{17}O_{w,VSMOW} = \beta \times \delta'^{18}O_{w,VSMOW} + \gamma \textrm{ where } \beta=0.528 \textrm{ and } \gamma = 0 }
+
 \deqn{\Delta^{17}O = \delta'^{17}O_{c,VSMOW} - \lambda \times \delta'^{18}O_{c,VSMOW} }
 }
 \examples{

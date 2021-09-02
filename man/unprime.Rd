@@ -2,18 +2,21 @@
 % Please edit documentation in R/prime.R
 \name{unprime}
 \alias{unprime}
-\title{Converting d'18O to d18O}
+\title{Converting delta prime to delta}
 \usage{
-unprime(d18O_prime)
+unprime(prime)
 }
 \arguments{
-\item{d18O_prime}{d18O values to be converted (parts per mille).}
+\item{prime}{"Delta prime" values to be converted (parts per mille).}
 }
 \value{
-Returns the d18O value (parts per mille).
+Returns the "classical delta" value (parts per mille).
 }
 \description{
-\code{unprime()} converts d'18O values to d18O.
+\code{unprime()} converts "delta prime" values to "classical delta" values
+}
+\details{
+\deqn{\delta^{17}O = 1000 \times e^{(\frac{\delta'^{17}O}{1000}+1)}}
 }
 \examples{
 unprime(9.950331) # Returns 10

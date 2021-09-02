@@ -9,9 +9,9 @@ VSMOW(d18O_VPDB, eq = "IUPAC")
 \arguments{
 \item{d18O_VPDB}{d18O values expressed on the VPDB scale (parts per mille).}
 
-\item{eq}{Defines the equation used for the conversion. Options are \emph{"IUPAC"}, and \emph{"Coplen83"}.
-The default is \emph{"IUPAC"}: the IUPAC recommended equation listed in Brand et al. (2014) and Kim et al. (2015).
-To use the equation listed in Coplen et al. (1983) and the Hoefs book, set the parameter to \emph{"Coplen83"}.}
+\item{eq}{Defines the equation used for the conversion. Options are \code{"IUPAC"}, and \code{"Coplen83"}.
+The default is \code{"IUPAC"}: the IUPAC recommended equation listed in Brand et al. (2014) and Kim et al. (2015).
+To use the equation listed in Coplen et al. (1983) and the Hoefs book, set the parameter to \code{"Coplen83"}.}
 }
 \value{
 Returns d18O values expressed on the VSMOW scale (parts per mille).
@@ -19,9 +19,13 @@ Returns d18O values expressed on the VSMOW scale (parts per mille).
 \description{
 \code{VMSOW()} converts d18O values expressed on the VPDB scale to the VSMOW scale.
 }
+\details{
+The IUPAC recommended equation to convert between the scales is:
+\deqn{\delta^{18}O_{VSMOW} = 1.03092 \times \delta^{18}O_{VPDB} + 30.92 }
+}
 \examples{
 VSMOW(0) # Returns 30.92
-VSMOW(0, eq="Coplen83") # Returns 30.91
+VSMOW(0, eq = "Coplen83") # Returns 30.91
 }
 \references{
 Coplen, T. B., Kendall, C., & Hopple, J. (1983). Comparison of stable isotope reference samples. Nature, 302, 236-238. \url{https://www.doi.org/10.1038/302236a0}

@@ -4,14 +4,16 @@
 \alias{temp_D48}
 \title{Dual clumped isotope thermometry}
 \usage{
-temp_D48(D47_CDES90, D48_CDES90, kinetic_slope)
+temp_D48(D47_CDES90, D48_CDES90, ks, add = F)
 }
 \arguments{
 \item{D47_CDES90}{Carbonate D47 values expressed on the CDES90 scale.}
 
 \item{D48_CDES90}{Carbonate D48 values expressed on the CDES90 scale.}
 
-\item{kinetic_slope}{Kinetic slope. Either -0.6 or +1.}
+\item{ks}{Kinetic slope. Either -0.6 or -1. Has to be negative!}
+
+\item{add}{Add kinetic slope to an already existing plot?}
 }
 \value{
 Returns the carbonate growth temperature in degrees Celsius.
@@ -32,6 +34,7 @@ In any case, the resulting discrepancy is smaller than the temperature error.
 }
 \examples{
 temp_D48(0.617, 0.139, -0.6) # Returns 44
+temp_D48(0.546, 0.277, -1)   # Returns 33
 }
 \references{
 Fiebig, J., Daëron, M., Bernecker, M., Guo, W., Schneider, G., Boch, R., et al. (2021). Calibration of the dual clumped isotope thermometer for carbonates. Geochimica et Cosmochimica Acta. \url{https://www.doi.org/10.1016/j.gca.2021.07.012}

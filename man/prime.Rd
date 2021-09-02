@@ -2,18 +2,21 @@
 % Please edit documentation in R/prime.R
 \name{prime}
 \alias{prime}
-\title{Converting d18O to d'18O}
+\title{Converting delta to delta prime}
 \usage{
-prime(d18O)
+prime(classical)
 }
 \arguments{
-\item{d18O}{d18O values to be converted (parts per mille).}
+\item{classical}{"Classical delta" values to be converted (parts per mille).}
 }
 \value{
-Returns the d'18O value (parts per mille).
+Returns the "delta prime" value (parts per mille).
 }
 \description{
-\code{prime()} converts d18O values to d'18O
+\code{prime()} converts "classical delta" values to "delta prime"" values
+}
+\details{
+\deqn{\delta'^{17}O = 1000 \times \ln(\frac{\delta^{17}O}{1000}+1)}
 }
 \examples{
 prime(10) # Returns 9.950331

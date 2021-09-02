@@ -9,9 +9,9 @@ temp_D47(D47_CDES90, eq = "Petersen19")
 \arguments{
 \item{D47_CDES90}{Carbonate D47 values expressed on the CDES90 scale: referenced to 90°C acid digestion.}
 
-\item{eq}{Defines the equation used for the calculation. Options are \emph{"Kele15"} and \emph{"Petersen19"}.
-Default is \emph{"Petersen19"}, which refers to the synthetic-only IUPAC-reprocessed "Br "UNICAL" calibration of Petersen et al. (2019).
-\emph{"Kele14"} refers to the Kele et al. (2015) calibration reprocessed by Bernasconi et al. (2020) using the IUPAC parameters.}
+\item{eq}{Equation used for the calculation. Options are \code{"Petersen19"} (default) and \code{"Kele15"}.
+\code{"Petersen19"} refers to the synthetic-only IUPAC-reprocessed "Br "UNICAL" calibration of Petersen et al. (2019).
+\code{"Kele14"} refers to the Kele et al. (2015) calibration reprocessed by Bernasconi et al. (2020) using the IUPAC parameters.}
 }
 \value{
 Returns the carbonate growth temperature in degrees Celsius.
@@ -31,4 +31,6 @@ Petersen, S. V., Defliese, W. F., Saenger, C., Daëron, M., Huntington, K. W., J
 }
 \seealso{
 \code{\link[=temp_d18O]{temp_d18O()}}
+
+\code{\link[=temp_D48]{temp_D48()}}
 }

@@ -9,8 +9,8 @@ D48(temperature, eq = "Fiebig21")
 \arguments{
 \item{temperature}{Carbonate growth temperature in degrees Celsius.}
 
-\item{eq}{Defines the equation used for the calculation. Options are \emph{"Swart21"} and \emph{"Fiebig21"}.
-Default is \emph{"Fiebig21"}, which refers to the CDES90 calibration in Fiebig et al. (2021). \emph{"Swart21"} refers to the CDES90 "PBLM1" calibration in Swart et al. (2021).}
+\item{eq}{Equation used for the calculation. Options are \code{"Fiebig21"} and \code{"Swart21"}.
+Default is \code{"Fiebig21"}, which refers to the CDES90 calibration in Fiebig et al. (2021). \code{"Swart21"} refers to the CDES90 "PBLM1" calibration in Swart et al. (2021).}
 }
 \value{
 Returns carbonate D48 values expressed on the CDES90 scale: referenced to 90°C acid digestion.
