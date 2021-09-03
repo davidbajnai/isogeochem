@@ -4,22 +4,39 @@
 \alias{temp_D48}
 \title{Dual clumped isotope thermometry}
 \usage{
-temp_D48(D47_CDES90, D48_CDES90, ks, add = F)
+temp_D48(
+  D47_CDES90,
+  D48_CDES90,
+  D47_error,
+  D48_error,
+  ks,
+  add = FALSE,
+  col,
+  pch
+)
 }
 \arguments{
 \item{D47_CDES90}{Carbonate D47 values expressed on the CDES90 scale.}
 
 \item{D48_CDES90}{Carbonate D48 values expressed on the CDES90 scale.}
 
-\item{ks}{Kinetic slope. Either -0.6 or -1. Has to be negative!}
+\item{D47_error}{Error on the D47 value. Optional.}
 
-\item{add}{Add kinetic slope to an already existing plot?}
+\item{D48_error}{Error on the D48 value. Optional.}
+
+\item{ks}{Kinetic slope. Has to be negative!}
+
+\item{add}{Add graphics to an already existing plot? Default \code{FALSE}.}
+
+\item{col}{Graphical parameter. Optional.}
+
+\item{pch}{Graphical parameter. Optional.}
 }
 \value{
 Returns the carbonate growth temperature in degrees Celsius.
 }
 \description{
-\code{temp_D48()} calculates growth temperatures from D47 and D48 values.
+\code{temp_D48()} calculates carbonate growth temperature from D47 and D48 values.
 }
 \details{
 The function calculates a D47 value as an intersect of two curves:
@@ -28,19 +45,25 @@ The function calculates a D47 value as an intersect of two curves:
 \item the kinetic slope
 }
 
-The resulting D47 value is then converted to temperature using the \code{\link[=D47]{D47()}} function, i.e., by default the
+The resulting D47 value is then converted to temperature using the \code{\link[=D47c]{D47c()}} function, i.e., by default the
 equation of Petersen et al. (2019). This is not consistent and I will fix it in a later version.
 In any case, the resulting discrepancy is smaller than the temperature error.
 }
 \examples{
-temp_D48(0.617, 0.139, -0.6) # Returns 44
-temp_D48(0.546, 0.277, -1)   # Returns 33
+temp_D48(0.617, 0.139, ks = -0.6) # Returns 44
+temp_D48(0.546, 0.277, ks = -1)   # Returns 33
+
 }
 \references{
-Fiebig, J., Daëron, M., Bernecker, M., Guo, W., Schneider, G., Boch, R., et al. (2021). Calibration of the dual clumped isotope thermometer for carbonates. Geochimica et Cosmochimica Acta. \url{https://www.doi.org/10.1016/j.gca.2021.07.012}
+References are listed at \code{\link[=D48c]{D48c()}} and \code{\link[=D47c]{D47c()}}.
 }
 \seealso{
-\code{\link[=D48]{D48()}}
+\code{\link[=D47c]{D47c()}} calculates the equilibrium carbonate D47 value for a given temperature.
 
-\code{\link[=temp_D47]{temp_D47()}}
+\code{\link[=D48c]{D48c()}} calculates the equilibrium carbonate D48 value for a given temperature.
+
+Other thermometry: 
+\code{\link{temp_D47}()},
+\code{\link{temp_d18O}()}
 }
+\concept{thermometry}
