@@ -1,7 +1,7 @@
 Package: isogeochem
 Type: Package
 Title: Tools For Carbonate Isotope Geochemistry
-Version: 0.0.0.9100
+Version: 0.0.0.9200
 Authors@R: person("David", "Bajnai", email = "david.bajnai@uni-goettingen.de", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-4053-5056"))
 Author: David Bajnai
 Description: This collection of functions makes working with stable oxygen and clumped isotope data simpler and more reproducible.
@@ -18,6 +18,7 @@ VignetteBuilder: knitr
 Imports: 
     shades,
     graphics,
-    reconPlots (>= 0.1.0)
+    reconPlots (>= 0.1.0),
+    grDevices
 Remotes: 
     andrewheiss/reconPlots

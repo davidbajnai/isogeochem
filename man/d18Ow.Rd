@@ -22,24 +22,23 @@ For aragonite and dolomite the eq need not be specified.}
 Returns the water d18O value expressed on the VSMOW scale (parts per mille).
 }
 \description{
-\code{d18Ow()} calculates the d18O value of the ambient water
-from the d18O value of a carbonate and its crystallization temperature.
+\code{d18Ow()} calculates the d18O value of the ambient water.
+from the d18O value of a carbonate and its growth temperature.
 }
 \note{
-Use \code{\link[=VPDB]{VPDB()}} and \code{\link[=VSMOW]{VSMOW()}} to convert between the VSMOW and VPDB scales.
+Use \code{\link[=to_vsmow]{to_vsmow()}} and \code{\link[=to_vpdb]{to_vpdb()}} to convert between the VSMOW and VPDB scales.
 }
 \examples{
 d18Ow(33.7, 14.58, "calcite", "Coplen07") # Returns -13.54
-d18Ow(25, VSMOW(-7.47), "aragonite") # Returns -6.53
+d18Ow(25, to_vsmow(-7.47), "aragonite") # Returns -6.53
 d18Ow(25, 20.43, "dolomite") # Returns -10.69
+
 }
 \references{
-References are listed at \code{\link[=a18_c_w]{a18_c_w()}}.
+References are listed in the description of \code{\link[=a18c_w]{a18c_w()}}.
 }
 \seealso{
-\code{\link[=a18_c_w]{a18_c_w()}}
+\code{\link[=d18Oc]{d18Oc()}} calculates the equilibrium d18O value of a carbonate grown at a given temperature.
 
-\code{\link[=d18O]{d18O()}}
-
-\code{\link[=temp_d18O]{temp_d18O()}}
+\code{\link[=temp_d18O]{temp_d18O()}} calculates growth temperatures from oxygen isotope data.
 }

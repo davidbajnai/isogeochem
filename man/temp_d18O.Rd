@@ -2,7 +2,7 @@
 % Please edit documentation in R/d18O.R
 \name{temp_d18O}
 \alias{temp_d18O}
-\title{Carbonate growth temperature from d18O}
+\title{Oxygen isotope thermometry}
 \usage{
 temp_d18O(d18Oc_VSMOW, d18Ow_VSMOW, eq = "Daeron19")
 }
@@ -16,32 +16,29 @@ fractionation factor between calcite and water.
 For calcite choose from \code{"Daeron19"} (default), \code{"Watkins13"}, \code{"Coplen07"}, \code{"KO97"} , and \code{"FO77"}.}
 }
 \value{
-Returns a single numeric value. The result is the carbonate growth temperature, in degrees Celsius.
+Returns the carbonate growth temperature in degrees Celsius.
 }
 \description{
-\code{temp_d18O()} calculates the carbonate growth temperature from oxygen isotope data.
+\code{temp_d18O()} calculates carbonate growth temperature from oxygen isotope data.
 }
 \note{
-Use \code{\link[=VPDB]{VPDB()}} and \code{\link[=VSMOW]{VSMOW()}} to convert between the VSMOW and VPDB scales.
+Use \code{\link[=to_vsmow]{to_vsmow()}} and \code{\link[=to_vpdb]{to_vpdb()}} to convert between the VSMOW and VPDB scales.
 }
 \examples{
 temp_d18O(14.58, -13.54, "Coplen07") # Returns 33.7
+
 }
 \references{
-O'Neil, J. R., Clayton, R. N., & Mayeda, T. K. (1969). Oxygen isotope fractionation in divalent metal carbonates. The Journal of Chemical Physics, 51(12), 5547-5558. \url{https://www.doi.org/10.1063/1.1671982}
-
-Friedman, I., & O'Neil, J. R. (1977). Compilation of stable isotope fractionation factors of geochemical interest. U.S. Geological Survey Professional Paper, 440-KK, 1-12. \url{https://www.doi.org/10.3133/pp440KK}
-
-Kim, S.-T., & O'Neil, J. R. (1997). Equilibrium and nonequilibrium oxygen isotope effects in synthetic carbonates. Geochimica et Cosmochimica Acta, 61(16), 3461-3475. \url{https://www.doi.org/10.1016/S0016-7037(97)00169-5}
-
-Coplen, T. B. (2007). Calibration of the calcite–water oxygen-isotope geothermometer at Devils Hole, Nevada, a natural laboratory. Geochimica et Cosmochimica Acta, 71(16), 3948-3957. \url{https://www.doi.org/10.1016/j.gca.2007.05.028}
-
-Watkins, J. M., Nielsen, L. C., Ryerson, F. J., & DePaolo, D. J. (2013). The influence of kinetics on the oxygen isotope composition of calcium carbonate. Earth and Planetary Science Letters, 375, 349-360. \url{https://www.doi.org/10.1016/j.epsl.2013.05.054}
-
-Daëron, M., Drysdale, R. N., Peral, M., Huyghe, D., Blamart, D., Coplen, T. B., et al. (2019). Most Earth-surface calcites precipitate out of isotopic equilibrium. Nature Communications, 10, 429. \url{https://www.doi.org/10.1038/s41467-019-08336-5}
+References are listed in the description of \code{\link[=a18c_w]{a18c_w()}}.
 }
 \seealso{
-\code{\link[=d18O]{d18O()}}
+\code{\link[=d18Oc]{d18Oc()}} calculates the equilibrium d18O value of a carbonate grown at a given temperature.
 
-\code{\link[=d18Ow]{d18Ow()}}
+\code{\link[=d18Ow]{d18Ow()}} calculates the d18O value of the ambient water
+from the d18O value of a carbonate and its growth temperature.
+
+Other thermometry: 
+\code{\link{temp_D47}()},
+\code{\link{temp_D48}()}
 }
+\concept{thermometry}

@@ -1,25 +1,36 @@
 # Functions in this file: temp_D47(), D47()
 
-#' @title Carbonate D47 for given temperatures
+#' @title Carbonate D47 for a given temperature
+#'
 #' @description
-#' `D47()` calculates carbonate D47 values for a given temperature.
+#' `D47c()` calculates the equilibrium carbonate D47 value for a given temperature.
+#'
 #' @param temp Carbonate growth temperature in degrees Celsius.
 #' @param eq Equation used for the calculation. Options are `"Fiebig21"` (default) and `"Petersen19"`.
 #' `"Fiebig21"` refers to the CDES90 calibration in Fiebig et al. (2021).
 #' `"Petersen19"` refers to the synthetic-only D47-RFACBr,WD "UNICAL" calibration of Petersen et al. (2019).
-#' @return
-#' Returns carbonate D47 values expressed on the CDES90 scale: referenced to 90°C acid digestion.
-#' @examples
-#' D47(33.7) # Returns 0.5713
-#' @references
-#' Petersen, S. V., Defliese, W. F., Saenger, C., Daëron, M., Huntington, K. W., John, C. M., et al. (2019). Effects of improved 17O correction on interlaboratory agreement in clumped isotope calibrations, estimates of mineral-specific offsets, and temperature dependence of acid digestion fractionation. Geochemistry, Geophysics, Geosystems, 20(7), 3495-3519. <https://www.doi.org/10.1029/2018GC008127>
 #'
-#' Fiebig, J., Daëron, M., Bernecker, M., Guo, W., Schneider, G., Boch, R., et al. (2021). Calibration of the dual clumped isotope thermometer for carbonates. Geochimica et Cosmochimica Acta. <https://www.doi.org/10.1016/j.gca.2021.07.012>
+#' @return
+#' Returns the carbonate D47 value expressed on the CDES90 scale.
+#'
+#' @examples
+#' D47c(33.7) # Returns 0.5713
+#'
+#' @references
+#' Petersen, S. V., Defliese, W. F., Saenger, C., Daëron, M., Huntington, K. W., John, C. M., et al. (2019).
+#' Effects of improved 17O correction on interlaboratory agreement in clumped isotope calibrations, estimates of mineral-specific offsets, and temperature dependence of acid digestion fractionation.
+#' Geochemistry, Geophysics, Geosystems, 20(7), 3495-3519.
+#' <https://www.doi.org/10.1029/2018GC008127>
+#'
+#' Fiebig, J., Daëron, M., Bernecker, M., Guo, W., Schneider, G., Boch, R., et al. (2021).
+#' Calibration of the dual clumped isotope thermometer for carbonates. Geochimica et Cosmochimica Acta.
+#' <https://www.doi.org/10.1016/j.gca.2021.07.012>
+#'
 #' @seealso [temp_D47()]
-#' @seealso [D48()]
+#' @family equilibrium_carbonate
 #' @export
 
-D47 = function(temp, eq ="Fiebig21") {
+D47c = function(temp, eq ="Fiebig21") {
   TinK = temp+273.15
   if(eq == "Petersen19") { # Petersen et al. (2019)
   b = 0.257-0.088; m = 0.0387
@@ -34,39 +45,59 @@ D47 = function(temp, eq ="Fiebig21") {
 ##————————————————————————————————————————————————————————————————————————————————##
 
 
-#' @title Carbonate growth temperature from D47
+#' @title Clumped isotope thermometry
 #' @description
-#' `temp_D47()` calculates carbonate growth temperature from clumped isotope composition (D47).
+#' `temp_D47()` calculates carbonate growth temperature from D47 value.
+#'
 #' @param D47_CDES90 Carbonate D47 values expressed on the CDES90 scale: referenced to 90°C acid digestion.
+#' @param D47_error Error on the D47 value. Optional.
 #' @param eq Equation used for the calculation. Options are `"Petersen19"` (default) and `"Kele15"`.
 #' `"Petersen19"` refers to the synthetic-only IUPAC-reprocessed "Br "UNICAL" calibration of Petersen et al. (2019).
 #' `"Kele14"` refers to the Kele et al. (2015) calibration reprocessed by Bernasconi et al. (2020) using the IUPAC parameters.
+#'
 #' @return
-#' Returns the carbonate growth temperature in degrees Celsius.
+#' Returns the carbonate growth temperature in degrees Celsius,
+#' and — if `D47_error` is specified — also the error.
 #' @examples
 #' temp_D47(0.580) # Returns 33.7
+#' temp_D47(0.580, 0.004) # Returns 33.7 and 1.9
+#'
 #' @references
-#' Kele, S., Breitenbach, S. F. M., Capezzuoli, E., Meckler, A. N., Ziegler, M., Millan, I. M., et al. (2015). Temperature dependence of oxygen- and clumped isotope fractionation in carbonates: a study of travertines and tufas in the 6–95 °C temperature range. Geochimica et Cosmochimica Acta, 168, 172-192. <https://www.doi.org/10.1016/j.gca.2015.06.032>
+#' References are listed at [D47c()].
 #'
-#' Bernasconi, S. M., Müller, I. A., Bergmann, K. D., Breitenbach, S. F. M., Fernandez, A., Hodell, D. A., et al. (2018). Reducing uncertainties in carbonate clumped isotope analysis through consistent carbonate-based standardization. Geochemistry, Geophysics, Geosystems, 19(9), 2895-2914. <https://www.doi.org/10.1029/2017gc007385>
+#' @seealso [D47c()] calculates the equilibrium carbonate D47 value for a given temperature.
 #'
-#' Petersen, S. V., Defliese, W. F., Saenger, C., Daëron, M., Huntington, K. W., John, C. M., et al. (2019). Effects of improved 17O correction on interlaboratory agreement in clumped isotope calibrations, estimates of mineral-specific offsets, and temperature dependence of acid digestion fractionation. Geochemistry, Geophysics, Geosystems, 20(7), 3495-3519. <https://www.doi.org/10.1029/2018GC008127>
-#' @seealso [temp_d18O()]
-#' @seealso [temp_D48()]
+#' @family thermometry
+#'
 #' @export
-#'
-temp_D47 = function(D47_CDES90, eq ="Petersen19") {
-  if(eq == "Petersen19") {
-    # Petersen et al. (2019)
-    b = 0.257-0.088; m = 0.0387
-  } else if(eq == "Kele15") {
-    # Kele et al. (2015) reprocessed by Bernasconi et al. (2018)
-    b = 0.167; m = 0.0449
-  } else {
+
+temp_D47 = function(D47_CDES90, D47_error, eq = "Petersen19") {
+
+  temp_util = function (D47_CDES90, eq) {
+    if (eq == "Petersen19") {
+      # Petersen et al. (2019)
+      b = 0.257-0.088; m = 0.0387
+      temp_util = sqrt(10^6/((D47_CDES90-b)/m))-273.15
+    } else if (eq == "Kele15") {
+      # Kele et al. (2015) reprocessed by Bernasconi et al. (2018)
+      b = 0.167; m = 0.0449
+      temp_util = sqrt(10^6/((D47_CDES90-b)/m))-273.15
+    } else {
     stop("ERROR! Invalid input for eq")
+    }
+    invisible(return(temp_util))
   }
 
-  TinC = sqrt(10^6/((D47_CDES90-b)/m))-273.15
+  temp = temp_util(D47_CDES90, eq)
 
-  return(TinC)
+  if (missing(D47_error) == FALSE) {
+    temp_err1 = temp_util(D47_CDES90 + D47_error, eq)
+    temp_err2 = temp_util(D47_CDES90 - D47_error, eq)
+    temp_err = (temp_err2 - temp_err1) / 2
+    temp = data.frame(temp, temp_err)
+
+  }
+
+  return(temp)
+
 }
