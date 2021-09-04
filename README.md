@@ -17,7 +17,7 @@ status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project
 
 The aim of this package is to make working with stable oxygen and
 clumped isotope data simpler and more reproducible. For the full list of
-functions, have a look at the .pdf manual.
+available functions, have a look at the .pdf manual.
 
 ## Under developement
 

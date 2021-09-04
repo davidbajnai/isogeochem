@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The aim of this package is to make working with stable oxygen and clumped isotope data simpler and more reproducible.
-For the full list of functions, have a look at the .pdf manual.
+For the full list of available functions, have a look at the .pdf manual.
 
 ## Under developement
 
