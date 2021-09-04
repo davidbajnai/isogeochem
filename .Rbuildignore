@@ -7,3 +7,5 @@
 [.]html$
 ^LICENSE\.md$
 ^tools$
+^data-raw$
+^revdep$

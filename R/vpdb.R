@@ -2,15 +2,15 @@
 
 #' @title Converting between VPDB and VSMOW scales
 #'
-#' @description `to_vsmow()` converts d18O values expressed on the VPDB scale to the VSMOW scale.
+#' @description `to_VSMOW()` converts d18O values expressed on the VPDB scale to the VSMOW scale.
 #'
-#' @param d18O_VPDB d18O values expressed on the VPDB scale (parts per mille).
+#' @param d18O_VPDB d18O values expressed on the VPDB scale (‰).
 #' @param eq Equation used for the conversion. Options are `"IUPAC"`, and `"Coplen83"`.
 #' The default is `"IUPAC"`: the IUPAC recommended equation listed in Brand et al. (2014) and Kim et al. (2015).
 #' To use the equation listed in Coplen et al. (1983) and the Hoefs book, set the parameter to `"Coplen83"`.
 #'
 #' @return
-#' Returns the d18O value expressed on the VSMOW scale (parts per mille).
+#' Returns the d18O value expressed on the VSMOW scale (‰).
 #'
 #' @references
 #' Coplen, T. B., Kendall, C., & Hopple, J. (1983).
@@ -29,25 +29,25 @@
 #' <https://doi.org/10.1016/j.gca.2015.02.011>
 #'
 #' @examples
-#' to_vsmow(0) # Returns 30.92
-#' to_vsmow(0, eq = "Coplen83") # Returns 30.91
+#' to_VSMOW(0) # Returns 30.92
+#' to_VSMOW(0, eq = "Coplen83") # Returns 30.91
 #'
 #' @details
 #' The IUPAC recommended equation to convert between the scales is:
 #'
 #' \deqn{\delta^{18}O_{VSMOW} = 1.03092 \times \delta^{18}O_{VPDB} + 30.92 }
 #'
-#' @seealso [to_vpdb()] converts d18O values expressed on the VSMOW scale to the VPDB scale.
+#' @seealso [to_VPDB()] converts d18O values expressed on the VSMOW scale to the VPDB scale.
 #'
 #' @export
 
-to_vsmow <- function(d18O_VPDB, eq = "IUPAC") {
+to_VSMOW = function(d18O_VPDB, eq = "IUPAC") {
   if (eq == "IUPAC") {
   1.03092 * d18O_VPDB + 30.92
   } else if (eq == "Coplen83") {
   1.03091 * d18O_VPDB + 30.91
   } else {
-    stop("ERROR! Invalid input for eq")
+    warning("ERROR! Invalid input for eq")
   }
 
 }
@@ -57,39 +57,39 @@ to_vsmow <- function(d18O_VPDB, eq = "IUPAC") {
 #' @title Converting between VSMOW and VPDB scales
 #'
 #' @description
-#' `to_vpdb()` converts d18O values expressed on the VSMOW scale to the VPDB scale.
+#' `to_VPDB()` converts d18O values expressed on the VSMOW scale to the VPDB scale.
 #'
-#' @param d18O_VSMOW d18O values expressed on the VSMOW scale (parts per mille).
+#' @param d18O_VSMOW d18O values expressed on the VSMOW scale (‰).
 #' @param eq Equation used for the conversion. Options are `"IUPAC"`, and `"Coplen83"`.
 #'   The default is `"IUPAC"`: the IUPAC recommended equation listed in Brand et al. (2014) and Kim et al. (2015).
 #'   To use the equation listed in Coplen et al. (1983) and the Hoefs book, set the parameter to `"Coplen83"`.
 #'
 #' @return
-#' Returns the d18O value expressed on the VPDB scale (parts per mille).
+#' Returns the d18O value expressed on the VPDB scale (‰).
 #'
 #' @references
-#' References are listed at [to_vsmow()].
+#' References are listed at [to_VSMOW()].
 #'
 #' @examples
-#' to_vpdb(0) # Returns -29.99
-#' to_vpdb(0, eq = "Coplen83") # Returns -29.98
+#' to_VPDB(0) # Returns -29.99
+#' to_VPDB(0, eq = "Coplen83") # Returns -29.98
 #'
 #' @details
 #' The IUPAC recommended equation to convert between the scales is:
 #'
 #' \deqn{\delta^{18}O_{VPDB} = 0.97001 \times \delta^{18}O_{VSMOW} - 29.99 }
 #'
-#' @seealso [to_vsmow()] converts d18O values expressed on the VPDB scale to the VSMOW scale.
+#' @seealso [to_VSMOW()] converts d18O values expressed on the VPDB scale to the VSMOW scale.
 #'
 #' @export
 
-to_vpdb <- function(d18O_VSMOW, eq = "IUPAC") {
+to_VPDB = function(d18O_VSMOW, eq = "IUPAC") {
   if (eq == "IUPAC") {
   0.97001 * d18O_VSMOW - 29.99
   } else if (eq == "Coplen83") {
   0.97002 * d18O_VSMOW - 29.98
   } else {
-    stop("ERROR! Invalid input for eq")
+    warning("ERROR! Invalid input for eq")
   }
 
 }

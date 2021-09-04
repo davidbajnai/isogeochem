@@ -7,26 +7,26 @@
 mix_d17O(d18O_A, d17O_A, d18O_B, d17O_B, lambda = 0.528)
 }
 \arguments{
-\item{d18O_A}{d18O value of component A (parts per mille).}
+\item{d18O_A}{d18O value of component A (‰).}
 
-\item{d17O_A}{d17O value of component A (parts per mille).}
+\item{d17O_A}{d17O value of component A (‰).}
 
-\item{d18O_B}{d18O value of component B (parts per mille).}
+\item{d18O_B}{d18O value of component B (‰).}
 
-\item{d17O_B}{d17O value of component B (parts per mille).}
+\item{d17O_B}{d17O value of component B (‰).}
 
 \item{lambda}{Triple oxygen isotope reference slope. Default \code{0.528}.}
 }
 \value{
 Returns a data frame:
 \itemize{
-\item d18O value of the mixture at \% mixing
-\item d18O value of the mixture \% mixing
-\item \% mixing: from 100\% A and 0\% B to 0\% A and 100\% B.
+\item d18O value of the mixture at x\% mixing (‰).
+\item d18O value of the mixture x\% mixing (‰).
+\item relative amount of component B in the mixture (\%): from 100\% A and 0\% B to 0\% A and 100\% B.
 }
 }
 \description{
-\code{mix_d17O()} produces mixing curves in in triple oxygen isotope space (d18O vs. D17O).
+\code{mix_d17O()} produces mixing curves between two endmembers (A and B) in triple oxygen isotope space (d18O vs. D17O).
 }
 \examples{
 # Mixing between a Mesozoic marine carbonate and a diagentic carbonate

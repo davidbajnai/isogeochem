@@ -5,16 +5,18 @@
 #' @description
 #' `d17Oc()` calculates equilibrium calcite d18O, d17O, and D17O values for a given temperature.
 #'
-#' @param temp Calcite growth temperature in degrees Celsius.
-#' @param d18Ow_VSMOW Water d18O value expressed on the VSMOW scale (parts per mille).
+#' @param temp Calcite growth temperature (°C).
+#' @param d18Ow_VSMOW Water d18O value expressed on the VSMOW scale (‰).
 #' @param eq18 Equation used to calculate the equilibrium 18O/16O oxygen isotope
 #'   fractionation factor between calcite and water.
 #'   Options are `"Daeron19"` (default), `"Watkins13"`, `"Coplen07"`, `"KO97"` , and `"FO77"`.
 #' @param lambda Triple oxygen isotope reference slope. Default is `0.528`.
 #'
 #' @return
-#' Returns a data frame with the carbonate d18O, d17O, and D17O values
-#' expressed on the VSMOW scale (all in parts per mille).
+#' Returns a data frame:
+#' * d18O value of the carbonate expressed on the VSMOW scale (‰).
+#' * d18O value of the carbonate expressed on the VSMOW scale (‰).
+#' * D17O value of the carbonate expressed on the VSMOW scale (‰).
 #'
 #' @details
 #' \deqn{\theta_{A/B} = \frac{\alpha^{17}_{A/B}}{\alpha^{18}_{A/B}}}
@@ -56,19 +58,19 @@ d17Oc = function(temp, d18Ow_VSMOW, eq18="Daeron19", lambda = 0.528) {
 #' @title Mixing curves in triple oxygen isotope space
 #'
 #' @description
-#' `mix_d17O()` produces mixing curves in in triple oxygen isotope space (d18O vs. D17O).
+#' `mix_d17O()` produces mixing curves between two endmembers (A and B) in triple oxygen isotope space (d18O vs. D17O).
 #'
-#' @param d18O_A d18O value of component A (parts per mille).
-#' @param d17O_A d17O value of component A (parts per mille).
-#' @param d18O_B d18O value of component B (parts per mille).
-#' @param d17O_B d17O value of component B (parts per mille).
+#' @param d18O_A d18O value of component A (‰).
+#' @param d17O_A d17O value of component A (‰).
+#' @param d18O_B d18O value of component B (‰).
+#' @param d17O_B d17O value of component B (‰).
 #' @param lambda Triple oxygen isotope reference slope. Default `0.528`.
 #'
 #' @return
 #' Returns a data frame:
-#' * d18O value of the mixture at % mixing
-#' * d18O value of the mixture % mixing
-#' * % mixing: from 100% A and 0% B to 0% A and 100% B.
+#' * d18O value of the mixture at x% mixing (‰).
+#' * d18O value of the mixture x% mixing (‰).
+#' * relative amount of component B in the mixture (%): from 100% A and 0% B to 0% A and 100% B.
 #'
 #' @examples
 #' # Mixing between a Mesozoic marine carbonate and a diagentic carbonate
@@ -83,7 +85,8 @@ mix_d17O = function (d18O_A, d17O_A, d18O_B, d17O_B, lambda = 0.528) {
   mix_d18O = ratio_B*as.numeric(d18O_B) + (1-ratio_B)*as.numeric(d18O_A)
   mix_d17O = ratio_B*as.numeric(d17O_B) + (1-ratio_B)*as.numeric(d17O_A)
   mix_D17O = (prime(mix_d17O) - lambda * prime(mix_d18O))
+  xB = ratio_B * 100
 
-  data.frame(mix_d18O, mix_D17O, ratio_B)
+  data.frame(mix_d18O, mix_D17O, xB)
 
   }

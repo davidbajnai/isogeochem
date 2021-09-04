@@ -5,13 +5,13 @@
 #' @description
 #' `D48c()` calculates the equilibrium carbonate D48 value for a given temperature.
 #'
-#' @param temperature Carbonate growth temperature in degrees Celsius.
+#' @param temperature Carbonate growth temperature (°C).
 #' @param eq Equation used for the calculation. Options are `"Fiebig21"` (default) and `"Swart21"`.
 #'   `"Fiebig21"` refers to the CDES90 calibration in Fiebig et al. (2021).
 #'   `"Swart21"` refers to the CDES90 "PBLM1" calibration in Swart et al. (2021).
 #'
 #' @return
-#' Returns the carbonate D48 value expressed on the CDES90 scale.
+#' Returns the carbonate D48 value expressed on the CDES90 scale (‰).
 #'
 #' @examples
 #' D48c(33.7) # Returns 0.237
@@ -38,7 +38,7 @@ D48c = function(temperature, eq ="Fiebig21") {
   b = 0.088; m = 0.0142
   m * (10^6 / TinK^2) + b
   } else {
-    stop("ERROR! Invalid input for eq")
+    warning("ERROR! Invalid input for eq")
   }
 
 }
@@ -50,8 +50,8 @@ D48c = function(temperature, eq ="Fiebig21") {
 #'
 #' @description `temp_D48()` calculates carbonate growth temperature from D47 and D48 values.
 #'
-#' @param D47_CDES90 Carbonate D47 values expressed on the CDES90 scale.
-#' @param D48_CDES90 Carbonate D48 values expressed on the CDES90 scale.
+#' @param D47_CDES90 Carbonate D47 values expressed on the CDES90 scale (‰).
+#' @param D48_CDES90 Carbonate D48 values expressed on the CDES90 scale (‰).
 #' @param D47_error Error on the D47 value. Optional.
 #' @param D48_error Error on the D48 value. Optional.
 #' @param ks Kinetic slope. Has to be negative!
@@ -60,7 +60,7 @@ D48c = function(temperature, eq ="Fiebig21") {
 #' @param pch Graphical parameter. Optional.
 #'
 #' @return
-#' Returns the carbonate growth temperature in degrees Celsius.
+#' Returns the carbonate growth temperature (‰).
 #'
 #' @examples
 #' temp_D48(0.617, 0.139, ks = -0.6) # Returns 44

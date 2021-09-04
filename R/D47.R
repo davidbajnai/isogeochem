@@ -5,7 +5,7 @@
 #' @description
 #' `D47c()` calculates the equilibrium carbonate D47 value for a given temperature.
 #'
-#' @param temp Carbonate growth temperature in degrees Celsius.
+#' @param temp Carbonate growth temperature (°C).
 #' @param eq Equation used for the calculation. Options are `"Fiebig21"` (default) and `"Petersen19"`.
 #' `"Fiebig21"` refers to the CDES90 calibration in Fiebig et al. (2021).
 #' `"Petersen19"` refers to the synthetic-only D47-RFACBr,WD "UNICAL" calibration of Petersen et al. (2019).
@@ -49,14 +49,14 @@ D47c = function(temp, eq ="Fiebig21") {
 #' @description
 #' `temp_D47()` calculates carbonate growth temperature from D47 value.
 #'
-#' @param D47_CDES90 Carbonate D47 values expressed on the CDES90 scale: referenced to 90°C acid digestion.
+#' @param D47_CDES90 Carbonate D47 values expressed on the CDES90 scale: referenced to 90°C acid digestion (‰).
 #' @param D47_error Error on the D47 value. Optional.
 #' @param eq Equation used for the calculation. Options are `"Petersen19"` (default) and `"Kele15"`.
 #' `"Petersen19"` refers to the synthetic-only IUPAC-reprocessed "Br "UNICAL" calibration of Petersen et al. (2019).
 #' `"Kele14"` refers to the Kele et al. (2015) calibration reprocessed by Bernasconi et al. (2020) using the IUPAC parameters.
 #'
 #' @return
-#' Returns the carbonate growth temperature in degrees Celsius,
+#' Returns the carbonate growth temperature (°C),
 #' and — if `D47_error` is specified — also the error.
 #' @examples
 #' temp_D47(0.580) # Returns 33.7
@@ -83,7 +83,7 @@ temp_D47 = function(D47_CDES90, D47_error, eq = "Petersen19") {
       b = 0.167; m = 0.0449
       temp_util = sqrt(10^6/((D47_CDES90-b)/m))-273.15
     } else {
-    stop("ERROR! Invalid input for eq")
+    warning("ERROR! Invalid input for eq")
     }
     invisible(return(temp_util))
   }

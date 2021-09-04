@@ -16,9 +16,9 @@ temp_D48(
 )
 }
 \arguments{
-\item{D47_CDES90}{Carbonate D47 values expressed on the CDES90 scale.}
+\item{D47_CDES90}{Carbonate D47 values expressed on the CDES90 scale (‰).}
 
-\item{D48_CDES90}{Carbonate D48 values expressed on the CDES90 scale.}
+\item{D48_CDES90}{Carbonate D48 values expressed on the CDES90 scale (‰).}
 
 \item{D47_error}{Error on the D47 value. Optional.}
 
@@ -33,7 +33,7 @@ temp_D48(
 \item{pch}{Graphical parameter. Optional.}
 }
 \value{
-Returns the carbonate growth temperature in degrees Celsius.
+Returns the carbonate growth temperature (‰).
 }
 \description{
 \code{temp_D48()} calculates carbonate growth temperature from D47 and D48 values.

@@ -7,14 +7,14 @@
 D48c(temperature, eq = "Fiebig21")
 }
 \arguments{
-\item{temperature}{Carbonate growth temperature in degrees Celsius.}
+\item{temperature}{Carbonate growth temperature (°C).}
 
 \item{eq}{Equation used for the calculation. Options are \code{"Fiebig21"} (default) and \code{"Swart21"}.
 \code{"Fiebig21"} refers to the CDES90 calibration in Fiebig et al. (2021).
 \code{"Swart21"} refers to the CDES90 "PBLM1" calibration in Swart et al. (2021).}
 }
 \value{
-Returns the carbonate D48 value expressed on the CDES90 scale.
+Returns the carbonate D48 value expressed on the CDES90 scale (‰).
 }
 \description{
 \code{D48c()} calculates the equilibrium carbonate D48 value for a given temperature.

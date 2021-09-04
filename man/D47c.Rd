@@ -7,7 +7,7 @@
 D47c(temp, eq = "Fiebig21")
 }
 \arguments{
-\item{temp}{Carbonate growth temperature in degrees Celsius.}
+\item{temp}{Carbonate growth temperature (°C).}
 
 \item{eq}{Equation used for the calculation. Options are \code{"Fiebig21"} (default) and \code{"Petersen19"}.
 \code{"Fiebig21"} refers to the CDES90 calibration in Fiebig et al. (2021).

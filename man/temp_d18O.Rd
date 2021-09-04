@@ -7,22 +7,22 @@
 temp_d18O(d18Oc_VSMOW, d18Ow_VSMOW, eq = "Daeron19")
 }
 \arguments{
-\item{d18Oc_VSMOW}{Carbonate d18O value expressed on the VSMOW scale (parts per mille).}
+\item{d18Oc_VSMOW}{Carbonate d18O value expressed on the VSMOW scale (‰).}
 
-\item{d18Ow_VSMOW}{Water d18O value expressed on the VSMOW scale (parts per mille).}
+\item{d18Ow_VSMOW}{Water d18O value expressed on the VSMOW scale (‰).}
 
 \item{eq}{Equation used to calculate the equilibrium 18O/16O oxygen isotope
 fractionation factor between calcite and water.
 For calcite choose from \code{"Daeron19"} (default), \code{"Watkins13"}, \code{"Coplen07"}, \code{"KO97"} , and \code{"FO77"}.}
 }
 \value{
-Returns the carbonate growth temperature in degrees Celsius.
+Returns the carbonate growth temperature (°C).
 }
 \description{
 \code{temp_d18O()} calculates carbonate growth temperature from oxygen isotope data.
 }
 \note{
-Use \code{\link[=to_vsmow]{to_vsmow()}} and \code{\link[=to_vpdb]{to_vpdb()}} to convert between the VSMOW and VPDB scales.
+Use \code{\link[=to_VSMOW]{to_VSMOW()}} and \code{\link[=to_VPDB]{to_VPDB()}} to convert between the VSMOW and VPDB scales.
 }
 \examples{
 temp_d18O(14.58, -13.54, "Coplen07") # Returns 33.7

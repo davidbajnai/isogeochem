@@ -7,9 +7,9 @@
 d17Oc(temp, d18Ow_VSMOW, eq18 = "Daeron19", lambda = 0.528)
 }
 \arguments{
-\item{temp}{Calcite growth temperature in degrees Celsius.}
+\item{temp}{Calcite growth temperature (°C).}
 
-\item{d18Ow_VSMOW}{Water d18O value expressed on the VSMOW scale (parts per mille).}
+\item{d18Ow_VSMOW}{Water d18O value expressed on the VSMOW scale (‰).}
 
 \item{eq18}{Equation used to calculate the equilibrium 18O/16O oxygen isotope
 fractionation factor between calcite and water.
@@ -18,8 +18,12 @@ Options are \code{"Daeron19"} (default), \code{"Watkins13"}, \code{"Coplen07"}, 
 \item{lambda}{Triple oxygen isotope reference slope. Default is \code{0.528}.}
 }
 \value{
-Returns a data frame with the carbonate d18O, d17O, and D17O values
-expressed on the VSMOW scale (all in parts per mille).
+Returns a data frame:
+\itemize{
+\item d18O value of the carbonate expressed on the VSMOW scale (‰).
+\item d18O value of the carbonate expressed on the VSMOW scale (‰).
+\item D17O value of the carbonate expressed on the VSMOW scale (‰).
+}
 }
 \description{
 \code{d17Oc()} calculates equilibrium calcite d18O, d17O, and D17O values for a given temperature.

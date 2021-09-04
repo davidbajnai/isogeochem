@@ -7,7 +7,7 @@
 temp_D47(D47_CDES90, D47_error, eq = "Petersen19")
 }
 \arguments{
-\item{D47_CDES90}{Carbonate D47 values expressed on the CDES90 scale: referenced to 90°C acid digestion.}
+\item{D47_CDES90}{Carbonate D47 values expressed on the CDES90 scale: referenced to 90°C acid digestion (‰).}
 
 \item{D47_error}{Error on the D47 value. Optional.}
 
@@ -16,7 +16,7 @@ temp_D47(D47_CDES90, D47_error, eq = "Petersen19")
 \code{"Kele14"} refers to the Kele et al. (2015) calibration reprocessed by Bernasconi et al. (2020) using the IUPAC parameters.}
 }
 \value{
-Returns the carbonate growth temperature in degrees Celsius,
+Returns the carbonate growth temperature (°C),
 and — if \code{D47_error} is specified — also the error.
 }
 \description{

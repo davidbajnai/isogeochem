@@ -7,9 +7,9 @@
 d18Ow(temp, d18Oc_VSMOW, min = "calcite", eq = "Daeron19")
 }
 \arguments{
-\item{temp}{Crystallization temperature, in degrees Celsius.}
+\item{temp}{Crystallization temperature (°C).}
 
-\item{d18Oc_VSMOW}{Carbonate d18O value expressed on the VSMOW scale (parts per mille).}
+\item{d18Oc_VSMOW}{Carbonate d18O value expressed on the VSMOW scale (‰).}
 
 \item{min}{Mineralogy. Options are \code{"calcite"} (default), \code{"aragonite"}, and \code{"dolomite"}.}
 
@@ -19,18 +19,18 @@ For calcite choose from \code{"Daeron19"} (default), \code{"Watkins13"}, \code{"
 For aragonite and dolomite the eq need not be specified.}
 }
 \value{
-Returns the water d18O value expressed on the VSMOW scale (parts per mille).
+Returns the water d18O value expressed on the VSMOW scale (‰).
 }
 \description{
 \code{d18Ow()} calculates the d18O value of the ambient water.
 from the d18O value of a carbonate and its growth temperature.
 }
 \note{
-Use \code{\link[=to_vsmow]{to_vsmow()}} and \code{\link[=to_vpdb]{to_vpdb()}} to convert between the VSMOW and VPDB scales.
+Use \code{\link[=to_VSMOW]{to_VSMOW()}} and \code{\link[=to_VPDB]{to_VPDB()}} to convert between the VSMOW and VPDB scales.
 }
 \examples{
 d18Ow(33.7, 14.58, "calcite", "Coplen07") # Returns -13.54
-d18Ow(25, to_vsmow(-7.47), "aragonite") # Returns -6.53
+d18Ow(25, to_VSMOW(-7.47), "aragonite") # Returns -6.53
 d18Ow(25, 20.43, "dolomite") # Returns -10.69
 
 }

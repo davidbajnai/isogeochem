@@ -83,7 +83,7 @@ a18c_w = function(temp, min = "calcite", eq = "Daeron19") {
       # O'Neil et al. (1969) reprocessed by Friedman and O'Neil (1977)
       exp((2.559 * 10^6 / TinK^2 - 2.89) / 1000 )
     } else {
-      stop("ERROR! Invalid input for eq")
+      warning("ERROR! Invalid input for eq")
     }
   } else if (min == "aragonite") {
       # Grossman and Ku (1986) reprocessed by Dettman et al. (1999)
@@ -92,7 +92,7 @@ a18c_w = function(temp, min = "calcite", eq = "Daeron19") {
       # Vasconcelos et al. (2005)
       exp((2.73 * 10^6 / TinK^2 + 0.26) / 1000)
   } else {
-      stop("ERROR! Invalid input for min")
+      warning("ERROR! Invalid input for min")
   }
 
 }
@@ -105,8 +105,8 @@ a18c_w = function(temp, min = "calcite", eq = "Daeron19") {
 #' `d18Oc()` calculates the equilibrium d18O value of a carbonate grown
 #'   at a given temperature.
 #'
-#' @param temp Crystallization temperature in degrees Celsius.
-#' @param d18Ow_VSMOW Water d18O value expressed on the VSMOW scale (parts per mille).
+#' @param temp Crystallization temperature (°C).
+#' @param d18Ow_VSMOW Water d18O value expressed on the VSMOW scale (‰).
 #' @param min Mineralogy. Options are `"calcite"` (default), `"aragonite"`, and `"dolomite"`.
 #' @param eq Equation used to calculate the equilibrium 18O/16O oxygen isotope
 #'   fractionation factor between calcium carbonate and water. Options depend on mineralogy.
@@ -114,14 +114,14 @@ a18c_w = function(temp, min = "calcite", eq = "Daeron19") {
 #'   For aragonite and dolomite the eq need not be specified.
 #'
 #' @return
-#' Returns the equilibrium carbonate d18O value expressed on the VSMOW scale (parts per mille).
+#' Returns the equilibrium carbonate d18O value expressed on the VSMOW scale (‰).
 #'
 #' @note
-#' Use [to_vsmow()] and [to_vpdb()] to convert between the VSMOW and VPDB scales.
+#' Use [to_VSMOW()] and [to_VPDB()] to convert between the VSMOW and VPDB scales.
 #'
 #' @examples
 #' d18Oc(33.7, -13.54, eq="Coplen07") # Returns 14.58
-#' to_vpdb(d18Oc(12, -6.94, min="aragonite")) # Returns -5.21
+#' to_VPDB(d18Oc(12, -6.94, min="aragonite")) # Returns -5.21
 #' d18Oc(25, -10.96, min="dolomite") # Returns 20.15
 #'
 #' @references
@@ -149,22 +149,22 @@ d18Oc = function(temp, d18Ow_VSMOW, min="calcite", eq ="Daeron19") {
 #' `d18Ow()` calculates the d18O value of the ambient water.
 #' from the d18O value of a carbonate and its growth temperature.
 #'
-#' @param temp Crystallization temperature, in degrees Celsius.
-#' @param d18Oc_VSMOW Carbonate d18O value expressed on the VSMOW scale (parts per mille).
+#' @param temp Crystallization temperature (°C).
+#' @param d18Oc_VSMOW Carbonate d18O value expressed on the VSMOW scale (‰).
 #' @param min Mineralogy. Options are `"calcite"` (default), `"aragonite"`, and `"dolomite"`.
 #' @param eq Equation used to calculate the equilibrium 18O/16O oxygen isotope
 #'   fractionation factor between calcium carbonate and water. Options depend on mineralogy.
 #'   For calcite choose from `"Daeron19"` (default), `"Watkins13"`, `"Coplen07"`, `"KO97"` , and `"FO77"`.
 #'   For aragonite and dolomite the eq need not be specified.
 #'
-#' @return Returns the water d18O value expressed on the VSMOW scale (parts per mille).
+#' @return Returns the water d18O value expressed on the VSMOW scale (‰).
 #'
 #' @note
-#' Use [to_vsmow()] and [to_vpdb()] to convert between the VSMOW and VPDB scales.
+#' Use [to_VSMOW()] and [to_VPDB()] to convert between the VSMOW and VPDB scales.
 #'
 #' @examples
 #' d18Ow(33.7, 14.58, "calcite", "Coplen07") # Returns -13.54
-#' d18Ow(25, to_vsmow(-7.47), "aragonite") # Returns -6.53
+#' d18Ow(25, to_VSMOW(-7.47), "aragonite") # Returns -6.53
 #' d18Ow(25, 20.43, "dolomite") # Returns -10.69
 #'
 #' @references
@@ -189,17 +189,17 @@ d18Ow = function(temp, d18Oc_VSMOW, min = "calcite", eq ="Daeron19") {
 #' @description
 #' `temp_d18O()` calculates carbonate growth temperature from oxygen isotope data.
 #'
-#' @param d18Oc_VSMOW Carbonate d18O value expressed on the VSMOW scale (parts per mille).
-#' @param d18Ow_VSMOW Water d18O value expressed on the VSMOW scale (parts per mille).
+#' @param d18Oc_VSMOW Carbonate d18O value expressed on the VSMOW scale (‰).
+#' @param d18Ow_VSMOW Water d18O value expressed on the VSMOW scale (‰).
 #' @param eq Equation used to calculate the equilibrium 18O/16O oxygen isotope
 #'   fractionation factor between calcite and water.
 #'   For calcite choose from `"Daeron19"` (default), `"Watkins13"`, `"Coplen07"`, `"KO97"` , and `"FO77"`.
 #'
 #' @return
-#' Returns the carbonate growth temperature in degrees Celsius.
+#' Returns the carbonate growth temperature (°C).
 #'
 #' @note
-#' Use [to_vsmow()] and [to_vpdb()] to convert between the VSMOW and VPDB scales.
+#' Use [to_VSMOW()] and [to_VPDB()] to convert between the VSMOW and VPDB scales.
 #'
 #' @examples
 #' temp_d18O(14.58, -13.54, "Coplen07") # Returns 33.7
@@ -233,7 +233,7 @@ temp_d18O = function(d18Oc_VSMOW, d18Ow_VSMOW, eq ="Daeron19") {
     # O'Neil et al. (1969) reprocessed by Friedman and O'Neil (1977)
     TinK = sqrt((2.78*10^6)/(log(a18c_w)*1000 + 2.89))
   } else {
-    stop("ERROR! Invalid input for eq")
+    warning("ERROR! Invalid input for eq")
   }
 
   TinK-273.15
