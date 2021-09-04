@@ -138,7 +138,7 @@ a18c_w(temp = 25, min = "aragonite", eq = "Dettman99")
 
 # Calculate the relative abundance of dissolved inorganic carbon species:
 xDIC(temp = 10, ph = 8, S = 30)
-
+  
 # Convert between classical delta and delta prime values
 prime(10)
 unprime(9.95)
