@@ -17,7 +17,7 @@ status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project
 
 The aim of this package is to make working with stable oxygen and
 clumped isotope data simpler and more reproducible. For the full list of
-functions, have a look at the .pdf manual.
+available functions, have a look at the .pdf manual.
 
 ## Under developement
 
@@ -82,7 +82,7 @@ text(D48c(temp), D47c(temp), paste(temp,"°C"),
 
 ## Triple oxygen isotopes
 
-The `d17O()` function calculates equilibrium carbonate oxygen isotope
+The `d17Oc()` function calculates equilibrium carbonate oxygen isotope
 values (δ<sup>18</sup>O, δ<sup>17</sup>O, ∆<sup>17</sup>O) for a given
 temperature and ambient water composition. Use the `mix_d17O()` function
 to calculate mixing curves in triple oxygen isotope space, e.g., for
@@ -129,7 +129,7 @@ text(prime(mix[,1]), mix[,2], paste(mix[,3],"%"), pos=1, cex=0.5,
 ## … and more!
 
 ``` r
-# Convert between the VSMOW and VPDB scalel:
+# Convert between the VSMOW and VPDB scales:
 to_VPDB(10)
 
 # Calculate the oxygen isotope fractionation factor between water and carbonate:
@@ -146,8 +146,8 @@ unprime(9.95)
 
 Datasets available within the package:
 
-| Name       | Description                                             | Reference                    |
-|------------|---------------------------------------------------------|------------------------------|
-| devilshole | The original Devils Hole carbonate d18O time series     | Winograd et al. (2006)       |
-| LR04       | A benthic foraminifera d18O stack                       | Lisiecki & Raymo (2005)      |
-| GTS2020    | An abridged version of the GTS2020 oxygen isotope stack | Grossman & Joachimski (2020) |
+| Name         | Description                                             | Reference                    |
+|--------------|---------------------------------------------------------|------------------------------|
+| `devilshole` | The original Devils Hole carbonate d18O time series     | Winograd et al. (2006)       |
+| `LR04`       | A benthic foraminifera d18O stack                       | Lisiecki & Raymo (2005)      |
+| `GTS2020`    | An abridged version of the GTS2020 oxygen isotope stack | Grossman & Joachimski (2020) |
