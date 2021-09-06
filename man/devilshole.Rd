@@ -7,7 +7,8 @@
 \format{
 A data frame with 442 rows and 4 variables:
 \describe{
-\item{age}{Interpolated uranium-series age of the sample expressed as thousands of years before present (ka).}
+\item{age}{Interpolated uranium-series age of the sample expressed
+as thousands of years before present (ka).}
 \item{d18O_VSMOW}{Carbonate d18O value relative to VSMOW (per mille).}
 \item{d18O_error}{Standard deviation on the d18O value.}
 \item{core}{Name of the core (DHC2-8, DHC2-3, DH-11).}
@@ -23,7 +24,8 @@ devilshole
 A dataset containing the d18O values of the "original" Devils Hole cores.
 }
 \references{
-Winograd, I. J., Landwehr, J. M., Coplen, T. B., Sharp, W. D., Riggs, A. C., Ludwig, K. R., & Kolesar, P. T. (2006).
+Winograd, I. J., Landwehr, J. M., Coplen, T. B., Sharp, W. D.,
+Riggs, A. C., Ludwig, K. R., & Kolesar, P. T. (2006).
 Devils Hole, Nevada, d18O record extended to the mid-Holocene.
 Quaternary Research, 66(2), 202-212.
 \url{https://doi.org/10.1016/j.yqres.2006.06.003}

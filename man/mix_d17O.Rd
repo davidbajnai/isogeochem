@@ -22,17 +22,21 @@ Returns a data frame:
 \itemize{
 \item d18O value of the mixture at x\% mixing (‰).
 \item d18O value of the mixture x\% mixing (‰).
-\item relative amount of component B in the mixture (\%): from 100\% A and 0\% B to 0\% A and 100\% B.
+\item relative amount of component B in the mixture (\%):
+from 100\% A and 0\% B to 0\% A and 100\% B.
 }
 }
 \description{
-\code{mix_d17O()} produces mixing curves between two endmembers (A and B) in triple oxygen isotope space (d18O vs. D17O).
+\code{mix_d17O()} produces mixing curves between two endmembers (A and B) in
+triple oxygen isotope space (d18O vs. D17O).
 }
 \examples{
 # Mixing between a Mesozoic marine carbonate and a diagentic carbonate
-mix_d17O(d17Oc(10,-1)[1],d17Oc(10,-1)[2],d17Oc(100,0)[1],d17Oc(100,0)[2])
+mix_d17O(d17O_c(10, -1)[1],d17O_c(10, -1)[2],
+  d17O_c(100,0)[1], d17O_c(100, 0)[2])
 
 }
 \seealso{
-\code{\link[=d17Oc]{d17Oc()}} calculates equilibrium calcite d18O, d17O, and D17O values for a given temperature.
+\code{\link[=d17O_c]{d17O_c()}} calculates equilibrium calcite d18O, d17O, and D17O
+values for a given temperature.
 }

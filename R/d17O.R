@@ -1,15 +1,18 @@
-# Functions in this file: d17Oc()
+# Functions in this file: d17O_c()
 
+##———————————————————————————————————————————————————————————————————————————##
+#### d17O_c ####
 #' @title Triple oxygen isotope values
 #'
 #' @description
-#' `d17Oc()` calculates equilibrium calcite d18O, d17O, and D17O values for a given temperature.
+#' `d17O_c()` calculates equilibrium calcite d18O, d17O, and D17O values
+#'   for a given temperature.
 #'
 #' @param temp Calcite growth temperature (°C).
-#' @param d18Ow_VSMOW Water d18O value expressed on the VSMOW scale (‰).
-#' @param eq18 Equation used to calculate the equilibrium 18O/16O oxygen isotope
+#' @param d18O_H2O_VSMOW Water d18O value expressed on the VSMOW scale (‰).
+#' @param eq18 Equation used to calculate the equilibrium 18O/16O
 #'   fractionation factor between calcite and water.
-#'   Options are `"Daeron19"` (default), `"Watkins13"`, `"Coplen07"`, `"KO97"` , and `"FO77"`.
+#'   Options are as in [a18_c_H2O()] with `"Daeron19"` being here the default.
 #' @param lambda Triple oxygen isotope reference slope. Default is `0.528`.
 #'
 #' @return
@@ -21,18 +24,22 @@
 #' @details
 #' \deqn{\theta_{A/B} = \frac{\alpha^{17}_{A/B}}{\alpha^{18}_{A/B}}}
 #'
-#' \deqn{ \delta'^{17}O_{w,VSMOW} = \beta \times \delta'^{18}O_{w,VSMOW} + \gamma \textrm{ where } \beta=0.528 \textrm{ and } \gamma = 0 }
+#' \deqn{ \delta'^{17}O_{w,VSMOW} =
+#' \beta \times \delta'^{18}O_{w,VSMOW} + \gamma
+#' \textrm{ where } \beta=0.528 \textrm{ and } \gamma = 0 }
 #'
-#' \deqn{\Delta^{17}O = \delta'^{17}O_{c,VSMOW} - \lambda \times \delta'^{18}O_{c,VSMOW} }
+#' \deqn{\Delta^{17}O = \delta'^{17}O_{c,VSMOW} -
+#' \lambda \times \delta'^{18}O_{c,VSMOW} }
 #'
 #' @examples
-#' d17Oc(10,-1) # Returns d18Oc = 32.44, d17Oc = 16.91, D17O = -0.084
-#' d17Oc(10,-1)[,3] # Returns D17O = -0.084
-#' prime(d17Oc(10,-1)[,2]) # Returns d'17O = 16.77
+#' d17O_c(10,-1) # Returns d18O_c = 32.44, d17O_c = 16.91, D17O = -0.084
+#' d17O_c(10,-1)[,3] # Returns D17O = -0.084
+#' prime(d17O_c(10,-1)[,2]) # Returns d'17O = 16.77
 #'
 #' @references
 #' Guo, W., & Zhou, C. (2019).
-#' Triple oxygen isotope fractionation in the DIC-H2O-CO2 system: A numerical framework and its implications.
+#' Triple oxygen isotope fractionation in the DIC-H2O-CO2 system:
+#' A numerical framework and its implications.
 #' Geochimica et Cosmochimica Acta, 246, 541-564.
 #' <https://www.doi.org/10.1016/j.gca.2018.11.018>
 #'
@@ -40,25 +47,31 @@
 #'
 #' @export
 
-d17Oc = function(temp, d18Ow_VSMOW, eq18="Daeron19", lambda = 0.528) {
-  theta_c_w = 59.1047/(temp + 273.15)^2 + -1.4089/(temp + 273.15) + 0.5297 # Guo and Zhou (2019)
-  a18c_w = isogeochem::a18c_w(temp=temp, min="calcite", eq=eq18)
-  a17c_w = a18c_w ^ theta_c_w
+d17O_c = function(temp, d18O_H2O_VSMOW, eq18 = "Daeron19", lambda = 0.528) {
 
-  d18Oc   = d18Oc(temp, d18Ow_VSMOW, min="calcite", eq18) # Calcite d18O value
-  d17Ow_p = 0.528 * prime(d18Ow_VSMOW) # Water d17Op value; 0.528 is the Meteoric Water Line
+  # Guo and Zhou (2019)
+  theta_c_H2O = 59.1047/(temp + 273.15)^2 + -1.4089/(temp + 273.15) + 0.5297
 
-  d17Oc = (unprime(d17Ow_p) + 1000) * a17c_w - 1000
-  D17O  = prime(d17Oc) - lambda * prime(d18Oc)
+  a18_c_H2O = isogeochem::a18_c_H2O(temp=temp, min="calcite", eq = eq18)
+  a17c_H2O  = a18_c_H2O ^ theta_c_H2O
 
-  data.frame(d18Oc, d17Oc, D17O)
+  d18O_c   = d18O_c(temp, d18O_H2O_VSMOW, min="calcite", eq18)
+  d17Ow_p = 0.528 * prime(d18O_H2O_VSMOW)
+
+  d17O_c = (unprime(d17Ow_p) + 1000) * a17c_H2O - 1000
+  D17O_c  = prime(d17O_c) - lambda * prime(d18O_c)
+
+  data.frame(d18O_c, d17O_c, D17O_c)
 
   }
 
+##———————————————————————————————————————————————————————————————————————————##
+#### mix_d17O ####
 #' @title Mixing curves in triple oxygen isotope space
 #'
 #' @description
-#' `mix_d17O()` produces mixing curves between two endmembers (A and B) in triple oxygen isotope space (d18O vs. D17O).
+#' `mix_d17O()` produces mixing curves between two endmembers (A and B) in
+#'   triple oxygen isotope space (d18O vs. D17O).
 #'
 #' @param d18O_A d18O value of component A (‰).
 #' @param d17O_A d17O value of component A (‰).
@@ -70,13 +83,16 @@ d17Oc = function(temp, d18Ow_VSMOW, eq18="Daeron19", lambda = 0.528) {
 #' Returns a data frame:
 #' * d18O value of the mixture at x% mixing (‰).
 #' * d18O value of the mixture x% mixing (‰).
-#' * relative amount of component B in the mixture (%): from 100% A and 0% B to 0% A and 100% B.
+#' * relative amount of component B in the mixture (%):
+#'   from 100% A and 0% B to 0% A and 100% B.
 #'
 #' @examples
 #' # Mixing between a Mesozoic marine carbonate and a diagentic carbonate
-#' mix_d17O(d17Oc(10,-1)[1],d17Oc(10,-1)[2],d17Oc(100,0)[1],d17Oc(100,0)[2])
+#' mix_d17O(d17O_c(10, -1)[1],d17O_c(10, -1)[2],
+#'   d17O_c(100,0)[1], d17O_c(100, 0)[2])
 #'
-#' @seealso [d17Oc()] calculates equilibrium calcite d18O, d17O, and D17O values for a given temperature.
+#' @seealso [d17O_c()] calculates equilibrium calcite d18O, d17O, and D17O
+#'   values for a given temperature.
 #'
 #' @export
 
