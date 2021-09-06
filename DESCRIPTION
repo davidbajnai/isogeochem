@@ -1,30 +1,31 @@
 Package: isogeochem
 Type: Package
 Title: Tools For Carbonate Isotope Geochemistry
-Version: 0.0.0.9300
+Version: 0.0.0.9400
+Date: 2021-09-06
 Authors@R:
     person(given = "David", family = "Bajnai",
     email = "david.bajnai@uni-goettingen.de",
     comment = c(ORCID = "0000-0002-4053-5056"),
     role = c("aut", "cre"))
-Description: This collection of functions makes working with stable oxygen and clumped isotope data simpler and more reproducible.
+Description: This toolbox makes working with stable oxygen, carbon, and clumped isotope data reproducible and straightforward.
 License: GPL (>= 3)
 URL: https://github.com/davidbajnai/isogeochem
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Suggests: 
+Suggests:
     shades,
     knitr,
-    rmarkdown
+    rmarkdown,
+    spelling
 VignetteBuilder: knitr
 Imports: 
+    stats,
     graphics,
-    reconPlots (>= 0.1.0),
     grDevices
-Remotes: 
-    andrewheiss/reconPlots
 Depends: 
     R (>= 2.10)
 BugReports: https://github.com/davidbajnai/isogeochem/issues
+Language: en-US

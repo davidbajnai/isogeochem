@@ -7,7 +7,8 @@
 \format{
 A data frame with 2115 rows and 3 variables:
 \describe{
-\item{age}{Age of the sample expressed as thousands of years before present (ka).}
+\item{age}{Age of the sample expressed as thousands of years
+before present (ka).}
 \item{d18O_VPDB}{Carbonate d18O value relative to VPDB (per mille).}
 \item{d18O_error}{Standard error on the d18O value.}
 }
@@ -23,7 +24,8 @@ A dataset containing the LR04 benthic d18O stack.
 }
 \references{
 Lisiecki, L. E., & Raymo, M. E. (2005).
-A Pliocene-Pleistocene stack of 57 globally distributed benthic d18O records.
+A Pliocene-Pleistocene stack of 57 globally distributed
+benthic d18O records.
 Paleoceanography, 20(1), PA1003.
 \url{https://doi.org/10.1029/2004pa001071}
 }

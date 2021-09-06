@@ -7,7 +7,8 @@
 \format{
 A data frame with 9676 rows and 8 variables:
 \describe{
-\item{age}{Age of the sample expressed as millions of years before present (Ma).}
+\item{age}{Age of the sample expressed as
+millions of years before present (Ma).}
 \item{d18O_VPDB}{Carbonate d18O value relative to VPDB (per mille).}
 \item{d13C_VPDB}{Carbonate d13C value relative to VPDB (per mille).}
 \item{mineralogy}{The mineralogy of the carbonate hard part.}
@@ -22,17 +23,19 @@ A data frame with 9676 rows and 8 variables:
 GTS2020
 }
 \description{
-A dataset containing a compilation of d18O and d13C values of various macrofossils
-(bivalves, gastropods, belemnites, ammonites) together with
-information on their age, shell mineralogy, and the climate zone they represent.
+A dataset containing a compilation of d18O and d13C values
+of various macrofossils
+(bivalves, gastropods, belemnites, ammonites) together with information
+on their age, shell mineralogy, and the climate zone they represent.
 This dataset is a condensed version of the entire dataset presented in the
-Geologic Time Scale 2020. Specifically, the full dataset was filtered for those "select" d18O and d13C values
-that also have age information.
+Geologic Time Scale 2020. Specifically, the full dataset was filtered for
+those "select" d18O and d13C values that also have age information.
 }
 \references{
 Grossman, E. L., & Joachimski, M. M. (2020).
 Oxygen isotope stratigraphy.
-In F. M. Gradstein, J. G. Ogg, M. D. Schmitz, & G. M. Ogg (Eds.), Geologic Time Scale 2020: Volume 1 (pp. 279-307): Elsevier.
+In F. M. Gradstein, J. G. Ogg, M. D. Schmitz, & G. M. Ogg (Eds.),
+Geologic Time Scale 2020: Volume 1 (pp. 279-307): Elsevier.
 \url{https://doi.org/10.1016/B978-0-12-824360-2.00010-3}
 }
 \seealso{

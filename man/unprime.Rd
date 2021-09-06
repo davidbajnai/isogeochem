@@ -7,21 +7,23 @@
 unprime(prime)
 }
 \arguments{
-\item{prime}{"Delta prime" values to be converted (parts per mille).}
+\item{prime}{"Delta prime" values to be converted (‰).}
 }
 \value{
-Returns the "classical delta" value (parts per mille).
+Returns the "classical delta" value (‰).
 }
 \description{
-\code{unprime()} converts "delta prime" values to "classical delta" values.
+\code{unprime()} converts "delta prime" values
+to "classical delta" values.
 }
 \details{
 \deqn{\delta^{17}O = 1000 \times e^{(\frac{\delta'^{17}O}{1000}+1)}}
 }
 \examples{
-unprime(9.950331)
+unprime(9.950331) # Return 10
 
 }
 \seealso{
-\code{\link[=prime]{prime()}} converts "classical delta" values to "delta prime" values.
+\code{\link[=prime]{prime()}} converts "classical delta" values to
+"delta prime" values.
 }

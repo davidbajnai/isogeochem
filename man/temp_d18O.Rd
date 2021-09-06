@@ -4,37 +4,40 @@
 \alias{temp_d18O}
 \title{Oxygen isotope thermometry}
 \usage{
-temp_d18O(d18Oc_VSMOW, d18Ow_VSMOW, eq = "Daeron19")
+temp_d18O(d18O_c_VSMOW, d18O_H2O_VSMOW, eq = "Daeron19")
 }
 \arguments{
-\item{d18Oc_VSMOW}{Carbonate d18O value expressed on the VSMOW scale (‰).}
+\item{d18O_c_VSMOW}{Carbonate d18O value expressed on the VSMOW scale (‰).}
 
-\item{d18Ow_VSMOW}{Water d18O value expressed on the VSMOW scale (‰).}
+\item{d18O_H2O_VSMOW}{Water d18O value expressed on the VSMOW scale (‰).}
 
 \item{eq}{Equation used to calculate the equilibrium 18O/16O oxygen isotope
-fractionation factor between calcite and water.
-For calcite choose from \code{"Daeron19"} (default), \code{"Watkins13"}, \code{"Coplen07"}, \code{"KO97"} , and \code{"FO77"}.}
+fractionation factor between carbonate and water.
+Options depend on mineralogy and listed in \code{\link[=a18_c_H2O]{a18_c_H2O()}}.}
 }
 \value{
 Returns the carbonate growth temperature (°C).
 }
 \description{
-\code{temp_d18O()} calculates carbonate growth temperature from oxygen isotope data.
+\code{temp_d18O()} calculates carbonate growth temperature
+from oxygen isotope data.
 }
 \note{
-Use \code{\link[=to_VSMOW]{to_VSMOW()}} and \code{\link[=to_VPDB]{to_VPDB()}} to convert between the VSMOW and VPDB scales.
+Use \code{\link[=to_VSMOW]{to_VSMOW()}} and \code{\link[=to_VPDB]{to_VPDB()}} to convert between the
+VSMOW and VPDB scales.
 }
 \examples{
 temp_d18O(14.58, -13.54, "Coplen07") # Returns 33.7
 
 }
 \references{
-References are listed in the description of \code{\link[=a18c_w]{a18c_w()}}.
+References are listed in the description of \code{\link[=a18_c_H2O]{a18_c_H2O()}}.
 }
 \seealso{
-\code{\link[=d18Oc]{d18Oc()}} calculates the equilibrium d18O value of a carbonate grown at a given temperature.
+\code{\link[=d18O_c]{d18O_c()}} calculates the equilibrium d18O value of a carbonate
+grown at a given temperature.
 
-\code{\link[=d18Ow]{d18Ow()}} calculates the d18O value of the ambient water
+\code{\link[=d18O_H2O]{d18O_H2O()}} calculates the d18O value of the ambient water
 from the d18O value of a carbonate and its growth temperature.
 
 Other thermometry: 
