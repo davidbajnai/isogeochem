@@ -72,6 +72,8 @@ unprime = function(prime) {
 #'
 #' @seealso [B_from_a()] calculates the delta value of B.
 #'
+#' @family fractionation_factors
+#'
 #' @export
 
 a_A_B = function(A, B) {

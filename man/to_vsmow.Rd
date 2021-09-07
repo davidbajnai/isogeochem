@@ -21,8 +21,8 @@ and the Hoefs book.
 Returns the d18O value expressed on the VSMOW scale (‰).
 }
 \description{
-\code{to_VSMOW()} converts d18O values expressed
-on the VPDB scale to the VSMOW scale.
+\code{to_VSMOW()} converts d18O values expressed on the VPDB scale
+to the VSMOW scale.
 }
 \details{
 The IUPAC recommended equation to convert between the scales is:
@@ -30,8 +30,8 @@ The IUPAC recommended equation to convert between the scales is:
 \deqn{\delta^{18}O_{VSMOW} = 1.03092 \times \delta^{18}O_{VPDB} + 30.92}
 }
 \examples{
-to_VSMOW(0) # Returns 30.92
-to_VSMOW(0, eq = "Coplen83") # Returns 30.91
+to_VSMOW(0)
+to_VSMOW(0, eq = "Coplen83")
 
 }
 \references{

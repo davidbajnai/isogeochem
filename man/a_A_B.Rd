@@ -27,4 +27,10 @@ a_A_B(10, 12)
 }
 \seealso{
 \code{\link[=B_from_a]{B_from_a()}} calculates the delta value of B.
+
+Other fractionation_factors: 
+\code{\link{a18_CO2acid_c}()},
+\code{\link{a18_H2O_OH}()},
+\code{\link{a18_c_H2O}()}
 }
+\concept{fractionation_factors}

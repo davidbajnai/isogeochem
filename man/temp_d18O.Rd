@@ -27,7 +27,7 @@ Use \code{\link[=to_VSMOW]{to_VSMOW()}} and \code{\link[=to_VPDB]{to_VPDB()}} to
 VSMOW and VPDB scales.
 }
 \examples{
-temp_d18O(14.58, -13.54, "Coplen07") # Returns 33.7
+temp_d18O(14.58, -13.54, "Coplen07")
 
 }
 \references{

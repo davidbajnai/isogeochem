@@ -24,7 +24,7 @@ Returns the carbonate D47 value expressed on the CDES90 scale (‰).
 for a given temperature.
 }
 \examples{
-D47(33.7, "Petersen19") # Returns 0.580016
+D47(33.7, "Petersen19")
 
 }
 \references{

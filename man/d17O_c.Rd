@@ -40,9 +40,10 @@ for a given temperature.
 \lambda \times \delta'^{18}O_{c,VSMOW} }
 }
 \examples{
-d17O_c(10,-1) # Returns d18O_c = 32.44, d17O_c = 16.91, D17O = -0.084
-d17O_c(10,-1)[,3] # Returns D17O = -0.084
-prime(d17O_c(10,-1)[,2]) # Returns d'17O = 16.77
+d17O_c(10,-1) # Returns the data frame (length = 3)
+d17O_c(10,-1)[,1] # Returns the D18O value
+prime(d17O_c(10,-1)[,2]) # Returns the d'17O value
+d17O_c(10,-1)[,3] # Returns the D17O value
 
 }
 \references{

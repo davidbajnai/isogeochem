@@ -1,7 +1,7 @@
 # Functions in this file: a18_CO2acid_c(), a18_H2O_OH()
 
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### a18_CO2acid_c ####
 #' @title Acid fractionation factor: 18O/16O
 #'
@@ -33,25 +33,25 @@
 #' <https://doi.org/10.1016/j.gca.2015.02.011>
 #'
 #' @examples
-#' a18_CO2acid_c(90, "calcite") # Returns 1.008146
+#' a18_CO2acid_c(90, "calcite")
 #'
-#' @family alpha
+#' @family fractionation_factors
 #'
 #' @export
 
-a18_CO2acid_c = function(temp, min) {
-  TinK = temp + 273.15
+a18_CO2acid_c <- function(temp, min) {
+  TinK <- temp + 273.15
   if (min == "calcite") {
-  exp((3.48 * 1000 / TinK - 1.47) / 1000)
+    exp((3.48 * 1000 / TinK - 1.47) / 1000)
   } else if (min == "aragonite") {
-  exp((3.39 * 1000 / TinK - 0.83) / 1000)
+    exp((3.39 * 1000 / TinK - 0.83) / 1000)
   } else {
     stop("Invalid input for min")
   }
 }
 
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### a18_H2O_OH ####
 #' @title Calculate the 18O/16O fractionation factor between water and
 #'   hydroxide ion
@@ -74,22 +74,21 @@ a18_CO2acid_c = function(temp, min) {
 #' <https://doi.org/10.1016/j.gca.2020.08.025>
 #'
 #' @examples
-#' a18_H2O_OH(90, "Z21-X3LYP") # Returns 1.008146
+#' a18_H2O_OH(90, "Z21-X3LYP")
 #'
-#' @family alpha
+#' @family fractionation_factors
 #'
 #' @export
 
-a18_H2O_OH = function(temp, eq = "Z21-X3LYP") {
-  TinK = temp + 273.15
+a18_H2O_OH <- function(temp, eq) {
+  TinK <- temp + 273.15
   if (eq == "Z21-X3LYP") {
-  e18_H2O_OH = (-4.4573 + (10.3255 * 10^3) / TinK + (-0.5976 * 10^6) / TinK^2)
+    e18_H2O_OH <- (-4.4573 + (10.3255 * 10^3) / TinK + (-0.5976 * 10^6) / TinK^2)
   } else if (eq == "Z20-MP2") {
-  e18_H2O_OH = (-4.0771 + (9.8350 * 10^3) / TinK + (-0.8729 * 10^6) / TinK^2)
+    e18_H2O_OH <- (-4.0771 + (9.8350 * 10^3) / TinK + (-0.8729 * 10^6) / TinK^2)
   } else {
-    stop("Invalid input for min")
+    stop("Invalid input for eq")
   }
 
-  e18_H2O_OH/1000+1
-
+  e18_H2O_OH / 1000 + 1
 }

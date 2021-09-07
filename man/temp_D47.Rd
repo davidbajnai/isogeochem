@@ -27,9 +27,8 @@ and — if \code{D47_error} is specified — also the error.
 \code{temp_D47()} calculates carbonate growth temperature from D47 value.
 }
 \examples{
-temp_D47(D47_CDES90 = 0.580, eq = "Petersen19") # Returns 33.7
-temp_D47(D47_CDES90 = 0.580, D47_error = 0.004,
-  eq = "Petersen19") # Returns 33.7 and 1.5
+temp_D47(D47_CDES90 = 0.580, eq = "Petersen19")
+temp_D47(D47_CDES90 = 0.580, D47_error = 0.004, eq = "Petersen19")
 
 }
 \references{

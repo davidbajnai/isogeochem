@@ -32,9 +32,10 @@
 #' \lambda \times \delta'^{18}O_{c,VSMOW} }
 #'
 #' @examples
-#' d17O_c(10,-1) # Returns d18O_c = 32.44, d17O_c = 16.91, D17O = -0.084
-#' d17O_c(10,-1)[,3] # Returns D17O = -0.084
-#' prime(d17O_c(10,-1)[,2]) # Returns d'17O = 16.77
+#' d17O_c(10,-1) # Returns the data frame (length = 3)
+#' d17O_c(10,-1)[,1] # Returns the D18O value
+#' prime(d17O_c(10,-1)[,2]) # Returns the d'17O value
+#' d17O_c(10,-1)[,3] # Returns the D17O value
 #'
 #' @references
 #' Guo, W., & Zhou, C. (2019).
@@ -50,22 +51,21 @@
 d17O_c = function(temp, d18O_H2O_VSMOW, eq18 = "Daeron19", lambda = 0.528) {
 
   # Guo and Zhou (2019)
-  theta_c_H2O = 59.1047/(temp + 273.15)^2 + -1.4089/(temp + 273.15) + 0.5297
+  theta = 59.1047 / (temp + 273.15) ^ 2+-1.4089 / (temp + 273.15) + 0.5297
 
-  a18_c_H2O = isogeochem::a18_c_H2O(temp=temp, min="calcite", eq = eq18)
-  a17c_H2O  = a18_c_H2O ^ theta_c_H2O
+  a18_c_H2O = isogeochem::a18_c_H2O(temp = temp, min = "calcite", eq = eq18)
+  a17c_H2O  = a18_c_H2O ^ theta
 
-  d18O_c   = d18O_c(temp, d18O_H2O_VSMOW, min="calcite", eq18)
+  d18O_c   = d18O_c(temp, d18O_H2O_VSMOW, min = "calcite", eq18)
   d17Ow_p = 0.528 * prime(d18O_H2O_VSMOW)
 
   d17O_c = (unprime(d17Ow_p) + 1000) * a17c_H2O - 1000
   D17O_c  = prime(d17O_c) - lambda * prime(d18O_c)
 
   data.frame(d18O_c, d17O_c, D17O_c)
-
   }
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### mix_d17O ####
 #' @title Mixing curves in triple oxygen isotope space
 #'
@@ -87,9 +87,8 @@ d17O_c = function(temp, d18O_H2O_VSMOW, eq18 = "Daeron19", lambda = 0.528) {
 #'   from 100% A and 0% B to 0% A and 100% B.
 #'
 #' @examples
-#' # Mixing between a Mesozoic marine carbonate and a diagentic carbonate
-#' mix_d17O(d17O_c(10, -1)[1],d17O_c(10, -1)[2],
-#'   d17O_c(100,0)[1], d17O_c(100, 0)[2])
+#' mix_d17O(d18O_A = d17O_c(10, -1)[1], d17O_A = d17O_c(10, -1)[2],
+#'          d18O_B = d17O_c(100,0)[1], d17O_B = d17O_c(100, 0)[2])
 #'
 #' @seealso [d17O_c()] calculates equilibrium calcite d18O, d17O, and D17O
 #'   values for a given temperature.

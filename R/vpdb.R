@@ -1,11 +1,13 @@
 # Functions in this file: to_VSMOW(), to_VPDB()
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### to_VSMOW ####
-#' @title Converting between VPDB and VSMOW scales
+#' @title
+#' Converting between VPDB and VSMOW scales
 #'
-#' @description `to_VSMOW()` converts d18O values expressed
-#'   on the VPDB scale to the VSMOW scale.
+#' @description
+#' `to_VSMOW()` converts d18O values expressed on the VPDB scale
+#' to the VSMOW scale.
 #'
 #' @param d18O_VPDB d18O values expressed on the VPDB scale (‰).
 #' @param eq Equation used for the conversion.
@@ -36,8 +38,8 @@
 #' <https://doi.org/10.1016/j.gca.2015.02.011>
 #'
 #' @examples
-#' to_VSMOW(0) # Returns 30.92
-#' to_VSMOW(0, eq = "Coplen83") # Returns 30.91
+#' to_VSMOW(0)
+#' to_VSMOW(0, eq = "Coplen83")
 #'
 #' @details
 #' The IUPAC recommended equation to convert between the scales is:
@@ -49,7 +51,7 @@
 #'
 #' @export
 
-to_VSMOW = function(d18O_VPDB, eq = "IUPAC") {
+to_VSMOW <- function(d18O_VPDB, eq = "IUPAC") {
   if (eq == "IUPAC") {
     1.03092 * d18O_VPDB + 30.92
   } else if (eq == "Coplen83") {
@@ -59,9 +61,10 @@ to_VSMOW = function(d18O_VPDB, eq = "IUPAC") {
   }
 }
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### to_VPDB ####
-#' @title Converting between VSMOW and VPDB scales
+#' @title
+#' Converting between VSMOW and VPDB scales
 #'
 #' @description
 #' `to_VPDB()` converts d18O values expressed on the VSMOW scale
@@ -69,10 +72,10 @@ to_VSMOW = function(d18O_VPDB, eq = "IUPAC") {
 #'
 #' @param d18O_VSMOW d18O values expressed on the VSMOW scale (‰).
 #' @param eq Equation used for the conversion.
-#' * `"IUPAC"` (default): the IUPAC recommended equation
-#'   listed in Brand et al. (2014) and Kim et al. (2015).
-#' * `"Coplen83"`: the equation listed in Coplen et al. (1983)
-#'   and the Hoefs book.
+#'   * `"IUPAC"` (default): the IUPAC recommended equation
+#'     listed in Brand et al. (2014) and Kim et al. (2015).
+#'   * `"Coplen83"`: the equation listed in Coplen et al. (1983)
+#'     and the Hoefs book.
 #'
 #' @return
 #' Returns the d18O value expressed on the VPDB scale (‰).
@@ -81,8 +84,8 @@ to_VSMOW = function(d18O_VPDB, eq = "IUPAC") {
 #' References are listed at [to_VSMOW()].
 #'
 #' @examples
-#' to_VPDB(0) # Returns -29.99
-#' to_VPDB(0, eq = "Coplen83") # Returns -29.98
+#' to_VPDB(0)
+#' to_VPDB(0, eq = "Coplen83")
 #'
 #' @details
 #' The IUPAC recommended equation to convert between the scales is:
@@ -94,11 +97,11 @@ to_VSMOW = function(d18O_VPDB, eq = "IUPAC") {
 #'
 #' @export
 
-to_VPDB = function(d18O_VSMOW, eq = "IUPAC") {
+to_VPDB <- function(d18O_VSMOW, eq = "IUPAC") {
   if (eq == "IUPAC") {
-  0.97001 * d18O_VSMOW - 29.99
+    0.97001 * d18O_VSMOW - 29.99
   } else if (eq == "Coplen83") {
-  0.97002 * d18O_VSMOW - 29.98
+    0.97002 * d18O_VSMOW - 29.98
   } else {
     stop("Invalid input for eq")
   }

@@ -1,10 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# isogeochem: Tools for carbonate isotope geochemistry
+# isogeochem: <img src="tools/isogeochem-logo.png" align="right" /> <br> Tools for carbonate isotope geochemistry
 
 **Author:** [David Bajnai](https://www.davidbajnai.eu/)<br/>
-**License:** [GPL-3](https://opensource.org/licenses/GPL-3.0)
+**Contributors:** Julian Tödter <br/> **License:**
+[GPL-3](https://opensource.org/licenses/GPL-3.0)
 
 <!-- badges: start -->
 
@@ -14,6 +15,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![CRAN
 status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project.org/package=isogeochem)
 [![R-CMD-check](https://github.com/davidbajnai/isogeochem/workflows/R-CMD-check/badge.svg)](https://github.com/davidbajnai/isogeochem/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/davidbajnai/isogeochem/branch/main/graph/badge.svg)](https://codecov.io/gh/davidbajnai/isogeochem?branch=main)
 <!-- badges: end -->
 
 The aims of `isogeochem` are to make working with stable oxygen, carbon,

@@ -31,9 +31,8 @@ from 100\% A and 0\% B to 0\% A and 100\% B.
 triple oxygen isotope space (d18O vs. D17O).
 }
 \examples{
-# Mixing between a Mesozoic marine carbonate and a diagentic carbonate
-mix_d17O(d17O_c(10, -1)[1],d17O_c(10, -1)[2],
-  d17O_c(100,0)[1], d17O_c(100, 0)[2])
+mix_d17O(d18O_A = d17O_c(10, -1)[1], d17O_A = d17O_c(10, -1)[2],
+         d18O_B = d17O_c(100,0)[1], d17O_B = d17O_c(100, 0)[2])
 
 }
 \seealso{

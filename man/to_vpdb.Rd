@@ -30,8 +30,8 @@ The IUPAC recommended equation to convert between the scales is:
 \deqn{\delta^{18}O_{VPDB} = 0.97001 \times \delta^{18}O_{VSMOW} - 29.99}
 }
 \examples{
-to_VPDB(0) # Returns -29.99
-to_VPDB(0, eq = "Coplen83") # Returns -29.98
+to_VPDB(0)
+to_VPDB(0, eq = "Coplen83")
 
 }
 \references{
