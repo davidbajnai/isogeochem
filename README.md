@@ -4,7 +4,7 @@
 # isogeochem: <img src="tools/isogeochem-logo.png" align="right" /> <br> Tools for carbonate isotope geochemistry
 
 **Author:** [David Bajnai](https://www.davidbajnai.eu/)<br/>
-**Contributors:** Julian Tödter<br/> **License:**
+**Contributors:** Julian Tödter <br/> **License:**
 [GPL-3](https://opensource.org/licenses/GPL-3.0)
 
 <!-- badges: start -->
