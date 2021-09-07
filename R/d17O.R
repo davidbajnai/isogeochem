@@ -50,22 +50,21 @@
 d17O_c = function(temp, d18O_H2O_VSMOW, eq18 = "Daeron19", lambda = 0.528) {
 
   # Guo and Zhou (2019)
-  theta_c_H2O = 59.1047/(temp + 273.15)^2 + -1.4089/(temp + 273.15) + 0.5297
+  theta = 59.1047 / (temp + 273.15) ^ 2+-1.4089 / (temp + 273.15) + 0.5297
 
-  a18_c_H2O = isogeochem::a18_c_H2O(temp=temp, min="calcite", eq = eq18)
-  a17c_H2O  = a18_c_H2O ^ theta_c_H2O
+  a18_c_H2O = isogeochem::a18_c_H2O(temp = temp, min = "calcite", eq = eq18)
+  a17c_H2O  = a18_c_H2O ^ theta
 
-  d18O_c   = d18O_c(temp, d18O_H2O_VSMOW, min="calcite", eq18)
+  d18O_c   = d18O_c(temp, d18O_H2O_VSMOW, min = "calcite", eq18)
   d17Ow_p = 0.528 * prime(d18O_H2O_VSMOW)
 
   d17O_c = (unprime(d17Ow_p) + 1000) * a17c_H2O - 1000
   D17O_c  = prime(d17O_c) - lambda * prime(d18O_c)
 
   data.frame(d18O_c, d17O_c, D17O_c)
-
   }
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### mix_d17O ####
 #' @title Mixing curves in triple oxygen isotope space
 #'

@@ -4,7 +4,7 @@
 \alias{d18O_H2O}
 \title{Calculate water d18O value}
 \usage{
-d18O_H2O(temp, d18O_c_VSMOW, min = "calcite", eq)
+d18O_H2O(temp, d18O_c_VSMOW, min, eq)
 }
 \arguments{
 \item{temp}{Crystallization temperature (°C).}
@@ -30,9 +30,9 @@ Use \code{\link[=to_VSMOW]{to_VSMOW()}} and \code{\link[=to_VPDB]{to_VPDB()}} to
 the VSMOW and VPDB scales.
 }
 \examples{
-d18O_H2O(33.7, 14.58, "calcite", "Coplen07") # Returns -13.54
-d18O_H2O(25, to_VSMOW(-7.47), "aragonite", "Dettman99") # Returns -6.53
-d18O_H2O(25, 20.43, "dolomite", "Vasconcelos05") # Returns -10.69
+d18O_H2O(33.7, 14.58, "calcite", "Coplen07")
+d18O_H2O(25, to_VSMOW(-7.47), "aragonite", "Dettman99")
+d18O_H2O(25, 20.43, "dolomite", "Vasconcelos05")
 
 }
 \references{

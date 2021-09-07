@@ -19,7 +19,7 @@ Returns the 18O/16O oxygen isotope fractionation factor "alpha".
 fractionation factor between CO2 from acid digestion and carbonate.
 }
 \examples{
-a18_CO2acid_c(90, "calcite") # Returns 1.008146
+a18_CO2acid_c(90, "calcite")
 
 }
 \references{
@@ -41,8 +41,9 @@ Geochimica et Cosmochimica Acta, 158, 276-289.
 \url{https://doi.org/10.1016/j.gca.2015.02.011}
 }
 \seealso{
-Other alpha: 
+Other fractionation_factors: 
 \code{\link{a18_H2O_OH}()},
-\code{\link{a18_c_H2O}()}
+\code{\link{a18_c_H2O}()},
+\code{\link{a_A_B}()}
 }
-\concept{alpha}
+\concept{fractionation_factors}

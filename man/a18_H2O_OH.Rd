@@ -5,7 +5,7 @@
 \title{Calculate the 18O/16O fractionation factor between water and
 hydroxide ion}
 \usage{
-a18_H2O_OH(temp, eq = "Z21-X3LYP")
+a18_H2O_OH(temp, eq)
 }
 \arguments{
 \item{temp}{Temperature (°C).}
@@ -24,7 +24,7 @@ Returns the 18O/16O oxygen isotope fractionation factor "alpha".
 fractionation factor between H2O and aqueous hydroxide ion.
 }
 \examples{
-a18_H2O_OH(90, "Z21-X3LYP") # Returns 1.008146
+a18_H2O_OH(90, "Z21-X3LYP")
 
 }
 \references{
@@ -34,8 +34,9 @@ Geochimica et Cosmochimica Acta, 289, 182-195.
 \url{https://doi.org/10.1016/j.gca.2020.08.025}
 }
 \seealso{
-Other alpha: 
+Other fractionation_factors: 
 \code{\link{a18_CO2acid_c}()},
-\code{\link{a18_c_H2O}()}
+\code{\link{a18_c_H2O}()},
+\code{\link{a_A_B}()}
 }
-\concept{alpha}
+\concept{fractionation_factors}

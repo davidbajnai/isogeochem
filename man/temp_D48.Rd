@@ -26,7 +26,7 @@ temp_D48(
 
 \item{ks}{Kinetic slope. Has to be negative!}
 
-\item{add}{Add graphics to an already existing plot? Default \code{FALSE}.}
+\item{add}{Add graphics to an already existing plot? Default: \code{FALSE}.}
 
 \item{col}{Graphical parameter. Optional.}
 
@@ -49,8 +49,8 @@ in a later patch. In any case, the resulting discrepancy is smaller
 than the temperature error.
 }
 \examples{
-temp_D48(0.617, 0.139, ks = -0.6) # Returns 44
-temp_D48(0.546, 0.277, ks = -1)   # Returns 33
+temp_D48(0.617, 0.139, ks = -0.6)
+temp_D48(0.546, 0.277, ks = -1)
 
 }
 \references{

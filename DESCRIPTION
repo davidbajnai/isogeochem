@@ -1,13 +1,16 @@
 Package: isogeochem
 Type: Package
 Title: Tools For Carbonate Isotope Geochemistry
-Version: 0.0.0.9400
-Date: 2021-09-06
+Version: 0.0.0.9500
+Date: 2021-09-07
 Authors@R:
-    person(given = "David", family = "Bajnai",
+    c(person(given = "David", family = "Bajnai",
     email = "david.bajnai@uni-goettingen.de",
     comment = c(ORCID = "0000-0002-4053-5056"),
-    role = c("aut", "cre"))
+    role = c("aut", "cre")),
+    person(given = "Julian", family = "Tödter",
+    role = "ctb")
+    )
 Description: This toolbox makes working with stable oxygen, carbon, and clumped isotope data reproducible and straightforward.
 License: GPL (>= 3)
 URL: https://github.com/davidbajnai/isogeochem
@@ -20,7 +23,9 @@ Suggests:
     knitr,
     rmarkdown,
     devtools,
-    spelling
+    spelling,
+    testthat (>= 3.0.0),
+    covr
 VignetteBuilder: knitr
 Imports: 
     stats,
@@ -30,3 +35,4 @@ Depends:
     R (>= 2.10)
 BugReports: https://github.com/davidbajnai/isogeochem/issues
 Language: en-US
+Config/testthat/edition: 3

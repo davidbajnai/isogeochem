@@ -4,10 +4,10 @@
 \alias{D48}
 \title{Carbonate D48 for a given temperature}
 \usage{
-D48(temperature, eq = "Fiebig21")
+D48(temp, eq)
 }
 \arguments{
-\item{temperature}{Carbonate growth temperature (°C).}
+\item{temp}{Carbonate growth temperature (°C).}
 
 \item{eq}{Equation used for the calculation.
 \itemize{

@@ -43,9 +43,9 @@ Returns the equilibrium 18O/16O fractionation factor "alpha".
 between carbonate and water for a given temperature.
 }
 \examples{
-a18_c_H2O(25, "calcite", "Coplen07")   # Returns 1.030207
-a18_c_H2O(25, "aragonite", "Dettman99") # Returns 1.029942
-a18_c_H2O(25, "dolomite", "Vasconcelos05")  # Returns 1.031456
+a18_c_H2O(25, "calcite", "Coplen07")
+a18_c_H2O(25, "aragonite", "Dettman99")
+a18_c_H2O(25, "dolomite", "Vasconcelos05")
 
 }
 \references{
@@ -98,8 +98,9 @@ Geology, 33(4), 317-320.
 \url{https://doi.org/10.1130/g20992.1}
 }
 \seealso{
-Other alpha: 
+Other fractionation_factors: 
 \code{\link{a18_CO2acid_c}()},
-\code{\link{a18_H2O_OH}()}
+\code{\link{a18_H2O_OH}()},
+\code{\link{a_A_B}()}
 }
-\concept{alpha}
+\concept{fractionation_factors}

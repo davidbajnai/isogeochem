@@ -1,8 +1,9 @@
 # Functions in this file: a18_c_H2O(), d18O_c(), d18O_H2O(), temp_d18O()
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### a18_c_H2O ####
-#' @title Calculate the 18O/16O fractionation factor between carbonate and water
+#' @title
+#' Calculate the 18O/16O fractionation factor between carbonate and water
 #'
 #' @description
 #' `a18_c_H2O()` calculates the equilibrium 18O/16O fractionation factor
@@ -28,14 +29,15 @@
 #'  Options for **dolomite**:
 #'  * `"Vasconcelos05"`: the equation of Vasconcelos et al. (2005)
 #'
-#' @return Returns the equilibrium 18O/16O fractionation factor "alpha".
+#' @return
+#' Returns the equilibrium 18O/16O fractionation factor "alpha".
 #'
 #' @examples
-#' a18_c_H2O(25, "calcite", "Coplen07")   # Returns 1.030207
-#' a18_c_H2O(25, "aragonite", "Dettman99") # Returns 1.029942
-#' a18_c_H2O(25, "dolomite", "Vasconcelos05")  # Returns 1.031456
+#' a18_c_H2O(25, "calcite", "Coplen07")
+#' a18_c_H2O(25, "aragonite", "Dettman99")
+#' a18_c_H2O(25, "dolomite", "Vasconcelos05")
 #'
-#' @family alpha
+#' @family fractionation_factors
 #'
 #' @references
 #' **Calcite:**
@@ -122,9 +124,10 @@ a18_c_H2O = function(temp, min, eq) {
 }
 
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### d18O_c ####
-#' @title Equilibrium carbonate d18O value
+#' @title
+#' Equilibrium carbonate d18O value
 #'
 #' @description
 #' `d18O_c()` calculates the equilibrium d18O value of a carbonate grown
@@ -132,8 +135,8 @@ a18_c_H2O = function(temp, min, eq) {
 #'
 #' @param temp Crystallization temperature (°C).
 #' @param d18O_H2O_VSMOW Water d18O value expressed on the VSMOW scale (‰).
-#' @param min Mineralogy. Options are `"calcite"` (default),
-#'   `"aragonite"`, and `"dolomite"`.
+#' @param min Mineralogy. Options are `"calcite"`, `"aragonite"`,
+#'   and `"dolomite"`.
 #' @param eq Equation used to calculate the equilibrium 18O/16O oxygen isotope
 #'   fractionation factor between carbonate and water.
 #'   Options depend on mineralogy and listed in [a18_c_H2O()].
@@ -147,11 +150,9 @@ a18_c_H2O = function(temp, min, eq) {
 #' between the VSMOW and VPDB scales.
 #'
 #' @examples
-#' d18O_c(33.7, -13.54, min = "calcite", eq = "Coplen07") # Returns 14.58
+#' d18O_c(33.7, -13.54, min = "calcite", eq = "Coplen07")
 #' to_VPDB(d18O_c(12, -6.94, min = "aragonite", eq = "Dettman99"))
-#' # Returns -5.21
 #' d18O_c(25, -10.96, min = "dolomite", eq = "Vasconcelos05")
-#' # Returns 20.15
 #'
 #' @references
 #' References are listed in the description of [a18_c_H2O()].
@@ -164,16 +165,16 @@ a18_c_H2O = function(temp, min, eq) {
 #' @export
 
 d18O_c = function(temp, d18O_H2O_VSMOW, min, eq) {
-  a18_c_H2O = a18_c_H2O(temp=temp, min=min, eq=eq)
+  a18_c_H2O = a18_c_H2O(temp = temp, min = min, eq = eq)
 
-  a18_c_H2O*(d18O_H2O_VSMOW+1000)-1000
-
+  a18_c_H2O * (d18O_H2O_VSMOW + 1000) - 1000
 }
 
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### d18O_H2O ####
-#' @title Calculate water d18O value
+#' @title
+#' Calculate water d18O value
 #'
 #' @description
 #' `d18O_H2O()` calculates the d18O value of the ambient water.
@@ -187,16 +188,17 @@ d18O_c = function(temp, d18O_H2O_VSMOW, min, eq) {
 #'   fractionation factor between carbonate and water.
 #'   Options depend on mineralogy and listed in [a18_c_H2O()].
 #'
-#' @return Returns the water d18O value expressed on the VSMOW scale (‰).
+#' @return
+#' Returns the water d18O value expressed on the VSMOW scale (‰).
 #'
 #' @note
 #' Use [to_VSMOW()] and [to_VPDB()] to convert between
 #' the VSMOW and VPDB scales.
 #'
 #' @examples
-#' d18O_H2O(33.7, 14.58, "calcite", "Coplen07") # Returns -13.54
-#' d18O_H2O(25, to_VSMOW(-7.47), "aragonite", "Dettman99") # Returns -6.53
-#' d18O_H2O(25, 20.43, "dolomite", "Vasconcelos05") # Returns -10.69
+#' d18O_H2O(33.7, 14.58, "calcite", "Coplen07")
+#' d18O_H2O(25, to_VSMOW(-7.47), "aragonite", "Dettman99")
+#' d18O_H2O(25, 20.43, "dolomite", "Vasconcelos05")
 #'
 #' @references
 #' References are listed in the description of [a18_c_H2O()].
@@ -210,17 +212,17 @@ d18O_c = function(temp, d18O_H2O_VSMOW, min, eq) {
 #'
 #' @export
 
-d18O_H2O = function(temp, d18O_c_VSMOW, min = "calcite", eq) {
+d18O_H2O = function(temp, d18O_c_VSMOW, min, eq) {
   TinK = temp + 273.15
-  a18_c_H2O = a18_c_H2O(temp=temp, min=min, eq=eq)
+  a18_c_H2O = a18_c_H2O(temp = temp, min = min, eq = eq)
 
-  (d18O_c_VSMOW+1000)/a18_c_H2O - 1000
-
+  (d18O_c_VSMOW + 1000) / a18_c_H2O - 1000
 }
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### temp_d18O ####
-#' @title Oxygen isotope thermometry
+#' @title
+#' Oxygen isotope thermometry
 #'
 #' @description
 #' `temp_d18O()` calculates carbonate growth temperature
@@ -240,7 +242,7 @@ d18O_H2O = function(temp, d18O_c_VSMOW, min = "calcite", eq) {
 #' VSMOW and VPDB scales.
 #'
 #' @examples
-#' temp_d18O(14.58, -13.54, "Coplen07") # Returns 33.7
+#' temp_d18O(14.58, -13.54, "Coplen07")
 #'
 #' @references
 #' References are listed in the description of [a18_c_H2O()].
@@ -254,28 +256,27 @@ d18O_H2O = function(temp, d18O_c_VSMOW, min = "calcite", eq) {
 #'
 #' @export
 
-temp_d18O = function(d18O_c_VSMOW, d18O_H2O_VSMOW, eq ="Daeron19") {
+temp_d18O = function(d18O_c_VSMOW, d18O_H2O_VSMOW, eq = "Daeron19") {
   a18_c_H2O = (d18O_c_VSMOW + 1000) / (d18O_H2O_VSMOW + 1000)
 
-  if(eq == "Daeron19") {
+  if (eq == "Daeron19") {
     # Daeron et al. (2019)
-    TinK = (17.57*1000)/(log(a18_c_H2O)*1000 + 29.13)
+    TinK = (17.57 * 1000) / (log(a18_c_H2O) * 1000 + 29.13)
   } else if (eq == "Coplen07") {
     # Coplen (2007)
-    TinK = (17.4*1000)/(log(a18_c_H2O)*1000 + 28.6)
+    TinK = (17.4 * 1000) / (log(a18_c_H2O) * 1000 + 28.6)
   } else if (eq == "KO97") {
     # Kim and O'Neil (1997)
-    TinK = (18.03*1000)/(log(a18_c_H2O)*1000 + 32.42)
+    TinK = (18.03 * 1000) / (log(a18_c_H2O) * 1000 + 32.42)
   } else if (eq == "Watkins13") {
     # Watkins et al. (2013)
-    TinK = (17.747*1000)/(log(a18_c_H2O)*1000 + 29.777)
+    TinK = (17.747 * 1000) / (log(a18_c_H2O) * 1000 + 29.777)
   } else if (eq == "FO77") {
     # O'Neil et al. (1969) reprocessed by Friedman and O'Neil (1977)
-    TinK = sqrt((2.78*10^6)/(log(a18_c_H2O)*1000 + 2.89))
+    TinK = sqrt((2.78 * 10 ^ 6) / (log(a18_c_H2O) * 1000 + 2.89))
   } else {
     stop("Invalid input for eq")
   }
 
   TinK - 273.15
-
 }
