@@ -16,6 +16,7 @@ test_that("york_fit returns a list of 8", {
   expect_length(york_fit(x = N3, y = N3, x_err = N3, y_err = N3, r = c(0.1,0.3,0.3)), 8)
 })
 
+
 test_that("york_plot returns a data.frame", {
   expect_s3_class(york_plot(x = N3, slope = 1, slope_se = 0.1,
                             intercept = 0, intercept_se = 0.1, cl = 0.95), "data.frame")

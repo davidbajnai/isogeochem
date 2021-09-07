@@ -25,7 +25,6 @@ test_that("temp_D47 and temp_D48 error if clumped error and eq is not or wrongly
   expect_error(temp_D48(10))
 })
 
-
 test_that("temp_D48 returns a single value if error IS NOT specified", {
   expect_length(temp_D48(0.617, 0.139, ks = -0.6),1)
 })
