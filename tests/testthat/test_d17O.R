@@ -1,3 +1,4 @@
+# tests of the d17O functions #
 
 test_that("d17O_c returns a data.frame", {
   expect_s3_class(d17O_c(temp = 10, 0, eq18 = "Daeron19"), "data.frame")

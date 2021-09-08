@@ -1,5 +1,4 @@
-
-#### a18 ####
+#### tests of the a18 functions ####
 
 test_that("a18_c_H2O errors if eq is not or wrongly specified", {
   expect_error(a18_c_H2O(10, "calcite"))

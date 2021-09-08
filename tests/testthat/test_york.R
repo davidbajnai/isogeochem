@@ -1,3 +1,5 @@
+# tests of the regression fitting and plotting functions #
+
 
 N3 = c(1,2,3)
 N2 = c(1,2)

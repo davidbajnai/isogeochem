@@ -1,4 +1,4 @@
-# utils
+# tests of the utils #
 
 
 test_that("utility functions return a number", {
