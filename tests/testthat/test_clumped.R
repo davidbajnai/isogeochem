@@ -19,10 +19,11 @@ test_that("D47 and D48 return values", {
 
 
 test_that("temp_D47 and temp_D48 error if clumped error and eq is not or wrongly specified", {
-  expect_error(temp_D47(10))
-  expect_error(temp_D47(10, "cheese"))
-  expect_error(temp_D47(10, eq = "cheese"), "Invalid input for eq")
-  expect_error(temp_D48(10))
+  expect_error(temp_D47(0.600))
+  expect_error(temp_D47("grated", "cheese"))
+  expect_error(temp_D47(0.600, eq = "cheese"), "Invalid input for eq")
+  expect_error(temp_D48("cheese", 0.139, 0.002, 0.010, ks = -0.6))
+  expect_error(temp_D48(0.600))
 })
 
 test_that("temp_D48 returns a single value if error IS NOT specified", {
@@ -40,4 +41,7 @@ test_that("temp_D47 returns a single value if error IS NOT specified", {
 test_that("temp_D48 returns three values as data frame if error IS specified", {
   expect_length(temp_D47(0.617, 0.005, eq = "Petersen19"), 2)
   expect_type(temp_D47(0.617, 0.005, eq = "Petersen19"), "double")
+})
+test_that("temp_D48 error if values are wrongly specified", {
+  expect_error(temp_D48(temp_D48("cheese", 0.139, 0.002, 0.010, ks = -0.6)))
 })

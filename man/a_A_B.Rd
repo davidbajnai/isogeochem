@@ -7,12 +7,12 @@
 a_A_B(A, B)
 }
 \arguments{
-\item{A}{Delta value of A (‰).}
+\item{A}{Isotope delta value of A (‰).}
 
-\item{B}{Delta value of B (‰).}
+\item{B}{Isotope delta value of B (‰).}
 }
 \value{
-Returns the isotope fractionation factor "alpha".
+Returns the isotope fractionation factor.
 }
 \description{
 \code{a_A_B()} calculates the isotope fractionation factor.
@@ -22,11 +22,12 @@ Returns the isotope fractionation factor "alpha".
 \frac{\delta^{i}E_{A} + 1000}{\delta^{i}E_{B} + 1000}}
 }
 \examples{
-a_A_B(10, 12)
+a_A_B(A = 10, B = 12)
 
 }
 \seealso{
-\code{\link[=B_from_a]{B_from_a()}} calculates the delta value of B.
+\code{\link[=A_from_a]{A_from_a()}} calculates the isotope delta value of A.
+\code{\link[=B_from_a]{B_from_a()}} calculates the isotope delta value of B.
 
 Other fractionation_factors: 
 \code{\link{a18_CO2acid_c}()},

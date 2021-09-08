@@ -2,29 +2,28 @@
 % Please edit documentation in R/alpha.R
 \name{a18_H2O_OH}
 \alias{a18_H2O_OH}
-\title{Calculate the 18O/16O fractionation factor between water and
-hydroxide ion}
+\title{18O/16O fractionation factor between water and hydroxide ion}
 \usage{
 a18_H2O_OH(temp, eq)
 }
 \arguments{
 \item{temp}{Temperature (°C).}
 
-\item{eq}{Equation used to calculate the fractionation factor.
+\item{eq}{Equation used for the calculations.
 \itemize{
-\item \code{Z20-X3LYP}: the X3LYP/6-311+G(d,p) theoretical equation of Zeebe (2020).
-\item \code{Z20-MP2}: the MP2/aug-cc-pVDZ theoretical equation of Zeebe (2020).
+\item \code{Z20-X3LYP}: the theoretical X3LYP/6-311+G(d,p) equation of Zeebe (2020).
+\item \code{Z20-MP2}: the theoretical MP2/aug-cc-pVDZ equation of Zeebe (2020).
 }}
 }
 \value{
-Returns the 18O/16O oxygen isotope fractionation factor "alpha".
+Returns the 18O/16O fractionation factor.
 }
 \description{
-\code{a18_H2O_OH()} calculates the 18O/16O oxygen isotope
-fractionation factor between H2O and aqueous hydroxide ion.
+\code{a18_H2O_OH()} calculates the 18O/16O fractionation factor between
+water and aqueous hydroxide ion.
 }
 \examples{
-a18_H2O_OH(90, "Z21-X3LYP")
+a18_H2O_OH(temp = 90, eq = "Z21-X3LYP")
 
 }
 \references{

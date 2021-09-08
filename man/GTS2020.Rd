@@ -9,11 +9,12 @@ A data frame with 9676 rows and 8 variables:
 \describe{
 \item{age}{Age of the sample expressed as
 millions of years before present (Ma).}
-\item{d18O_VPDB}{Carbonate d18O value relative to VPDB (per mille).}
-\item{d13C_VPDB}{Carbonate d13C value relative to VPDB (per mille).}
+\item{d18O_VPDB}{Carbonate d18O value expressed on the VPDB scale (‰).}
+\item{d13C_VPDB}{Carbonate d13C value expressed on the VPDB scale (‰).}
 \item{mineralogy}{The mineralogy of the carbonate hard part.}
-\item{group}{The fossil group (bivalve, gastropod, belemnite, ammonite).}
-\item{clim_zone}{The climate zone the fossil represents.}
+\item{group}{Taxonomic group of the sample
+(bivalve, gastropod, belemnite, ammonite).}
+\item{clim_zone}{The climate zone the sample represents.}
 }
 }
 \source{

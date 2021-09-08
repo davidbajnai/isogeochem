@@ -13,7 +13,7 @@ temp_D47(D47_CDES90, D47_error, eq)
 
 \item{eq}{Equation used for the calculation.
 \itemize{
-\item \code{"Petersen19"}: the synthetic-only IUPAC parameter "UNICAL" calibration
+\item \code{"Petersen19"}: the synthetic-only IUPAC-parameter "UNICAL" calibration
 of Petersen et al. (2019).
 \item \code{"Kele14"}: the Kele et al. (2015) calibration
 reprocessed by Bernasconi et al. (2020) using the IUPAC parameters.
@@ -35,8 +35,7 @@ temp_D47(D47_CDES90 = 0.580, D47_error = 0.004, eq = "Petersen19")
 References are listed at \code{\link[=D47]{D47()}}.
 }
 \seealso{
-\code{\link[=D47]{D47()}} calculates the equilibrium carbonate D47 value
-for a given temperature.
+\code{\link[=D47]{D47()}} calculates the equilibrium carbonate D47 value.
 
 Other thermometry: 
 \code{\link{temp_D48}()},

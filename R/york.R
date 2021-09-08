@@ -1,19 +1,20 @@
 # Functions in this file: york_fit(), york_plot()
 
-## ———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### york_fit ####
 #' @title
 #' Error-considering linear regression
 #'
-#' @description `york_fit()` calculates the regression parameters of an
-#'   error-considering linear regression.
+#' @description
+#' `york_fit()` calculates the regression parameters of
+#' an error-considering linear regression.
 #'
 #' @param x vector of x values.
 #' @param y vector of y values. Has to be same the length as x.
 #' @param x_err Error on the x values. Has to be same the length as x.
 #' @param y_err Error on the y values. Has to be same the length as x.
 #' @param r Correlation coefficient of x_err and y_err at each data point.
-#'   Default is `0`: independent errors.
+#'   Default: `0` (independent errors).
 #'   Has to be same the length as x. Optional.
 #'
 #' @return A list with regression parameters:
@@ -25,22 +26,24 @@
 #'   * p-value (two-tailed t-test).
 #'
 #' @details
-#' The regression fitting method is according to York (2004).
+#' Regression fitting method according to York et al. (2004).
 #' The algorithm is described in the appendix of Wacker et al. (2014).
 #'
-#' @author
-#' Julian Tödter
-#'
 #' @references
-#' York, D., Evensen, N. M., López Martínez, M., and De Basabe Delgado, J.
-#' (2004). Unified equations for the slope, intercept,
-#' and standard errors of the best straight line. Am. J. Phys., 72(3), 367-375.
+#' York, D., Evensen, N. M., López Martínez, M., & De Basabe Delgado, J. (2004).
+#' Unified equations for the slope, intercept, and
+#' standard errors of the best straight line.
+#' American Journal of Physics, 72(3), 367-375.
 #' <https://doi.org/10.1119/1.1632486>
 #'
-#' Wacker, U., Fiebig, J., Tödter, J., et al. (2014).
-#' Empirical calibration of the clumped isotope paleothermometer
-#' using calcites of various origins. Geochim. Cosmochim. Acta, 141, 127-144.
+#' Wacker, U., Fiebig, J., Tödter, J., Schöne, B. R.,
+#' Bahr, A., Friedrich, O., et al. (2014).
+#' Empirical calibration of the clumped isotope paleothermometer using calcites
+#' of various origins. Geochimica et Cosmochimica Acta, 141, 127-144.
 #' <https://doi.org/10.1016/j.gca.2014.06.004>
+#'
+#' @section Contributors:
+#' Julian Tödter
 #'
 #' @examples
 #' york_fit(
@@ -52,7 +55,7 @@
 #' @export
 
 york_fit = function(y, x, x_err, y_err, r = 0) {
-  # Get number of data points and perform some quality checks
+  # Get number of data points and perform quality checks
   n = length(x)
   if (length(y) != n |
       length(x_err) != n |
@@ -62,68 +65,62 @@ york_fit = function(y, x, x_err, y_err, r = 0) {
     stop("Input parameters have different lengths")
   }
 
-  # Correlation input: If nothing is specified (r=0), assume no correlation of errors between the data points
+  # If r = 0, assume no correlation of errors
   if (length(r) == 1) {
     r = rep(0, n)
   }
 
-  # (1) choose initial value of b using simple regression
+  # Choose initial value of b using simple regression
   b_init = stats::lm(y ~ x)$coefficients[2]
-  # (2) Determine weights for each point as inverse of the error variances
+
+  # Determine weights for each point as inverse of the error variances
   w_x = 1 / (x_err)^2
   w_y = 1 / (y_err)^2
   alpha = sqrt(w_x * w_y)
 
-  # Iteration
-
-  # (3,4,5,6) ITERATION to get b
-  # Initialize iteration
+  # Iteration to get b
   k = 1
   go = TRUE
   b = numeric()
   b[1] = b_init
-  # message("Start iteration to estimate slope b.")
 
   while (go) {
-    # (3) Use weights and b and correlation r to obtain total weight
-    W = w_x * w_y / (w_x + (b[k])^2 * w_y - 2 * b[k] * r * alpha)
+    # Use weigts and b and correlation r to obtain total weight
+    W = w_x * w_y / (w_x + (b[k]) ^ 2 * w_y - 2 * b[k] * r * alpha)
 
-    # (4) Use observed points and weights W to get mean_x, mean_y and U, V, beta of each points
+    # Use observed points and weights to get
+    # mean_x, mean_y, and U, V, beta of each points
     mean_x = sum(W * x) / sum(W)
     mean_y = sum(W * y) / sum(W)
     U = x - mean_x
     V = y - mean_y
     beta = W * (U / w_y + b[k] * V / w_x - (b[k] * U + V) * r / alpha)
 
-    # (5) Use this to compute and improved estimate of b
+    # Use this to compute and improved estimate of b
     b[k + 1] = sum(W * beta * V) / sum(W * beta * U)
-    # message(paste("Iteration, step ", k, ", estimate b = ", b[k + 1], sep =""))
 
     # Check iteration tolerance by computing difference between b values
     dif = abs(b[k + 1] - b[k])
-    # either stop or go further
     if (dif < 1e-15) {
       go = FALSE
-      # message("Tolerance reached - iteration is stopped.")
     } else {
       k = k + 1
     }
   }
-  # extract converged b value:
   b_final = b[k + 1]
 
-  # Results
-  # (7) Use final b and final mean_x,mean_y to get a
+  # Use final b and final mean_x,mean_y to get a
   a_final = mean_y - b_final * mean_x
 
-  # (8) for each point, calculate adjusted values
+  # For each point, calculate adjusted values
   x_adj = mean_x + beta
   y_adj = mean_y + b_final * beta
 
-  # (9) use adjusted x and W to get mean_x,mean_y and u,v
+  # Use adjusted x and W to get mean_x,mean_y and u,v
   mean_x = sum(W * x_adj) / sum(W)
   mean_y = sum(W * y_adj) / sum(W)
-  # the adjusted values will be quite similar to x and y
+
+  # The adjusted values will be quite similar to x and y
   u = x_adj - mean_x
   v = y_adj - mean_y
 
@@ -133,19 +130,11 @@ york_fit = function(y, x, x_err, y_err, r = 0) {
 
   # Coefficient of Determination
   # compute with traditional equations
-  yhat = a_final + b_final * x # predicted values by regression line
-
-  R2_simple = sum((yhat - mean(y))^2) / sum((y - mean(y))^2)
+  yhat = a_final + b_final * x
 
   # compute with consideration of weights
-  # R2_new = sum( W * (yhat-mean_y)^2 ) / sum(  W * (y-mean_y)^2 )
-
-  # other formula
+  # R2new = sum( W * (yhat-mean_y)^2 ) / sum(  W * (y-mean_y)^2 )
   R2new = 1 - sum(W * (yhat - y)^2) / sum(W * (y - mean_y)^2)
-
-  # Compute a p-value for R2 via an F-test
-  f = R2new * (n - 2) / (1 - R2new) # this statistic is distributed acc to F(1,n-2)
-  pval_f = 1 - stats::pf(f, 1, n - 2)
 
   # Compute a p-value for R2 via an t-test (h0=reg. coeff is zero)
   t = b_final / sqrt(sd_b2) # This is for H0: b1=0
@@ -164,21 +153,20 @@ york_fit = function(y, x, x_err, y_err, r = 0) {
       w = W / sum(W),
       sigma = sigma,
       R2 = R2new,
-      # pval_t = pval_t,
-      pval = pval_f
+      pval = pval_t
     )
   )
 }
 
 
-
-## ———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### york_plot ####
 #' @title
 #' Regression confidence intervals
 #'
-#' @description `york_plot()` calculates and optionally plot the confidence
-#'  intervals of an error-considering linear regression.
+#' @description
+#' `york_plot()` calculates and optionally plots the confidence intervals of
+#' an (error-considering) linear regression.
 #'
 #' @param x x values of the data points.
 #' @param slope regression slope.
@@ -201,16 +189,16 @@ york_fit = function(y, x, x_err, y_err, r = 0) {
 #'   * p-value (two-tailed t-test).
 #'
 #' @details
-#' The regression fitting method is according to York et al. (2004).
 #' The algorithm is described in the appendix of Wacker et al. (2014).
 #'
 #' @references
-#' Wacker, U., Fiebig, J., Tödter, J., et al. (2014).
-#' Empirical calibration of the clumped isotope paleothermometer
-#' using calcites of various origins. Geochim. Cosmochim. Acta, 141, 127-144.
+#' Wacker, U., Fiebig, J., Tödter, J., Schöne, B. R.,
+#' Bahr, A., Friedrich, O., et al. (2014).
+#' Empirical calibration of the clumped isotope paleothermometer using calcites
+#' of various origins. Geochimica et Cosmochimica Acta, 141, 127-144.
 #' <https://doi.org/10.1016/j.gca.2014.06.004>
 #'
-#' @author
+#' @section Contributors:
 #' Julian Tödter
 #'
 #' @examples
@@ -284,6 +272,6 @@ york_plot = function(x,
   }
 
   res = data.frame(x, ylow, yup)
-  colnames(res) = c("x","y_low","y_up")
+  colnames(res) = c("x", "y_low", "y_up")
   return(res)
 }

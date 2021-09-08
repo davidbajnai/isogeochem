@@ -2,7 +2,7 @@
 
 # ——————————————————————————————————————————————————————————————————————————— #
 #### D47 ####
-#' @title Carbonate D47 for a given temperature
+#' @title Equilibrium carbonate D47 value
 #'
 #' @description
 #' `D47()` calculates the equilibrium carbonate D47 value
@@ -11,14 +11,11 @@
 #' @param temp Carbonate growth temperature (°C).
 #' @param eq Equation used for the calculation.
 #' * `"Fiebig21"`: the CDES90 calibration of Fiebig et al. (2021).
-#' * `"Petersen19"`: the synthetic-only IUPAC parameter "UNICAL" calibration
+#' * `"Petersen19"`: the synthetic-only IUPAC-parameter "UNICAL" calibration
 #'   of Petersen et al. (2019).
 #'
 #' @return
 #' Returns the carbonate D47 value expressed on the CDES90 scale (‰).
-#'
-#' @examples
-#' D47(33.7, "Petersen19")
 #'
 #' @references
 #' Petersen, S. V., Defliese, W. F., Saenger, C., Daëron, M., Huntington,
@@ -36,7 +33,12 @@
 #' <https://www.doi.org/10.1016/j.gca.2021.07.012>
 #'
 #' @seealso [temp_D47()] calculates growth temperature from a D47 value.
+#'
 #' @family equilibrium_carbonate
+#'
+#' @examples
+#' D47(temp = 33.7, eq = "Petersen19")
+#'
 #' @export
 
 D47 = function(temp, eq) {
@@ -70,7 +72,7 @@ D47 = function(temp, eq) {
 #' @param D47_CDES90 Carbonate D47 values expressed on the CDES90 scale (‰).
 #' @param D47_error Error on the D47 value. Optional.
 #' @param eq Equation used for the calculation.
-#'   * `"Petersen19"`: the synthetic-only IUPAC parameter "UNICAL" calibration
+#'   * `"Petersen19"`: the synthetic-only IUPAC-parameter "UNICAL" calibration
 #'     of Petersen et al. (2019).
 #'   * `"Kele14"`: the Kele et al. (2015) calibration
 #'     reprocessed by Bernasconi et al. (2020) using the IUPAC parameters.
@@ -86,8 +88,8 @@ D47 = function(temp, eq) {
 #' @references
 #' References are listed at [D47()].
 #'
-#' @seealso [D47()] calculates the equilibrium carbonate D47 value
-#'   for a given temperature.
+#' @seealso
+#' [D47()] calculates the equilibrium carbonate D47 value.
 #'
 #' @family thermometry
 #'
@@ -125,11 +127,11 @@ temp_D47 = function(D47_CDES90, D47_error, eq) {
 
 # ——————————————————————————————————————————————————————————————————————————— #
 #### D48 ####
-#' @title Carbonate D48 for a given temperature
+#' @title Equilibrium carbonate D47 value
 #'
 #' @description
 #' `D48()` calculates the equilibrium carbonate D48 value
-#'   for a given temperature.
+#' for a given temperature.
 #'
 #' @param temp Carbonate growth temperature (°C).
 #' @param eq Equation used for the calculation.
@@ -139,10 +141,6 @@ temp_D47 = function(D47_CDES90, D47_error, eq) {
 #' @return
 #' Returns the carbonate equilibrium D48 value
 #' expressed on the CDES90 scale (‰).
-#'
-#' @examples
-#' D48(33.7, eq = "Fiebig21") # Returns 0.237
-#' D48(33.7, eq = "Swart21") # Returns 0.239
 #'
 #' @references
 #' Bajnai, D., Guo, W., Spötl, C., Coplen, T. B.,
@@ -166,6 +164,10 @@ temp_D47 = function(D47_CDES90, D47_error, eq) {
 #'
 #' @family equilibrium_carbonate
 #'
+#' @examples
+#' D48(temp = 33.7, eq = "Fiebig21") # Returns 0.237
+#' D48(temp = 33.7, eq = "Swart21") # Returns 0.239
+#'
 #' @export
 
 D48 = function(temp, eq) {
@@ -174,8 +176,9 @@ D48 = function(temp, eq) {
     1.028 * (6.002 / TinK - 1.299 * 10^4 / TinK^2 + 8.996 * 10^6 / TinK^3
              - 7.423 * 10^8 / TinK^4) + 0.1245
   } else if (eq == "Swart21") {
-  b = 0.088; m = 0.0142
-  m * (10^6 / TinK^2) + b
+    b = 0.088
+    m = 0.0142
+    m * (10 ^ 6 / TinK ^ 2) + b
   } else {
     stop("Invalid input for eq")
   }
@@ -186,8 +189,8 @@ D48 = function(temp, eq) {
 #### temp_D48 ####
 #' @title Dual clumped isotope thermometry
 #'
-#' @description `temp_D48()` calculates carbonate growth temperature
-#'   from D47 and D48 values.
+#' @description
+#' `temp_D48()` calculates carbonate growth temperature from D47 and D48 values.
 #'
 #' @param D47_CDES90 Carbonate D47 values expressed on the CDES90 scale (‰).
 #' @param D48_CDES90 Carbonate D48 values expressed on the CDES90 scale (‰).
@@ -199,7 +202,7 @@ D48 = function(temp, eq) {
 #' @param pch Graphical parameter. Optional.
 #'
 #' @return
-#' Returns the carbonate growth temperature (‰).
+#' Returns the carbonate growth temperature (°C).
 #'
 #' @examples
 #' temp_D48(0.617, 0.139, ks = -0.6)
@@ -208,10 +211,14 @@ D48 = function(temp, eq) {
 #' @references
 #' References are listed at [D48()] and [D47()].
 #'
-#' @seealso [D47()] calculates the equilibrium carbonate D47 value
-#'   for a given temperature.
-#' @seealso [D48()] calculates the equilibrium carbonate D48 value
-#'   for a given temperature.
+#' @section Contributors:
+#' The source code of this function contains elements
+#' from the reconPlots package, available at
+#' <https://github.com/andrewheiss/reconPlots>
+#'
+#' @seealso
+#' [D47()] calculates the equilibrium carbonate D47 value.
+#' [D48()] calculates the equilibrium carbonate D48 value.
 #'
 #' @details
 #' The function calculates a D47 value as an intersect of two curves:
@@ -232,36 +239,24 @@ temp_D48 = function(D47_CDES90, D48_CDES90, D47_error, D48_error,
   ## curve_intersect() is the work of Andrew Heiss
   ## It is distributed under an MIT licence (2017).
   ## https://github.com/andrewheiss/reconPlots
-  ## The source code is reproduced here in its entirety without modification.
+  ## The source code is reproduced here with formatting modifications.
   curve_intersect = function(curve1, curve2, empirical = TRUE, domain = NULL) {
   if (!empirical & missing(domain)) {
     stop("'domain' must be provided with non-empirical curves")
   }
-
   if (!empirical & (length(domain) != 2 | !is.numeric(domain))) {
     stop("'domain' must be a two-value numeric vector, like c(0, 10)")
   }
-
   if (empirical) {
-    # Approximate the functional form of both curves
     curve1_f = stats::approxfun(curve1$x, curve1$y, rule = 2)
     curve2_f = stats::approxfun(curve2$x, curve2$y, rule = 2)
-
-    # Calculate the intersection of curve 1 and curve 2 along the x-axis
     point_x = stats::uniroot(function(x) curve1_f(x) - curve2_f(x),
                        c(min(curve1$x), max(curve1$x)))$root
-
-    # Find where point_x is in curve 2
     point_y = curve2_f(point_x)
   } else {
-    # Calculate the intersection of curve 1 and curve 2 along the x-axis
-    # within the given domain
     point_x = stats::uniroot(function(x) curve1(x) - curve2(x), domain)$root
-
-    # Find where point_x is in curve 2
     point_y = curve2(point_x)
   }
-
   return(list(x = point_x, y = point_y))
   }
   ## This is the end of curve_intersect()

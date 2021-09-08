@@ -11,11 +11,11 @@ d17O_c(temp, d18O_H2O_VSMOW, eq18 = "Daeron19", lambda = 0.528)
 
 \item{d18O_H2O_VSMOW}{Water d18O value expressed on the VSMOW scale (‰).}
 
-\item{eq18}{Equation used to calculate the equilibrium 18O/16O
-fractionation factor between calcite and water.
-Options are as in \code{\link[=a18_c_H2O]{a18_c_H2O()}} with \code{"Daeron19"} being here the default.}
+\item{eq18}{Equation used to calculate the 18O/16O fractionation factor
+between calcite and water. Options are like those for calcite
+in \code{\link[=a18_c_H2O]{a18_c_H2O()}} with \code{"Daeron19"} being here the default.}
 
-\item{lambda}{Triple oxygen isotope reference slope. Default is \code{0.528}.}
+\item{lambda}{Triple oxygen isotope reference slope. Default \code{0.528}.}
 }
 \value{
 Returns a data frame:
@@ -26,24 +26,23 @@ Returns a data frame:
 }
 }
 \description{
-\code{d17O_c()} calculates equilibrium calcite d18O, d17O, and D17O values
-for a given temperature.
+\code{d17O_c()} calculates the equilibrium d18O, d17O, and D17O values of a
+calcite grown at a given temperature.
 }
 \details{
 \deqn{\theta_{A/B} = \frac{\alpha^{17}_{A/B}}{\alpha^{18}_{A/B}}}
 
-\deqn{ \delta'^{17}O_{w,VSMOW} =
-\beta \times \delta'^{18}O_{w,VSMOW} + \gamma
-\textrm{ where } \beta=0.528 \textrm{ and } \gamma = 0 }
+\deqn{ \delta'^{17}O_{H2O,VSMOW} =
+\beta \times \delta'^{18}O_{H2O,VSMOW} + \gamma
+\textrm{ , where } \beta=0.528 \textrm{ and } \gamma = 0 }
 
-\deqn{\Delta^{17}O = \delta'^{17}O_{c,VSMOW} -
-\lambda \times \delta'^{18}O_{c,VSMOW} }
+\deqn{\Delta^{17}O_{CaCO3,VSMOW} = \delta'^{17}O_{CaCO3,VSMOW} -
+\lambda \times \delta'^{18}O_{CaCO3,VSMOW} }
 }
 \examples{
-d17O_c(10,-1) # Returns the data frame (length = 3)
-d17O_c(10,-1)[,1] # Returns the D18O value
-prime(d17O_c(10,-1)[,2]) # Returns the d'17O value
-d17O_c(10,-1)[,3] # Returns the D17O value
+d17O_c(temp = 10, d18O_H2O_VSMOW = -1) # Returns the data frame (length = 3)
+prime(d17O_c(temp = 10, d18O_H2O_VSMOW = -1)[, 2]) # Returns the d'17O value
+d17O_c(temp = 10, d18O_H2O_VSMOW = -1)[, 3] # Returns the D17O value
 
 }
 \references{

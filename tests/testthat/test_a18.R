@@ -3,6 +3,8 @@
 test_that("a18_c_H2O errors if eq is not or wrongly specified", {
   expect_error(a18_c_H2O(10, "calcite"))
   expect_error(a18_c_H2O(10, "calcite", "cheese"), "Invalid input for eq")
+  expect_error(a18_c_H2O(10, "dolomite", "cheese"), "Invalid input for eq")
+  expect_error(a18_c_H2O(10, "aragonite", "cheese"), "Invalid input for eq")
 })
 test_that("a18_c_H2O errors if min is not or wrongly specified", {
   expect_error(a18_c_H2O(10, eq = "Daeron19"))

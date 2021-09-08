@@ -2,12 +2,12 @@
 % Please edit documentation in R/d18O.R
 \name{a18_c_H2O}
 \alias{a18_c_H2O}
-\title{Calculate the 18O/16O fractionation factor between carbonate and water}
+\title{18O/16O fractionation factor between carbonate and water}
 \usage{
 a18_c_H2O(temp, min, eq)
 }
 \arguments{
-\item{temp}{Crystallization temperature in degrees Celsius.}
+\item{temp}{Carbonate growth temperature (°C).}
 
 \item{min}{Mineralogy. Options are \code{"calcite"}, \code{"aragonite"},
 and \code{"dolomite"}.}
@@ -16,12 +16,14 @@ and \code{"dolomite"}.}
 
 Options for \strong{calcite}:
 \itemize{
-\item \code{"Daeron19"}: the equation of Daëron et al. (2019)
-\item \code{"Watkins13"}: the equation of Watkins et al. (2013)
-\item \code{"Coplen07"}: the equation of Coplen (2007)
-\item \code{"KO97"}: Kim and O'Neil (1997)
 \item \code{"FO77"}: the equation of O'Neil et al. (1969)
-reprocessed by Friedman and O'Neil (1977)
+modified by Friedman and O'Neil (1977)
+\item \code{"KO97"}:  the equation of Kim and O'Neil (1997)
+modified by Kim et al. (2007)
+\item \code{"Coplen07"}: the equation of Coplen (2007)
+\item \code{"Tremaine11"}: the equation of Tremaine et al. (2011)
+\item \code{"Watkins13"}: the equation of Watkins et al. (2013)
+\item \code{"Daeron19"}: the equation of Daëron et al. (2019)
 }
 
 Options for \strong{aragonite}:
@@ -36,16 +38,15 @@ Options for \strong{dolomite}:
 }}
 }
 \value{
-Returns the equilibrium 18O/16O fractionation factor "alpha".
+Returns the 18O/16O fractionation factor.
 }
 \description{
-\code{a18_c_H2O()} calculates the equilibrium 18O/16O fractionation factor
-between carbonate and water for a given temperature.
+\code{a18_c_H2O()} calculates the 18O/16O fractionation factor
+between carbonate and water.
 }
 \examples{
-a18_c_H2O(25, "calcite", "Coplen07")
-a18_c_H2O(25, "aragonite", "Dettman99")
-a18_c_H2O(25, "dolomite", "Vasconcelos05")
+a18_c_H2O(temp = 25, min = "calcite", eq = "Coplen07")
+a18_c_H2O(temp = 25, min = "aragonite", "Dettman99")
 
 }
 \references{
@@ -62,11 +63,22 @@ in synthetic carbonates.
 Geochimica et Cosmochimica Acta, 61(16), 3461-3475.
 \url{https://doi.org/10.1016/S0016-7037(97)00169-5}
 
+Kim, S.-T., Mucci, A., & Taylor, B. E. (2007).
+Phosphoric acid fractionation factors for calcite and aragonite between
+25 and 75 °C: Revisited. Chemical Geology, 246(3-4), 135-146.
+\url{https://doi.org/10.1016/j.chemgeo.2007.08.005}
+
 Coplen, T. B. (2007).
 Calibration of the calcite–water oxygen-isotope geothermometer
 at Devils Hole, Nevada, a natural laboratory.
 Geochimica et Cosmochimica Acta, 71(16), 3948-3957.
 \url{https://doi.org/10.1016/j.gca.2007.05.028}
+
+Tremaine, D. M., Froelich, P. N., & Wang, Y. (2011).
+Speleothem calcite farmed in situ: Modern calibration of d18O and d13C
+paleoclimate proxies in a continuously-monitored natural cave system.
+Geochimica et Cosmochimica Acta, 75(17), 4929-4950.
+\url{https://doi.org/10.1016/j.gca.2011.06.005}
 
 Watkins, J. M., Nielsen, L. C., Ryerson, F. J., & DePaolo, D. J. (2013).
 The influence of kinetics on the oxygen isotope composition

@@ -13,8 +13,7 @@ prime(classical)
 Returns the "delta prime" value (‰).
 }
 \description{
-\code{prime()} converts "classical delta" values
-to "delta prime" values.
+\code{prime()} converts "classical delta" values to "delta prime" values.
 }
 \details{
 \deqn{\delta'^{17}O = 1000 \times \ln(\frac{\delta^{17}O}{1000}+1)}

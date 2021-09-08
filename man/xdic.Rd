@@ -11,7 +11,7 @@ xDIC(temp, pH, S)
 
 \item{pH}{The pH of the solution.}
 
-\item{S}{The salinity of the solution (g/kg, ‰).}
+\item{S}{The salinity of the solution (g/kg or ‰).}
 }
 \value{
 Returns a data frame with the relative abundance of the DIC species:
@@ -26,6 +26,6 @@ Returns a data frame with the relative abundance of the DIC species:
 as a function of solution temperature, pH, and salinity.
 }
 \examples{
-xDIC(25, 7, 30)
+xDIC(temp = 25, pH = 7, S = 30)
 
 }

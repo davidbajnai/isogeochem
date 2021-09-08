@@ -3,10 +3,10 @@
 # ——————————————————————————————————————————————————————————————————————————— #
 #### to_VSMOW ####
 #' @title
-#' Converting between VPDB and VSMOW scales
+#' Converting isotope delta from VPDB to VSMOW
 #'
 #' @description
-#' `to_VSMOW()` converts d18O values expressed on the VPDB scale
+#' `to_VSMOW()` converts d18O value expressed on the VPDB scale
 #' to the VSMOW scale.
 #'
 #' @param d18O_VPDB d18O values expressed on the VPDB scale (‰).
@@ -64,10 +64,10 @@ to_VSMOW <- function(d18O_VPDB, eq = "IUPAC") {
 # ——————————————————————————————————————————————————————————————————————————— #
 #### to_VPDB ####
 #' @title
-#' Converting between VSMOW and VPDB scales
+#' Converting isotope delta from VSMOW to VPDB
 #'
 #' @description
-#' `to_VPDB()` converts d18O values expressed on the VSMOW scale
+#' `to_VPDB()` convert d18O value expressed on the VSMOW scale
 #'  to the VPDB scale.
 #'
 #' @param d18O_VSMOW d18O values expressed on the VSMOW scale (‰).

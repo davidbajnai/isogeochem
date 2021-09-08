@@ -1,11 +1,11 @@
 # Functions in this file: prime(), unprime(), a_A_B(), B_from_a(), A_from_a()
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### prime ####
 #' @title Converting delta to delta prime
 #'
-#' @description `prime()` converts "classical delta" values
-#'    to "delta prime" values.
+#' @description
+#' `prime()` converts "classical delta" values to "delta prime" values.
 #'
 #' @param classical "Classical delta" values to be converted (‰).
 #'
@@ -26,7 +26,7 @@ prime = function(classical) {
   1000 * log(1 + classical/1000)
 }
 
-##———————————————————————————————————————————————————————————————————————————##
+# ——————————————————————————————————————————————————————————————————————————— #
 #### unprime ####
 #' @title Converting delta prime to delta
 #'
@@ -58,46 +58,49 @@ unprime = function(prime) {
 #'
 #' @description `a_A_B()` calculates the isotope fractionation factor.
 #'
-#' @param A Delta value of A (‰).
-#' @param B Delta value of B (‰).
+#' @param A Isotope delta value of A (‰).
+#' @param B Isotope delta value of B (‰).
 #'
-#' @return Returns the isotope fractionation factor "alpha".
-#'
-#' @examples
-#' a_A_B(10, 12)
+#' @return Returns the isotope fractionation factor.
 #'
 #' @details
 #' \deqn{\alpha^{i}E_{A/B} =
 #' \frac{\delta^{i}E_{A} + 1000}{\delta^{i}E_{B} + 1000}}
 #'
-#' @seealso [B_from_a()] calculates the delta value of B.
+#' @seealso
+#' [A_from_a()] calculates the isotope delta value of A.
+#' [B_from_a()] calculates the isotope delta value of B.
 #'
 #' @family fractionation_factors
+#'
+#' @examples
+#' a_A_B(A = 10, B = 12)
 #'
 #' @export
 
 a_A_B = function(A, B) {
-  (A+1000)/(B+1000)
+  (A + 1000) / (B + 1000)
 }
 
-##——————————————————————————————————————————————————————————————————————————##
+# ———————————————————————————————————————————————————————————————–——————————— #
 #### B_from_a ####
-#' @title Isotope composition from fractionation factor
+#' @title Isotope delta from fractionation factor
 #'
-#' @description `B_from_a()` calculates the delta value of B using
-#'   an isotope fractionation factor alpha.
+#' @description
+#' `B_from_a()` calculates the isotope delta value of B from the
+#' isotope fractionation factor and the isotope delta value of A.
 #'
-#' @param a Isotope fractionation factor between A/B.
-#' @param A Delta value of A (‰).
+#' @param a Isotope fractionation factor between A and B.
+#' @param A Isotope delta value of A (‰).
 #'
-#' @return Returns the delta value of B (‰).
+#' @return Returns the Isotope delta value of B (‰).
+#'
+#' @seealso
+#' [a_A_B()] calculates the isotope fractionation factor between A and B.
+#' [A_from_a()] calculates the isotope delta value of A.
 #'
 #' @examples
-#' B_from_a(1.033, 12)
-#'
-#' @seealso [a_A_B()] calculates the isotope fractionation
-#'   factor between A and B.
-#' @seealso [A_from_a()] calculates the delta value of B.
+#' B_from_a(a = 1.033, A = 10)
 #'
 #' @export
 
@@ -105,24 +108,25 @@ B_from_a = function(a, A) {
   (A + 1000) / a - 1000
 }
 
-##———————————————————————————————————————————————————————————————————————————##
+# ———————————————————————————————————————————————————————————————–——————————— #
 #### A_from_a ####
-#' @title Isotope composition from fractionation factor
+#' @title Isotope delta from fractionation factor
 #'
-#' @description `A_from_a()` calculates the delta value of A from the
-#' isotope fractionation factor and the delta value of B.
+#' @description
+#' `A_from_a()` calculates the isotope delta value of A from the
+#' isotope fractionation factor and the isotope delta value of B.
 #'
-#' @param a Isotope fractionation factor between A/B "alpha".
-#' @param B Delta value of B (‰).
+#' @param a Isotope fractionation factor between A and B.
+#' @param B Isotope delta value of B (‰).
 #'
-#' @return Returns the delta value of B (‰).
+#' @return Returns the isotope delta value of B (‰).
+#'
+#' @seealso
+#' [a_A_B()] calculates the isotope fractionation factor between A and B.
+#' [B_from_a()] calculates the isotope delta value of B.
 #'
 #' @examples
-#' A_from_a(1.033, -10)
-#'
-#' @seealso [a_A_B()] calculates the isotope fractionation factor
-#'   between A and B.
-#' @seealso [A_from_a()] calculates the delta value of B.
+#' A_from_a(a = 1.033, B = -10)
 #'
 #' @export
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/clumped.R
 \name{D48}
 \alias{D48}
-\title{Carbonate D48 for a given temperature}
+\title{Equilibrium carbonate D47 value}
 \usage{
 D48(temp, eq)
 }
@@ -24,8 +24,8 @@ expressed on the CDES90 scale (‰).
 for a given temperature.
 }
 \examples{
-D48(33.7, eq = "Fiebig21") # Returns 0.237
-D48(33.7, eq = "Swart21") # Returns 0.239
+D48(temp = 33.7, eq = "Fiebig21") # Returns 0.237
+D48(temp = 33.7, eq = "Swart21") # Returns 0.239
 
 }
 \references{

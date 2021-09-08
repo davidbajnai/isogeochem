@@ -3,16 +3,17 @@
 
 # ——————————————————————————————————————————————————————————————————————————— #
 #### a18_CO2acid_c ####
-#' @title Acid fractionation factor: 18O/16O
+#' @title 18O/16O acid fractionation factor
 #'
-#' @description `a18_CO2acid_c()` calculates the 18O/16O oxygen isotope
-#'   fractionation factor between CO2 from acid digestion and carbonate.
+#' @description
+#' `a18_CO2acid_c()` calculates the 18O/16O fractionation factor between
+#' CO2 produced from acid digestion and carbonate.
 #'
 #' @param temp Acid digestion temperature (°C).
 #' @param min Mineralogy. Options are `"calcite"` and `"aragonite"`.
 #'
 #' @return
-#' Returns the 18O/16O oxygen isotope fractionation factor "alpha".
+#' Returns the 18O/16O fractionation factor.
 #'
 #' @references
 #' Sharma, T., & Clayton, R. N. (1965).
@@ -32,14 +33,15 @@
 #' Geochimica et Cosmochimica Acta, 158, 276-289.
 #' <https://doi.org/10.1016/j.gca.2015.02.011>
 #'
-#' @examples
-#' a18_CO2acid_c(90, "calcite")
-#'
 #' @family fractionation_factors
+#'
+#' @examples
+#' a18_CO2acid_c(temp = 90, min = "calcite")
+#' a18_CO2acid_c(temp = 72, min = "aragonite")
 #'
 #' @export
 
-a18_CO2acid_c <- function(temp, min) {
+a18_CO2acid_c = function(temp, min) {
   TinK <- temp + 273.15
   if (min == "calcite") {
     exp((3.48 * 1000 / TinK - 1.47) / 1000)
@@ -53,19 +55,19 @@ a18_CO2acid_c <- function(temp, min) {
 
 # ——————————————————————————————————————————————————————————————————————————— #
 #### a18_H2O_OH ####
-#' @title Calculate the 18O/16O fractionation factor between water and
-#'   hydroxide ion
+#' @title 18O/16O fractionation factor between water and hydroxide ion
 #'
-#' @description `a18_H2O_OH()` calculates the 18O/16O oxygen isotope
-#'   fractionation factor between H2O and aqueous hydroxide ion.
+#' @description
+#' `a18_H2O_OH()` calculates the 18O/16O fractionation factor between
+#' water and aqueous hydroxide ion.
 #'
 #' @param temp Temperature (°C).
-#' @param eq Equation used to calculate the fractionation factor.
-#'  * `Z20-X3LYP`: the X3LYP/6-311+G(d,p) theoretical equation of Zeebe (2020).
-#'  * `Z20-MP2`: the MP2/aug-cc-pVDZ theoretical equation of Zeebe (2020).
+#' @param eq Equation used for the calculations.
+#'  * `Z20-X3LYP`: the theoretical X3LYP/6-311+G(d,p) equation of Zeebe (2020).
+#'  * `Z20-MP2`: the theoretical MP2/aug-cc-pVDZ equation of Zeebe (2020).
 #'
 #' @return
-#' Returns the 18O/16O oxygen isotope fractionation factor "alpha".
+#' Returns the 18O/16O fractionation factor.
 #'
 #' @references
 #' Zeebe, R. E. (2020).
@@ -73,19 +75,19 @@ a18_CO2acid_c <- function(temp, min) {
 #' Geochimica et Cosmochimica Acta, 289, 182-195.
 #' <https://doi.org/10.1016/j.gca.2020.08.025>
 #'
-#' @examples
-#' a18_H2O_OH(90, "Z21-X3LYP")
-#'
 #' @family fractionation_factors
+#'
+#' @examples
+#' a18_H2O_OH(temp = 90, eq = "Z21-X3LYP")
 #'
 #' @export
 
-a18_H2O_OH <- function(temp, eq) {
-  TinK <- temp + 273.15
+a18_H2O_OH = function(temp, eq) {
+  TinK = temp + 273.15
   if (eq == "Z21-X3LYP") {
-    e18_H2O_OH <- (-4.4573 + (10.3255 * 10^3) / TinK + (-0.5976 * 10^6) / TinK^2)
+    e18_H2O_OH = (-4.4573 + (10.3255 * 10^3) / TinK + (-0.5976 * 10^6) / TinK^2)
   } else if (eq == "Z20-MP2") {
-    e18_H2O_OH <- (-4.0771 + (9.8350 * 10^3) / TinK + (-0.8729 * 10^6) / TinK^2)
+    e18_H2O_OH = (-4.0771 + (9.8350 * 10^3) / TinK + (-0.8729 * 10^6) / TinK^2)
   } else {
     stop("Invalid input for eq")
   }

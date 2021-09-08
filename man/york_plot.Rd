@@ -49,13 +49,17 @@ A list with regression parameters:
 }
 }
 \description{
-\code{york_plot()} calculates and optionally plot the confidence
-intervals of an error-considering linear regression.
+\code{york_plot()} calculates and optionally plots the confidence intervals of
+an (error-considering) linear regression.
 }
 \details{
-The regression fitting method is according to York et al. (2004).
 The algorithm is described in the appendix of Wacker et al. (2014).
 }
+\section{Contributors}{
+
+Julian Tödter
+}
+
 \examples{
 york_plot(
   x = c(1, 2, 3),
@@ -67,11 +71,9 @@ york_plot(
 
 }
 \references{
-Wacker, U., Fiebig, J., Tödter, J., et al. (2014).
-Empirical calibration of the clumped isotope paleothermometer
-using calcites of various origins. Geochim. Cosmochim. Acta, 141, 127-144.
+Wacker, U., Fiebig, J., Tödter, J., Schöne, B. R.,
+Bahr, A., Friedrich, O., et al. (2014).
+Empirical calibration of the clumped isotope paleothermometer using calcites
+of various origins. Geochimica et Cosmochimica Acta, 141, 127-144.
 \url{https://doi.org/10.1016/j.gca.2014.06.004}
-}
-\author{
-Julian Tödter
 }

@@ -33,11 +33,10 @@ temp_D48(
 \item{pch}{Graphical parameter. Optional.}
 }
 \value{
-Returns the carbonate growth temperature (‰).
+Returns the carbonate growth temperature (°C).
 }
 \description{
-\code{temp_D48()} calculates carbonate growth temperature
-from D47 and D48 values.
+\code{temp_D48()} calculates carbonate growth temperature from D47 and D48 values.
 }
 \details{
 The function calculates a D47 value as an intersect of two curves:
@@ -48,6 +47,13 @@ equation of Petersen et al. (2019). This is not consistent and I will fix it
 in a later patch. In any case, the resulting discrepancy is smaller
 than the temperature error.
 }
+\section{Contributors}{
+
+The source code of this function contains elements
+from the reconPlots package, available at
+\url{https://github.com/andrewheiss/reconPlots}
+}
+
 \examples{
 temp_D48(0.617, 0.139, ks = -0.6)
 temp_D48(0.546, 0.277, ks = -1)
@@ -57,11 +63,8 @@ temp_D48(0.546, 0.277, ks = -1)
 References are listed at \code{\link[=D48]{D48()}} and \code{\link[=D47]{D47()}}.
 }
 \seealso{
-\code{\link[=D47]{D47()}} calculates the equilibrium carbonate D47 value
-for a given temperature.
-
-\code{\link[=D48]{D48()}} calculates the equilibrium carbonate D48 value
-for a given temperature.
+\code{\link[=D47]{D47()}} calculates the equilibrium carbonate D47 value.
+\code{\link[=D48]{D48()}} calculates the equilibrium carbonate D48 value.
 
 Other thermometry: 
 \code{\link{temp_D47}()},

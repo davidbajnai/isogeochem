@@ -7,16 +7,15 @@
 d18O_c(temp, d18O_H2O_VSMOW, min, eq)
 }
 \arguments{
-\item{temp}{Crystallization temperature (°C).}
+\item{temp}{Carbonate growth temperature (°C).}
 
 \item{d18O_H2O_VSMOW}{Water d18O value expressed on the VSMOW scale (‰).}
 
 \item{min}{Mineralogy. Options are \code{"calcite"}, \code{"aragonite"},
 and \code{"dolomite"}.}
 
-\item{eq}{Equation used to calculate the equilibrium 18O/16O oxygen isotope
-fractionation factor between carbonate and water.
-Options depend on mineralogy and listed in \code{\link[=a18_c_H2O]{a18_c_H2O()}}.}
+\item{eq}{Equation used for the calculations.
+Options depend on mineralogy and are listed in \code{\link[=a18_c_H2O]{a18_c_H2O()}}.}
 }
 \value{
 Returns the equilibrium carbonate d18O value
@@ -32,8 +31,8 @@ between the VSMOW and VPDB scales.
 }
 \examples{
 d18O_c(33.7, -13.54, min = "calcite", eq = "Coplen07")
-to_VPDB(d18O_c(12, -6.94, min = "aragonite", eq = "Dettman99"))
-d18O_c(25, -10.96, min = "dolomite", eq = "Vasconcelos05")
+to_VPDB(d18O_c(temp = 12, d18O_H2O_VSMOW = -6.94,
+               min = "aragonite", eq = "Dettman99"))
 
 }
 \references{

@@ -16,7 +16,7 @@ york_fit(y, x, x_err, y_err, r = 0)
 \item{y_err}{Error on the y values. Has to be same the length as x.}
 
 \item{r}{Correlation coefficient of x_err and y_err at each data point.
-Default is \code{0}: independent errors.
+Default: \code{0} (independent errors).
 Has to be same the length as x. Optional.}
 }
 \value{
@@ -31,13 +31,18 @@ A list with regression parameters:
 }
 }
 \description{
-\code{york_fit()} calculates the regression parameters of an
-error-considering linear regression.
+\code{york_fit()} calculates the regression parameters of
+an error-considering linear regression.
 }
 \details{
-The regression fitting method is according to York (2004).
+Regression fitting method according to York et al. (2004).
 The algorithm is described in the appendix of Wacker et al. (2014).
 }
+\section{Contributors}{
+
+Julian Tödter
+}
+
 \examples{
 york_fit(
   x = c(1, 2, 3),
@@ -47,16 +52,15 @@ york_fit(
 
 }
 \references{
-York, D., Evensen, N. M., López Martínez, M., and De Basabe Delgado, J.
-(2004). Unified equations for the slope, intercept,
-and standard errors of the best straight line. Am. J. Phys., 72(3), 367-375.
+York, D., Evensen, N. M., López Martínez, M., & De Basabe Delgado, J. (2004).
+Unified equations for the slope, intercept, and
+standard errors of the best straight line.
+American Journal of Physics, 72(3), 367-375.
 \url{https://doi.org/10.1119/1.1632486}
 
-Wacker, U., Fiebig, J., Tödter, J., et al. (2014).
-Empirical calibration of the clumped isotope paleothermometer
-using calcites of various origins. Geochim. Cosmochim. Acta, 141, 127-144.
+Wacker, U., Fiebig, J., Tödter, J., Schöne, B. R.,
+Bahr, A., Friedrich, O., et al. (2014).
+Empirical calibration of the clumped isotope paleothermometer using calcites
+of various origins. Geochimica et Cosmochimica Acta, 141, 127-144.
 \url{https://doi.org/10.1016/j.gca.2014.06.004}
-}
-\author{
-Julian Tödter
 }

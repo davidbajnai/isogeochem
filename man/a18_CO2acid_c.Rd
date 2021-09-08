@@ -2,7 +2,7 @@
 % Please edit documentation in R/alpha.R
 \name{a18_CO2acid_c}
 \alias{a18_CO2acid_c}
-\title{Acid fractionation factor: 18O/16O}
+\title{18O/16O acid fractionation factor}
 \usage{
 a18_CO2acid_c(temp, min)
 }
@@ -12,14 +12,15 @@ a18_CO2acid_c(temp, min)
 \item{min}{Mineralogy. Options are \code{"calcite"} and \code{"aragonite"}.}
 }
 \value{
-Returns the 18O/16O oxygen isotope fractionation factor "alpha".
+Returns the 18O/16O fractionation factor.
 }
 \description{
-\code{a18_CO2acid_c()} calculates the 18O/16O oxygen isotope
-fractionation factor between CO2 from acid digestion and carbonate.
+\code{a18_CO2acid_c()} calculates the 18O/16O fractionation factor between
+CO2 produced from acid digestion and carbonate.
 }
 \examples{
-a18_CO2acid_c(90, "calcite")
+a18_CO2acid_c(temp = 90, min = "calcite")
+a18_CO2acid_c(temp = 72, min = "aragonite")
 
 }
 \references{

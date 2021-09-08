@@ -9,7 +9,7 @@
 #'
 #' @param temp The temperature of the solution (°C).
 #' @param pH The pH of the solution.
-#' @param S The salinity of the solution (g/kg, ‰).
+#' @param S The salinity of the solution (g/kg or ‰).
 #'
 #' @return
 #' Returns a data frame with the relative abundance of the DIC species:
@@ -18,7 +18,7 @@
 #' * Relative abundance of carbonate ion (%).
 #'
 #' @examples
-#' xDIC(25, 7, 30)
+#' xDIC(temp = 25, pH = 7, S = 30)
 #'
 #' @export
 

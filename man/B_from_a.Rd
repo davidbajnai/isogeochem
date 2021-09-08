@@ -2,29 +2,27 @@
 % Please edit documentation in R/utils.R
 \name{B_from_a}
 \alias{B_from_a}
-\title{Isotope composition from fractionation factor}
+\title{Isotope delta from fractionation factor}
 \usage{
 B_from_a(a, A)
 }
 \arguments{
-\item{a}{Isotope fractionation factor between A/B.}
+\item{a}{Isotope fractionation factor between A and B.}
 
-\item{A}{Delta value of A (‰).}
+\item{A}{Isotope delta value of A (‰).}
 }
 \value{
-Returns the delta value of B (‰).
+Returns the Isotope delta value of B (‰).
 }
 \description{
-\code{B_from_a()} calculates the delta value of B using
-an isotope fractionation factor alpha.
+\code{B_from_a()} calculates the isotope delta value of B from the
+isotope fractionation factor and the isotope delta value of A.
 }
 \examples{
-B_from_a(1.033, 12)
+B_from_a(a = 1.033, A = 10)
 
 }
 \seealso{
-\code{\link[=a_A_B]{a_A_B()}} calculates the isotope fractionation
-factor between A and B.
-
-\code{\link[=A_from_a]{A_from_a()}} calculates the delta value of B.
+\code{\link[=a_A_B]{a_A_B()}} calculates the isotope fractionation factor between A and B.
+\code{\link[=A_from_a]{A_from_a()}} calculates the isotope delta value of A.
 }

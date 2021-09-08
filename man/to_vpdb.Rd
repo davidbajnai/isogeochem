@@ -2,7 +2,7 @@
 % Please edit documentation in R/vpdb.R
 \name{to_VPDB}
 \alias{to_VPDB}
-\title{Converting between VSMOW and VPDB scales}
+\title{Converting isotope delta from VSMOW to VPDB}
 \usage{
 to_VPDB(d18O_VSMOW, eq = "IUPAC")
 }
@@ -21,7 +21,7 @@ and the Hoefs book.
 Returns the d18O value expressed on the VPDB scale (‰).
 }
 \description{
-\code{to_VPDB()} converts d18O values expressed on the VSMOW scale
+\code{to_VPDB()} convert d18O value expressed on the VSMOW scale
 to the VPDB scale.
 }
 \details{

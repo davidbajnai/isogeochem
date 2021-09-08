@@ -9,7 +9,7 @@ A data frame with 442 rows and 4 variables:
 \describe{
 \item{age}{Interpolated uranium-series age of the sample expressed
 as thousands of years before present (ka).}
-\item{d18O_VSMOW}{Carbonate d18O value relative to VSMOW (per mille).}
+\item{d18O_VSMOW}{Carbonate d18O value expressed on the VSMOW scale (‰).}
 \item{d18O_error}{Standard deviation on the d18O value.}
 \item{core}{Name of the core (DHC2-8, DHC2-3, DH-11).}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/clumped.R
 \name{D47}
 \alias{D47}
-\title{Carbonate D47 for a given temperature}
+\title{Equilibrium carbonate D47 value}
 \usage{
 D47(temp, eq)
 }
@@ -12,7 +12,7 @@ D47(temp, eq)
 \item{eq}{Equation used for the calculation.
 \itemize{
 \item \code{"Fiebig21"}: the CDES90 calibration of Fiebig et al. (2021).
-\item \code{"Petersen19"}: the synthetic-only IUPAC parameter "UNICAL" calibration
+\item \code{"Petersen19"}: the synthetic-only IUPAC-parameter "UNICAL" calibration
 of Petersen et al. (2019).
 }}
 }
@@ -24,7 +24,7 @@ Returns the carbonate D47 value expressed on the CDES90 scale (‰).
 for a given temperature.
 }
 \examples{
-D47(33.7, "Petersen19")
+D47(temp = 33.7, eq = "Petersen19")
 
 }
 \references{

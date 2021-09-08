@@ -11,6 +11,11 @@ test_that("york_fit requires equal x... lenghts", {
   expect_error(york_fit(x = N3, y = N3, x_err = N3, y_err = N3, r = N2), "Input parameters have different lengths")
 })
 
+test_that("york_plot requires equal x and w lenghts", {
+  expect_error(york_plot(x = N3, slope = 1, slope_se = 0.1,
+                         intercept = 0, intercept_se = 0.1, cl = 0.95, w = N2), "x and weights have different lengths")
+})
+
 test_that("york_fit returns a list of 8", {
   expect_type(york_fit(x = N3, y = N3, x_err = N3, y_err = N3), "list")
   expect_length(york_fit(x = N3, y = N3, x_err = N3, y_err = N3), 8)
@@ -24,6 +29,8 @@ test_that("york_plot returns a data.frame", {
                             intercept = 0, intercept_se = 0.1, cl = 0.95), "data.frame")
   expect_length(york_plot(x = N3, slope = 1, slope_se = 0.1,
                             intercept = 0, intercept_se = 0.1, cl = 0.95), 3)
+  expect_s3_class(york_plot(x = N3, slope = 1, slope_se = 0.1,
+                            intercept = 0, intercept_se = 0.1, cl = 0.95, w = N3), "data.frame")
 })
 
 test_that("york_plot warns if there is no exisiting plot", {

@@ -4,12 +4,15 @@
 \alias{temp_d18O}
 \title{Oxygen isotope thermometry}
 \usage{
-temp_d18O(d18O_c_VSMOW, d18O_H2O_VSMOW, eq = "Daeron19")
+temp_d18O(d18O_c_VSMOW, d18O_H2O_VSMOW, min, eq)
 }
 \arguments{
 \item{d18O_c_VSMOW}{Carbonate d18O value expressed on the VSMOW scale (‰).}
 
 \item{d18O_H2O_VSMOW}{Water d18O value expressed on the VSMOW scale (‰).}
+
+\item{min}{Mineralogy. Options are \code{"calcite"}, \code{"aragonite"},
+and \code{"dolomite"}.}
 
 \item{eq}{Equation used to calculate the equilibrium 18O/16O oxygen isotope
 fractionation factor between carbonate and water.
@@ -27,7 +30,8 @@ Use \code{\link[=to_VSMOW]{to_VSMOW()}} and \code{\link[=to_VPDB]{to_VPDB()}} to
 VSMOW and VPDB scales.
 }
 \examples{
-temp_d18O(14.58, -13.54, "Coplen07")
+temp_d18O(d18O_c_VSMOW = 14.58, d18O_H2O_VSMOW = -13.54,
+          min = "calcite", eq = "Coplen07")
 
 }
 \references{

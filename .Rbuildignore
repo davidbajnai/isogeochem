@@ -8,6 +8,6 @@
 ^data-raw$
 ^revdep$
 ^codemeta\.json$
-^isogeochem_0\.0\.0\.9500\.pdf$
+^isogeochem_manual\.pdf$
 ^codecov\.yml$
 ^man/figures$

@@ -9,7 +9,7 @@ A data frame with 2115 rows and 3 variables:
 \describe{
 \item{age}{Age of the sample expressed as thousands of years
 before present (ka).}
-\item{d18O_VPDB}{Carbonate d18O value relative to VPDB (per mille).}
+\item{d18O_VPDB}{Carbonate d18O value expressed on the VPDB scale (‰).}
 \item{d18O_error}{Standard error on the d18O value.}
 }
 }
