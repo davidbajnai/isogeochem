@@ -5,9 +5,9 @@
 [.]png$
 ^LICENSE\.md$
 ^README\.html$
-^tools$
 ^data-raw$
 ^revdep$
 ^codemeta\.json$
 ^isogeochem_0\.0\.0\.9500\.pdf$
 ^codecov\.yml$
+^man/figures$

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# isogeochem: <img src="tools/isogeochem-logo.png" align="right" /> <br> Tools for carbonate isotope geochemistry
+# isogeochem: <img src="man/figures/isogeochem-logo.png" align="right" height="139"/> <br> Tools for carbonate isotope geochemistry
 
 **Author:** [David Bajnai](https://www.davidbajnai.eu/)<br/>
 **Contributors:** Julian Tödter <br/> **License:**
@@ -9,14 +9,12 @@
 
 <!-- badges: start -->
 
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![repostatus](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project.org/package=isogeochem)
 [![R-CMD-check](https://github.com/davidbajnai/isogeochem/workflows/R-CMD-check/badge.svg)](https://github.com/davidbajnai/isogeochem/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/davidbajnai/isogeochem/branch/main/graph/badge.svg)](https://codecov.io/gh/davidbajnai/isogeochem?branch=main)
+[![repostatus](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project.org/package=isogeochem)
 <!-- badges: end -->
 
 The aims of `isogeochem` are to make working with stable oxygen, carbon,
@@ -85,7 +83,7 @@ text(D48(temp, eq = "Fiebig21"), D47(temp, eq = "Fiebig21"), paste(temp, "°C"),
      col=shades::gradient(c("blue", "red"), length(temp)), pos = 4, cex = 0.8)
 ```
 
-![Example 1](tools/README-example1.png)
+![Example 1](man/figures/README-example1.png)
 
 ## Triple oxygen isotopes
 
@@ -133,7 +131,7 @@ text(prime(mix[, 1]), mix[, 2], paste(mix[, 3],"%"), pos = 1, cex = 0.5,
      col=shades::gradient(c("#3300CC", "tan4"), length(seq(0, 10, 1))))
 ```
 
-![Example 2](tools/README-example2.png)
+![Example 2](man/figures/README-example2.png)
 
 ## Fractionation factors
 

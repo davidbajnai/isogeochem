@@ -1,4 +1,4 @@
-#### clumped ####
+#### tests of the clumped isotope functions ####
 
 test_that("D47 and D48 error if eq is not or wrongly specified", {
   expect_error(D47(10))
