@@ -32,7 +32,7 @@ between the VSMOW and VPDB scales.
 \examples{
 d18O_c(33.7, -13.54, min = "calcite", eq = "Coplen07")
 to_VPDB(d18O_c(temp = 12, d18O_H2O_VSMOW = -6.94,
-               min = "aragonite", eq = "Dettman99"))
+               min = "aragonite", eq = "GK86"))
 
 }
 \references{

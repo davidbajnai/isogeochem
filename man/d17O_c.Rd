@@ -19,7 +19,7 @@ in \code{\link[=a18_c_H2O]{a18_c_H2O()}} with \code{"Daeron19"} being here the d
 }
 \value{
 Returns a data frame:
-\itemize{
+\enumerate{
 \item d18O value of the carbonate expressed on the VSMOW scale (‰).
 \item d18O value of the carbonate expressed on the VSMOW scale (‰).
 \item D17O value of the carbonate expressed on the VSMOW scale (‰).

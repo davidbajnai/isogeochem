@@ -36,7 +36,6 @@ test_that("temp_D48 returns three values as data frame if error IS specified", {
 
 test_that("temp_D47 returns a single value if error IS NOT specified", {
   expect_length(temp_D47(0.617, eq = "Petersen19"), 1)
-  expect_length(temp_D47(0.617, eq = "Kele15"), 1)
 })
 test_that("temp_D48 returns three values as data frame if error IS specified", {
   expect_length(temp_D47(0.617, 0.005, eq = "Petersen19"), 2)

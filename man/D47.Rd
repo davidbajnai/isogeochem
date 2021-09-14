@@ -11,9 +11,9 @@ D47(temp, eq)
 
 \item{eq}{Equation used for the calculation.
 \itemize{
-\item \code{"Fiebig21"}: the CDES90 calibration of Fiebig et al. (2021).
 \item \code{"Petersen19"}: the synthetic-only IUPAC-parameter "UNICAL" calibration
 of Petersen et al. (2019).
+\item \code{"Fiebig21"}: the CDES90 calibration of Fiebig et al. (2021).
 }}
 }
 \value{
@@ -23,8 +23,23 @@ Returns the carbonate D47 value expressed on the CDES90 scale (‰).
 \code{D47()} calculates the equilibrium carbonate D47 value
 for a given temperature.
 }
+\details{
+\strong{"Petersen19"}:
+
+\deqn{\Delta_{47, CDES90} =
+0.0383 \times \frac{10^{6}}{T^{2}} + 0.170}
+
+\strong{"Fiebig21"}:
+
+\deqn{\Delta_{47, CDES90} =
+1.038 \times (-5.897 \times \frac{1}{T}
+                  - 3.521 \times \frac{10^{3}}{T^{2}}
+                  + 2.391 \times \frac{10^{7}}{T^{3}}
+                  - 3.541 \times \frac{10^{9}}{T^{4}}) + 0.1856}
+}
 \examples{
-D47(temp = 33.7, eq = "Petersen19")
+D47(temp = 33.7, eq = "Petersen19") # Returns 0.577
+D47(temp = 33.7, eq = "Fiebig21") # Returns 0.571
 
 }
 \references{

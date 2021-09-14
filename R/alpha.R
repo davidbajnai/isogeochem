@@ -12,22 +12,34 @@
 #' @param temp Acid digestion temperature (°C).
 #' @param min Mineralogy. Options are `"calcite"` and `"aragonite"`.
 #'
+#' @details
+#'
+#' **calcite** (Kim et al. 2015):
+#'
+#' \deqn{\alpha^{18}_{CO2acid/calcite} =
+#' e^{(3.48 \times \frac{1}{T} - 0.00147)}}
+#'
+#' **aragonite** (Kim et al. 2007):
+#'
+#' \deqn{\alpha^{18}_{CO2acid/aragonite} =
+#' e^{(3.39 \times \frac{1}{T} - 0.00083)}}
+#'
 #' @return
 #' Returns the 18O/16O fractionation factor.
 #'
 #' @references
-#' Sharma, T., & Clayton, R. N. (1965).
+#' Sharma, T., and Clayton, R. N. (1965).
 #' Measurement of ratios of total oxygen of carbonates.
 #' Geochimica et Cosmochimica Acta, 29(12), 1347-1353.
 #' <https://doi.org/10.1016/0016-7037(65)90011-6>
 #'
-#' Kim, S.-T., Mucci, A., & Taylor, B. E. (2007).
+#' Kim, S.-T., Mucci, A., and Taylor, B. E. (2007).
 #' Phosphoric acid fractionation factors for calcite and aragonite
 #' between 25 and 75 °C: Revisited.
 #' Chemical Geology, 246(3-4), 135-146.
 #' <https://doi.org/10.1016/j.chemgeo.2007.08.005>
 #'
-#' Kim, S.-T., Coplen, T. B., & Horita, J. (2015).
+#' Kim, S.-T., Coplen, T. B., and Horita, J. (2015).
 #' Normalization of stable isotope data for carbonate minerals:
 #' Implementation of IUPAC guidelines.
 #' Geochimica et Cosmochimica Acta, 158, 276-289.
@@ -42,7 +54,7 @@
 #' @export
 
 a18_CO2acid_c = function(temp, min) {
-  TinK <- temp + 273.15
+  TinK = temp + 273.15
   if (min == "calcite") {
     exp((3.48 * 1000 / TinK - 1.47) / 1000)
   } else if (min == "aragonite") {

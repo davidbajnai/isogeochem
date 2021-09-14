@@ -10,9 +10,23 @@
 #'
 #' @param temp Carbonate growth temperature (°C).
 #' @param eq Equation used for the calculation.
-#' * `"Fiebig21"`: the CDES90 calibration of Fiebig et al. (2021).
-#' * `"Petersen19"`: the synthetic-only IUPAC-parameter "UNICAL" calibration
-#'   of Petersen et al. (2019).
+#'   * `"Petersen19"`: the synthetic-only IUPAC-parameter "UNICAL" calibration
+#'     of Petersen et al. (2019).
+#'   * `"Fiebig21"`: the CDES90 calibration of Fiebig et al. (2021).
+#'
+#' @details
+#' **"Petersen19"**:
+#'
+#' \deqn{\Delta_{47, CDES90} =
+#' 0.0383 \times \frac{10^{6}}{T^{2}} + 0.170}
+#'
+#' **"Fiebig21"**:
+#'
+#' \deqn{\Delta_{47, CDES90} =
+#' 1.038 \times (-5.897 \times \frac{1}{T}
+#'                   - 3.521 \times \frac{10^{3}}{T^{2}}
+#'                   + 2.391 \times \frac{10^{7}}{T^{3}}
+#'                   - 3.541 \times \frac{10^{9}}{T^{4}}) + 0.1856}
 #'
 #' @return
 #' Returns the carbonate D47 value expressed on the CDES90 scale (‰).
@@ -37,7 +51,8 @@
 #' @family equilibrium_carbonate
 #'
 #' @examples
-#' D47(temp = 33.7, eq = "Petersen19")
+#' D47(temp = 33.7, eq = "Petersen19") # Returns 0.577
+#' D47(temp = 33.7, eq = "Fiebig21") # Returns 0.571
 #'
 #' @export
 
@@ -46,8 +61,8 @@ D47 = function(temp, eq) {
 
   if (eq == "Petersen19") {
     # Petersen et al. (2019)
-    b = 0.257 - 0.088
-    m = 0.0387
+    b = 0.258 - 0.088
+    m = 0.0383
     D47 = m * (10 ^ 6 / TinK ^ 2) + b
   } else if (eq == "Fiebig21") {
     # Fiebig et al. (2021)
@@ -66,6 +81,7 @@ D47 = function(temp, eq) {
 # ——————————————————————————————————————————————————————————————————————————— #
 #### temp_D47 ####
 #' @title Clumped isotope thermometry
+#'
 #' @description
 #' `temp_D47()` calculates carbonate growth temperature from D47 value.
 #'
@@ -74,16 +90,10 @@ D47 = function(temp, eq) {
 #' @param eq Equation used for the calculation.
 #'   * `"Petersen19"`: the synthetic-only IUPAC-parameter "UNICAL" calibration
 #'     of Petersen et al. (2019).
-#'   * `"Kele14"`: the Kele et al. (2015) calibration
-#'     reprocessed by Bernasconi et al. (2020) using the IUPAC parameters.
 #'
 #' @return
 #' Returns the carbonate growth temperature (°C),
 #' and — if `D47_error` is specified — also the error.
-#'
-#' @examples
-#' temp_D47(D47_CDES90 = 0.580, eq = "Petersen19")
-#' temp_D47(D47_CDES90 = 0.580, D47_error = 0.004, eq = "Petersen19")
 #'
 #' @references
 #' References are listed at [D47()].
@@ -93,6 +103,9 @@ D47 = function(temp, eq) {
 #'
 #' @family thermometry
 #'
+#' @examples
+#' temp_D47(D47_CDES90 = 0.577, eq = "Petersen19")
+#'
 #' @export
 
 temp_D47 = function(D47_CDES90, D47_error, eq) {
@@ -100,16 +113,13 @@ temp_D47 = function(D47_CDES90, D47_error, eq) {
   temp_util = function (D47_CDES90, eq) {
     if (eq == "Petersen19") {
       # Petersen et al. (2019)
-      b = 0.257-0.088; m = 0.0387
-      temp_util = sqrt(10^6/((D47_CDES90-b)/m))-273.15
-    } else if (eq == "Kele15") {
-      # Kele et al. (2015) reprocessed by Bernasconi et al. (2018)
-      b = 0.167; m = 0.0449
-      temp_util = sqrt(10^6/((D47_CDES90-b)/m))-273.15
+      b = 0.258 - 0.088
+      m = 0.0383
+      temp_util = sqrt(10 ^ 6 / ((D47_CDES90 - b) / m)) - 273.15
     } else {
-    stop("Invalid input for eq")
+      stop("Invalid input for eq")
     }
-    invisible(return(temp_util))
+    invisible(return(round(temp_util,1)))
   }
 
   temp = temp_util(D47_CDES90, eq = eq)
@@ -137,6 +147,19 @@ temp_D47 = function(D47_CDES90, D47_error, eq) {
 #' @param eq Equation used for the calculation.
 #'   * `"Fiebig21"`: the CDES90 calibration of Fiebig et al. (2021).
 #'   * `"Swart21"`: the CDES90 "PBLM1" calibration in Swart et al. (2021).
+#'
+#' @details
+#' **"Fiebig21"**:
+#'
+#' \deqn{\Delta_{48, CDES90} = 1.028 \times (6.002 \times \frac{1}{T}
+#'                   - 1.299 \times \frac{10^{4}}{T^{2}}
+#'                   + 8.996 \times \frac{10^{6}}{T^{3}}
+#'                   - 7.423 \times \frac{10^{8}}{T^{4}}) + 0.1245}
+#'
+#' **"Swart21"**:
+#'
+#' \deqn{\Delta_{48, CDES90} =
+#' 0.0142 \times \frac{10^{6}}{T^{2}} + 0.088}
 #'
 #' @return
 #' Returns the carbonate equilibrium D48 value
@@ -201,12 +224,18 @@ D48 = function(temp, eq) {
 #' @param col Graphical parameter. Optional.
 #' @param pch Graphical parameter. Optional.
 #'
+#' @details
+#' The function calculates a D47 value as an intersect of two curves:
+#' the equilibrium D47 vs D48 curve from Fiebig et al. (2021) and
+#' the kinetic slope. The resulting D47 value is then converted to temperature
+#' using the [D47()] function and the
+#' equation of Petersen et al. (2019).There is a discrepancy in using both the
+#' Petersen et al. (2019) and the Fiebig et al. (2021) equations for D47.
+#' This will be addressed in a later version. In any case, the resulting discrepancy is smaller
+#' than the temperature error.
+#'
 #' @return
 #' Returns the carbonate growth temperature (°C).
-#'
-#' @examples
-#' temp_D48(0.617, 0.139, ks = -0.6)
-#' temp_D48(0.546, 0.277, ks = -1)
 #'
 #' @references
 #' References are listed at [D48()] and [D47()].
@@ -220,16 +249,11 @@ D48 = function(temp, eq) {
 #' [D47()] calculates the equilibrium carbonate D47 value.
 #' [D48()] calculates the equilibrium carbonate D48 value.
 #'
-#' @details
-#' The function calculates a D47 value as an intersect of two curves:
-#' the equilibrium D47 vs D48 curve from Fiebig et al. (2021) and
-#' the kinetic slope. The resulting D47 value is then converted to temperature
-#' using the [D47()] function and the
-#' equation of Petersen et al. (2019). This is not consistent and I will fix it
-#' in a later patch. In any case, the resulting discrepancy is smaller
-#' than the temperature error.
-#'
 #' @family thermometry
+#'
+#' @examples
+#' temp_D48(0.617, 0.139, ks = -0.6)
+#' temp_D48(0.546, 0.277, ks = -1)
 #'
 #' @export
 

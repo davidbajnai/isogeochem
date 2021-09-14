@@ -43,8 +43,9 @@ The function calculates a D47 value as an intersect of two curves:
 the equilibrium D47 vs D48 curve from Fiebig et al. (2021) and
 the kinetic slope. The resulting D47 value is then converted to temperature
 using the \code{\link[=D47]{D47()}} function and the
-equation of Petersen et al. (2019). This is not consistent and I will fix it
-in a later patch. In any case, the resulting discrepancy is smaller
+equation of Petersen et al. (2019).There is a discrepancy in using both the
+Petersen et al. (2019) and the Fiebig et al. (2021) equations for D47.
+This will be addressed in a later version. In any case, the resulting discrepancy is smaller
 than the temperature error.
 }
 \section{Contributors}{

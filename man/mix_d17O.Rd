@@ -19,7 +19,7 @@ mix_d17O(d18O_A, d17O_A, d18O_B, d17O_B, lambda = 0.528)
 }
 \value{
 Returns a data frame:
-\itemize{
+\enumerate{
 \item d18O value of the mixture at x\% mixing (‰).
 \item d18O value of the mixture x\% mixing (‰).
 \item relative amount of component B in the mixture (\%):

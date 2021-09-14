@@ -23,6 +23,19 @@ expressed on the CDES90 scale (‰).
 \code{D48()} calculates the equilibrium carbonate D48 value
 for a given temperature.
 }
+\details{
+\strong{"Fiebig21"}:
+
+\deqn{\Delta_{48, CDES90} = 1.028 \times (6.002 \times \frac{1}{T}
+                  - 1.299 \times \frac{10^{4}}{T^{2}}
+                  + 8.996 \times \frac{10^{6}}{T^{3}}
+                  - 7.423 \times \frac{10^{8}}{T^{4}}) + 0.1245}
+
+\strong{"Swart21"}:
+
+\deqn{\Delta_{48, CDES90} =
+0.0142 \times \frac{10^{6}}{T^{2}} + 0.088}
+}
 \examples{
 D48(temp = 33.7, eq = "Fiebig21") # Returns 0.237
 D48(temp = 33.7, eq = "Swart21") # Returns 0.239

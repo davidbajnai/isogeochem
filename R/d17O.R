@@ -17,9 +17,9 @@
 #'
 #' @return
 #' Returns a data frame:
-#' * d18O value of the carbonate expressed on the VSMOW scale (‰).
-#' * d18O value of the carbonate expressed on the VSMOW scale (‰).
-#' * D17O value of the carbonate expressed on the VSMOW scale (‰).
+#' 1. d18O value of the carbonate expressed on the VSMOW scale (‰).
+#' 2. d18O value of the carbonate expressed on the VSMOW scale (‰).
+#' 3. D17O value of the carbonate expressed on the VSMOW scale (‰).
 #'
 #' @details
 #' \deqn{\theta_{A/B} = \frac{\alpha^{17}_{A/B}}{\alpha^{18}_{A/B}}}
@@ -80,9 +80,9 @@ d17O_c = function(temp, d18O_H2O_VSMOW, eq18 = "Daeron19", lambda = 0.528) {
 #'
 #' @return
 #' Returns a data frame:
-#' * d18O value of the mixture at x% mixing (‰).
-#' * d18O value of the mixture x% mixing (‰).
-#' * relative amount of component B in the mixture (%):
+#' 1. d18O value of the mixture at x% mixing (‰).
+#' 2. d18O value of the mixture x% mixing (‰).
+#' 3. relative amount of component B in the mixture (%):
 #'   from 100% A and 0% B to 0% A and 100% B.
 #'
 #' @examples

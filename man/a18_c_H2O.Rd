@@ -12,30 +12,7 @@ a18_c_H2O(temp, min, eq)
 \item{min}{Mineralogy. Options are \code{"calcite"}, \code{"aragonite"},
 and \code{"dolomite"}.}
 
-\item{eq}{Equation used for the calculations.
-
-Options for \strong{calcite}:
-\itemize{
-\item \code{"FO77"}: the equation of O'Neil et al. (1969)
-modified by Friedman and O'Neil (1977)
-\item \code{"KO97"}:  the equation of Kim and O'Neil (1997)
-modified by Kim et al. (2007)
-\item \code{"Coplen07"}: the equation of Coplen (2007)
-\item \code{"Tremaine11"}: the equation of Tremaine et al. (2011)
-\item \code{"Watkins13"}: the equation of Watkins et al. (2013)
-\item \code{"Daeron19"}: the equation of Daëron et al. (2019)
-}
-
-Options for \strong{aragonite}:
-\itemize{
-\item \code{"Dettman99"}: the equation of Grossman and Ku (1986)
-reprocessed by Dettman et al. (1999)
-}
-
-Options for \strong{dolomite}:
-\itemize{
-\item \code{"Vasconcelos05"}: the equation of Vasconcelos et al. (2005)
-}}
+\item{eq}{Equation used for the calculations. See details.}
 }
 \value{
 Returns the 18O/16O fractionation factor.
@@ -44,24 +21,94 @@ Returns the 18O/16O fractionation factor.
 \code{a18_c_H2O()} calculates the 18O/16O fractionation factor
 between carbonate and water.
 }
+\details{
+Options for eq if min = \code{"calcite"}:
+
+\code{"FO77"}: O'Neil et al. (1969), modified by Friedman and O'Neil (1977):
+
+\deqn{\alpha^{18}_{calcite/water} =
+e^{(2.78 \times \frac{1000}{T^{2}} - 0.00289)}}
+
+\code{"KO97-orig"}: Kim and O'Neil (1997):
+
+\deqn{\alpha^{18}_{calcite/water} =
+e^{(18.03 \times \frac{1}{T} - 0.03242)}}
+
+\code{"KO97"}: Kim and O'Neil (1997) - reprocessed to match the IUPAC-recommended
+acid fractionation factor (see Kim et al. 2007, 2015; and the Vignettes):
+
+\deqn{\alpha^{18}_{calcite/water} =
+e^{(18.04 \times \frac{1}{T} - 0.03218)}}
+
+\code{"Coplen07"}: Coplen (2007):
+
+\deqn{\alpha^{18}_{calcite/water} =
+e^{(17.4 \times \frac{1}{T} - 0.0286)}}
+
+\code{"Tremaine11"}: Tremaine et al. (2011):
+
+\deqn{\alpha^{18}_{calcite/water} =
+e^{(16.1 \times \frac{1}{T} - 0.0246)}}
+
+\code{"Watkins13"}: Watkins et al. (2013):
+
+\deqn{\alpha^{18}_{calcite/water} =
+e^{(17.747 \times \frac{1}{T} - 0.029777)}}
+
+\code{"Daeron19"}: Daëron et al. (2019):
+
+\deqn{\alpha^{18}_{calcite/water} =
+e^{(17.57 \times \frac{1}{T} - 0.02913)}}
+
+Options for eq if min = \code{"aragonite"}:
+
+\code{"GK86"}: Grossman and Ku (1986) modified by Dettman et al. (1999):
+
+\deqn{\alpha^{18}_{aragonite/water} =
+e^{(2.559 \times \frac{1000}{T^{2}} + 0.000715)}}
+
+Options for eq if min = \code{"dolomite"}:
+
+\code{"Vasconcelos05"}: Vasconcelos et al. (2005):
+
+\deqn{\alpha^{18}_{dolomite/water} =
+e^{(2.73 \times \frac{1000}{T^{2}} + 0.00026)}}
+}
 \examples{
 a18_c_H2O(temp = 25, min = "calcite", eq = "Coplen07")
-a18_c_H2O(temp = 25, min = "aragonite", "Dettman99")
+a18_c_H2O(temp = 25, min = "aragonite", "GK86")
 
 }
 \references{
-\strong{Calcite:}
-
 O'Neil, J. R., Clayton, R. N., & Mayeda, T. K. (1969).
 Oxygen isotope fractionation in divalent metal carbonates.
 The Journal of Chemical Physics, 51(12), 5547-5558.
 \url{https://doi.org/10.1063/1.1671982}
+
+Grossman, E. L., & Ku, T. L. (1986).
+Oxygen and carbon isotope fractionation in biogenic
+aragonite: Temperature effects.
+Chemical Geology, 59(1), 59-74.
+\url{https://doi.org/10.1016/0009-2541(86)90044-6}
 
 Kim, S.-T., & O'Neil, J. R. (1997).
 Equilibrium and nonequilibrium oxygen isotope effects
 in synthetic carbonates.
 Geochimica et Cosmochimica Acta, 61(16), 3461-3475.
 \url{https://doi.org/10.1016/S0016-7037(97)00169-5}
+
+Dettman, D. L., Reische, A. K., & Lohmann, K. C. (1999).
+Controls on the stable isotope composition of seasonal growth bands
+in aragonitic fresh-water bivalves (unionidae).
+Geochimica et Cosmochimica Acta, 63(7-8), 1049-1057.
+\url{https://doi.org/10.1016/s0016-7037(99)00020-4}
+
+Vasconcelos, C., McKenzie, J. A., Warthmann, R.,
+& Bernasconi, S. M. (2005).
+Calibration of the d18O paleothermometer for dolomite precipitated in
+microbial cultures and natural environments.
+Geology, 33(4), 317-320.
+\url{https://doi.org/10.1130/g20992.1}
 
 Kim, S.-T., Mucci, A., & Taylor, B. E. (2007).
 Phosphoric acid fractionation factors for calcite and aragonite between
@@ -91,23 +138,6 @@ Coplen, T. B., et al. (2019).
 Most Earth-surface calcites precipitate out of isotopic equilibrium.
 Nature Communications, 10, 429.
 \url{https://doi.org/10.1038/s41467-019-08336-5}
-
-\strong{Aragonite:}
-
-Dettman, D. L., Reische, A. K., & Lohmann, K. C. (1999).
-Controls on the stable isotope composition of seasonal growth bands
-in aragonitic fresh-water bivalves (unionidae).
-Geochimica et Cosmochimica Acta, 63(7-8), 1049-1057.
-\url{https://doi.org/10.1016/s0016-7037(99)00020-4}
-
-\strong{Dolomite:}
-
-Vasconcelos, C., McKenzie, J. A., Warthmann, R.,
-& Bernasconi, S. M. (2005).
-Calibration of the d18O paleothermometer for dolomite precipitated in
-microbial cultures and natural environments.
-Geology, 33(4), 317-320.
-\url{https://doi.org/10.1130/g20992.1}
 }
 \seealso{
 Other fractionation_factors: 

@@ -33,7 +33,7 @@ the VSMOW and VPDB scales.
 d18O_H2O(temp = 33.7, d18O_c_VSMOW = 14.58,
          min = "calcite", eq = "Coplen07")
 d18O_H2O(temp = 25, d18O_c_VSMOW = to_VSMOW(-7.47),
-         min = "aragonite", eq = "Dettman99")
+         min = "aragonite", eq = "GK86")
 
 }
 \references{
