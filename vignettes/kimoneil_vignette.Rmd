@@ -111,12 +111,31 @@ plot(0, type="l", axes=TRUE, ylim=c(28, 34), xlim = c(10, 30),
 
 temp = seq(10,30,1)
 
-# lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97-orig")), col = "darkblue", lwd = 2, lty = 2)
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97")), col = "darkblue", lwd = 2, lty = 1)
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97-orig")), col = "darkblue",
+      lwd = 2, lty = 3)
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97")), col = "darkblue",
+      lwd = 2, lty = 1)
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Daeron19")), col = "darkmagenta")
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Coplen07")), col = "pink")
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Watkins13")), col = "magenta")
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "FO77")), col = "blue")
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Tremaine11")), col = "lightblue")
 
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Daeron19")), col = "purple", lwd = 1)
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Coplen07")), col = "red", lwd = 1)
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Watkins13")), col = "magenta", lwd = 1)
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "FO77")), col = "green", lwd = 1)
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Tremaine11")), col = "lightblue", lwd = 1)
+legend("topright", bty="n", cex=1, adj = c(0, NA),
+       lty = c(3,  1,  1,  1,  1,  1,  1),
+       lwd = c(2,  2,  1,  1,  1,  1,  1), 
+       col = c("darkblue",
+               "darkblue",
+               "darkmagenta",
+               "pink",
+               "magenta",
+               "blue",
+               "lightblue"),
+       c("KO97-orig",
+         "KO97",
+         "Daeron19",
+         "Coplen07",
+         "Watkins13",
+         "FO77",
+         "Tremaine11"))
 ```
