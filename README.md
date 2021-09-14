@@ -152,13 +152,13 @@ Use `isogeochem` to calculate isotope fractionation factors at given
 temperatures.
 
 ``` r
-# calcite / water -- using Daëron et al. (2021)
+# calcite/water – using Daëron et al. (2021)
 a18_c_H2O(temp = 25, min = "calcite", eq = "Daeron19")
-# calcite / water -- using Kim and O'Neil (1997)
+# calcite/water – using Kim and O'Neil (1997)
 a18_c_H2O(temp = 25, min = "calcite", eq = "KO97")
-# aragonite / water –– using Dettman et al. (1999)
-a18_c_H2O(temp = 25, min = "aragonite", eq = "Dettman99")
-# water / hydroxide ion –– using Zeebe (2021)
+# aragonite/water – using Grossman & Ku (1986) modified by Dettman et al. (1999)
+a18_c_H2O(temp = 25, min = "aragonite", eq = "GK86")
+# water/hydroxide ion – using Zeebe (2021)
 a18_H2O_OH(temp = 25, eq = "Z21-X3LYP")
 ```
 
