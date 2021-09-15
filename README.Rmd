@@ -194,6 +194,8 @@ There are several other R packages that complement `isogeochem` and are worth ch
 
 [`viridisLite`](https://github.com/sjmgarnier/viridisLite) and `viridis` produce color-blind and black-and-white printer friendly color scales.
 
+[`clumpedr`](https://github.com/isoverse/clumpedr/) works with [isoreader](https://github.com/isoverse/isoreader) to read in raw measurement data and reproducibly process the results to clumped isotope values.
+
 [`seasonalclumped`](https://github.com/nielsjdewinter/seasonalclumped) can be used to reconstruct temperature and salinity variations from seasonal oxygen and clumped isotope records.
 
 [`deeptime`](https://github.com/willgearty/deeptime) adds geological timescales to ggplots.
