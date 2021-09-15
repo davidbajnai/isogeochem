@@ -2,18 +2,18 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "isogeochem",
-  "description": "This toolbox makes working with stable oxygen, carbon, and clumped isotope data reproducible and straightforward.",
+  "description": "This toolbox makes working with carbonate oxygen and clumped isotope data reproducible and straightforward.",
   "name": "isogeochem: Tools For Carbonate Isotope Geochemistry",
   "codeRepository": "https://github.com/davidbajnai/isogeochem",
   "issueTracker": "https://github.com/davidbajnai/isogeochem/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.0 (2021-05-18)",
+  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
   "author": [
     {
       "@type": "Person",
@@ -150,5 +150,5 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1551.692KB"
+  "fileSize": "1922.362KB"
 }

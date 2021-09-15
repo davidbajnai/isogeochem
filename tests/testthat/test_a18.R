@@ -31,8 +31,8 @@ test_that("a18_H2O_OH errors if eq is not or wrongly specified", {
 
 test_target_int = c(0.9, 1.1)
 test_that("a18_H2O_OH produces a value between 0.9 and 1.1", {
-  expect_lt(a18_H2O_OH(1, "Z21-X3LYP"),test_target_int[2])
-  expect_gt(a18_H2O_OH(150, "Z21-X3LYP"),test_target_int[1])
+  expect_lt(a18_H2O_OH(1, "Z20-X3LYP"),test_target_int[2])
+  expect_gt(a18_H2O_OH(150, "Z20-X3LYP"),test_target_int[1])
   expect_lt(a18_H2O_OH(1, "Z20-MP2"),test_target_int[2])
   expect_gt(a18_H2O_OH(150, "Z20-MP2"),test_target_int[1])
 })
@@ -47,6 +47,8 @@ test_that("a18_H2O_OH produces a value between 0.9 and 1.1", {
   expect_gt(a18_c_H2O(150, min = "calcite", eq = "Watkins13"),test_target_int[1])
   expect_lt(a18_c_H2O(1, min = "calcite", eq = "FO77"),test_target_int[2])
   expect_gt(a18_c_H2O(150, min = "calcite", eq = "FO77"),test_target_int[1])
+  expect_lt(a18_c_H2O(1, min = "calcite", eq = "Tremaine11"),test_target_int[2])
+  expect_gt(a18_c_H2O(150, min = "calcite", eq = "Tremaine11"),test_target_int[1])
   expect_lt(a18_c_H2O(1, min = "aragonite", eq = "GK86"),test_target_int[2])
   expect_gt(a18_c_H2O(150, min = "aragonite", eq = "GK86"),test_target_int[1])
   expect_lt(a18_c_H2O(1, min = "dolomite", eq = "Vasconcelos05"),test_target_int[2])

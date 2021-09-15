@@ -13,8 +13,10 @@ temp_D47(D47_CDES90, D47_error, eq)
 
 \item{eq}{Equation used for the calculation.
 \itemize{
-\item \code{"Petersen19"}: the synthetic-only IUPAC-parameter "UNICAL" calibration
+\item \code{"Petersen19"}: the synthetic-only composite IUPAC-parameter calibration
 of Petersen et al. (2019).
+\item \code{"Fiebig21"}: the CDES90 calibration of Fiebig et al. (2021), linearized
+between 8–80 °C.
 }}
 }
 \value{
@@ -23,6 +25,17 @@ and — if \code{D47_error} is specified — also the error.
 }
 \description{
 \code{temp_D47()} calculates carbonate growth temperature from D47 value.
+}
+\details{
+\strong{"Petersen19"}:
+
+\deqn{\Delta_{47, CDES90} =
+0.0383 \times \frac{10^{6}}{T^{2}} + 0.170}
+
+\strong{"Fiebig21"}:
+
+\deqn{\Delta_{47, CDES90} =
+0.0391 \times \frac{10^{6}}{T^{2}} + 0.1547}
 }
 \examples{
 temp_D47(D47_CDES90 = 0.577, eq = "Petersen19")

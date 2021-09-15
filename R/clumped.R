@@ -10,7 +10,7 @@
 #'
 #' @param temp Carbonate growth temperature (°C).
 #' @param eq Equation used for the calculation.
-#'   * `"Petersen19"`: the synthetic-only IUPAC-parameter "UNICAL" calibration
+#'   * `"Petersen19"`: the synthetic-only composite IUPAC-parameter calibration
 #'     of Petersen et al. (2019).
 #'   * `"Fiebig21"`: the CDES90 calibration of Fiebig et al. (2021).
 #'
@@ -88,8 +88,21 @@ D47 = function(temp, eq) {
 #' @param D47_CDES90 Carbonate D47 values expressed on the CDES90 scale (‰).
 #' @param D47_error Error on the D47 value. Optional.
 #' @param eq Equation used for the calculation.
-#'   * `"Petersen19"`: the synthetic-only IUPAC-parameter "UNICAL" calibration
+#'   * `"Petersen19"`: the synthetic-only composite IUPAC-parameter calibration
 #'     of Petersen et al. (2019).
+#'  * `"Fiebig21"`: the CDES90 calibration of Fiebig et al. (2021), linearized
+#'     between 8–80 °C.
+#'
+#' @details
+#' **"Petersen19"**:
+#'
+#' \deqn{\Delta_{47, CDES90} =
+#' 0.0383 \times \frac{10^{6}}{T^{2}} + 0.170}
+#'
+#' **"Fiebig21"**:
+#'
+#' \deqn{\Delta_{47, CDES90} =
+#' 0.0391 \times \frac{10^{6}}{T^{2}} + 0.1547}
 #'
 #' @return
 #' Returns the carbonate growth temperature (°C),
@@ -116,10 +129,19 @@ temp_D47 = function(D47_CDES90, D47_error, eq) {
       b = 0.258 - 0.088
       m = 0.0383
       temp_util = sqrt(10 ^ 6 / ((D47_CDES90 - b) / m)) - 273.15
+    } else if (eq == "Fiebig21") {
+      # Fiebig et al. (2021) - refitted
+      TinC = seq(8, 80, 0.01)
+      TinK = (10 ^ 6 / (TinC + 273.15) ^ 2)
+      D47_F21 = D47(TinC, "Fiebig21")
+      eq = stats::lm(D47_F21 ~ TinK)
+      b = as.numeric(eq$coefficients[1])
+      m = as.numeric(eq$coefficients[2])
+      temp_util = sqrt(10 ^ 6 / ((D47_CDES90 - b) / m)) - 273.15
     } else {
       stop("Invalid input for eq")
     }
-    invisible(return(round(temp_util,1)))
+    invisible(return(round(temp_util, 1)))
   }
 
   temp = temp_util(D47_CDES90, eq = eq)
@@ -228,11 +250,11 @@ D48 = function(temp, eq) {
 #' The function calculates a D47 value as an intersect of two curves:
 #' the equilibrium D47 vs D48 curve from Fiebig et al. (2021) and
 #' the kinetic slope. The resulting D47 value is then converted to temperature
-#' using the [D47()] function and the
-#' equation of Petersen et al. (2019).There is a discrepancy in using both the
-#' Petersen et al. (2019) and the Fiebig et al. (2021) equations for D47.
-#' This will be addressed in a later version. In any case, the resulting discrepancy is smaller
-#' than the temperature error.
+#' using the [temp_D47()] function and the linearized equation of
+#' Fiebig et al. (2021). Specifically, the 4th order polynomial
+#' D47_CDES90 vs temperature relationship was linearized between 8–80 °C.
+#' The discrepancy between the polynomial and the linearized equation is
+#' less than 1 °C in this range.
 #'
 #' @return
 #' Returns the carbonate growth temperature (°C).
@@ -260,28 +282,18 @@ D48 = function(temp, eq) {
 temp_D48 = function(D47_CDES90, D48_CDES90, D47_error, D48_error,
                     ks, add = FALSE, col, pch) {
 
-  ## curve_intersect() is the work of Andrew Heiss
+  ## curve_intersect() is based on the work of Andrew Heiss
   ## It is distributed under an MIT licence (2017).
   ## https://github.com/andrewheiss/reconPlots
-  ## The source code is reproduced here with formatting modifications.
-  curve_intersect = function(curve1, curve2, empirical = TRUE, domain = NULL) {
-  if (!empirical & missing(domain)) {
-    stop("'domain' must be provided with non-empirical curves")
-  }
-  if (!empirical & (length(domain) != 2 | !is.numeric(domain))) {
-    stop("'domain' must be a two-value numeric vector, like c(0, 10)")
-  }
-  if (empirical) {
+  ## The source code is reproduced here with modifications.
+  curve_intersect = function(curve1, curve2) {
     curve1_f = stats::approxfun(curve1$x, curve1$y, rule = 2)
     curve2_f = stats::approxfun(curve2$x, curve2$y, rule = 2)
-    point_x = stats::uniroot(function(x) curve1_f(x) - curve2_f(x),
-                       c(min(curve1$x), max(curve1$x)))$root
+    point_x = stats::uniroot(function(x)
+      curve1_f(x) - curve2_f(x),
+      c(min(curve1$x), max(curve1$x)))$root
     point_y = curve2_f(point_x)
-  } else {
-    point_x = stats::uniroot(function(x) curve1(x) - curve2(x), domain)$root
-    point_y = curve2(point_x)
-  }
-  return(list(x = point_x, y = point_y))
+    return(list(x = point_x, y = point_y))
   }
   ## This is the end of curve_intersect()
 
@@ -304,8 +316,8 @@ temp_D48 = function(D47_CDES90, D48_CDES90, D47_error, D48_error,
     int_cool = curve_intersect(line_cool, line_eq)
     int_warm = curve_intersect(line_warm, line_eq)
     temp_mean = temp
-    temp_warm = round(temp_D47(int_warm$y, eq = "Petersen19"),0)
-    temp_cool = round(temp_D47(int_cool$y, eq = "Petersen19"),0)
+    temp_warm = round(temp_D47(int_warm$y, eq = "Fiebig21"),0)
+    temp_cool = round(temp_D47(int_cool$y, eq = "Fiebig21"),0)
     temp = data.frame(temp_mean, temp_warm, temp_cool)
 
     if (add == TRUE) {

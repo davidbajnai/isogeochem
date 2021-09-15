@@ -11,7 +11,7 @@ D47(temp, eq)
 
 \item{eq}{Equation used for the calculation.
 \itemize{
-\item \code{"Petersen19"}: the synthetic-only IUPAC-parameter "UNICAL" calibration
+\item \code{"Petersen19"}: the synthetic-only composite IUPAC-parameter calibration
 of Petersen et al. (2019).
 \item \code{"Fiebig21"}: the CDES90 calibration of Fiebig et al. (2021).
 }}

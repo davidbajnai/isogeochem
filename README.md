@@ -56,7 +56,7 @@ temperature corrected for kinetic effects considering both the
 *∆*<sub>47</sub> and the *∆*<sub>48</sub> value.
 
 ``` r
-library(isogeochem)
+# library(isogeochem)
 if (!require("shades")) install.packages("shades")
 
 # Model equilibrium carbonate ∆47 and ∆48 values
@@ -155,22 +155,18 @@ temperatures.
 ``` r
 # calcite/water – using Daëron et al. (2021)
 a18_c_H2O(temp = 25, min = "calcite", eq = "Daeron19")
-# calcite/water – using Kim and O'Neil (1997)
+# calcite/water – using Kim and O'Neil (1997) reprocessed (see Vignettes)
 a18_c_H2O(temp = 25, min = "calcite", eq = "KO97")
 # aragonite/water – using Grossman & Ku (1986) modified by Dettman et al. (1999)
 a18_c_H2O(temp = 25, min = "aragonite", eq = "GK86")
-# water/hydroxide ion – using Zeebe (2021)
-a18_H2O_OH(temp = 25, eq = "Z21-X3LYP")
+# water/hydroxide ion – using Zeebe (2020)
+a18_H2O_OH(temp = 25, eq = "Z20-X3LYP")
 ```
 
 ## Vignettes
 
 Case studies demonstrating the use and scope of the functions are
 available as [vignettes](vignettes/)
-
-``` r
-browseVignettes("isogeochem")
-```
 
 ## Utility functions
 
@@ -200,8 +196,14 @@ Within `isogeochem` you have quick access to important datasets.
 There are several other R packages that complement `isogeochem` and are
 worth checking out:
 
-[`viridisLite`](https://github.com/sjmgarnier/viridisLite) and `viridis`
-produce color-blind and black-and-white printer friendly color scales.
+[`viridisLite`](https://github.com/sjmgarnier/viridisLite) and
+[`viridis`](https://github.com/sjmgarnier/viridis) produce color-blind
+and black-and-white printer friendly color scales.
+
+[`clumpedr`](https://github.com/isoverse/clumpedr/) works with
+[`isoreader`](https://github.com/isoverse/isoreader) to read in raw
+measurement data and reproducibly process the results to clumped isotope
+values.
 
 [`seasonalclumped`](https://github.com/nielsjdewinter/seasonalclumped)
 can be used to reconstruct temperature and salinity variations from

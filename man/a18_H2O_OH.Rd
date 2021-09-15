@@ -23,7 +23,7 @@ Returns the 18O/16O fractionation factor.
 water and aqueous hydroxide ion.
 }
 \examples{
-a18_H2O_OH(temp = 90, eq = "Z21-X3LYP")
+a18_H2O_OH(temp = 90, eq = "Z20-X3LYP")
 
 }
 \references{

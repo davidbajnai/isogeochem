@@ -90,13 +90,13 @@ a18_CO2acid_c = function(temp, min) {
 #' @family fractionation_factors
 #'
 #' @examples
-#' a18_H2O_OH(temp = 90, eq = "Z21-X3LYP")
+#' a18_H2O_OH(temp = 90, eq = "Z20-X3LYP")
 #'
 #' @export
 
 a18_H2O_OH = function(temp, eq) {
   TinK = temp + 273.15
-  if (eq == "Z21-X3LYP") {
+  if (eq == "Z20-X3LYP") {
     e18_H2O_OH = (-4.4573 + (10.3255 * 10^3) / TinK + (-0.5976 * 10^6) / TinK^2)
   } else if (eq == "Z20-MP2") {
     e18_H2O_OH = (-4.0771 + (9.8350 * 10^3) / TinK + (-0.8729 * 10^6) / TinK^2)

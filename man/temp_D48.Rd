@@ -42,11 +42,11 @@ Returns the carbonate growth temperature (°C).
 The function calculates a D47 value as an intersect of two curves:
 the equilibrium D47 vs D48 curve from Fiebig et al. (2021) and
 the kinetic slope. The resulting D47 value is then converted to temperature
-using the \code{\link[=D47]{D47()}} function and the
-equation of Petersen et al. (2019).There is a discrepancy in using both the
-Petersen et al. (2019) and the Fiebig et al. (2021) equations for D47.
-This will be addressed in a later version. In any case, the resulting discrepancy is smaller
-than the temperature error.
+using the \code{\link[=temp_D47]{temp_D47()}} function and the linearized equation of
+Fiebig et al. (2021). Specifically, the 4th order polynomial
+D47_CDES90 vs temperature relationship was linearized between 8–80 °C.
+The discrepancy between the polynomial and the linearized equation is
+less than 1 °C in this range.
 }
 \section{Contributors}{
 
