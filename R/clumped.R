@@ -108,15 +108,19 @@ D47 = function(temp, eq) {
 #' @export
 
 temp_D47 = function(D47_CDES90, D47_error, eq) {
-
   temp_util = function (D47_CDES90, eq) {
-    fun_to_optimize = function(x)
-      abs(D47(x, eq) - D47_CDES90)
-    tval = stats::optimize(fun_to_optimize, lower = -1000, upper = 1000)
-    temp_util = as.numeric(tval$minimum)
+    temp_util = c()
+    for (n in 1:length(D47_CDES90)) {
+      fun_to_optimize = function(x)
+        abs(D47(x, eq) - D47_CDES90[n])
+      tval = stats::optimize(fun_to_optimize,
+                             lower = -1000,
+                             upper = 1000)
+      tval = as.numeric(tval$minimum)
+      temp_util[n] = tval
+    }
     invisible(return(round(temp_util, 1)))
   }
-
   temp = temp_util(D47_CDES90, eq = eq)
 
   if (missing(D47_error) == FALSE) {

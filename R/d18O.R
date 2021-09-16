@@ -131,8 +131,13 @@ d18O_H2O = function(temp, d18O_c_VSMOW, min, eq) {
 
 temp_d18O = function(d18O_c_VSMOW, d18O_H2O_VSMOW, min, eq) {
   a18_c_H2O = (d18O_c_VSMOW + 1000) / (d18O_H2O_VSMOW + 1000)
-  fun_to_optimize = function(x)
-    abs(a18_c_H2O(x, min, eq) - a18_c_H2O)
-  tval = stats::optimize(fun_to_optimize, lower = -1000, upper = 1000)
-  round(as.numeric(tval$minimum), 1)
+  temp_util = c()
+  for (n in 1:length(d18O_c_VSMOW)) {
+    fun_to_optimize = function(x)
+      abs(a18_c_H2O(x, min, eq) - a18_c_H2O[n])
+    tval = stats::optimize(fun_to_optimize, lower = -1000, upper = 1000)
+    tval = as.numeric(tval$minimum)
+    temp_util[n] = tval
+  }
+  round(temp_util, 1)
 }
