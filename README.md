@@ -43,7 +43,7 @@ version from Github with devtools:
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
-devtools::install_github("davidbajnai/isogeochem")
+devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
 ```
 
 ## Dual clumped isotope thermometry
@@ -167,6 +167,10 @@ a18_H2O_OH(temp = 25, eq = "Z20-X3LYP")
 
 Case studies demonstrating the use and scope of the functions are
 available as [vignettes](vignettes/)
+
+``` r
+browseVignettes("isogeochem")
+```
 
 ## Utility functions
 
