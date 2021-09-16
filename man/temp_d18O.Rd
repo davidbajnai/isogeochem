@@ -11,11 +11,9 @@ temp_d18O(d18O_c_VSMOW, d18O_H2O_VSMOW, min, eq)
 
 \item{d18O_H2O_VSMOW}{Water d18O value expressed on the VSMOW scale (‰).}
 
-\item{min}{Mineralogy. Options are \code{"calcite"}, \code{"aragonite"},
-and \code{"dolomite"}.}
+\item{min}{Mineralogy. Options are as in \code{\link[=a18_c_H2O]{a18_c_H2O()}}.}
 
-\item{eq}{Equation used to calculate the equilibrium 18O/16O oxygen isotope
-fractionation factor between carbonate and water.
+\item{eq}{Equation used for the calculations.
 Options depend on mineralogy and listed in \code{\link[=a18_c_H2O]{a18_c_H2O()}}.}
 }
 \value{

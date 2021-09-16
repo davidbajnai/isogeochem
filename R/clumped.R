@@ -63,18 +63,16 @@ D47 = function(temp, eq) {
     # Petersen et al. (2019)
     b = 0.258 - 0.088
     m = 0.0383
-    D47 = m * (10 ^ 6 / TinK ^ 2) + b
+    m * (10 ^ 6 / TinK ^ 2) + b
   } else if (eq == "Fiebig21") {
     # Fiebig et al. (2021)
-    D47 = 1.038 * (-5.897 / TinK
-                   - 3.521 * 10 ^ 3 / TinK ^ 2
-                   + 2.391 * 10 ^ 7 / TinK ^ 3
-                   - 3.541 * 10 ^ 9 / TinK ^ 4) + 0.1856
+    1.038 * (-5.897 / TinK
+             - 3.521 * 10 ^ 3 / TinK ^ 2
+             + 2.391 * 10 ^ 7 / TinK ^ 3
+             - 3.541 * 10 ^ 9 / TinK ^ 4) + 0.1856
   } else {
     stop("Invalid input for eq")
   }
-
-  return(D47)
 }
 
 
@@ -87,22 +85,10 @@ D47 = function(temp, eq) {
 #'
 #' @param D47_CDES90 Carbonate D47 values expressed on the CDES90 scale (‰).
 #' @param D47_error Error on the D47 value. Optional.
-#' @param eq Equation used for the calculation.
-#'   * `"Petersen19"`: the synthetic-only composite IUPAC-parameter calibration
-#'     of Petersen et al. (2019).
-#'  * `"Fiebig21"`: the CDES90 calibration of Fiebig et al. (2021), linearized
-#'     between 8–80 °C.
+#' @param eq Equation used for the calculation. Options are as in [D47()].
 #'
 #' @details
-#' **"Petersen19"**:
-#'
-#' \deqn{\Delta_{47, CDES90} =
-#' 0.0383 \times \frac{10^{6}}{T^{2}} + 0.170}
-#'
-#' **"Fiebig21"**:
-#'
-#' \deqn{\Delta_{47, CDES90} =
-#' 0.0391 \times \frac{10^{6}}{T^{2}} + 0.1547}
+#' The D47 vs temperature equations are listed at [D47()].
 #'
 #' @return
 #' Returns the carbonate growth temperature (°C),
@@ -124,23 +110,10 @@ D47 = function(temp, eq) {
 temp_D47 = function(D47_CDES90, D47_error, eq) {
 
   temp_util = function (D47_CDES90, eq) {
-    if (eq == "Petersen19") {
-      # Petersen et al. (2019)
-      b = 0.258 - 0.088
-      m = 0.0383
-      temp_util = sqrt(10 ^ 6 / ((D47_CDES90 - b) / m)) - 273.15
-    } else if (eq == "Fiebig21") {
-      # Fiebig et al. (2021) - refitted
-      TinC = seq(8, 80, 0.01)
-      TinK = (10 ^ 6 / (TinC + 273.15) ^ 2)
-      D47_F21 = D47(TinC, "Fiebig21")
-      eq = stats::lm(D47_F21 ~ TinK)
-      b = as.numeric(eq$coefficients[1])
-      m = as.numeric(eq$coefficients[2])
-      temp_util = sqrt(10 ^ 6 / ((D47_CDES90 - b) / m)) - 273.15
-    } else {
-      stop("Invalid input for eq")
-    }
+    fun_to_optimize = function(x)
+      abs(D47(x, eq) - D47_CDES90)
+    tval = stats::optimize(fun_to_optimize, lower = -1000, upper = 1000)
+    temp_util = as.numeric(tval$minimum)
     invisible(return(round(temp_util, 1)))
   }
 
@@ -250,11 +223,8 @@ D48 = function(temp, eq) {
 #' The function calculates a D47 value as an intersect of two curves:
 #' the equilibrium D47 vs D48 curve from Fiebig et al. (2021) and
 #' the kinetic slope. The resulting D47 value is then converted to temperature
-#' using the [temp_D47()] function and the linearized equation of
-#' Fiebig et al. (2021). Specifically, the fourth order polynomial
-#' D47_CDES90 vs temperature relationship was linearized between 8–80 °C.
-#' The discrepancy between the polynomial and the linearized equation is
-#' less than 0.5 °C in this range.
+#' using the [temp_D47()] function and the equilibrium
+#' D47_CDES90 vs temperature equation of Fiebig et al. (2021).
 #'
 #' @return
 #' Returns the carbonate growth temperature (°C).
@@ -302,7 +272,7 @@ temp_D48 = function(D47_CDES90, D48_CDES90, D47_error, D48_error,
   line_eq = data.frame(x = D48(seq(-10, 1000, 0.1), eq = "Fiebig21"),
                        y = D47(seq(-10, 1000, 0.1), eq = "Fiebig21"))
   int = curve_intersect(line_sample, line_eq)
-  temp = round(temp_D47(int$y, eq = "Petersen19"), 0)
+  temp = round(temp_D47(int$y, eq = "Fiebig21"), 0)
 
   if (missing("D47_error") == FALSE && missing("D48_error") == FALSE) {
     line_cool = data.frame(x=c(D48_CDES90 + D48_error + 1,

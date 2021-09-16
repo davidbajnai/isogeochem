@@ -11,8 +11,7 @@ d18O_c(temp, d18O_H2O_VSMOW, min, eq)
 
 \item{d18O_H2O_VSMOW}{Water d18O value expressed on the VSMOW scale (‰).}
 
-\item{min}{Mineralogy. Options are \code{"calcite"}, \code{"aragonite"},
-and \code{"dolomite"}.}
+\item{min}{Mineralogy. Options are as in \code{\link[=a18_c_H2O]{a18_c_H2O()}}.}
 
 \item{eq}{Equation used for the calculations.
 Options depend on mineralogy and are listed in \code{\link[=a18_c_H2O]{a18_c_H2O()}}.}

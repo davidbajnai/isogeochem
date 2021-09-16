@@ -1,3 +1,10 @@
+# isogeochem 1.0.3
+
+* Vignettes are now working properly.
+* temp_D47(), temp_D48(), and temp_d18O() are `optimize`-d.
+* Added the "Kim07" eq to "aragonite" in a18_c_H2O()
+* Added the "vanDijk18" eq to "siderite" in a18_c_H2O()
+
 # isogeochem 1.0.2
 
 * Updated the DESCRIPTION file
