@@ -100,7 +100,7 @@ Consequently, the reprocessed equation is:
 
 **10<sup>3</sup> ln &alpha; = 18.04 x 1000 / T - 32.18**
 
-# Visualize the 10<sup>3</sup>ln&alpha; vs. temperature relationships
+## Visualize the 10<sup>3</sup>ln&alpha; vs. temperature relationships
 
 ```{r fig.height = 5, fig.width = 5}
 par(mar = c(4, 4.3, 0.5, 0.8))
