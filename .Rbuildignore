@@ -11,3 +11,5 @@
 ^isogeochem_manual\.pdf$
 ^codecov\.yml$
 ^man/figures$
+^doc$
+^Meta$
