@@ -19,7 +19,7 @@ Returns the isotope fractionation factor.
 }
 \details{
 \deqn{\alpha^{i}E_{A/B} =
-\frac{\delta^{i}E_{A} + 1000}{\delta^{i}E_{B} + 1000}}
+\frac{\delta^{i}E_{A} + 1}{\delta^{i}E_{B} + 1}}
 }
 \examples{
 a_A_B(A = 10, B = 12)

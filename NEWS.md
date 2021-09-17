@@ -1,7 +1,14 @@
+# isogeochem 1.0.4
+
+* Added the new function xabs() to calculate the relative rates of CO2 absorption reactions
+* Added the new function epsilon() to calculate isotope fractionation values from fractionation factors
+* Updated README
+* Improved and increased test coverage
+
 # isogeochem 1.0.3
 
-* Vignettes are now working properly.
-* temp_D47(), temp_D48(), and temp_d18O() are `optimize`-d.
+* Vignettes are now working properly
+* temp_D47(), temp_D48(), and temp_d18O() are `optimize`-d
 * Added the "Kim07" eq to "aragonite" in a18_c_H2O()
 * Added the "vanDijk18" eq to "siderite" in a18_c_H2O()
 

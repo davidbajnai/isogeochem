@@ -54,7 +54,7 @@
 #'
 #' @export
 
-york_fit = function(y, x, x_err, y_err, r = 0) {
+york_fit = function(x, y, x_err, y_err, r = 0) {
   # Get number of data points and perform quality checks
   n = length(x)
   if (length(y) != n |
@@ -250,7 +250,7 @@ york_plot = function(x,
   t = stats::qt(1 - alpha / 2, df = n - 2)
 
   # Calculate confidence lines
-  x = seq(min(x), max(x), 1000)
+  x = seq(from = min(x), to = max(x), length.out = 1000)
   ylow = a + b * x - t *
     sqrt(sigma ^ 2 * (1 / n + 1 / (n - 1) * (x - xbar) ^ 2 / sigma_x ^ 2))
   yup = a + b * x + t *
@@ -259,7 +259,7 @@ york_plot = function(x,
   # Add graphical output to an existing plot
   if (add == TRUE) {
     if (is.null(grDevices::dev.list()) == FALSE) {
-      graphics::lines(x, a + b * x, col = col, lwd = 1.2)
+      graphics::lines(x, a + b * x, col = col, lwd = 1.5)
       graphics::polygon(
         c(x, rev(x)),
         c(ylow, rev(yup)),

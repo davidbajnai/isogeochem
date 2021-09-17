@@ -65,7 +65,7 @@ unprime = function(prime) {
 #'
 #' @details
 #' \deqn{\alpha^{i}E_{A/B} =
-#' \frac{\delta^{i}E_{A} + 1000}{\delta^{i}E_{B} + 1000}}
+#' \frac{\delta^{i}E_{A} + 1}{\delta^{i}E_{B} + 1}}
 #'
 #' @seealso
 #' [A_from_a()] calculates the isotope delta value of A.
@@ -132,4 +132,28 @@ B_from_a = function(a, A) {
 
 A_from_a = function(a, B) {
   (B + 1000) * a - 1000
+}
+
+
+# ——————————————————————————————————————————————————————————————————————————— #
+#### prime ####
+#' @title Isotope fractionation value
+#'
+#' @description
+#' `epsilon()` converts isotope fractionation factors to isotope fractionation values.
+#'
+#' @param alpha Isotope fractionation factor
+#'
+#' @return Returns the isotope fractionation value (‰).
+#'
+#' @details
+#' \deqn{\epsilon'^{i}E = \alpha'^{i}E - 1}
+#'
+#' @examples
+#' epsilon(a18_H2O_OH(25, "Z20-X3LYP"))
+#'
+#' @export
+
+epsilon = function(alpha) {
+  (alpha - 1) * 1000
 }

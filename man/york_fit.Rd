@@ -4,12 +4,12 @@
 \alias{york_fit}
 \title{Error-considering linear regression}
 \usage{
-york_fit(y, x, x_err, y_err, r = 0)
+york_fit(x, y, x_err, y_err, r = 0)
 }
 \arguments{
-\item{y}{vector of y values. Has to be same the length as x.}
-
 \item{x}{vector of x values.}
+
+\item{y}{vector of y values. Has to be same the length as x.}
 
 \item{x_err}{Error on the x values. Has to be same the length as x.}
 

@@ -254,7 +254,7 @@ D48 = function(temp, eq) {
 #' @export
 
 temp_D48 = function(D47_CDES90, D48_CDES90, D47_error, D48_error,
-                    ks, add = FALSE, col, pch) {
+                    ks, add = FALSE, col = "black", pch = 19) {
 
   ## curve_intersect() is based on the work of Andrew Heiss
   ## It is distributed under an MIT licence (2017).
@@ -295,8 +295,6 @@ temp_D48 = function(D47_CDES90, D48_CDES90, D47_error, D48_error,
     temp = data.frame(temp_mean, temp_warm, temp_cool)
 
     if (add == TRUE) {
-      if (missing(col) == TRUE) col = "black" else col = col
-      if (missing(pch) == TRUE) pch = 19 else pch = pch
       graphics::rect(xleft = D48_CDES90 - D48_error,
                      ybottom = D47_CDES90 - D47_error,
                      xright = D48_CDES90 + D48_error,
@@ -319,6 +317,7 @@ temp_D48 = function(D47_CDES90, D48_CDES90, D47_error, D48_error,
                        x1 = int_cool$x,
                        y1 = int_cool$y,
                        code = 0, col = "gray70", lwd = 1.5, lty = 2)
+      message("Graphics added to the plot")
     }
   }
 
@@ -330,6 +329,7 @@ temp_D48 = function(D47_CDES90, D48_CDES90, D47_error, D48_error,
                      y1 = int$y,
                      code = 2, length = 0.15, col="black", lwd = 1.5, lty = 1)
     graphics::points(D48_CDES90, D47_CDES90, col = col, pch = pch, cex = 1.2)
+    message("Graphics added to the plot")
   }
 
   return(temp)

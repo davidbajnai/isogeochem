@@ -11,8 +11,8 @@ temp_D48(
   D48_error,
   ks,
   add = FALSE,
-  col,
-  pch
+  col = "black",
+  pch = 19
 )
 }
 \arguments{

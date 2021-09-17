@@ -22,28 +22,41 @@ status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project
 clumped isotope data reproducible and straightforward. It offers tools
 to quickly calculate:
 
--   equilibrium carbonate *δ*<sup>18</sup>O, *δ*<sup>17</sup>O,
-    *∆*<sub>47</sub>, and *∆*<sub>48</sub> values
+-   carbonate *δ*<sup>18</sup>O, *δ*<sup>17</sup>O, *∆*<sub>47</sub>,
+    and *∆*<sub>48</sub> values at a given temperature
 -   carbonate growth temperatures from *δ*<sup>18</sup>O,
     *∆*<sub>47</sub>, and *∆*<sub>48</sub> values
 -   isotope fractionation factors, e.g., between carbonate and water
 -   model DIC speciation as a function of temperature, pH, and salinity
 -   convert between the VSMOW and VPDB scales
 
-Look at the [.pdf manual](isogeochem_manual.pdf) for the available list
-of calibrations and mineralogies.
+The lists of available proxy–temperature calibrations and mineralogies
+are constantly growing. Check out the [.pdf
+manual](isogeochem_manual.pdf) for the current catalog. Please get in
+touch if you have any suggestions!
 
-This package is work in progress. Please get in touch if you have any
-suggestions! Contributors are acknowledged.
+## Getting started
 
-## Installation
+### Installation
 
-This package is not on CRAN yet.<br/> You can install the development
-version from Github with devtools:
+`isogeochem` is not on CRAN yet but you can easily install it from
+GitHub:
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
+```
+
+This package is a work in progress and is therefore frequently updated.
+Always make sure that you use the latest version.
+
+### Vignettes
+
+Case studies demonstrating the use and scope of the functions in
+`isogeochem` are available as [vignettes](vignettes/).
+
+``` r
+browseVignettes("isogeochem")
 ```
 
 ## Dual clumped isotope thermometry
@@ -149,11 +162,11 @@ text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%"), pos = 1, cex = 0.5,
 
 ## Fractionation factors
 
-Use `isogeochem` to calculate isotope fractionation factors at given
-temperatures.
+Use `isogeochem` to calculate isotope <sup>16</sup>O/<sup>18</sup>O
+fractionation factors at given temperatures.
 
 ``` r
-# calcite/water – using Daëron et al. (2021)
+# calcite/water – using Daëron et al. (2019)
 a18_c_H2O(temp = 25, min = "calcite", eq = "Daeron19")
 # calcite/water – using Kim and O'Neil (1997) reprocessed (see Vignettes)
 a18_c_H2O(temp = 25, min = "calcite", eq = "KO97")
@@ -161,22 +174,16 @@ a18_c_H2O(temp = 25, min = "calcite", eq = "KO97")
 a18_c_H2O(temp = 25, min = "aragonite", eq = "GK86")
 # water/hydroxide ion – using Zeebe (2020)
 a18_H2O_OH(temp = 25, eq = "Z20-X3LYP")
-```
-
-## Vignettes
-
-Case studies demonstrating the use and scope of the functions are
-available as [vignettes](vignettes/)
-
-``` r
-browseVignettes("isogeochem")
+# CO2 from acid digestion/carbonate
+a18_CO2acid_c(temp = 25, "calcite")
 ```
 
 ## Utility functions
 
 ``` r
 # Convert between the VSMOW and VPDB scales:
-to_VPDB(10)
+to_VPDB(32)
+to_VSMOW(1)
 
 # Convert between classical delta and delta prime values:
 prime(10)
@@ -187,11 +194,11 @@ unprime(9.95)
 
 Within `isogeochem` you have quick access to important datasets.
 
-| Name         | Description                                             | Reference                    |
-|--------------|---------------------------------------------------------|------------------------------|
-| `devilshole` | The original Devils Hole carbonate d18O time series     | Winograd et al. (2006)       |
-| `LR04`       | A benthic foraminifera d18O stack                       | Lisiecki & Raymo (2005)      |
-| `GTS2020`    | An abridged version of the GTS2020 oxygen isotope stack | Grossman & Joachimski (2020) |
+| Name         | Description                                                      | Reference                    |
+|--------------|------------------------------------------------------------------|------------------------------|
+| `devilshole` | The original Devils Hole carbonate *δ*<sup>18</sup>O time series | Winograd et al. (2006)       |
+| `LR04`       | A benthic foraminifera *δ*<sup>18</sup>O stack                   | Lisiecki & Raymo (2005)      |
+| `GTS2020`    | An abridged version of the GTS2020 oxygen isotope stack          | Grossman & Joachimski (2020) |
 
 ------------------------------------------------------------------------
 

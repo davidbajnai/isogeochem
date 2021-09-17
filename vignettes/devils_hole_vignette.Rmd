@@ -88,29 +88,28 @@ lines(DH_age, DH_d18O_VPDB, lwd=2, col="gray10")
 
 ```{r fig.height = 4, fig.width = 8}
 # Convert D47 values into temperatures using the equation in Petersen et al. (2019)
-DH_temp = temp_D47(DH_D47, eq = "Petersen19")
+DH_temp = temp_D47(DH_D47, eq = "Fiebig21")
 DH_temp_mean = mean(DH_temp)
-DH_temp_mean
 
 # Calculate the temperature error
-DH_temp_err1 = temp_D47(DH_D47 + DH_D47_err, eq = "Petersen19")
-DH_temp_err2 = temp_D47(DH_D47 - DH_D47_err, eq = "Petersen19")
+DH_temp_err1 = temp_D47(DH_D47 + DH_D47_err, eq = "Fiebig21")
+DH_temp_err2 = temp_D47(DH_D47 - DH_D47_err, eq = "Fiebig21")
 DH_temp_err = mean((DH_temp_err1 - DH_temp_err2) / 2)
-DH_temp_err
 
 # Plot the results
 par(mar = c(4, 4.3, 0.5, 0.8))
-plot(0, type="l", ylim = c(31, 41), xlim = c(0, 570), xaxs="i", yaxs="i", xaxt = "n",
-     ylab="Temperature (°C)", xlab="Age (ka)",
-     lty=0, font=1, cex.lab=1, las = 1)
+plot(0, type = "l", ylim = c(28, 38), xlim = c(0, 570), 
+     xaxs = "i", yaxs = "i", xaxt = "n",  las = 1,
+     ylab = "Temperature (°C)",
+     xlab = "Age (ka)")
 
 # Set up the x axis with ticks and labels
 axis(1, at = seq(0, 570, by = 90))
-axis(1, at = seq(0, 570, by = 10), labels=NA)
+axis(1, at = seq(0, 570, by = 10), labels = NA)
 
 # Add mean error range
-rect(0, DH_temp_mean-DH_temp_err,
-     570, DH_temp_mean+DH_temp_err,
+rect(0, DH_temp_mean - DH_temp_err,
+     570, DH_temp_mean + DH_temp_err,
      col = "wheat", border = NA)
 
 # Add error bars
@@ -118,7 +117,7 @@ segments(DH_D47_age, DH_temp_err1,
          DH_D47_age, DH_temp_err2, col = "gray50")
 
 # Add points
-points(DH_D47_age, DH_temp, col="gray10", pch=19)
+points(DH_D47_age, DH_temp, col = "gray10", pch = 19)
 ```
 
 ## Groundwater *δ*<sup>18</sup>O versus age
@@ -126,27 +125,38 @@ points(DH_D47_age, DH_temp, col="gray10", pch=19)
 The calculated clumped isotope temperatures for the samples are indistinguishable, which allows us to calculate a mean temperature and use that to reconstruct the variations in groundwater.
 
 ```{r fig.height = 4, fig.width = 8}
-# Calculate groundwater d18O values
-DH_d18O_gw = d18O_H2O(DH_temp_mean, DH_d18O_VSMOW, min = "calcite", eq ="Coplen07")
-DH_d18O_gw_err1 = d18O_H2O(DH_temp_mean + DH_temp_err, DH_d18O_VSMOW + DH_d18O_err,
-                           min = "calcite", eq ="Coplen07")
-DH_d18O_gw_err2 = d18O_H2O(DH_temp_mean - DH_temp_err, DH_d18O_VSMOW - DH_d18O_err,
-                           min = "calcite", eq ="Coplen07")
+# Calculate groundwater d18O values and its error
+DH_d18O_gw = d18O_H2O(
+  temp = DH_temp_mean,
+  d18O_c_VSMOW = DH_d18O_VSMOW,
+  min = "calcite",
+  eq = "Coplen07")
+DH_d18O_gw_err_low = d18O_H2O(
+  temp = DH_temp_mean + DH_temp_err,
+  d18O_c_VSMOW = DH_d18O_VSMOW - DH_d18O_err,
+  min = "calcite",
+  eq = "Coplen07")
+DH_d18O_gw_err_high = d18O_H2O(
+  DH_temp_mean - DH_temp_err,
+  DH_d18O_VSMOW + DH_d18O_err,
+  min = "calcite",
+  eq = "Coplen07")
 
 # Plot the results
-par(mfrow = c(1, 1), mar = c(4.1, 4.4, 0.5, 0.8))
-plot(0, type="l", ylim = c(-15, -11), xlim = c(0, 570), xaxs="i", yaxs="i", xaxt = "n",
-     ylab=expression(delta^18*"O"[groundwater]*" (‰, VSMOW)"), xlab="Age (ka)",
-     lty=0, font=1, cex.lab=1, las = 1)
+par(mar = c(4.1, 4.4, 0.5, 0.8))
+plot(0, type = "l", ylim = c(-16, -12), xlim = c(0, 570),
+     xaxs = "i", yaxs = "i", xaxt = "n", las = 1,
+     ylab = expression(delta ^ 18 * "O"[groundwater] * " (‰, VSMOW)"),
+     xlab = "Age (ka)")
 
 # Set up the x axis with ticks and labels
 axis(1, at = seq(0, 570, by = 90))
-axis(1, at = seq(0, 570, by = 10), labels=NA)
+axis(1, at = seq(0, 570, by = 10), labels = NA)
 
 # Add the error interval the plot
-polygon(c(DH_age, rev(DH_age)), c(DH_d18O_gw_err1, rev(DH_d18O_gw_err2)),
-        col="wheat", border = NA)
+polygon(c(DH_age, rev(DH_age)), c(DH_d18O_gw_err_low, rev(DH_d18O_gw_err_high)),
+        col = "wheat", border = NA)
 
 # Add the carbonate d18O time series to the plot
-lines(DH_age, DH_d18O_gw, lwd=2, col="gray10")
+lines(DH_age, DH_d18O_gw, lwd = 2, col = "gray10")
 ```
