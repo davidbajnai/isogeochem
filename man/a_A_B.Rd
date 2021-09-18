@@ -27,6 +27,7 @@ a_A_B(A = 10, B = 12)
 }
 \seealso{
 \code{\link[=A_from_a]{A_from_a()}} calculates the isotope delta value of A.
+
 \code{\link[=B_from_a]{B_from_a()}} calculates the isotope delta value of B.
 
 Other fractionation_factors: 

@@ -1,3 +1,11 @@
+# isogeochem 1.0.5
+
+* Added the "Anderson21" option to D47() and temp_D47()
+* Typo fixes in the manual
+* Updated README
+* Updated Kim&ONeil vignette
+* Improved and increased test coverage
+
 # isogeochem 1.0.4
 
 * Added the new function xabs() to calculate the relative rates of CO2 absorption reactions

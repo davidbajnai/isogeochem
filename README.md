@@ -160,6 +160,26 @@ text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%"), pos = 1, cex = 0.5,
 
 ![Example 2](man/figures/README-example2.png)
 
+## Thermometry
+
+Use `isogeochem` to calculate carbonate growth temperatures from
+*δ*<sup>18</sup>O and *∆*<sub>47</sub> values.
+
+``` r
+# Temperature from D47 with or without errors
+temp_D47(D47_CDES90 = 0.601, eq = "Petersen19")
+temp_D47(D47_CDES90 = 0.601,
+         D47_error = 0.008 ,
+         eq = "Petersen19")
+
+# Temperature from d18O
+temp_d18O(
+  d18O_c_VSMOW = 30,
+  d18O_H2O_VSMOW = 0,
+  min = "calcite",
+  eq = "Watkins13")
+```
+
 ## Fractionation factors
 
 Use `isogeochem` to calculate isotope <sup>16</sup>O/<sup>18</sup>O

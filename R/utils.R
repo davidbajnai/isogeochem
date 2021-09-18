@@ -69,6 +69,7 @@ unprime = function(prime) {
 #'
 #' @seealso
 #' [A_from_a()] calculates the isotope delta value of A.
+#'
 #' [B_from_a()] calculates the isotope delta value of B.
 #'
 #' @family fractionation_factors
@@ -97,6 +98,7 @@ a_A_B = function(A, B) {
 #'
 #' @seealso
 #' [a_A_B()] calculates the isotope fractionation factor between A and B.
+#'
 #' [A_from_a()] calculates the isotope delta value of A.
 #'
 #' @examples
@@ -123,6 +125,7 @@ B_from_a = function(a, A) {
 #'
 #' @seealso
 #' [a_A_B()] calculates the isotope fractionation factor between A and B.
+#'
 #' [B_from_a()] calculates the isotope delta value of B.
 #'
 #' @examples
@@ -136,7 +139,7 @@ A_from_a = function(a, B) {
 
 
 # ——————————————————————————————————————————————————————————————————————————— #
-#### prime ####
+#### epsilon ####
 #' @title Isotope fractionation value
 #'
 #' @description
@@ -147,7 +150,10 @@ A_from_a = function(a, B) {
 #' @return Returns the isotope fractionation value (‰).
 #'
 #' @details
-#' \deqn{\epsilon'^{i}E = \alpha'^{i}E - 1}
+#' \deqn{\epsilon^{i}E_{A/B} = \alpha^{i}E_{A/B} - 1}
+#'
+#' @seealso
+#' a_A_B() calculates the isotope fractionation factor between A and B.
 #'
 #' @examples
 #' epsilon(a18_H2O_OH(25, "Z20-X3LYP"))

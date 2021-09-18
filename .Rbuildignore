@@ -9,6 +9,7 @@
 ^revdep$
 ^codemeta\.json$
 ^isogeochem_manual\.pdf$
+^Rplots\.pdf$
 ^codecov\.yml$
 ^man/figures$
 ^doc$

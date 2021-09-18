@@ -13,6 +13,7 @@ D47(temp, eq)
 \itemize{
 \item \code{"Petersen19"}: the synthetic-only composite IUPAC-parameter calibration
 of Petersen et al. (2019).
+\item \code{"Anderson21"}: the I-CDES90 calibration of Anderson et al. (2021).
 \item \code{"Fiebig21"}: the CDES90 calibration of Fiebig et al. (2021).
 }}
 }
@@ -28,6 +29,11 @@ for a given temperature.
 
 \deqn{\Delta_{47, CDES90} =
 0.0383 \times \frac{10^{6}}{T^{2}} + 0.170}
+
+\strong{"Anderson21"}:
+
+\deqn{\Delta_{47, I-CDES90} =
+0.0391 \times \frac{10^{6}}{T^{2}} + 0.154}
 
 \strong{"Fiebig21"}:
 
@@ -50,6 +56,13 @@ clumped isotope calibrations, estimates of mineral-specific offsets,
 and temperature dependence of acid digestion fractionation.
 Geochemistry, Geophysics, Geosystems, 20(7), 3495-3519.
 \url{https://www.doi.org/10.1029/2018GC008127}
+
+Anderson, N. T., Kelson, J. R., Kele, S., Daëron, M.,
+Bonifacie, M., Horita, J., et al. (2021).
+A unified clumped isotope thermometer calibration (0.5–1100°C)
+using carbonate‐based standardization.
+Geophysical Research Letters, 48(7), e2020GL092069.
+\url{https://doi.org/10.1029/2020gl092069}
 
 Fiebig, J., Daëron, M., Bernecker, M., Guo, W.,
 Schneider, G., Boch, R., et al. (2021).

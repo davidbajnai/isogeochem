@@ -12,6 +12,7 @@
 #' @param eq Equation used for the calculation.
 #'   * `"Petersen19"`: the synthetic-only composite IUPAC-parameter calibration
 #'     of Petersen et al. (2019).
+#'   * `"Anderson21"`: the I-CDES90 calibration of Anderson et al. (2021).
 #'   * `"Fiebig21"`: the CDES90 calibration of Fiebig et al. (2021).
 #'
 #' @details
@@ -19,6 +20,11 @@
 #'
 #' \deqn{\Delta_{47, CDES90} =
 #' 0.0383 \times \frac{10^{6}}{T^{2}} + 0.170}
+#'
+#' **"Anderson21"**:
+#'
+#' \deqn{\Delta_{47, I-CDES90} =
+#' 0.0391 \times \frac{10^{6}}{T^{2}} + 0.154}
 #'
 #' **"Fiebig21"**:
 #'
@@ -39,6 +45,13 @@
 #' and temperature dependence of acid digestion fractionation.
 #' Geochemistry, Geophysics, Geosystems, 20(7), 3495-3519.
 #' <https://www.doi.org/10.1029/2018GC008127>
+#'
+#' Anderson, N. T., Kelson, J. R., Kele, S., Daëron, M.,
+#' Bonifacie, M., Horita, J., et al. (2021).
+#' A unified clumped isotope thermometer calibration (0.5–1100°C)
+#' using carbonate‐based standardization.
+#' Geophysical Research Letters, 48(7), e2020GL092069.
+#' <https://doi.org/10.1029/2020gl092069>
 #'
 #' Fiebig, J., Daëron, M., Bernecker, M., Guo, W.,
 #' Schneider, G., Boch, R., et al. (2021).
@@ -70,6 +83,11 @@ D47 = function(temp, eq) {
              - 3.521 * 10 ^ 3 / TinK ^ 2
              + 2.391 * 10 ^ 7 / TinK ^ 3
              - 3.541 * 10 ^ 9 / TinK ^ 4) + 0.1856
+  } else if (eq == "Anderson21") {
+    # Petersen et al. (2019)
+    b = 0.154
+    m = 0.0391
+    m * (10 ^ 6 / TinK ^ 2) + b
   } else {
     stop("Invalid input for eq")
   }
@@ -127,7 +145,7 @@ temp_D47 = function(D47_CDES90, D47_error, eq) {
     temp_err1 = temp_util(D47_CDES90 + D47_error, eq)
     temp_err2 = temp_util(D47_CDES90 - D47_error, eq)
     temp_err = (temp_err2 - temp_err1) / 2
-    temp = c(temp, temp_err)
+    temp = data.frame(temp, temp_err)
   }
 
   return(temp)
@@ -253,8 +271,14 @@ D48 = function(temp, eq) {
 #'
 #' @export
 
-temp_D48 = function(D47_CDES90, D48_CDES90, D47_error, D48_error,
-                    ks, add = FALSE, col = "black", pch = 19) {
+temp_D48 = function(D47_CDES90,
+                    D48_CDES90,
+                    D47_error,
+                    D48_error,
+                    ks,
+                    add = FALSE,
+                    col = "black",
+                    pch = 19) {
 
   ## curve_intersect() is based on the work of Andrew Heiss
   ## It is distributed under an MIT licence (2017).
@@ -276,62 +300,105 @@ temp_D48 = function(D47_CDES90, D48_CDES90, D47_error, D48_error,
   line_eq = data.frame(x = D48(seq(-10, 1000, 0.1), eq = "Fiebig21"),
                        y = D47(seq(-10, 1000, 0.1), eq = "Fiebig21"))
   int = curve_intersect(line_sample, line_eq)
-  temp = round(temp_D47(int$y, eq = "Fiebig21"), 0)
 
-  if (missing("D47_error") == FALSE && missing("D48_error") == FALSE) {
-    line_cool = data.frame(x=c(D48_CDES90 + D48_error + 1,
-                               D48_CDES90 + D48_error - 1),
-                           y=c(D47_CDES90 + D47_error + 1 * ks,
-                               D47_CDES90 + D47_error - 1 * ks))
-    line_warm = data.frame(x=c(D48_CDES90 - D48_error + 1,
-                               D48_CDES90 - D48_error - 1),
-                           y=c(D47_CDES90 - D47_error + 1 * ks,
-                               D47_CDES90 - D47_error - 1 * ks))
+  if (missing("D47_error") == FALSE &&
+      missing("D48_error") == FALSE) {
+    line_cool = data.frame(
+      x = c(D48_CDES90 + D48_error + 1,
+            D48_CDES90 + D48_error - 1),
+      y = c(D47_CDES90 + D47_error + 1 * ks,
+            D47_CDES90 + D47_error - 1 * ks)
+    )
+    line_warm = data.frame(
+      x = c(D48_CDES90 - D48_error + 1,
+            D48_CDES90 - D48_error - 1),
+      y = c(D47_CDES90 - D47_error + 1 * ks,
+            D47_CDES90 - D47_error - 1 * ks)
+    )
     int_cool = curve_intersect(line_cool, line_eq)
     int_warm = curve_intersect(line_warm, line_eq)
-    temp_mean = temp
-    temp_warm = round(temp_D47(int_warm$y, eq = "Fiebig21"),0)
-    temp_cool = round(temp_D47(int_cool$y, eq = "Fiebig21"),0)
+    temp_mean = round(temp_D47(int$y, eq = "Fiebig21"), 0)
+    temp_warm = round(temp_D47(int_warm$y, eq = "Fiebig21"), 0)
+    temp_cool = round(temp_D47(int_cool$y, eq = "Fiebig21"), 0)
     temp = data.frame(temp_mean, temp_warm, temp_cool)
+  } else {
+    temp = round(temp_D47(int$y, eq = "Fiebig21"), 0)
+  }
 
-    if (add == TRUE) {
-      graphics::rect(xleft = D48_CDES90 - D48_error,
-                     ybottom = D47_CDES90 - D47_error,
-                     xright = D48_CDES90 + D48_error,
-                     ytop = D47_CDES90+D47_error,
-                     col = grDevices::adjustcolor(col, alpha.f = 0.3),
-                     border = NA)
-      graphics::segments(D48_CDES90, D47_CDES90 + D47_error,
-                         D48_CDES90, D47_CDES90 - D47_error,
-                         col = "gray10", lwd = 1, lty = 1)
-      graphics::segments(D48_CDES90 - D48_error, D47_CDES90,
-                         D48_CDES90 + D48_error, D47_CDES90,
-                         col = "gray10", lwd = 1, lty = 1)
-      graphics::arrows(x0 = D48_CDES90 - D48_error,
-                       y0 = D47_CDES90 - D47_error,
-                       x1 = int_warm$x,
-                       y1 = int_warm$y,
-                       code=0, col = "gray70", lwd = 1.5, lty = 2)
-      graphics::arrows(x0 = D48_CDES90 + D48_error,
-                       y0 = D47_CDES90 + D47_error,
-                       x1 = int_cool$x,
-                       y1 = int_cool$y,
-                       code = 0, col = "gray70", lwd = 1.5, lty = 2)
-      message("Graphics added to the plot")
+  if (add == TRUE) {
+    if (is.null(grDevices::dev.list()) == FALSE) {
+      if (length(temp) == 3) {
+        graphics::rect(
+          xleft = D48_CDES90 - D48_error,
+          ybottom = D47_CDES90 - D47_error,
+          xright = D48_CDES90 + D48_error,
+          ytop = D47_CDES90 + D47_error,
+          col = grDevices::adjustcolor(col, alpha.f = 0.3),
+          border = NA
+        )
+        graphics::segments(
+          D48_CDES90,
+          D47_CDES90 + D47_error,
+          D48_CDES90,
+          D47_CDES90 - D47_error,
+          col = "gray10",
+          lwd = 1,
+          lty = 1
+        )
+        graphics::segments(
+          D48_CDES90 - D48_error,
+          D47_CDES90,
+          D48_CDES90 + D48_error,
+          D47_CDES90,
+          col = "gray10",
+          lwd = 1,
+          lty = 1
+        )
+        graphics::arrows(
+          x0 = D48_CDES90 - D48_error,
+          y0 = D47_CDES90 - D47_error,
+          x1 = int_warm$x,
+          y1 = int_warm$y,
+          code = 0,
+          col = "gray70",
+          lwd = 1.5,
+          lty = 2
+        )
+        graphics::arrows(
+          x0 = D48_CDES90 + D48_error,
+          y0 = D47_CDES90 + D47_error,
+          x1 = int_cool$x,
+          y1 = int_cool$y,
+          code = 0,
+          col = "gray70",
+          lwd = 1.5,
+          lty = 2
+        )
+        message("")
+      }
+      graphics::arrows(
+        x0 = D48_CDES90,
+        y0 = D47_CDES90,
+        x1 = int$x,
+        y1 = int$y,
+        code = 2,
+        length = 0.15,
+        col = "black",
+        lwd = 1.5,
+        lty = 1
+      )
+      graphics::points(
+        D48_CDES90,
+        D47_CDES90,
+        col = col,
+        pch = pch,
+        cex = 1.2
+      )
+      message("")
+    } else {
+      warning("There is no existing plot! Proceeding without plotting.")
     }
   }
 
-  # Add graphical output to an existing plot
-  if (add == TRUE) {
-    graphics::arrows(x0 = D48_CDES90,
-                     y0 = D47_CDES90,
-                     x1 = int$x,
-                     y1 = int$y,
-                     code = 2, length = 0.15, col="black", lwd = 1.5, lty = 1)
-    graphics::points(D48_CDES90, D47_CDES90, col = col, pch = pch, cex = 1.2)
-    message("Graphics added to the plot")
-  }
-
   return(temp)
-
 }

@@ -10,7 +10,7 @@ a18_c_H2O(temp, min, eq)
 \item{temp}{Carbonate growth temperature (°C).}
 
 \item{min}{Mineralogy. Options are \code{"calcite"}, \code{"aragonite"},
-\code{siderite}, and \code{"dolomite"}.}
+\code{apatite}, \code{siderite}, and \code{"dolomite"}.}
 
 \item{eq}{Equation used for the calculations. See details.}
 }
@@ -24,7 +24,7 @@ between carbonate and water.
 \details{
 Options for eq if min = \code{"calcite"}:
 
-\code{"FO77"}: O'Neil et al. (1969), modified by Friedman and O'Neil (1977):
+\code{"Oneil69"}: O'Neil et al. (1969), modified by Friedman and O'Neil (1977):
 
 \deqn{\alpha^{18}_{calcite/water} =
 e^{(2.78 \times \frac{1000}{T^{2}} - 0.00289)}}
@@ -34,8 +34,11 @@ e^{(2.78 \times \frac{1000}{T^{2}} - 0.00289)}}
 \deqn{\alpha^{18}_{calcite/water} =
 e^{(18.03 \times \frac{1}{T} - 0.03242)}}
 
-\code{"KO97"}: Kim and O'Neil (1997) - reprocessed to match the IUPAC-recommended
-acid fractionation factor (see Kim et al. 2007, 2015; and the Vignettes):
+\strong{NOTE:} The "KO97-orig" equation should only be applied to data that considers a
+CO2(acid)/calcite AFF as in Kim & O'Neil (1997), i.e., 10.44 at 25 °C.
+
+\code{"KO97"}: Kim and O'Neil (1997), reprocessed here to match the IUPAC-recommended
+AFF as in Kim et al. (2007, 2015):
 
 \deqn{\alpha^{18}_{calcite/water} =
 e^{(18.04 \times \frac{1}{T} - 0.03218)}}
@@ -62,7 +65,7 @@ e^{(17.57 \times \frac{1}{T} - 0.02913)}}
 
 Options for eq if min = \code{"aragonite"}:
 
-\code{"GK86"}: Grossman and Ku (1986) modified by Dettman et al. (1999):
+\code{"GK86"}: Grossman and Ku (1986), modified by Dettman et al. (1999):
 
 \deqn{\alpha^{18}_{aragonite/water} =
 e^{(2.559 \times \frac{1000}{T^{2}} + 0.000715)}}
@@ -71,6 +74,14 @@ e^{(2.559 \times \frac{1000}{T^{2}} + 0.000715)}}
 
 \deqn{\alpha^{18}_{aragonite/water} =
 e^{(17.88 \times \frac{1}{T} - 0.03114)}}
+
+Options for eq if min = \code{"apatite"}.
+Apatite refers to apatite-bound carbonate.
+
+\code{"Lecuyer10"}: Lécuyer et al. (2010):
+
+\deqn{\alpha^{18}_{apatite/water} =
+e^{(25.19 \times \frac{1}{T} - 0.05647)}}
 
 Options for eq if min = \code{"siderite"}:
 
@@ -132,6 +143,14 @@ Calibration of the calcite–water oxygen-isotope geothermometer
 at Devils Hole, Nevada, a natural laboratory.
 Geochimica et Cosmochimica Acta, 71(16), 3948-3957.
 \url{https://doi.org/10.1016/j.gca.2007.05.028}
+
+Lécuyer, C., Balter, V., Martineau, F., Fourel, F., Bernard, A.,
+Amiot, R., et al. (2010).
+Oxygen isotope fractionation between apatite-bound carbonate
+and water determined from controlled experiments with synthetic
+apatites precipitated at 10–37°C.
+Geochimica et Cosmochimica Acta, 74(7), 2072-2081.
+\url{https://doi.org/10.1016/j.gca.2009.12.024}
 
 Tremaine, D. M., Froelich, P. N., & Wang, Y. (2011).
 Speleothem calcite farmed in situ: Modern calibration of d18O and d13C

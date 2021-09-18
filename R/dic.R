@@ -104,13 +104,6 @@ xabs = function(temp, pH, S) {
   E_CO2 = -183.0
   kCO2 = exp(A_CO2 + B_CO2 * sqrt(S) + D_CO2 / TinK + E_CO2 * log(TinK))
 
-  # Rate constant for CO2 (aq) hydroxylation x Kw from Johnson (1982)
-  A_OH = -930.13
-  B_OH = 0.110
-  D_OH = 3.10 * 10 ^ 4
-  E_OH = 140.9
-  kOHxKw = exp(A_OH + B_OH * sqrt(S) + D_OH / TinK + E_OH * log(TinK))
-
   # Rate constant for CO2 (aq) hydroxylation x Kw from Schulz et al. (2006)
   kOHxKw = (499002.24 * exp(4.2986 * 10 ^ -4 * S ^ 2 + 5.75499 * 10 ^
                               -5 * S)) * exp(-90166.83 / (8.3145 * TinK))
@@ -118,5 +111,5 @@ xabs = function(temp, pH, S) {
   xhydration     = ((kCO2 / (kCO2 + kOHxKw / aH)) * 100)
   xhydroxylation = 100 - ((kCO2 / (kCO2 + kOHxKw / aH)) * 100)
 
-  final = return(data.frame(xhydration, xhydroxylation))
+  return(data.frame(xhydration, xhydroxylation))
 }

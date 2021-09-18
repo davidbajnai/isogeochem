@@ -266,6 +266,7 @@ york_plot = function(x,
         col = grDevices::adjustcolor(col, alpha.f = 0.3),
         border = NA
       )
+      message("")
     } else {
       warning("There is no existing plot! Proceeding without plotting.")
     }

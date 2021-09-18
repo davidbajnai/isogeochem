@@ -16,9 +16,12 @@ Returns the isotope fractionation value (‰).
 \code{epsilon()} converts isotope fractionation factors to isotope fractionation values.
 }
 \details{
-\deqn{\epsilon'^{i}E = \alpha'^{i}E - 1}
+\deqn{\epsilon^{i}E_{A/B} = \alpha^{i}E_{A/B} - 1}
 }
 \examples{
 epsilon(a18_H2O_OH(25, "Z20-X3LYP"))
 
+}
+\seealso{
+a_A_B() calculates the isotope fractionation factor between A and B.
 }
