@@ -40,7 +40,7 @@ test_that("a18_c_H2O produces accurate values", {
   expect_equal(elena(a18_c_H2O(25, min = "calcite", eq = "Coplen07")), 29.8)
   expect_equal(elena(a18_c_H2O(25, min = "calcite", eq = "Daeron19")), 29.8)
   expect_equal(elena(a18_c_H2O(25, min = "calcite", eq = "Watkins13")), 29.7)
-  expect_equal(elena(a18_c_H2O(25, min = "calcite", eq = "Oneil69")), 28.4)
+  expect_equal(elena(a18_c_H2O(25, min = "calcite", eq = "ONeil69")), 28.4)
   expect_equal(elena(a18_c_H2O(25, min = "calcite", eq = "Tremaine11")), 29.4)
   expect_equal(elena(a18_c_H2O(25, min = "aragonite", eq = "GK86")), 29.5)
   expect_equal(elena(a18_c_H2O(25, min = "aragonite", eq = "Kim07")), 28.8)
@@ -52,4 +52,14 @@ test_that("a18_c_H2O produces accurate values", {
 test_that("a18_CO2acid_c produces accurate values", {
   expect_equal(elena(a18_CO2acid_c(temp = 90, min = "calcite")), 8.1)
   expect_equal(elena(a18_CO2acid_c(temp = 90, min = "aragonite")), 8.5)
+})
+
+test_that("a18_CO2g_H2O produce accurate values", {
+  expect_equal(elena(a18_CO2g_H2O(temp = 25)), 40.3)
+})
+
+test_that("a18_DIC*_H2O 'Beck equations' produce accurate values", {
+  expect_equal(elena(a18_CO2aq_H2O(temp = 25)), 40.5)
+  expect_equal(elena(a18_CO3_H2O(temp = 25)), 24.2)
+  expect_equal(elena(a18_HCO3_H2O(temp = 25)), 31.0)
 })

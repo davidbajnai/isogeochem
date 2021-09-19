@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/davidbajnai/isogeochem",
   "issueTracker": "https://github.com/davidbajnai/isogeochem/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -150,5 +150,5 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1954.553KB"
+  "fileSize": "1949.646KB"
 }

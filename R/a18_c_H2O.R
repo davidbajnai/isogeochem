@@ -17,7 +17,7 @@
 #' @details
 #' Options for eq if min = `"calcite"`:
 #'
-#' `"Oneil69"`: O'Neil et al. (1969), modified by Friedman and O'Neil (1977):
+#' `"ONeil69"`: O'Neil et al. (1969), modified by Friedman and O'Neil (1977):
 #'
 #' \deqn{\alpha^{18}_{calcite/water} =
 #' e^{(2.78 \times \frac{1000}{T^{2}} - 0.00289)}}
@@ -194,7 +194,7 @@ a18_c_H2O = function(temp, min, eq) {
     } else if (eq == "Watkins13") {
       # Watkins et al. (2013)
       exp((17.747 * 1000 / TinK - 29.777) / 1000)
-    } else if (eq == "Oneil69" | eq == "FO77" ) {
+    } else if (eq == "ONeil69" | eq == "FO77" ) {
       # O'Neil et al. (1969) modified by Friedman and O'Neil (1977)
       exp((2.78 * 10 ^ 6 / TinK ^ 2 - 2.89) / 1000)
     } else if (eq == "Tremaine11") {

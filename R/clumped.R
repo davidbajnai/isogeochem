@@ -127,8 +127,8 @@ D47 = function(temp, eq) {
 
 temp_D47 = function(D47_CDES90, D47_error, eq) {
   temp_util = function (D47_CDES90, eq) {
-    temp_util = c()
-    for (n in 1:length(D47_CDES90)) {
+    temp_util = vector()
+    for (n in seq_len(length(D47_CDES90))) {
       fun_to_optimize = function(x)
         abs(D47(x, eq) - D47_CDES90[n])
       tval = stats::optimize(fun_to_optimize,

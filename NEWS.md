@@ -1,3 +1,16 @@
+# isogeochem 1.0.6
+
+## New functions
+* a18_CO2g_H2O()
+* a18_CO2aq_H2O()
+* a18_CO3_H2O
+* a18_HCO3_H2O
+* a13_CO2g_CO2aq
+
+## Misc
+* Added CodeFactor badge to README
+* Adjusted the logo
+
 # isogeochem 1.0.5
 
 * Added the "Anderson21" option to D47() and temp_D47()

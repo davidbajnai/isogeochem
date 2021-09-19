@@ -99,10 +99,9 @@ Consequently, the reprocessed equation is:
 
 ```{r fig.height = 5, fig.width = 5}
 par(mar = c(4, 4.3, 0.5, 0.8))
-plot(0, type="l", axes=TRUE, ylim=c(28, 34), xlim = c(10, 30),
-     ylab = expression("1000 ln "*alpha*" (‰)"),
-     xlab = "temperature (°C)",
-     lty=0, font=1, cex.lab=1, las = 1)
+plot(0, type = "l", ylim = c(28, 34), xlim = c(10, 30), las = 1,
+     ylab = expression("1000 ln " * alpha[calcite / water] ^ 18 * " (‰)"),
+     xlab = "temperature (°C)")
 
 temp = seq(10, 30, 1)
 
@@ -131,6 +130,6 @@ legend("topright", bty="n", cex=1, adj = c(0, NA),
          "Daeron19",
          "Coplen07",
          "Watkins13",
-         "Oneil69",
+         "ONeil69",
          "Tremaine11"))
 ```

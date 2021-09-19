@@ -12,6 +12,7 @@
 [![R-CMD-check](https://github.com/davidbajnai/isogeochem/workflows/R-CMD-check/badge.svg)](https://github.com/davidbajnai/isogeochem/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/davidbajnai/isogeochem/branch/main/graph/badge.svg)](https://codecov.io/gh/davidbajnai/isogeochem?branch=main)
+[![CodeFactor](https://www.codefactor.io/repository/github/davidbajnai/isogeochem/badge)](https://www.codefactor.io/repository/github/davidbajnai/isogeochem)
 [![repostatus](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project.org/package=isogeochem)

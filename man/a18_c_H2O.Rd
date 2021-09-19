@@ -24,7 +24,7 @@ between carbonate and water.
 \details{
 Options for eq if min = \code{"calcite"}:
 
-\code{"Oneil69"}: O'Neil et al. (1969), modified by Friedman and O'Neil (1977):
+\code{"ONeil69"}: O'Neil et al. (1969), modified by Friedman and O'Neil (1977):
 
 \deqn{\alpha^{18}_{calcite/water} =
 e^{(2.78 \times \frac{1000}{T^{2}} - 0.00289)}}
@@ -179,8 +179,13 @@ Nature Communications, 10, 429.
 }
 \seealso{
 Other fractionation_factors: 
+\code{\link{a13_CO2g_CO2aq}()},
 \code{\link{a18_CO2acid_c}()},
+\code{\link{a18_CO2aq_H2O}()},
+\code{\link{a18_CO2g_H2O}()},
+\code{\link{a18_CO3_H2O}()},
 \code{\link{a18_H2O_OH}()},
+\code{\link{a18_HCO3_H2O}()},
 \code{\link{a_A_B}()}
 }
 \concept{fractionation_factors}

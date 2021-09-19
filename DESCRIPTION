@@ -1,8 +1,8 @@
 Package: isogeochem
 Type: Package
 Title: Tools For Carbonate Isotope Geochemistry
-Version: 1.0.5
-Date: 2021-09-18
+Version: 1.0.6
+Date: 2021-09-19
 Authors@R:
     c(person(given = "David", family = "Bajnai",
     email = "david.bajnai@uni-goettingen.de",

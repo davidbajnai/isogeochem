@@ -31,8 +31,13 @@ a_A_B(A = 10, B = 12)
 \code{\link[=B_from_a]{B_from_a()}} calculates the isotope delta value of B.
 
 Other fractionation_factors: 
+\code{\link{a13_CO2g_CO2aq}()},
 \code{\link{a18_CO2acid_c}()},
+\code{\link{a18_CO2aq_H2O}()},
+\code{\link{a18_CO2g_H2O}()},
+\code{\link{a18_CO3_H2O}()},
 \code{\link{a18_H2O_OH}()},
+\code{\link{a18_HCO3_H2O}()},
 \code{\link{a18_c_H2O}()}
 }
 \concept{fractionation_factors}
