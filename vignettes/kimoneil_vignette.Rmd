@@ -34,7 +34,7 @@ library("isogeochem")
 
 ## Load data
 
-The data is from Table 1 in Kim and O'Neil (1997). They used data only where the initial concentration of Ca<sup>2+</sup> and HCO<sub>3</sub><sup>–</sup> was 5 mM. All *δ*<sup>18</sup>O values are expressed on the VSMOW scale.
+The data is from Table 1 in Kim and O'Neil (1997). All *δ*<sup>18</sup>O values are expressed on the VSMOW scale.
 
 ```{r, include = TRUE, message = FALSE, eval = TRUE}
 TinC = c(10, 10, 25, 25, 25, 25, 40, 40, 40)
@@ -98,38 +98,39 @@ Consequently, the reprocessed equation is:
 ## Visualize the 10<sup>3</sup>ln&alpha; vs. temperature relationships
 
 ```{r fig.height = 5, fig.width = 5}
-par(mar = c(4, 4.3, 0.5, 0.8))
-plot(0, type = "l", ylim = c(28, 34), xlim = c(10, 30), las = 1,
+if (!require("viridisLite")) install.packages("viridisLite")
+
+par(mar = c(4.5, 4.5, 0.3, 0.3))
+plot(0, type = "l", las = 1,
+     ylim = c(28, 34),
+     xlim = c(10, 30),
      ylab = expression("1000 ln " * alpha[calcite / water] ^ 18 * " (‰)"),
-     xlab = "temperature (°C)")
+     xlab = "Temperature (°C)")
 
 temp = seq(10, 30, 1)
+cols = viridisLite::viridis(6, option = "D")
 
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97-orig")), col = "darkblue",
-      lwd = 2, lty = 3)
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97")), col = "darkblue",
-      lwd = 2, lty = 1)
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Daeron19")), col = "darkmagenta")
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Coplen07")), col = "pink")
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Watkins13")), col = "magenta")
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "FO77")), col = "blue")
-lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Tremaine11")), col = "lightblue")
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Daeron19")),
+      col = cols[1], lwd = 2)
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Watkins13")),
+      col = cols[2], lwd = 2)
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Tremaine11")),
+      col = cols[3], lwd = 2)
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "ONeil69")),
+      col = cols[4], lwd = 2)
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97")),
+      col = cols[5], lwd = 2)
+lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97-orig")),
+      col = cols[6], lwd = 2, lty = 2)
 
-legend("topright", bty="n", cex=1, adj = c(0, NA),
-       lty = c(3,  1,  1,  1,  1,  1,  1),
-       lwd = c(2,  2,  1,  1,  1,  1,  1), 
-       col = c("darkblue",
-               "darkblue",
-               "darkmagenta",
-               "pink",
-               "magenta",
-               "blue",
-               "lightblue"),
-       c("KO97-orig",
-         "KO97",
-         "Daeron19",
-         "Coplen07",
-         "Watkins13",
-         "ONeil69",
-         "Tremaine11"))
+legend("topright", bty = "n", adj = c(0, NA), 
+       lty = c(1, 1, 1, 1, 1, 3),
+       lwd = c(2, 2, 2, 2, 3, 3),  
+       col = cols,
+       legend = c("Daeron19",
+                  "Watkins13",
+                  "Tremaine11",
+                  "ONeil69",
+                  "KO97",
+                  "KO97-orig"))
 ```

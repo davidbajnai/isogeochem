@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# isogeochem: <img src="man/figures/isogeochem-logo.png" align="right" height="139"/> <br> Tools for carbonate isotope geochemistry
+# isogeochem: <img src="man/figures/isogeochem-logo.png" align="right" height="139"/> <br/> Tools for carbonate isotope geochemistry
 
 **Author:** [David Bajnai](https://www.davidbajnai.eu/)<br/>
 **Contributors:** Julian Tödter <br/> **License:**
@@ -46,6 +46,7 @@ GitHub:
 ``` r
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
+library("isogeochem")
 ```
 
 This package is a work in progress and is therefore frequently updated.
@@ -70,7 +71,6 @@ temperature corrected for kinetic effects considering both the
 *∆*<sub>47</sub> and the *∆*<sub>48</sub> value.
 
 ``` r
-# library(isogeochem)
 if (!require("shades")) install.packages("shades")
 
 # Model equilibrium carbonate ∆47 and ∆48 values
@@ -109,7 +109,7 @@ text(D48(temp, eq = "Fiebig21"), D47(temp, eq = "Fiebig21"), paste(temp, "°C"),
      col = shades::gradient(c("blue", "red"), length(temp)), pos = 4, cex = 0.8)
 ```
 
-![Example 1](man/figures/README-example1.png)
+<img src="man/figures/README-example1.png" align="left" height="500"/><br clear="left"/>
 
 ## Triple oxygen isotopes
 
@@ -120,7 +120,6 @@ to calculate mixing curves in triple oxygen isotope space, e.g., for
 modeling diagenesis.
 
 ``` r
-library(isogeochem)
 if (!require("shades")) install.packages("shades")
 
 # Model equilibrium calcite
@@ -159,7 +158,7 @@ text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%"), pos = 1, cex = 0.5,
      col = shades::gradient(c("#3300CC", "tan4"), length(seq(0, 10, 1))))
 ```
 
-![Example 2](man/figures/README-example2.png)
+<img src="man/figures/README-example2.png" align="left" height="500"/><br clear="left"/>
 
 ## Thermometry
 
@@ -183,21 +182,43 @@ temp_d18O(
 
 ## Fractionation factors
 
-Use `isogeochem` to calculate isotope <sup>16</sup>O/<sup>18</sup>O
+Use `isogeochem` to calculate <sup>16</sup>O/<sup>18</sup>O
 fractionation factors at given temperatures.
 
 ``` r
-# calcite/water – using Daëron et al. (2019)
-a18_c_H2O(temp = 25, min = "calcite", eq = "Daeron19")
-# calcite/water – using Kim and O'Neil (1997) reprocessed (see Vignettes)
-a18_c_H2O(temp = 25, min = "calcite", eq = "KO97")
-# aragonite/water – using Grossman & Ku (1986) modified by Dettman et al. (1999)
-a18_c_H2O(temp = 25, min = "aragonite", eq = "GK86")
-# water/hydroxide ion – using Zeebe (2020)
-a18_H2O_OH(temp = 25, eq = "Z20-X3LYP")
-# CO2 from acid digestion/carbonate
-a18_CO2acid_c(temp = 25, "calcite")
+if (!require("viridisLite")) install.packages("viridisLite")
+
+plot(0, type = "l", axes = T, las = 1, yaxt = "n", 
+     xlim = c(10, 30), ylim = c(-30, 50),
+     xlab = "Temperature (°C)",
+     ylab = expression("Equilibrium enrichment in "^18*"O relative to H"[2]*"O (‰)"))
+axis(2, seq(-30, 50, 10), las = 1)
+
+temps = seq(10,30,1)
+d18O_H2O_VSMOW = 0
+cols = viridisLite::viridis(7, option = "C")
+
+text(10, 45, expression("CO"[2]*"(aq)"), col = cols[1], adj = c(0, 0))
+lines(temps, A_from_a(a18_CO2aq_H2O(temps), d18O_H2O_VSMOW),
+      lwd = 2, lty = 2, col = cols[1])
+text(10, 35, expression("HCO"[3]^"–"), col = cols[2], adj = c(0, 0))
+lines(temps, A_from_a(a18_HCO3_H2O(temps), d18O_H2O_VSMOW),
+      lwd = 2, lty = 2, col = cols[2])
+text(10, 30, "calcite", col = cols[3], adj = c(0, 0))
+lines(temps, A_from_a(a18_c_H2O(temps, "calcite", "Daeron19"), d18O_H2O_VSMOW),
+  lwd = 2, lty = 1, col = cols[3])
+text(10, 21, expression("CO"[3]^"2–"), col = cols[4], adj = c(0, 0))
+lines(temps, A_from_a(a18_CO3_H2O(temps), d18O_H2O_VSMOW),
+  lwd = 2, lty = 2, col = cols[4])
+text(10, 1, expression("H"[2]*"O"), col = cols[5], adj = c(0, 0))
+lines(temps, rep(d18O_H2O_VSMOW, length(temps)),
+      lwd = 3, lty = 1, col = cols[5])
+text(10, -23, expression("OH"^"–"), col = cols[6], adj = c(0, 0))
+lines(temps, B_from_a(a18_H2O_OH(temps, eq = "Z20-X3LYP"), d18O_H2O_VSMOW),
+  lwd = 2, lty = 1, col = cols[6])
 ```
+
+<img src="man/figures/README-example3.png" align="left" height="500"/><br clear="left"/>
 
 ## Utility functions
 
