@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# isogeochem: <img src="man/figures/isogeochem-logo.png" align="right" height="139"/> <br/> Tools for carbonate isotope geochemistry
+# isogeochem: <img src="man/figures/isogeochem-logo.png" align="right" width="140"/> <br/> Tools for carbonate isotope geochemistry
 
 **Author:** [David Bajnai](https://www.davidbajnai.eu/)<br/>
 **Contributors:** Julian Tödter <br/> **License:**
@@ -109,7 +109,7 @@ text(D48(temp, eq = "Fiebig21"), D47(temp, eq = "Fiebig21"), paste(temp, "°C"),
      col = shades::gradient(c("blue", "red"), length(temp)), pos = 4, cex = 0.8)
 ```
 
-<img src="man/figures/README-example1.png" align="left" height="500"/><br clear="left"/>
+<img src="man/figures/README-example1.png" align="left" width="500"/><br clear="left"/>
 
 ## Triple oxygen isotopes
 
@@ -158,7 +158,7 @@ text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%"), pos = 1, cex = 0.5,
      col = shades::gradient(c("#3300CC", "tan4"), length(seq(0, 10, 1))))
 ```
 
-<img src="man/figures/README-example2.png" align="left" height="500"/><br clear="left"/>
+<img src="man/figures/README-example2.png" align="left" width="500"/><br clear="left"/>
 
 ## Thermometry
 
@@ -218,7 +218,7 @@ lines(temps, B_from_a(a18_H2O_OH(temps, eq = "Z20-X3LYP"), d18O_H2O_VSMOW),
   lwd = 2, lty = 1, col = cols[6])
 ```
 
-<img src="man/figures/README-example3.png" align="left" height="500"/><br clear="left"/>
+<img src="man/figures/README-example3.png" align="left" width="500"/><br clear="left"/>
 
 ## Utility functions
 
