@@ -45,6 +45,7 @@ GitHub:
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
+if (!require("rmarkdown")) install.packages("rmarkdown")
 devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
 library("isogeochem")
 ```

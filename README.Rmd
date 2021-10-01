@@ -46,6 +46,7 @@ The lists of available proxy–temperature calibrations and mineralogies are con
 
 ``` {r, include = TRUE, message = FALSE, eval = FALSE}
 if (!require("devtools")) install.packages("devtools")
+if (!require("rmarkdown")) install.packages("rmarkdown")
 devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
 library("isogeochem")
 ```
