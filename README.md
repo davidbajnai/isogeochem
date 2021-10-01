@@ -136,7 +136,7 @@ mix = mix_d17O(d18O_A = em_equi[1], d17O_A = em_equi[2],
                d18O_B = em_diag[1], d17O_B = em_diag[2])
 
 ## Plot in ∆17O vs d'18O space ##
-plot(0, type = "l", axes = TRUE, ylim = c(-0.1,-0.04), xlim = c(15, 40),
+plot(0, type = "l", ylim = c(-0.1,-0.04), xlim = c(15, 40),
      xlab = expression(delta * "'" ^ 18 * "O"[c] * " (‰, VSMOW)"),
      ylab = expression(Delta ^ 17 * "O (‰, VSMOW)"),
      lty = 0, font = 1, cex.lab = 1, las = 1)
@@ -189,13 +189,13 @@ fractionation factors at given temperatures.
 ``` r
 if (!require("viridisLite")) install.packages("viridisLite")
 
-plot(0, type = "l", axes = T, las = 1, yaxt = "n", 
+plot(0, type = "l", las = 1, yaxt = "n", 
      xlim = c(10, 30), ylim = c(-30, 50),
      xlab = "Temperature (°C)",
      ylab = expression("Equilibrium enrichment in "^18*"O relative to H"[2]*"O (‰)"))
 axis(2, seq(-30, 50, 10), las = 1)
 
-temps = seq(10,30,1)
+temps = seq(10, 30, 1)
 d18O_H2O_VSMOW = 0
 cols = viridisLite::viridis(7, option = "C")
 
@@ -242,6 +242,9 @@ Within `isogeochem` you have quick access to important datasets.
 | `devilshole` | The original Devils Hole carbonate *δ*<sup>18</sup>O time series | Winograd et al. (2006)       |
 | `LR04`       | A benthic foraminifera *δ*<sup>18</sup>O stack                   | Lisiecki & Raymo (2005)      |
 | `GTS2020`    | An abridged version of the GTS2020 oxygen isotope stack          | Grossman & Joachimski (2020) |
+
+For more information on the datasets please have a look at the
+corresponding documentation, e.g., `?devilshole`
 
 ------------------------------------------------------------------------
 
