@@ -8,9 +8,21 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "/man/figures",
-  out.width = "100%"
+  message = FALSE,
+  eval = TRUE,
+  fig.height = 5,
+  fig.width = 5,
+  dpi = 150,
+  out.width = "55%"
 )
+knitr::opts_knit$set(global.par = TRUE)
+r = getOption("repos")
+r["CRAN"] = "http://cran.us.r-project.org"
+options(repos = r)
+```
+```{r, include = FALSE}
+#> Set global graphic parameters. This code has to be in its own chunk. 
+par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 ```
 
 # isogeochem: <img src="man/figures/isogeochem-logo.png" align="right" width="140"/> <br/> Tools for carbonate isotope geochemistry
@@ -44,10 +56,10 @@ The lists of available proxy–temperature calibrations and mineralogies are con
 
 `isogeochem` is not on CRAN yet but you can easily install it from GitHub:
 
-``` {r, include = TRUE, message = FALSE, eval = FALSE}
+``` {r}
 if (!require("devtools")) install.packages("devtools")
 if (!require("rmarkdown")) install.packages("rmarkdown")
-devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
+devtools::install_github("davidbajnai/isogeochem", build_vignettes = F)
 library("isogeochem")
 ```
 This package is a work in progress and is therefore frequently updated. Always make sure that you use the latest version.
@@ -58,7 +70,7 @@ This package is a work in progress and is therefore frequently updated. Always m
 Case studies demonstrating the use and scope of the functions in `isogeochem` are
 available as [vignettes](vignettes/).
 
-``` {r, include=TRUE, message = FALSE, eval = FALSE}
+``` {r, eval = FALSE}
 browseVignettes("isogeochem")
 ```
 
@@ -66,7 +78,7 @@ browseVignettes("isogeochem")
 
 Use `D47()` and `D48()` to calculate equilibrium carbonate clumped isotope values (*∆*<sub>47</sub>, *∆*<sub>48</sub>) for a given temperature. `temp_D47()` calculates carbonate growth temperatures from *∆*<sub>47</sub> values, while `temp_D48()` calculates growth temperature corrected for kinetic effects considering both the *∆*<sub>47</sub> and the *∆*<sub>48</sub> value.
 
-``` {r, include = TRUE, message = FALSE, eval = FALSE}
+``` {r, label = "Figure1"}
 if (!require("shades")) install.packages("shades")
 
 # Model equilibrium carbonate ∆47 and ∆48 values
@@ -104,14 +116,12 @@ temp_D48(D47_speleo, D48_speleo, D47_speleo_err, D48_speleo_err, ks = -1,
 text(D48(temp, eq = "Fiebig21"), D47(temp, eq = "Fiebig21"), paste(temp, "°C"),
      col = shades::gradient(c("blue", "red"), length(temp)), pos = 4, cex = 0.8)
 ```
-<img src="man/figures/README-example1.png" align="left" width="500"/><br clear="left"/>
-
 
 ## Triple oxygen isotopes
 
 `d17O_c()` calculates equilibrium carbonate oxygen isotope values (*δ*<sup>18</sup>O, *δ*<sup>17</sup>O, *∆*<sup>17</sup>O) for a given temperature and ambient water composition. Use the `mix_d17O()` function to calculate mixing curves in triple oxygen isotope space, e.g., for modeling diagenesis.
 
-``` {r, include = TRUE, message = FALSE, eval = FALSE}
+``` {r, label = "Figure2"}
 if (!require("shades")) install.packages("shades")
 
 # Model equilibrium calcite
@@ -149,13 +159,12 @@ text(d18Op + 0.5, D17O, paste(temp, "°C"), pos = 4, cex = 1,
 text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%"), pos = 1, cex = 0.5,
      col = shades::gradient(c("#3300CC", "tan4"), length(seq(0, 10, 1))))
 ```
-<img src="man/figures/README-example2.png" align="left" width="500"/><br clear="left"/>
 
 ## Thermometry
 
 Use `isogeochem` to calculate carbonate growth temperatures from *δ*<sup>18</sup>O and *∆*<sub>47</sub> values.
 
-``` {r, include = TRUE, message = FALSE, eval = FALSE}
+``` {r}
 # Temperature from D47 with or without errors
 temp_D47(D47_CDES90 = 0.601, eq = "Petersen19")
 temp_D47(D47_CDES90 = 0.601,
@@ -174,7 +183,7 @@ temp_d18O(
 
 Use `isogeochem` to calculate <sup>16</sup>O/<sup>18</sup>O fractionation factors at given temperatures.
 
-``` {r, include = TRUE, message = FALSE, eval = FALSE}
+``` {r, label = "Figure3"}
 if (!require("viridisLite")) install.packages("viridisLite")
 
 plot(0, type = "l", las = 1, yaxt = "n", 
@@ -187,7 +196,7 @@ temps = seq(10, 30, 1)
 d18O_H2O_VSMOW = 0
 cols = viridisLite::viridis(7, option = "C")
 
-text(10, 45, expression("CO"[2]*"(aq)"), col = cols[1], adj = c(0, 0))
+text(10, 45, expression("CO"[2]*" (aq)"), col = cols[1], adj = c(0, 0))
 lines(temps, A_from_a(a18_CO2aq_H2O(temps), d18O_H2O_VSMOW),
       lwd = 2, lty = 2, col = cols[1])
 text(10, 35, expression("HCO"[3]^"–"), col = cols[2], adj = c(0, 0))
@@ -206,11 +215,10 @@ text(10, -23, expression("OH"^"–"), col = cols[6], adj = c(0, 0))
 lines(temps, B_from_a(a18_H2O_OH(temps, eq = "Z20-X3LYP"), d18O_H2O_VSMOW),
   lwd = 2, lty = 1, col = cols[6])
 ```
-<img src="man/figures/README-example3.png" align="left" width="500"/><br clear="left"/>
 
 ## Utility functions
 
-``` {r, include=TRUE, message = FALSE, eval = FALSE}
+``` {r}
 # Convert between the VSMOW and VPDB scales:
 to_VPDB(32)
 to_VSMOW(1)

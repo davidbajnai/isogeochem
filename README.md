@@ -46,7 +46,7 @@ GitHub:
 ``` r
 if (!require("devtools")) install.packages("devtools")
 if (!require("rmarkdown")) install.packages("rmarkdown")
-devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
+devtools::install_github("davidbajnai/isogeochem", build_vignettes = F)
 library("isogeochem")
 ```
 
@@ -102,15 +102,19 @@ points(D48eq, D47eq, col = shades::gradient(c("blue", "red"), length(temp)),
 # ... using a single function!
 temp_D48(D47_coral, D48_coral, D47_coral_err, D48_coral_err, ks = -0.6,
          add = TRUE, col = "seagreen", pch = 15)
+#>   temp_mean temp_warm temp_cool
+#> 1        38        44        32
 temp_D48(D47_speleo, D48_speleo, D47_speleo_err, D48_speleo_err, ks = -1,
          add = TRUE, col = "darkorange", pch = 17)
+#>   temp_mean temp_warm temp_cool
+#> 1        30        39        21
 
 # Add labels to the plot
 text(D48(temp, eq = "Fiebig21"), D47(temp, eq = "Fiebig21"), paste(temp, "°C"),
      col = shades::gradient(c("blue", "red"), length(temp)), pos = 4, cex = 0.8)
 ```
 
-<img src="man/figures/README-example1.png" align="left" width="500"/><br clear="left"/>
+<img src="README_files/figure-gfm/Figure1-1.png" width="55%" />
 
 ## Triple oxygen isotopes
 
@@ -159,7 +163,7 @@ text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%"), pos = 1, cex = 0.5,
      col = shades::gradient(c("#3300CC", "tan4"), length(seq(0, 10, 1))))
 ```
 
-<img src="man/figures/README-example2.png" align="left" width="500"/><br clear="left"/>
+<img src="README_files/figure-gfm/Figure2-1.png" width="55%" />
 
 ## Thermometry
 
@@ -169,9 +173,12 @@ Use `isogeochem` to calculate carbonate growth temperatures from
 ``` r
 # Temperature from D47 with or without errors
 temp_D47(D47_CDES90 = 0.601, eq = "Petersen19")
+#> [1] 24.9
 temp_D47(D47_CDES90 = 0.601,
          D47_error = 0.008 ,
          eq = "Petersen19")
+#>   temp temp_err
+#> 1 24.9      2.8
 
 # Temperature from d18O
 temp_d18O(
@@ -179,6 +186,7 @@ temp_d18O(
   d18O_H2O_VSMOW = 0,
   min = "calcite",
   eq = "Watkins13")
+#> [1] 25.9
 ```
 
 ## Fractionation factors
@@ -199,7 +207,7 @@ temps = seq(10, 30, 1)
 d18O_H2O_VSMOW = 0
 cols = viridisLite::viridis(7, option = "C")
 
-text(10, 45, expression("CO"[2]*"(aq)"), col = cols[1], adj = c(0, 0))
+text(10, 45, expression("CO"[2]*" (aq)"), col = cols[1], adj = c(0, 0))
 lines(temps, A_from_a(a18_CO2aq_H2O(temps), d18O_H2O_VSMOW),
       lwd = 2, lty = 2, col = cols[1])
 text(10, 35, expression("HCO"[3]^"–"), col = cols[2], adj = c(0, 0))
@@ -219,18 +227,22 @@ lines(temps, B_from_a(a18_H2O_OH(temps, eq = "Z20-X3LYP"), d18O_H2O_VSMOW),
   lwd = 2, lty = 1, col = cols[6])
 ```
 
-<img src="man/figures/README-example3.png" align="left" width="500"/><br clear="left"/>
+<img src="README_files/figure-gfm/Figure3-1.png" width="55%" />
 
 ## Utility functions
 
 ``` r
 # Convert between the VSMOW and VPDB scales:
 to_VPDB(32)
+#> [1] 1.05032
 to_VSMOW(1)
+#> [1] 31.95092
 
 # Convert between classical delta and delta prime values:
 prime(10)
+#> [1] 9.950331
 unprime(9.95)
+#> [1] 9.999666
 ```
 
 ## Datasets

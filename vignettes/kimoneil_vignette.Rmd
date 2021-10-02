@@ -8,8 +8,24 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(collapse = TRUE,
-                      comment = "#>")
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = FALSE,
+  eval = TRUE,
+  fig.height = 5,
+  fig.width = 5,
+  dpi = 150,
+  out.width = "55%"
+)
+knitr::opts_knit$set(global.par = TRUE)
+r = getOption("repos")
+r["CRAN"] = "http://cran.us.r-project.org"
+options(repos = r)
+```
+```{r, include = FALSE}
+#> Set global graphic parameters. This code has to be in its own chunk. 
+par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 ```
 
 ## Introduction
@@ -67,7 +83,7 @@ intercept_orig
 
 ## Reprocess the calcite *δ*<sup>18</sup>O values
 
-```{r, include = TRUE, message = FALSE, eval = TRUE}
+```{r}
 # Convert d18O_calcite to d18O_CO2acid using the "old" AFF
 d18O_CO2acid = A_from_a(a = 1.01050, B = d18O_calcite)
 
@@ -78,7 +94,7 @@ d18O_calcite_newAFF = B_from_a(a = AFF_new, d18O_CO2acid)
 
 ## Determine the slope and intercept using the new *δ*<sup>18</sup>O values
 
-```{r, include = TRUE, message = FALSE, eval = TRUE}
+```{r}
 # Calculate the new alpha and 1000ln alpha values
 a18_calcite_H2O_new = a_A_B(A = d18O_calcite_newAFF, B = d18O_H2O)
 elena_new = 1000 * log(a18_calcite_H2O_new)
@@ -97,12 +113,11 @@ Consequently, the reprocessed equation is:
 
 ## Visualize the 10<sup>3</sup>ln&alpha; vs. temperature relationships
 
-```{r fig.height = 5, fig.width = 5}
+```{r}
 if (!require("viridisLite")) install.packages("viridisLite")
 
-par(mar = c(4.5, 4.5, 0.3, 0.3))
 plot(0, type = "l", las = 1,
-     ylim = c(28, 34),
+     ylim = c(28, 33),
      xlim = c(10, 30),
      ylab = expression("1000 ln " * alpha[calcite / water] ^ 18 * " (‰)"),
      xlab = "Temperature (°C)")
