@@ -46,7 +46,7 @@ GitHub:
 ``` r
 if (!require("devtools")) install.packages("devtools")
 if (!require("rmarkdown")) install.packages("rmarkdown")
-devtools::install_github("davidbajnai/isogeochem", build_vignettes = F)
+devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
 library("isogeochem")
 ```
 
@@ -114,7 +114,7 @@ text(D48(temp, eq = "Fiebig21"), D47(temp, eq = "Fiebig21"), paste(temp, "°C"),
      col = shades::gradient(c("blue", "red"), length(temp)), pos = 4, cex = 0.8)
 ```
 
-<img src="README_files/figure-gfm/Figure1-1.png" width="55%" />
+<img src="man/figures/README-Figure1-1.png" width="55%" />
 
 ## Triple oxygen isotopes
 
@@ -163,7 +163,7 @@ text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%"), pos = 1, cex = 0.5,
      col = shades::gradient(c("#3300CC", "tan4"), length(seq(0, 10, 1))))
 ```
 
-<img src="README_files/figure-gfm/Figure2-1.png" width="55%" />
+<img src="man/figures/README-Figure2-1.png" width="55%" />
 
 ## Thermometry
 
@@ -227,7 +227,7 @@ lines(temps, B_from_a(a18_H2O_OH(temps, eq = "Z20-X3LYP"), d18O_H2O_VSMOW),
   lwd = 2, lty = 1, col = cols[6])
 ```
 
-<img src="README_files/figure-gfm/Figure3-1.png" width="55%" />
+<img src="man/figures/README-Figure3-1.png" width="55%" />
 
 ## Utility functions
 

@@ -10,6 +10,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   message = FALSE,
   eval = TRUE,
+  fig.path = "man/figures/README-",
   fig.height = 5,
   fig.width = 5,
   dpi = 150,
@@ -59,7 +60,7 @@ The lists of available proxy–temperature calibrations and mineralogies are con
 ``` {r}
 if (!require("devtools")) install.packages("devtools")
 if (!require("rmarkdown")) install.packages("rmarkdown")
-devtools::install_github("davidbajnai/isogeochem", build_vignettes = F)
+devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
 library("isogeochem")
 ```
 This package is a work in progress and is therefore frequently updated. Always make sure that you use the latest version.

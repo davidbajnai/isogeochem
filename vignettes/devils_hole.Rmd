@@ -13,6 +13,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   message = FALSE,
   eval = TRUE,
+  fig.path = "figures/devils_hole-",
   fig.height = 4,
   fig.width = 8,
   dpi = 150,
@@ -75,7 +76,7 @@ DH_d18O_err   = devilshole$d18O_error
 
 Lets visualize the carbonate *δ*<sup>18</sup>O VPDB time series:
 
-```{r}
+```{r, label = "Figure1"}
 # Convert d18O VSMOW values to the VPDB scale 
 DH_d18O_VPDB = to_VPDB(DH_d18O_VSMOW)
 
@@ -104,7 +105,7 @@ lines(DH_age, DH_d18O_VPDB, lwd=2, col="gray10")
 
 ## Calculate growth temperatures from *∆*<sub>47</sub>
 
-```{r}
+```{r, label = "Figure2"}
 # Convert D47 values into temperatures using the equation in Fiebig et al. (2021)
 DH_temp = temp_D47(DH_D47, eq = "Fiebig21")
 DH_temp_mean = mean(DH_temp)
@@ -146,7 +147,7 @@ points(DH_D47_age, DH_temp, col = "gray10", pch = 19)
 
 The calculated clumped isotope temperatures for the samples are statistically indistinguishable, which allows us to calculate a mean groundwater temperature and use that to reconstruct the variations in groundwater *δ*<sup>18</sup>O.
 
-```{r}
+```{r, label = "Figure3"}
 # Calculate groundwater d18O values and its error
 DH_d18O_gw = d18O_H2O(
   temp = DH_temp_mean,

@@ -12,5 +12,6 @@
 ^Rplots\.pdf$
 ^codecov\.yml$
 ^man/figures$
+^vignettes/figures$
 ^doc$
 ^Meta$
