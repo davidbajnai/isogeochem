@@ -19,9 +19,9 @@ status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project
 [![DOI](https://zenodo.org/badge/401782303.svg)](https://zenodo.org/badge/latestdoi/401782303)
 <!-- badges: end -->
 
-`isogeochem` aims to make working with stable oxygen, carbon, and
-clumped isotope data reproducible and straightforward. It offers tools
-to quickly calculate:
+`isogeochem` makes working with stable oxygen, carbon, and clumped
+isotope data straightforward and reproducible. It offers tools to
+quickly calculate:
 
 -   carbonate *δ*<sup>18</sup>O, *δ*<sup>17</sup>O, *∆*<sub>47</sub>,
     and *∆*<sub>48</sub> values at a given temperature
@@ -77,7 +77,7 @@ if (!require("shades")) install.packages("shades")
 # Model equilibrium carbonate ∆47 and ∆48 values
 temp  = seq(0, 100, 10) # temperature range: 0—100 °C
 D47eq = D47(temp, eq = "Fiebig21")
-D48eq = D48(temp, eq = "Fiebig21") 
+D48eq = D48(temp, eq = "Fiebig21")
 
 # Sample data
 D47_coral  = 0.617; D47_coral_err  = 0.006
@@ -102,19 +102,19 @@ points(D48eq, D47eq, col = shades::gradient(c("blue", "red"), length(temp)),
 # ... using a single function!
 temp_D48(D47_coral, D48_coral, D47_coral_err, D48_coral_err, ks = -0.6,
          add = TRUE, col = "seagreen", pch = 15)
-#>   temp_mean temp_warm temp_cool
-#> 1        38        44        32
+#>   temp temp_err
+#> 1   38        6
 temp_D48(D47_speleo, D48_speleo, D47_speleo_err, D48_speleo_err, ks = -1,
          add = TRUE, col = "darkorange", pch = 17)
-#>   temp_mean temp_warm temp_cool
-#> 1        30        39        21
+#>   temp temp_err
+#> 1   30        9
 
 # Add labels to the plot
 text(D48(temp, eq = "Fiebig21"), D47(temp, eq = "Fiebig21"), paste(temp, "°C"),
      col = shades::gradient(c("blue", "red"), length(temp)), pos = 4, cex = 0.8)
 ```
 
-<img src="man/figures/README-Figure1-1.png" width="55%" />
+<img src="man/figures/README-Figure1-1.png" width="60%" />
 
 ## Triple oxygen isotopes
 
@@ -163,12 +163,12 @@ text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%"), pos = 1, cex = 0.5,
      col = shades::gradient(c("#3300CC", "tan4"), length(seq(0, 10, 1))))
 ```
 
-<img src="man/figures/README-Figure2-1.png" width="55%" />
+<img src="man/figures/README-Figure2-1.png" width="60%" />
 
 ## Thermometry
 
-Use `isogeochem` to calculate carbonate growth temperatures from
-*δ*<sup>18</sup>O and *∆*<sub>47</sub> values.
+Use `isogeochem` to calculate crystallization temperatures from
+carbonate *δ*<sup>18</sup>O and *∆*<sub>47</sub> values.
 
 ``` r
 # Temperature from D47 with or without errors
@@ -176,9 +176,9 @@ temp_D47(D47_CDES90 = 0.601, eq = "Petersen19")
 #> [1] 24.9
 temp_D47(D47_CDES90 = 0.601,
          D47_error = 0.008 ,
-         eq = "Petersen19")
+         eq = "Anderson21")
 #>   temp temp_err
-#> 1 24.9      2.8
+#> 1 22.6      2.7
 
 # Temperature from d18O
 temp_d18O(
@@ -227,7 +227,7 @@ lines(temps, B_from_a(a18_H2O_OH(temps, eq = "Z20-X3LYP"), d18O_H2O_VSMOW),
   lwd = 2, lty = 1, col = cols[6])
 ```
 
-<img src="man/figures/README-Figure3-1.png" width="55%" />
+<img src="man/figures/README-Figure3-1.png" width="60%" />
 
 ## Utility functions
 
@@ -243,6 +243,12 @@ prime(10)
 #> [1] 9.950331
 unprime(9.95)
 #> [1] 9.999666
+
+# Calculate isotope fractionation factors:
+a_A_B(A = 30.40, B = 0.15)
+#> [1] 1.030245
+epsilon(a_A_B(A = 30.40, B = 0.15))
+#> [1] 30.24546
 ```
 
 ## Datasets

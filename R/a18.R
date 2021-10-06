@@ -187,6 +187,14 @@ a18_CO2aq_H2O = function(temp) {
 #' \deqn{\alpha^{18}_{CO3(2-)/H2O} =
 #' e^{2.39 \times \frac{1000}{T^{2}} - 0.00270}}
 #'
+#' The equation above and in the function is the uncorrected equation in
+#' Beck et al. (2005). They experimentally determined the fractionation factor
+#' using BaCO3 precipitation experiments. However, they applied the acid
+#' fractionation factor of calcite during the data processing and
+#' not that of BaCO3. The acid fractionation factor of BaCO3 is not known
+#' accurately, which may result in a bias of up to 1‰
+#' in the calculated 1000lna values.
+#'
 #' @return
 #' Returns the 18O/16O fractionation factor.
 #'
@@ -220,6 +228,14 @@ a18_CO3_H2O = function(temp) {
 #' @details
 #' \deqn{\alpha^{18}_{HCO3(-)/H2O} =
 #' e^{2.59 \times \frac{1000}{T^{2}} + 0.00189}}
+#'
+#' The equation above and in the function is the uncorrected equation in
+#' Beck et al. (2005). They experimentally determined the fractionation factor
+#' using BaCO3 precipitation experiments. However, they applied the acid
+#' fractionation factor of calcite during the data processing and
+#' not that of BaCO3. The acid fractionation factor of BaCO3 is not known
+#' accurately, which may result in a bias of up to 1‰
+#' in the calculated 1000lna values.
 #'
 #' @return
 #' Returns the 18O/16O fractionation factor.

@@ -14,8 +14,8 @@ temp_D47(D47_CDES90, D47_error, eq)
 \item{eq}{Equation used for the calculation. Options are as in \code{\link[=D47]{D47()}}.}
 }
 \value{
-Returns the carbonate growth temperature (°C),
-and — if \code{D47_error} is specified — also the error.
+Returns the carbonate growth temperature (°C). If \code{D47_error}
+is specified \code{temp_D47()} returns a data frame.
 }
 \description{
 \code{temp_D47()} calculates carbonate growth temperature from D47 value.

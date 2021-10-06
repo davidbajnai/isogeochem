@@ -107,16 +107,10 @@ lines(DH_age, DH_d18O_VPDB, lwd=2, col="gray10")
 
 ```{r, label = "Figure2"}
 # Convert D47 values into temperatures using the equation in Fiebig et al. (2021)
-DH_temp = temp_D47(DH_D47, eq = "Fiebig21")
-DH_temp_mean = mean(DH_temp)
-
-# Calculate the temperature error
-DH_temp_err1 = temp_D47(DH_D47 + DH_D47_err, eq = "Fiebig21")
-DH_temp_err2 = temp_D47(DH_D47 - DH_D47_err, eq = "Fiebig21")
-DH_temp_err = mean((DH_temp_err2 - DH_temp_err1) / 2)
-
-# Write out the calculated temperature
+DH_temp = temp_D47(DH_D47, DH_D47_err, eq = "Fiebig21")
+DH_temp_mean = mean(DH_temp$temp)
 DH_temp_mean
+DH_temp_err  = mean(DH_temp$temp_err)
 DH_temp_err
 
 # Plot the results
@@ -136,11 +130,11 @@ rect(0, DH_temp_mean - DH_temp_err,
      col = "wheat", border = NA)
 
 # Add error bars
-segments(DH_D47_age, DH_temp_err1,
-         DH_D47_age, DH_temp_err2, col = "gray50")
+segments(DH_D47_age, DH_temp$temp - DH_temp$temp_err,
+         DH_D47_age, DH_temp$temp + DH_temp$temp_err, col = "gray50")
 
 # Add points
-points(DH_D47_age, DH_temp, col = "gray10", pch = 19)
+points(DH_D47_age, DH_temp$temp, col = "gray10", pch = 19)
 ```
 
 ## Groundwater *δ*<sup>18</sup>O versus age

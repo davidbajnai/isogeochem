@@ -19,6 +19,14 @@ between bicarbonate ion HCO3(-) and water.
 \details{
 \deqn{\alpha^{18}_{HCO3(-)/H2O} =
 e^{2.59 \times \frac{1000}{T^{2}} + 0.00189}}
+
+The equation above and in the function is the uncorrected equation in
+Beck et al. (2005). They experimentally determined the fractionation factor
+using BaCO3 precipitation experiments. However, they applied the acid
+fractionation factor of calcite during the data processing and
+not that of BaCO3. The acid fractionation factor of BaCO3 is not known
+accurately, which may result in a bias of up to 1‰
+in the calculated 1000lna values.
 }
 \references{
 Beck, W. C., Grossman, E. L., & Morse, J. W. (2005).

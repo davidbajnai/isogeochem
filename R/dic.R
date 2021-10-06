@@ -1,10 +1,10 @@
-# Functions in this file: xDIC()
+# Functions in this file: X_DIC(), X_absorption
 
 ##———————————————————————————————————————————————————————————————————————————##
-#### xDIC ####
+#### X_DIC ####
 #' @title Dissolved inorganic carbon species
 #'
-#' @description `xDIC()` calculates the relative abundance of the DIC species
+#' @description `X_DIC()` calculates the relative abundance of the DIC species
 #'   as a function of solution temperature, pH, and salinity.
 #'
 #' @param temp The temperature of the solution (°C).
@@ -18,11 +18,11 @@
 #' * Relative abundance of carbonate ion (%).
 #'
 #' @examples
-#' xDIC(temp = 25, pH = 7, S = 30)
+#' X_DIC(temp = 25, pH = 7, S = 30)
 #'
 #' @export
 
-xDIC = function(temp, pH, S) {
+X_DIC = function(temp, pH, S) {
   TinK = temp + 273.15
 
   # First and second stoichiometric dissociation constants of carbonic acid
@@ -42,20 +42,20 @@ xDIC = function(temp, pH, S) {
   pK2 = A2 + (B2 / TinK) + C2 * log(TinK) + pK2_0
 
   # Relative proportion of the DIC species
-  xCO3  = ((10^(pK1 + pK2 - 2*pH) + 10^(pK2 - pH) + 1)^-1) * 100
-  xHCO3 = (10^(pK2 - pH) * (10^(pK1 + pK2 - 2*pH) +
+  X_CO3  = ((10^(pK1 + pK2 - 2*pH) + 10^(pK2 - pH) + 1)^-1) * 100
+  X_HCO3 = (10^(pK2 - pH) * (10^(pK1 + pK2 - 2*pH) +
                               10^(pK2 - pH) + 1)^-1) * 100
-  xCO2  = ((10^(2*pH - pK1 - pK2) + 10^(pH-pK1) + 1)^-1) * 100
+  X_CO2  = ((10^(2*pH - pK1 - pK2) + 10^(pH-pK1) + 1)^-1) * 100
 
-  data.frame(xCO2, xHCO3, xCO3)
+  data.frame(X_CO2, X_HCO3, X_CO3)
 
 }
 
 ##———————————————————————————————————————————————————————————————————————————##
-#### xabs ####
+#### X_absorption ####
 #' @title Relative rates of CO2 absorption reactions
 #'
-#' @description `xabs()` calculates the relative abundance of the DIC species
+#' @description `X_absorption()` calculates the relative abundance of the DIC species
 #'   as a function of solution temperature, pH, and salinity.
 #'
 #' @param temp The temperature of the solution (°C).
@@ -64,7 +64,7 @@ xDIC = function(temp, pH, S) {
 #'
 #' @details
 #'
-#' xhydration = ((kCO2 / (kCO2 + kOHxKw / aH)) * 100), where
+#' X_hydration = ((kCO2 / (kCO2 + kOHxKw / aH)) * 100), where
 #'
 #' * kCO2 is the rate constant for CO2 hydration from Johnson (1982)
 #' * kOHxKw is the rate constant for
@@ -89,11 +89,11 @@ xDIC = function(temp, pH, S) {
 #' <https://doi.org/10.1016/j.marchem.2005.11.001>
 #'
 #' @examples
-#' xabs(temp = 25, pH = 7, S = 30)
+#' X_absorption(temp = 25, pH = 7, S = 30)
 #'
 #' @export
 
-xabs = function(temp, pH, S) {
+X_absorption = function(temp, pH, S) {
   TinK = temp  + 273.15
   aH = 10 ^ -pH
 
@@ -108,8 +108,8 @@ xabs = function(temp, pH, S) {
   kOHxKw = (499002.24 * exp(4.2986 * 10 ^ -4 * S ^ 2 + 5.75499 * 10 ^
                               -5 * S)) * exp(-90166.83 / (8.3145 * TinK))
 
-  xhydration     = ((kCO2 / (kCO2 + kOHxKw / aH)) * 100)
-  xhydroxylation = 100 - ((kCO2 / (kCO2 + kOHxKw / aH)) * 100)
+  X_hydration     = ((kCO2 / (kCO2 + kOHxKw / aH)) * 100)
+  X_hydroxylation = 100 - ((kCO2 / (kCO2 + kOHxKw / aH)) * 100)
 
-  return(data.frame(xhydration, xhydroxylation))
+  return(data.frame(X_hydration, X_hydroxylation))
 }

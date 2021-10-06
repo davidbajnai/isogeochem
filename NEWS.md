@@ -1,11 +1,23 @@
+# isogeochem 1.0.7
+
+## Function updates
+* xDIC() renamed to X_DIC()
+* xabs() renamed to X_absorption()
+* temp_D47() and temp_D48() both result in a similar data frame (length = 2) if errors are specified
+
+## Misc
+* README updates
+* Vignette updates
+* Installing isogeochem with vignettes now works
+
 # isogeochem 1.0.6
 
 ## New functions
 * a18_CO2g_H2O()
 * a18_CO2aq_H2O()
-* a18_CO3_H2O
-* a18_HCO3_H2O
-* a13_CO2g_CO2aq
+* a18_CO3_H2O()
+* a18_HCO3_H2O()
+* a13_CO2g_CO2aq()
 
 ## Misc
 * Added CodeFactor badge to README

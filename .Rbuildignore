@@ -2,9 +2,9 @@
 ^\.Rproj\.user$
 ^\.github$
 ^README\.Rmd$
+^README\.html$
 [.]png$
 ^LICENSE\.md$
-^README\.html$
 ^data-raw$
 ^revdep$
 ^codemeta\.json$
@@ -13,5 +13,5 @@
 ^codecov\.yml$
 ^man/figures$
 ^vignettes/figures$
+^vignettes/[.]html$
 ^doc$
-^Meta$

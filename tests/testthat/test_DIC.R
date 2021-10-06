@@ -1,11 +1,11 @@
 # tests of the DIC functions #
 
-test_that("xDIC returns a data frame", {
-  expect_s3_class(xDIC(temp = 10, pH = 7, S = 0), "data.frame")
-  expect_length(xDIC(temp = 10, pH = 7, S = 0), 3)
+test_that("X_DIC returns a data frame", {
+  expect_s3_class(X_DIC(temp = 10, pH = 7, S = 0), "data.frame")
+  expect_length(X_DIC(temp = 10, pH = 7, S = 0), 3)
 })
 
-test_that("xabs returns a data frame", {
-  expect_s3_class(xabs(temp = 10, pH = 7, S = 0), "data.frame")
-  expect_length(xabs(temp = 10, pH = 7, S = 0), 2)
+test_that("X_absorption returns a data frame", {
+  expect_s3_class(X_absorption(temp = 10, pH = 7, S = 0), "data.frame")
+  expect_length(X_absorption(temp = 10, pH = 7, S = 0), 2)
 })

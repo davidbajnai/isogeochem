@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
   fig.height = 5,
   fig.width = 5,
   dpi = 150,
-  out.width = "55%"
+  out.width = "60%"
 )
 knitr::opts_knit$set(global.par = TRUE)
 r = getOption("repos")
@@ -22,7 +22,7 @@ r["CRAN"] = "http://cran.us.r-project.org"
 options(repos = r)
 ```
 ```{r, include = FALSE}
-#> Set global graphic parameters. This code has to be in its own chunk. 
+#> Set global graphic parameters. This code has to be in its own chunk.
 par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 ```
 
@@ -41,7 +41,7 @@ par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 [![DOI](https://zenodo.org/badge/401782303.svg)](https://zenodo.org/badge/latestdoi/401782303)
 <!-- badges: end -->
 
-`isogeochem` aims to make working with stable oxygen, carbon, and clumped isotope data reproducible and straightforward. It offers tools to quickly calculate:
+`isogeochem` makes working with stable oxygen, carbon, and clumped isotope data straightforward and reproducible. It offers tools to quickly calculate:
 
 * carbonate *δ*<sup>18</sup>O, *δ*<sup>17</sup>O, *∆*<sub>47</sub>, and *∆*<sub>48</sub> values at a given temperature
 * carbonate growth temperatures from *δ*<sup>18</sup>O, *∆*<sub>47</sub>, and *∆*<sub>48</sub> values
@@ -65,7 +65,6 @@ library("isogeochem")
 ```
 This package is a work in progress and is therefore frequently updated. Always make sure that you use the latest version.
 
-
 ### Vignettes
 
 Case studies demonstrating the use and scope of the functions in `isogeochem` are
@@ -85,7 +84,7 @@ if (!require("shades")) install.packages("shades")
 # Model equilibrium carbonate ∆47 and ∆48 values
 temp  = seq(0, 100, 10) # temperature range: 0—100 °C
 D47eq = D47(temp, eq = "Fiebig21")
-D48eq = D48(temp, eq = "Fiebig21") 
+D48eq = D48(temp, eq = "Fiebig21")
 
 # Sample data
 D47_coral  = 0.617; D47_coral_err  = 0.006
@@ -163,14 +162,14 @@ text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%"), pos = 1, cex = 0.5,
 
 ## Thermometry
 
-Use `isogeochem` to calculate carbonate growth temperatures from *δ*<sup>18</sup>O and *∆*<sub>47</sub> values.
+Use `isogeochem` to calculate crystallization temperatures from carbonate *δ*<sup>18</sup>O and *∆*<sub>47</sub> values.
 
 ``` {r}
 # Temperature from D47 with or without errors
 temp_D47(D47_CDES90 = 0.601, eq = "Petersen19")
 temp_D47(D47_CDES90 = 0.601,
          D47_error = 0.008 ,
-         eq = "Petersen19")
+         eq = "Anderson21")
 
 # Temperature from d18O
 temp_d18O(
@@ -227,6 +226,10 @@ to_VSMOW(1)
 # Convert between classical delta and delta prime values:
 prime(10)
 unprime(9.95)
+
+# Calculate isotope fractionation factors:
+a_A_B(A = 30.40, B = 0.15)
+epsilon(a_A_B(A = 30.40, B = 0.15))
 ```
 
 ## Datasets

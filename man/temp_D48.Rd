@@ -33,7 +33,8 @@ temp_D48(
 \item{pch}{Graphical parameter. Optional.}
 }
 \value{
-Returns the carbonate growth temperature (°C).
+Returns the carbonate growth temperature (°C). If both \code{D47_error} and
+\code{D48_error} are specified \code{temp_D48()} returns a data frame.
 }
 \description{
 \code{temp_D48()} calculates carbonate growth temperature from D47 and D48 values.

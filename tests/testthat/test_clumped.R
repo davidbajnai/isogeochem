@@ -29,18 +29,16 @@ test_that("D48 return values", {
 test_that("temp_D48 returns a single value if error IS NOT specified", {
   expect_length(temp_D48(0.617, 0.139, ks = -0.6),1)
 })
-test_that("temp_D48 returns three values as data frame if error IS specified", {
-  expect_length(temp_D48(0.617, 0.139, 0.002, 0.010, ks = -0.6), 3)
-  expect_s3_class(temp_D48(0.617, 0.139, 0.002, 0.010, ks = -0.6), "data.frame")
+test_that("temp_D48 returns two values if error IS specified", {
+  expect_length(temp_D48(0.617, 0.139, 0.002, 0.010, ks = -0.6), 2)
 })
 
 test_that("temp_D47 returns a single value if error IS NOT specified", {
   expect_length(temp_D47(0.617, eq = "Petersen19"), 1)
 })
 
-test_that("temp_D47 returns a data frame (l = 2) if error IS specified", {
+test_that("temp_D47 returns two values if error IS specified", {
   expect_length(temp_D47(0.617, 0.005, eq = "Petersen19"), 2)
-  expect_s3_class(temp_D47(0.617, 0.005, eq = "Petersen19"), "data.frame")
 })
 
 # Test graphics –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––

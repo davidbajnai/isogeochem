@@ -84,7 +84,7 @@ D47 = function(temp, eq) {
              + 2.391 * 10 ^ 7 / TinK ^ 3
              - 3.541 * 10 ^ 9 / TinK ^ 4) + 0.1856
   } else if (eq == "Anderson21") {
-    # Petersen et al. (2019)
+    # Anderson et al. (2021)
     b = 0.154
     m = 0.0391
     m * (10 ^ 6 / TinK ^ 2) + b
@@ -109,8 +109,8 @@ D47 = function(temp, eq) {
 #' The D47 vs temperature equations are listed at [D47()].
 #'
 #' @return
-#' Returns the carbonate growth temperature (°C),
-#' and — if `D47_error` is specified — also the error.
+#' Returns the carbonate growth temperature (°C). If `D47_error`
+#' is specified `temp_D47()` returns a data frame.
 #'
 #' @references
 #' References are listed at [D47()].
@@ -144,7 +144,7 @@ temp_D47 = function(D47_CDES90, D47_error, eq) {
   if (missing(D47_error) == FALSE) {
     temp_err1 = temp_util(D47_CDES90 + D47_error, eq)
     temp_err2 = temp_util(D47_CDES90 - D47_error, eq)
-    temp_err = (temp_err2 - temp_err1) / 2
+    temp_err = round((temp_err2 - temp_err1) / 2, 1)
     temp = data.frame(temp, temp_err)
   }
 
@@ -249,7 +249,8 @@ D48 = function(temp, eq) {
 #' D47_CDES90 vs temperature equation of Fiebig et al. (2021).
 #'
 #' @return
-#' Returns the carbonate growth temperature (°C).
+#' Returns the carbonate growth temperature (°C). If both `D47_error` and
+#' `D48_error` are specified `temp_D48()` returns a data frame.
 #'
 #' @references
 #' References are listed at [D48()] and [D47()].
@@ -317,17 +318,18 @@ temp_D48 = function(D47_CDES90,
     )
     int_cool = curve_intersect(line_cool, line_eq)
     int_warm = curve_intersect(line_warm, line_eq)
-    temp_mean = round(temp_D47(int$y, eq = "Fiebig21"), 0)
+    temp = round(temp_D47(int$y, eq = "Fiebig21"), 0)
     temp_warm = round(temp_D47(int_warm$y, eq = "Fiebig21"), 0)
     temp_cool = round(temp_D47(int_cool$y, eq = "Fiebig21"), 0)
-    temp = data.frame(temp_mean, temp_warm, temp_cool)
+    temp_err = ((temp-temp_cool)+(temp_warm-temp))/2
+    temp = data.frame(temp, temp_err)
   } else {
     temp = round(temp_D47(int$y, eq = "Fiebig21"), 0)
   }
 
   if (add == TRUE) {
     if (is.null(grDevices::dev.list()) == FALSE) {
-      if (length(temp) == 3) {
+      if (length(temp) == 2) {
         graphics::rect(
           xleft = D48_CDES90 - D48_error,
           ybottom = D47_CDES90 - D47_error,
