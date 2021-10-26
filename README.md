@@ -10,7 +10,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/davidbajnai/isogeochem/workflows/R-CMD-check/badge.svg)](https://github.com/davidbajnai/isogeochem/actions)
-[![codecov](https://codecov.io/gh/davidbajnai/isogeochem/branch/main/graph/badge.svg?token=srtusVq2Im)](https://codecov.io/gh/davidbajnai/isogeochem)
+[![codecov](https://codecov.io/gh/davidbajnai/isogeochem/branch/main/graph/badge.svg?token=srtusVq2Im)](https://app.codecov.io/gh/davidbajnai/isogeochem)
 [![CodeFactor](https://www.codefactor.io/repository/github/davidbajnai/isogeochem/badge)](https://www.codefactor.io/repository/github/davidbajnai/isogeochem)
 [![repostatus](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN
@@ -31,9 +31,8 @@ quickly calculate:
 -   convert between the VSMOW and VPDB scales
 
 The lists of available proxy–temperature calibrations and mineralogies
-are constantly growing. Check out the [.pdf
-manual](isogeochem_manual.pdf) for the current catalog. Please get in
-touch if you have any suggestions!
+are constantly growing. Check out the PDF manual for the current
+catalog. Please get in touch if you have any suggestions!
 
 ## Getting started
 

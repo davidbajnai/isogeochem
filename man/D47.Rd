@@ -60,7 +60,7 @@ Geochemistry, Geophysics, Geosystems, 20(7), 3495-3519.
 Anderson, N. T., Kelson, J. R., Kele, S., Daëron, M.,
 Bonifacie, M., Horita, J., et al. (2021).
 A unified clumped isotope thermometer calibration (0.5–1100°C)
-using carbonate‐based standardization.
+using carbonate-based standardization.
 Geophysical Research Letters, 48(7), e2020GL092069.
 \doi{10.1029/2020gl092069}
 
