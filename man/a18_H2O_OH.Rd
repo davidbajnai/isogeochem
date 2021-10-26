@@ -30,7 +30,7 @@ a18_H2O_OH(temp = 90, eq = "Z20-X3LYP")
 Zeebe, R. E. (2020).
 Oxygen isotope fractionation between water and the aqueous hydroxide ion.
 Geochimica et Cosmochimica Acta, 289, 182-195.
-\url{https://doi.org/10.1016/j.gca.2020.08.025}
+\doi{10.1016/j.gca.2020.08.025}
 }
 \seealso{
 Other fractionation_factors: 

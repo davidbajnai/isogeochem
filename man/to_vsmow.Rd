@@ -38,19 +38,19 @@ to_VSMOW(0, eq = "Coplen83")
 Coplen, T. B., Kendall, C., & Hopple, J. (1983).
 Comparison of stable isotope reference samples.
 Nature, 302, 236-238.
-\url{https://doi.org/10.1038/302236a0}
+\doi{10.1038/302236a0}
 
 Brand, W. A., Coplen, T. B., Vogl, J., Rosner, M., & Prohaska, T. (2014).
 Assessment of international reference materials for
 isotope-ratio analysis (IUPAC Technical Report).
 Pure and Applied Chemistry, 86(3), 425-467.
-\url{https://doi.org/10.1515/pac-2013-1023}
+\doi{10.1515/pac-2013-1023}
 
 Kim, S.-T., Coplen, T. B., & Horita, J. (2015).
 Normalization of stable isotope data for carbonate minerals:
 Implementation of IUPAC guidelines.
 Geochimica et Cosmochimica Acta, 158, 276-289.
-\url{https://doi.org/10.1016/j.gca.2015.02.011}
+\doi{10.1016/j.gca.2015.02.011}
 }
 \seealso{
 \code{\link[=to_VPDB]{to_VPDB()}} converts d18O values expressed

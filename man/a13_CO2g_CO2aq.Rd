@@ -24,7 +24,7 @@ between gaseous and dissolved CO2.
 Vogel, J. C., Grootes, P. M., & Mook, W. G. (1970).
 Isotopic fractionation between gaseous and dissolved carbon dioxide.
 Zeitschrift für Physik A: Hadrons and Nuclei, 230(3), 225-238.
-\url{https://doi.org/10.1007/Bf01394688}
+\doi{10.1007/Bf01394688}
 }
 \seealso{
 Other fractionation_factors: 

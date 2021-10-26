@@ -44,20 +44,20 @@
 #' clumped isotope calibrations, estimates of mineral-specific offsets,
 #' and temperature dependence of acid digestion fractionation.
 #' Geochemistry, Geophysics, Geosystems, 20(7), 3495-3519.
-#' <https://www.doi.org/10.1029/2018GC008127>
+#' \doi{10.1029/2018GC008127}
 #'
 #' Anderson, N. T., Kelson, J. R., Kele, S., Daëron, M.,
 #' Bonifacie, M., Horita, J., et al. (2021).
 #' A unified clumped isotope thermometer calibration (0.5–1100°C)
 #' using carbonate‐based standardization.
 #' Geophysical Research Letters, 48(7), e2020GL092069.
-#' <https://doi.org/10.1029/2020gl092069>
+#' \doi{10.1029/2020gl092069}
 #'
 #' Fiebig, J., Daëron, M., Bernecker, M., Guo, W.,
 #' Schneider, G., Boch, R., et al. (2021).
 #' Calibration of the dual clumped isotope thermometer for carbonates.
 #' Geochimica et Cosmochimica Acta.
-#' <https://www.doi.org/10.1016/j.gca.2021.07.012>
+#' \doi{10.1016/j.gca.2021.07.012}
 #'
 #' @seealso [temp_D47()] calculates growth temperature from a D47 value.
 #'
@@ -188,19 +188,19 @@ temp_D47 = function(D47_CDES90, D47_error, eq) {
 #' Dual clumped isotope thermometry resolves kinetic biases in
 #' carbonate formation temperatures.
 #' Nature Communications, 11, 4005.
-#' <https://doi.org/10.1038/s41467-020-17501-0>
+#' \doi{10.1038/s41467-020-17501-0}
 #'
 #' Fiebig, J., Daëron, M., Bernecker, M., Guo, W.,
 #' Schneider, G., Boch, R., et al. (2021).
 #' Calibration of the dual clumped isotope thermometer for carbonates.
 #' Geochimica et Cosmochimica Acta.
-#' <https://www.doi.org/10.1016/j.gca.2021.07.012>
+#' \doi{10.1016/j.gca.2021.07.012}
 #'
 #' Swart, P. K., Lu, C., Moore, E., Smith, M.,
 #' Murray, S. T., & Staudigel, P. T. (2021).
 #' A calibration equation between D48 values of carbonate and temperature.
 #' Rapid Communications in Mass Spectrometry, 35(17), e9147.
-#' <https://www.doi.org/10.1002/rcm.9147>
+#' \doi{10.1002/rcm.9147}
 #'
 #' @family equilibrium_carbonate
 #'

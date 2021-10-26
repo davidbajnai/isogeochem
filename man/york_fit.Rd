@@ -56,11 +56,11 @@ York, D., Evensen, N. M., López Martínez, M., & De Basabe Delgado, J. (2004).
 Unified equations for the slope, intercept, and
 standard errors of the best straight line.
 American Journal of Physics, 72(3), 367-375.
-\url{https://doi.org/10.1119/1.1632486}
+\doi{10.1119/1.1632486}
 
 Wacker, U., Fiebig, J., Tödter, J., Schöne, B. R.,
 Bahr, A., Friedrich, O., et al. (2014).
 Empirical calibration of the clumped isotope paleothermometer using calcites
 of various origins. Geochimica et Cosmochimica Acta, 141, 127-144.
-\url{https://doi.org/10.1016/j.gca.2014.06.004}
+\doi{10.1016/j.gca.2014.06.004}
 }

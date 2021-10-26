@@ -1,4 +1,6 @@
-# Functions in this file: prime(), unprime(), a_A_B(), B_from_a(), A_from_a()
+# Functions in this file: prime(), unprime(),
+# a_A_B(), B_from_a(), A_from_a(),
+# epsilon(), D17O()
 
 # ——————————————————————————————————————————————————————————————————————————— #
 #### prime ####
@@ -162,4 +164,32 @@ A_from_a = function(a, B) {
 
 epsilon = function(alpha) {
   (alpha - 1) * 1000
+}
+
+
+# ——————————————————————————————————————————————————————————————————————————— #
+#### D17O ####
+#' @title Triple oxygen isotope value
+#'
+#' @description
+#' `D17O()` calculates the D17O value.
+#'
+#' @param d18O Isotope delta value (‰).
+#' @param d17O Isotope delta value (‰).
+#' @param lambda Triple oxygen isotope reference slope. Default `0.528`.
+#'
+#' @return Returns the D17O value (‰).
+#'
+#' @details
+#'
+#' \deqn{\Delta^{17}O_{VSMOW} = \delta'^{17}O_{VSMOW} -
+#' \lambda \times \delta'^{18}O_{VSMOW} }
+#'
+#' @examples
+#' D17O(d18O = -10, d17O = -5, lambda = 0.528)
+#'
+#' @export
+
+D17O = function(d18O, d17O, lambda = 0.528) {
+  prime(d17O) - lambda * prime(d18O)
 }

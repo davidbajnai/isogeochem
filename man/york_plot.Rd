@@ -75,5 +75,5 @@ Wacker, U., Fiebig, J., Tödter, J., Schöne, B. R.,
 Bahr, A., Friedrich, O., et al. (2014).
 Empirical calibration of the clumped isotope paleothermometer using calcites
 of various origins. Geochimica et Cosmochimica Acta, 141, 127-144.
-\url{https://doi.org/10.1016/j.gca.2014.06.004}
+\doi{10.1016/j.gca.2014.06.004}
 }

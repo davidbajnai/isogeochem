@@ -37,7 +37,7 @@ Grossman, E. L., & Joachimski, M. M. (2020).
 Oxygen isotope stratigraphy.
 In F. M. Gradstein, J. G. Ogg, M. D. Schmitz, & G. M. Ogg (Eds.),
 Geologic Time Scale 2020: Volume 1 (pp. 279-307): Elsevier.
-\url{https://doi.org/10.1016/B978-0-12-824360-2.00010-3}
+\doi{10.1016/B978-0-12-824360-2.00010-3}
 }
 \seealso{
 Other "datasets": 

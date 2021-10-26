@@ -33,7 +33,7 @@ Beck, W. C., Grossman, E. L., & Morse, J. W. (2005).
 Experimental studies of oxygen isotope fractionation
 in the carbonic acid system at 15°, 25°, and 40°C.
 Geochimica et Cosmochimica Acta, 69(14), 3493-3503.
-\url{https://doi.org/10.1016/j.gca.2005.02.003}
+\doi{10.1016/j.gca.2005.02.003}
 }
 \seealso{
 Other fractionation_factors: 

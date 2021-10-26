@@ -106,43 +106,43 @@ a18_c_H2O(temp = 25, min = "aragonite", "GK86")
 O'Neil, J. R., Clayton, R. N., & Mayeda, T. K. (1969).
 Oxygen isotope fractionation in divalent metal carbonates.
 The Journal of Chemical Physics, 51(12), 5547-5558.
-\url{https://doi.org/10.1063/1.1671982}
+\doi{10.1063/1.1671982}
 
 Grossman, E. L., & Ku, T. L. (1986).
 Oxygen and carbon isotope fractionation in biogenic
 aragonite: Temperature effects.
 Chemical Geology, 59(1), 59-74.
-\url{https://doi.org/10.1016/0009-2541(86)90044-6}
+\doi{10.1016/0009-2541(86)90044-6}
 
 Kim, S.-T., & O'Neil, J. R. (1997).
 Equilibrium and nonequilibrium oxygen isotope effects
 in synthetic carbonates.
 Geochimica et Cosmochimica Acta, 61(16), 3461-3475.
-\url{https://doi.org/10.1016/S0016-7037(97)00169-5}
+\doi{10.1016/S0016-7037(97)00169-5}
 
 Dettman, D. L., Reische, A. K., & Lohmann, K. C. (1999).
 Controls on the stable isotope composition of seasonal growth bands
 in aragonitic fresh-water bivalves (unionidae).
 Geochimica et Cosmochimica Acta, 63(7-8), 1049-1057.
-\url{https://doi.org/10.1016/s0016-7037(99)00020-4}
+\doi{10.1016/s0016-7037(99)00020-4}
 
 Vasconcelos, C., McKenzie, J. A., Warthmann, R.,
 & Bernasconi, S. M. (2005).
 Calibration of the d18O paleothermometer for dolomite precipitated in
 microbial cultures and natural environments.
 Geology, 33(4), 317-320.
-\url{https://doi.org/10.1130/g20992.1}
+\doi{10.1130/g20992.1}
 
 Kim, S.-T., Mucci, A., & Taylor, B. E. (2007).
 Phosphoric acid fractionation factors for calcite and aragonite between
 25 and 75 °C: Revisited. Chemical Geology, 246(3-4), 135-146.
-\url{https://doi.org/10.1016/j.chemgeo.2007.08.005}
+\doi{10.1016/j.chemgeo.2007.08.005}
 
 Coplen, T. B. (2007).
 Calibration of the calcite–water oxygen-isotope geothermometer
 at Devils Hole, Nevada, a natural laboratory.
 Geochimica et Cosmochimica Acta, 71(16), 3948-3957.
-\url{https://doi.org/10.1016/j.gca.2007.05.028}
+\doi{10.1016/j.gca.2007.05.028}
 
 Lécuyer, C., Balter, V., Martineau, F., Fourel, F., Bernard, A.,
 Amiot, R., et al. (2010).
@@ -150,32 +150,32 @@ Oxygen isotope fractionation between apatite-bound carbonate
 and water determined from controlled experiments with synthetic
 apatites precipitated at 10–37°C.
 Geochimica et Cosmochimica Acta, 74(7), 2072-2081.
-\url{https://doi.org/10.1016/j.gca.2009.12.024}
+\doi{10.1016/j.gca.2009.12.024}
 
 Tremaine, D. M., Froelich, P. N., & Wang, Y. (2011).
 Speleothem calcite farmed in situ: Modern calibration of d18O and d13C
 paleoclimate proxies in a continuously-monitored natural cave system.
 Geochimica et Cosmochimica Acta, 75(17), 4929-4950.
-\url{https://doi.org/10.1016/j.gca.2011.06.005}
+\doi{10.1016/j.gca.2011.06.005}
 
 Watkins, J. M., Nielsen, L. C., Ryerson, F. J., & DePaolo, D. J. (2013).
 The influence of kinetics on the oxygen isotope composition
 of calcium carbonate.
 Earth and Planetary Science Letters, 375, 349-360.
-\url{https://doi.org/10.1016/j.epsl.2013.05.054}
+\doi{10.1016/j.epsl.2013.05.054}
 
 van Dijk, J., Fernandez, A., Müller, I. A., Lever, M., & Bernasconi, S.
 M. (2018).
 Oxygen isotope fractionation in the siderite-water system between 8.5
 and 62 °C.
 Geochimica et Cosmochimica Acta, 220, 535-551.
-\url{https://doi.org/10.1016/j.gca.2017.10.009}
+\doi{10.1016/j.gca.2017.10.009}
 
 Daëron, M., Drysdale, R. N., Peral, M., Huyghe, D., Blamart, D.,
 Coplen, T. B., et al. (2019).
 Most Earth-surface calcites precipitate out of isotopic equilibrium.
 Nature Communications, 10, 429.
-\url{https://doi.org/10.1038/s41467-019-08336-5}
+\doi{10.1038/s41467-019-08336-5}
 }
 \seealso{
 Other fractionation_factors: 

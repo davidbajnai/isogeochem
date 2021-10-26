@@ -20,7 +20,7 @@
 #' Vogel, J. C., Grootes, P. M., & Mook, W. G. (1970).
 #' Isotopic fractionation between gaseous and dissolved carbon dioxide.
 #' Zeitschrift für Physik A: Hadrons and Nuclei, 230(3), 225-238.
-#' <https://doi.org/10.1007/Bf01394688>
+#' \doi{10.1007/Bf01394688}
 #'
 #' @family fractionation_factors
 #'

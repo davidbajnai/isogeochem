@@ -2,6 +2,7 @@
 
 export(A_from_a)
 export(B_from_a)
+export(D17O)
 export(D47)
 export(D48)
 export(X_DIC)

@@ -29,3 +29,21 @@ as a function of solution temperature, pH, and salinity.
 X_DIC(temp = 25, pH = 7, S = 30)
 
 }
+\references{
+Harned, H. S., and Scholes, S. R. (1941).
+The ionization constant of HCO3- from 0 to 50°.
+J. Am. Chem. Soc., 63(6), 1706-1709.
+\doi{10.1021/ja01851a058}
+
+Harned, H. S., and Davis, R. (1943).
+The ionization constant of carbonic acid in water and the solubility
+of carbon dioxide in water and aqueous salt solutions from 0 to 50°.
+J. Am. Chem. Soc., 65(10), 2030-2037.
+\doi{10.1021/ja01250a059}
+
+Millero, F. J., Graham, T. B., Huang, F., Bustos-Serrano, H., et al. (2006).
+Dissociation constants of carbonic acid in seawater as a function of
+salinity and temperature.
+Mar. Chem., 100(1-2), 80-94.
+\doi{10.1016/j.marchem.2005.12.001}
+}

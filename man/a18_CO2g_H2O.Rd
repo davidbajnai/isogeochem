@@ -24,7 +24,7 @@ between gaseous CO2 and liquid water.
 Brenninkmeijer, C. A. M., Kraft, P., & Mook, W. G. (1983).
 Oxygen isotope fractionation between CO2 and H2O.
 Chemical Geology, 41, 181-190.
-\url{https://doi.org/10.1016/S0009-2541(83)80015-1}
+\doi{10.1016/S0009-2541(83)80015-1}
 }
 \seealso{
 Other fractionation_factors: 

@@ -50,7 +50,7 @@ Guo, W., & Zhou, C. (2019).
 Triple oxygen isotope fractionation in the DIC-H2O-CO2 system:
 A numerical framework and its implications.
 Geochimica et Cosmochimica Acta, 246, 541-564.
-\url{https://www.doi.org/10.1016/j.gca.2018.11.018}
+\doi{10.1016/j.gca.2018.11.018}
 }
 \seealso{
 Other equilibrium_carbonate: 

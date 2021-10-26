@@ -1,3 +1,15 @@
+# isogeochem 1.0.8
+
+## New functions
+* D17O() to calculate triple oxygen isotope value from d18O and d17O values
+
+## Function updates
+* plot_york() returns silently
+
+## Misc
+* preparing for CRAN release
+* updated DOI links
+
 # isogeochem 1.0.7
 
 ## Function updates
@@ -8,7 +20,7 @@
 ## Misc
 * README updates
 * Vignette updates
-* Installing isogeochem with vignettes now works
+* Installing isogeochem with vignettes now works (#2, @japhir)
 
 # isogeochem 1.0.6
 

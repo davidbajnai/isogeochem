@@ -28,19 +28,19 @@
 #' Sharma, T., and Clayton, R. N. (1965).
 #' Measurement of ratios of total oxygen of carbonates.
 #' Geochimica et Cosmochimica Acta, 29(12), 1347-1353.
-#' <https://doi.org/10.1016/0016-7037(65)90011-6>
+#' \doi{10.1016/0016-7037(65)90011-6}
 #'
 #' Kim, S.-T., Mucci, A., and Taylor, B. E. (2007).
 #' Phosphoric acid fractionation factors for calcite and aragonite
 #' between 25 and 75 °C: Revisited.
 #' Chemical Geology, 246(3-4), 135-146.
-#' <https://doi.org/10.1016/j.chemgeo.2007.08.005>
+#' \doi{10.1016/j.chemgeo.2007.08.005}
 #'
 #' Kim, S.-T., Coplen, T. B., and Horita, J. (2015).
 #' Normalization of stable isotope data for carbonate minerals:
 #' Implementation of IUPAC guidelines.
 #' Geochimica et Cosmochimica Acta, 158, 276-289.
-#' <https://doi.org/10.1016/j.gca.2015.02.011>
+#' \doi{10.1016/j.gca.2015.02.011}
 #'
 #' @family fractionation_factors
 #'
@@ -82,7 +82,7 @@ a18_CO2acid_c = function(temp, min) {
 #' Zeebe, R. E. (2020).
 #' Oxygen isotope fractionation between water and the aqueous hydroxide ion.
 #' Geochimica et Cosmochimica Acta, 289, 182-195.
-#' <https://doi.org/10.1016/j.gca.2020.08.025>
+#' \doi{10.1016/j.gca.2020.08.025}
 #'
 #' @family fractionation_factors
 #'
@@ -126,7 +126,7 @@ a18_H2O_OH = function(temp, eq) {
 #' Brenninkmeijer, C. A. M., Kraft, P., & Mook, W. G. (1983).
 #' Oxygen isotope fractionation between CO2 and H2O.
 #' Chemical Geology, 41, 181-190.
-#' <https://doi.org/10.1016/S0009-2541(83)80015-1>
+#' \doi{10.1016/S0009-2541(83)80015-1}
 #'
 #' @family fractionation_factors
 #'
@@ -161,7 +161,7 @@ a18_CO2g_H2O = function(temp) {
 #' Experimental studies of oxygen isotope fractionation
 #' in the carbonic acid system at 15°, 25°, and 40°C.
 #' Geochimica et Cosmochimica Acta, 69(14), 3493-3503.
-#' <https://doi.org/10.1016/j.gca.2005.02.003>
+#' \doi{10.1016/j.gca.2005.02.003}
 #'
 #' @family fractionation_factors
 #'
@@ -203,7 +203,7 @@ a18_CO2aq_H2O = function(temp) {
 #' Experimental studies of oxygen isotope fractionation
 #' in the carbonic acid system at 15°, 25°, and 40°C.
 #' Geochimica et Cosmochimica Acta, 69(14), 3493-3503.
-#' <https://doi.org/10.1016/j.gca.2005.02.003>
+#' \doi{10.1016/j.gca.2005.02.003}
 #'
 #' @family fractionation_factors
 #'
@@ -245,7 +245,7 @@ a18_CO3_H2O = function(temp) {
 #' Experimental studies of oxygen isotope fractionation
 #' in the carbonic acid system at 15°, 25°, and 40°C.
 #' Geochimica et Cosmochimica Acta, 69(14), 3493-3503.
-#' <https://doi.org/10.1016/j.gca.2005.02.003>
+#' \doi{10.1016/j.gca.2005.02.003}
 #'
 #' @family fractionation_factors
 #'

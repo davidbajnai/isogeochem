@@ -41,11 +41,11 @@ X_absorption(temp = 25, pH = 7, S = 30)
 Johnson, K. S. (1982).
 Carbon dioxide hydration and dehydration kinetics in seawater.
 Limnology and Oceanography, 27(5), 894-855.
-\url{https://doi.org/10.4319/lo.1982.27.5.0849}
+\doi{10.4319/lo.1982.27.5.0849}
 
 Schulz, K. G., Riebesell, U., Rost, B., Thoms, S., & Zeebe, R. E. (2006).
 Determination of the rate constants for the carbon dioxide to
 bicarbonate inter-conversion in pH-buffered seawater systems.
 Marine Chemistry, 100(1-2), 53-65.
-\url{https://doi.org/10.1016/j.marchem.2005.11.001}
+\doi{10.1016/j.marchem.2005.11.001}
 }

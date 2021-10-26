@@ -55,20 +55,20 @@ Effects of improved 17O correction on interlaboratory agreement in
 clumped isotope calibrations, estimates of mineral-specific offsets,
 and temperature dependence of acid digestion fractionation.
 Geochemistry, Geophysics, Geosystems, 20(7), 3495-3519.
-\url{https://www.doi.org/10.1029/2018GC008127}
+\doi{10.1029/2018GC008127}
 
 Anderson, N. T., Kelson, J. R., Kele, S., Daëron, M.,
 Bonifacie, M., Horita, J., et al. (2021).
 A unified clumped isotope thermometer calibration (0.5–1100°C)
 using carbonate‐based standardization.
 Geophysical Research Letters, 48(7), e2020GL092069.
-\url{https://doi.org/10.1029/2020gl092069}
+\doi{10.1029/2020gl092069}
 
 Fiebig, J., Daëron, M., Bernecker, M., Guo, W.,
 Schneider, G., Boch, R., et al. (2021).
 Calibration of the dual clumped isotope thermometer for carbonates.
 Geochimica et Cosmochimica Acta.
-\url{https://www.doi.org/10.1016/j.gca.2021.07.012}
+\doi{10.1016/j.gca.2021.07.012}
 }
 \seealso{
 \code{\link[=temp_D47]{temp_D47()}} calculates growth temperature from a D47 value.

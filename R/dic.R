@@ -17,6 +17,24 @@
 #' * Relative abundance of bicarbonate ion (%).
 #' * Relative abundance of carbonate ion (%).
 #'
+#' @references
+#' Harned, H. S., and Scholes, S. R. (1941).
+#' The ionization constant of HCO3- from 0 to 50°.
+#' J. Am. Chem. Soc., 63(6), 1706-1709.
+#' \doi{10.1021/ja01851a058}
+#'
+#' Harned, H. S., and Davis, R. (1943).
+#' The ionization constant of carbonic acid in water and the solubility
+#' of carbon dioxide in water and aqueous salt solutions from 0 to 50°.
+#' J. Am. Chem. Soc., 65(10), 2030-2037.
+#' \doi{10.1021/ja01250a059}
+#'
+#' Millero, F. J., Graham, T. B., Huang, F., Bustos-Serrano, H., et al. (2006).
+#' Dissociation constants of carbonic acid in seawater as a function of
+#' salinity and temperature.
+#' Mar. Chem., 100(1-2), 80-94.
+#' \doi{10.1016/j.marchem.2005.12.001}
+#'
 #' @examples
 #' X_DIC(temp = 25, pH = 7, S = 30)
 #'
@@ -80,13 +98,13 @@ X_DIC = function(temp, pH, S) {
 #' Johnson, K. S. (1982).
 #' Carbon dioxide hydration and dehydration kinetics in seawater.
 #' Limnology and Oceanography, 27(5), 894-855.
-#' <https://doi.org/10.4319/lo.1982.27.5.0849>
+#' \doi{10.4319/lo.1982.27.5.0849}
 #'
 #' Schulz, K. G., Riebesell, U., Rost, B., Thoms, S., & Zeebe, R. E. (2006).
 #' Determination of the rate constants for the carbon dioxide to
 #' bicarbonate inter-conversion in pH-buffered seawater systems.
 #' Marine Chemistry, 100(1-2), 53-65.
-#' <https://doi.org/10.1016/j.marchem.2005.11.001>
+#' \doi{10.1016/j.marchem.2005.11.001}
 #'
 #' @examples
 #' X_absorption(temp = 25, pH = 7, S = 30)

@@ -1,17 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# isogeochem: <img src="man/figures/isogeochem-logo.png" align="right" width="140"/> <br/> Tools for carbonate isotope geochemistry
+# isogeochem: <img src="man/figures/isogeochem-logo.png" align="right" width="140"/> <br/> Tools for Carbonate Isotope Geochemistry
 
-**Author:** [David Bajnai](https://www.davidbajnai.eu/)<br/>
+**Author:** [David Bajnai](https://davidbajnai.eu/)<br/>
 **Contributors:** Julian Tödter <br/> **License:**
 [GPL-3](https://opensource.org/licenses/GPL-3.0)
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/davidbajnai/isogeochem/workflows/R-CMD-check/badge.svg)](https://github.com/davidbajnai/isogeochem/actions)
-[![Codecov test
-coverage](https://codecov.io/gh/davidbajnai/isogeochem/branch/main/graph/badge.svg)](https://codecov.io/gh/davidbajnai/isogeochem?branch=main)
+[![codecov](https://codecov.io/gh/davidbajnai/isogeochem/branch/main/graph/badge.svg?token=srtusVq2Im)](https://codecov.io/gh/davidbajnai/isogeochem)
 [![CodeFactor](https://www.codefactor.io/repository/github/davidbajnai/isogeochem/badge)](https://www.codefactor.io/repository/github/davidbajnai/isogeochem)
 [![repostatus](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN

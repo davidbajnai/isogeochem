@@ -17,5 +17,6 @@ test_that("utility functions return a number", {
   expect_type(A_from_a(10, 1.01), "double")
   expect_type(B_from_a(10, 1.01), "double")
   expect_type(epsilon(1.01), "double")
+  expect_type(D17O(10, 5), "double")
 })
 

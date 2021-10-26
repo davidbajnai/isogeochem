@@ -38,19 +38,19 @@ a18_CO2acid_c(temp = 72, min = "aragonite")
 Sharma, T., and Clayton, R. N. (1965).
 Measurement of ratios of total oxygen of carbonates.
 Geochimica et Cosmochimica Acta, 29(12), 1347-1353.
-\url{https://doi.org/10.1016/0016-7037(65)90011-6}
+\doi{10.1016/0016-7037(65)90011-6}
 
 Kim, S.-T., Mucci, A., and Taylor, B. E. (2007).
 Phosphoric acid fractionation factors for calcite and aragonite
 between 25 and 75 °C: Revisited.
 Chemical Geology, 246(3-4), 135-146.
-\url{https://doi.org/10.1016/j.chemgeo.2007.08.005}
+\doi{10.1016/j.chemgeo.2007.08.005}
 
 Kim, S.-T., Coplen, T. B., and Horita, J. (2015).
 Normalization of stable isotope data for carbonate minerals:
 Implementation of IUPAC guidelines.
 Geochimica et Cosmochimica Acta, 158, 276-289.
-\url{https://doi.org/10.1016/j.gca.2015.02.011}
+\doi{10.1016/j.gca.2015.02.011}
 }
 \seealso{
 Other fractionation_factors: 

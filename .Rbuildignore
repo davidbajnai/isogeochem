@@ -15,3 +15,4 @@
 ^vignettes/figures$
 ^vignettes/[.]html$
 ^doc$
+^cran-comments\.md$

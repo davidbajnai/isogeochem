@@ -47,19 +47,19 @@ Methner, K., Löffler, N., et al. (2020).
 Dual clumped isotope thermometry resolves kinetic biases in
 carbonate formation temperatures.
 Nature Communications, 11, 4005.
-\url{https://doi.org/10.1038/s41467-020-17501-0}
+\doi{10.1038/s41467-020-17501-0}
 
 Fiebig, J., Daëron, M., Bernecker, M., Guo, W.,
 Schneider, G., Boch, R., et al. (2021).
 Calibration of the dual clumped isotope thermometer for carbonates.
 Geochimica et Cosmochimica Acta.
-\url{https://www.doi.org/10.1016/j.gca.2021.07.012}
+\doi{10.1016/j.gca.2021.07.012}
 
 Swart, P. K., Lu, C., Moore, E., Smith, M.,
 Murray, S. T., & Staudigel, P. T. (2021).
 A calibration equation between D48 values of carbonate and temperature.
 Rapid Communications in Mass Spectrometry, 35(17), e9147.
-\url{https://www.doi.org/10.1002/rcm.9147}
+\doi{10.1002/rcm.9147}
 }
 \seealso{
 Other equilibrium_carbonate: 

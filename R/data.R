@@ -17,14 +17,14 @@
 #' }
 #'
 #' @source
-#' <https://doi.org/10.3133/ofr20111082>
+#' \doi{10.3133/ofr20111082}
 #'
 #' @references
 #' Winograd, I. J., Landwehr, J. M., Coplen, T. B., Sharp, W. D.,
 #' Riggs, A. C., Ludwig, K. R., & Kolesar, P. T. (2006).
 #' Devils Hole, Nevada, d18O record extended to the mid-Holocene.
 #' Quaternary Research, 66(2), 202-212.
-#' <https://doi.org/10.1016/j.yqres.2006.06.003>
+#' \doi{10.1016/j.yqres.2006.06.003}
 #'
 #' @family "datasets"
 "devilshole"
@@ -52,7 +52,7 @@
 #' A Pliocene-Pleistocene stack of 57 globally distributed
 #' benthic d18O records.
 #' Paleoceanography, 20(1), PA1003.
-#' <https://doi.org/10.1029/2004pa001071>
+#' \doi{10.1029/2004pa001071}
 #'
 #' @family "datasets"
 "LR04"
@@ -90,7 +90,7 @@
 #' Oxygen isotope stratigraphy.
 #' In F. M. Gradstein, J. G. Ogg, M. D. Schmitz, & G. M. Ogg (Eds.),
 #' Geologic Time Scale 2020: Volume 1 (pp. 279-307): Elsevier.
-#' <https://doi.org/10.1016/B978-0-12-824360-2.00010-3>
+#' \doi{10.1016/B978-0-12-824360-2.00010-3}
 #'
 #' @family "datasets"
 "GTS2020"

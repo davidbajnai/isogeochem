@@ -27,7 +27,7 @@ Lisiecki, L. E., & Raymo, M. E. (2005).
 A Pliocene-Pleistocene stack of 57 globally distributed
 benthic d18O records.
 Paleoceanography, 20(1), PA1003.
-\url{https://doi.org/10.1029/2004pa001071}
+\doi{10.1029/2004pa001071}
 }
 \seealso{
 Other "datasets": 
