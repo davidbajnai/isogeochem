@@ -16,7 +16,7 @@ Description:
     Use it to quickly calculate isotope fractionation factors,
     and apply paleothermometry equations.
 License: GPL (>= 3)
-URL: https://github.com/davidbajnai/isogeochem
+URL: https://davidbajnai.github.io/isogeochem/
 BugReports: https://github.com/davidbajnai/isogeochem/issues
 Encoding: UTF-8
 LazyData: true

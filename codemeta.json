@@ -4,7 +4,7 @@
   "identifier": "isogeochem",
   "description": "\n    This toolbox makes working with carbonate oxygen,\n    carbon, and clumped isotope data reproducible and straightforward.\n    Use it to quickly calculate isotope fractionation factors,\n    and apply paleothermometry equations.",
   "name": "isogeochem: Tools for Carbonate Isotope Geochemistry",
-  "codeRepository": "https://github.com/davidbajnai/isogeochem",
+  "codeRepository": "https://davidbajnai.github.io/isogeochem/",
   "issueTracker": "https://github.com/davidbajnai/isogeochem/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "1.0.8.2",
@@ -162,5 +162,5 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "2541.837KB"
+  "fileSize": "2541.863KB"
 }
