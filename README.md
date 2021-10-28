@@ -1,11 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# isogeochem: <img src="man/figures/isogeochem-logo.png" align="right" width="140"/> <br/> Tools for Carbonate Isotope Geochemistry
-
-**Author:** [David Bajnai](https://davidbajnai.eu/)<br/>
-**Contributors:** Julian Tödter <br/> **License:**
-[GPL-3](https://opensource.org/licenses/GPL-3.0)
+# isogeochem: <img src="man/figures/logo.png" align="right" width="140"/> <br/> Tools for Carbonate Isotope Geochemistry
 
 <!-- badges: start -->
 
@@ -31,30 +27,31 @@ quickly calculate:
 -   convert between the VSMOW and VPDB scales
 
 The lists of available proxy–temperature calibrations and mineralogies
-are constantly growing. Check out the PDF manual for the current
-catalog. Please get in touch if you have any suggestions!
+are constantly growing. Check out the manual for the current catalog.
+Please get in touch if you have suggestions to include!
 
 ## Getting started
 
 ### Installation
 
-`isogeochem` is not on CRAN yet but you can easily install it from
-GitHub:
+Install the released version of `isogeochem` from CRAN.
+
+``` r
+install.packages("isogeochem")
+```
+
+Install the development version of `isogeochem` from GitHub.
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
 if (!require("rmarkdown")) install.packages("rmarkdown")
 devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
-library("isogeochem")
 ```
-
-This package is a work in progress and is therefore frequently updated.
-Always make sure that you use the latest version.
 
 ### Vignettes
 
 Case studies demonstrating the use and scope of the functions in
-`isogeochem` are available as [vignettes](vignettes/).
+`isogeochem` are available as vignettes.
 
 ``` r
 browseVignettes("isogeochem")

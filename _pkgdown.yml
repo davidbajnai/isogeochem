@@ -1,0 +1,65 @@
+url: ~
+
+home:
+  title: Carbonate isotope geochemistry
+
+authors:
+  David Bajnai:
+    href: https://davidbajnai.eu
+
+reference:
+- title: Isotope fractionation factors
+  desc:  Calculate isotope fractionation factors for given temperatures.
+  contents:
+  - a18_c_H2O
+  - a18_CO2acid_c
+  - a18_CO2g_H2O
+  - a18_CO2aq_H2O
+  - a18_CO3_H2O
+  - a18_HCO3_H2O
+  - a18_H2O_OH
+  - a13_CO2g_CO2aq
+
+- title: Oxygen isotopes
+  contents:
+  - d18O_c
+  - d17O_c
+  - d18O_H2O
+  - temp_d18O
+  - mix_d17O
+
+- title: Scale conversion
+  contents:
+  - to_VSMOW
+  - to_VPDB
+
+- title: Clumped isotopes
+  contents:
+  - D47
+  - D48
+  - temp_D47
+  - temp_D48
+
+- title: Modeling the DIC system
+  contents:
+  - X_absorption
+  - X_DIC
+
+- title: Datasets
+  desc:  Quick access to important datasets.
+  contents:
+  - devilshole
+  - LR04
+  - GTS2020
+
+- title: Helpers
+  contents:
+  - a_A_B
+  - A_from_a
+  - B_from_a
+  - D17O
+  - epsilon
+  - prime
+  - unprime
+  - york_fit
+  - york_plot
