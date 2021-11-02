@@ -25,7 +25,10 @@ r["CRAN"] = "http://cran.us.r-project.org"
 options(repos = r)
 ```
 ```{r, include = FALSE}
-#> Set global graphic parameters. This code has to be in its own chunk. 
+#> Save the user's options and parameters...
+#> ... and set new ones for this vignette.
+oldopt = options()
+oldpar = par()
 par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 ```
 
@@ -149,4 +152,9 @@ legend("topright", bty = "n", adj = c(0, NA),
                   "ONeil69",
                   "KO97",
                   "KO97-orig"))
+```
+```{r, include = FALSE}
+#> Reset to the user's options and parameters.
+par(oldpar)
+options(oldopt)
 ```

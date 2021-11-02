@@ -25,7 +25,10 @@ r["CRAN"] = "http://cran.us.r-project.org"
 options(repos = r)
 ```
 ```{r, include = FALSE}
-#> Set global graphic parameters. This code has to be in its own chunk. 
+#> Save the user's options and parameters...
+#> ... and set new ones for this vignette.
+oldopt = options()
+oldpar = par()
 par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 ```
 
@@ -176,4 +179,9 @@ polygon(c(DH_age, rev(DH_age)), c(DH_d18O_gw_err_low, rev(DH_d18O_gw_err_high)),
 
 # Add the carbonate d18O time series to the plot
 lines(DH_age, DH_d18O_gw, lwd = 2, col = "gray10")
+```
+```{r, include = FALSE}
+#> Reset to the user's options and parameters.
+par(oldpar)
+options(oldopt)
 ```
