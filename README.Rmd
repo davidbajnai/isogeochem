@@ -250,6 +250,7 @@ ___
 
 ## See also
 
+
 There are several other R packages that complement `isogeochem` and are worth checking out:
 
 [`viridisLite`](https://github.com/sjmgarnier/viridisLite) and [`viridis`](https://github.com/sjmgarnier/viridis) produce color-blind and black-and-white printer friendly color scales.

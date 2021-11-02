@@ -46,6 +46,17 @@ Install the development version of `isogeochem` from GitHub.
 if (!require("devtools")) install.packages("devtools")
 if (!require("rmarkdown")) install.packages("rmarkdown")
 devtools::install_github("davidbajnai/isogeochem", build_vignettes = TRUE)
+#>      checking for file ‘/private/var/folders/_z/z3d5s5416bs93h3nw4ky0v740000gn/T/RtmplWszwc/remotes369a39225486/davidbajnai-isogeochem-376dbc9/DESCRIPTION’ ...  ✓  checking for file ‘/private/var/folders/_z/z3d5s5416bs93h3nw4ky0v740000gn/T/RtmplWszwc/remotes369a39225486/davidbajnai-isogeochem-376dbc9/DESCRIPTION’
+#>   ─  preparing ‘isogeochem’:
+#>      checking DESCRIPTION meta-information ...  ✓  checking DESCRIPTION meta-information
+#>   ─  installing the package to process help pages
+#>   ─  saving partial Rd database (2s)
+#>      creating vignettes ...  ✓  creating vignettes (3.3s)
+#>   ─  checking for LF line-endings in source and make files and shell scripts
+#>   ─  checking for empty or unneeded directories
+#>   ─  building ‘isogeochem_1.0.8.3.tar.gz’
+#>      
+#> 
 ```
 
 ### Vignettes
