@@ -8,6 +8,7 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+oldopt = options()
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -27,7 +28,6 @@ options(repos = r)
 ```{r, include = FALSE}
 #> Save the user's options and parameters...
 #> ... and set new ones for this vignette.
-oldopt = options()
 oldpar = par()
 par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 ```
