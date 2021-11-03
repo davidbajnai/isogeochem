@@ -1,19 +1,9 @@
----
-title: "Devils Hole"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Devils Hole}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r, include = FALSE}
+## ---- include = FALSE---------------------------------------------------------
 #> Save the user's options and parameters
 oldopt = options()
 oldpar = par()
-```
 
-```{r, include = FALSE}
+## ---- include = FALSE---------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -29,61 +19,30 @@ knitr::opts_knit$set(global.par = TRUE)
 r = getOption("repos")
 r["CRAN"] = "https://stat.ethz.ch/CRAN/"
 options(repos = r)
-```
 
-```{r, include = FALSE}
+## ---- include = FALSE---------------------------------------------------------
 #> Set new parameters for this vignette.
 par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
-```
 
-## Introduction
-
-This vignette demonstrates the usage of `isogeochem` using a case study based on
-[Bajnai et al. (2021)](https://doi.org/10.1029/2021GL093257).
-
-#### Background:
-
-[Winograd et al. (2006)](https://doi.org/10.1016/j.yqres.2006.06.003) acquired a *δ*<sup>18</sup>O time series from carbonates that precipitated underwater in the Devils Hole caves spanning the last ca. 570 thousand years. Now, we are interested in the variations in the *δ*<sup>18</sup>O value of the groundwater in this period. To reconstruct a groundwater *δ*<sup>18</sup>O time series from the carbonate *δ*<sup>18</sup>O values, we have to know the temperature of the groundwater. Therefore, we measured the clumped isotope values of ten calcite samples. First, we convert the measured *∆*<sub>47</sub> values to carbonate growth temperatures. Then, using the mean of the clumped isotope temperatures, we convert the carbonate *δ*<sup>18</sup>O time series to a groundwater *δ*<sup>18</sup>O time series.
-
-## Package setup
-
-First, download and install `isogeochem` (you have to only do this once):
-
-```{r}
+## -----------------------------------------------------------------------------
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("davidbajnai/isogeochem")
-```
 
-To use `isogeochem`, load the package to the current R session (you have to do this every time you close and re-open R):
-
-```{r}
+## -----------------------------------------------------------------------------
 library("isogeochem")
-```
 
-## Load data
-
-Data can be loaded into R in many ways. For example, to load data from an excel file you could use the `openxlsx` package. For this vignette, however, lets specify the measured *∆*<sub>47</sub> values manually:
-
-```{r}
+## -----------------------------------------------------------------------------
 # D47(CDES90) values of Devils Hole carbonates 
 DH_D47     = c(0.573, 0.575, 0.572, 0.581, 0.575, 0.575, 0.570, 0.574, 0.568, 0.575)
 DH_D47_err = c(0.003, 0.007, 0.003, 0.005, 0.006, 0.003, 0.005, 0.005, 0.007, 0.005)
 DH_D47_age = c(10.70, 36.00, 90.35, 122.75, 180.45, 236.65, 295.15, 355.65, 380.05, 496.65)
-```
 
-There are datasets available in `isogeochem`, which can be used simply by typing their name. For example, the `devilshole` dataset includes the original *δ*<sup>18</sup>O composite time series from the Devils Hole caves.
-
-```{r}
+## -----------------------------------------------------------------------------
 DH_age        = devilshole$age
 DH_d18O_VSMOW = devilshole$d18O_VSMOW
 DH_d18O_err   = devilshole$d18O_error
-```
 
-## Carbonate *δ*<sup>18</sup>O vs age
-
-Lets visualize the carbonate *δ*<sup>18</sup>O VPDB time series:
-
-```{r, label = "Figure1"}
+## ---- label = "Figure1"-------------------------------------------------------
 # Convert d18O VSMOW values to the VPDB scale 
 DH_d18O_VPDB = to_VPDB(DH_d18O_VSMOW)
 
@@ -108,11 +67,8 @@ polygon(c(DH_age, rev(DH_age)), c(DH_d18O_VPDB_err1, rev(DH_d18O_VPDB_err2)),
 
 # Add the carbonate d18O VPDB time series to the plot
 lines(DH_age, DH_d18O_VPDB, lwd=2, col="gray10")
-```
 
-## Calculate growth temperatures from *∆*<sub>47</sub>
-
-```{r, label = "Figure2"}
+## ---- label = "Figure2"-------------------------------------------------------
 # Convert D47 values into temperatures using the equation in Fiebig et al. (2021)
 DH_temp = temp_D47(DH_D47, DH_D47_err, eq = "Fiebig21")
 DH_temp_mean = mean(DH_temp$temp)
@@ -142,13 +98,8 @@ segments(DH_D47_age, DH_temp$temp - DH_temp$temp_err,
 
 # Add points
 points(DH_D47_age, DH_temp$temp, col = "gray10", pch = 19)
-```
 
-## Groundwater *δ*<sup>18</sup>O versus age
-
-The calculated clumped isotope temperatures for the samples are statistically indistinguishable, which allows us to calculate a mean groundwater temperature and use that to reconstruct the variations in groundwater *δ*<sup>18</sup>O.
-
-```{r, label = "Figure3"}
+## ---- label = "Figure3"-------------------------------------------------------
 # Calculate groundwater d18O values and its error
 DH_d18O_gw = d18O_H2O(
   temp = DH_temp_mean,
@@ -183,9 +134,9 @@ polygon(c(DH_age, rev(DH_age)), c(DH_d18O_gw_err_low, rev(DH_d18O_gw_err_high)),
 
 # Add the carbonate d18O time series to the plot
 lines(DH_age, DH_d18O_gw, lwd = 2, col = "gray10")
-```
-```{r, include = FALSE}
+
+## ---- include = FALSE---------------------------------------------------------
 #> Reset to the user's options and parameters.
 par(oldpar)
 options(oldopt)
-```
+

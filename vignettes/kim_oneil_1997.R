@@ -1,19 +1,9 @@
----
-title: "Kim and O'Neil (1997) recalculation"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Kim and O'Neil (1997) recalculation}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r, include = FALSE}
+## ---- include = FALSE---------------------------------------------------------
 #> Save the user's options and parameters
 oldopt = options()
 oldpar = par()
-```
 
-```{r, include = FALSE}
+## ---- include = FALSE---------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -29,49 +19,23 @@ knitr::opts_knit$set(global.par = TRUE)
 r = getOption("repos")
 r["CRAN"] = "https://stat.ethz.ch/CRAN/"
 options(repos = r)
-```
 
-```{r, include = FALSE}
+## ---- include = FALSE---------------------------------------------------------
 #> Set new parameters for this vignette.
 par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
-```
 
-## Introduction
-
-This vignette provides a detailed description of the reprocessing of the <sup>18</sup>O/<sup>16</sup>O fractionation factor between calcite and water provided by [Kim and O'Neil (1997)](https://doi.org/10.1016/S0016-7037(97)00169-5):
-
-**10<sup>3</sup>ln&alpha; = 18.03 x 1000 / T - 32.42**
-
-To calculate calcite *δ*<sup>18</sup>O values from the *δ*<sup>18</sup>O values of CO<sub>2</sub> produced from acid digestion, Kim and O'Neil (1997) used an <sup>18</sup>O/<sup>16</sup>O acid fractionation factor (AFF) of 1.01050 at 25 °C. However, the current IUPAC recommendation for an AFF at 25°C is 1.010254 (see Kim et al. 2007 and 2015). The difference between calcite *δ*<sup>18</sup>O values calculated using the two acid fractionation factors is ca. 0.24‰.
-
-To be able to apply the Kim and O'Neil (1997) equation to calcite *δ*<sup>18</sup>O data produced with the IUPAC-recommended acid fractionation factors and to compare the Kim and O'Neil (1997) equation with more recent oxygen isotope paleothermometry equations, such as the Daëron et al. (2019) equation, the original data has to be reprocessed.
-
-## Package setup
-
-Download, install, and load the `isogeochem` package:
-
-```{r, include = TRUE, message = FALSE, eval = TRUE}
+## ---- include = TRUE, message = FALSE, eval = TRUE----------------------------
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("davidbajnai/isogeochem")
 library("isogeochem")
-```
 
-## Load data
-
-The data is from Table 1 in Kim and O'Neil (1997). All *δ*<sup>18</sup>O values are expressed on the VSMOW scale.
-
-```{r, include = TRUE, message = FALSE, eval = TRUE}
+## ---- include = TRUE, message = FALSE, eval = TRUE----------------------------
 TinC = c(10, 10, 25, 25, 25, 25, 40, 40, 40)
 TinK = 1000 / (TinC + 273.15)
 d18O_H2O = c(-8.12, -8.23, -8.30, -8.25, -8.12, -8.23, -8.20, -8.12, -8.23)
 d18O_calcite = c(23.47, 23.21, 19.73, 20.23, 20.00, 20.03, 17.06, 17.24, 17.01)
-```
 
-## The original equation
-
-Lets reproduce the slope and intercept of the original equation.
-
-```{r, include = TRUE, message = FALSE, eval = TRUE}
+## ---- include = TRUE, message = FALSE, eval = TRUE----------------------------
 # Calculate the fractionation factor between calcite and water
 a18_calcite_H2O = a_A_B(A = d18O_calcite, B = d18O_H2O)
 
@@ -87,22 +51,16 @@ intercept_orig = round(as.numeric(coef(lm_orig)["(Intercept)"]), 2)
 # The original equation:
 slope_orig
 intercept_orig
-```
 
-## Reprocess the calcite *δ*<sup>18</sup>O values
-
-```{r}
+## -----------------------------------------------------------------------------
 # Convert d18O_calcite to d18O_CO2acid using the "old" AFF
 d18O_CO2acid = A_from_a(a = 1.01050, B = d18O_calcite)
 
 # Convert d18O_CO2acid to d18O_calcite using the "new" AFF
 AFF_new = a18_CO2acid_c(25, "calcite")
 d18O_calcite_newAFF = B_from_a(a = AFF_new, d18O_CO2acid)
-```
 
-## Determine the slope and intercept using the new *δ*<sup>18</sup>O values
-
-```{r}
+## -----------------------------------------------------------------------------
 # Calculate the new alpha and 1000ln alpha values
 a18_calcite_H2O_new = a_A_B(A = d18O_calcite_newAFF, B = d18O_H2O)
 elena_new = 1000 * log(a18_calcite_H2O_new)
@@ -113,15 +71,8 @@ slope_new = round(as.numeric(coef(lm_new)["TinK"]), 2)
 intercept_new = round(as.numeric(coef(lm_new)["(Intercept)"]), 2)
 slope_new
 intercept_new
-```
 
-Consequently, the reprocessed equation is:
-
-**10<sup>3</sup> ln &alpha; = 18.04 x 1000 / T - 32.18**
-
-## Visualize the 10<sup>3</sup>ln&alpha; vs. temperature relationships
-
-```{r, label = "Figure1"}
+## ---- label = "Figure1"-------------------------------------------------------
 if (!require("viridisLite")) install.packages("viridisLite")
 
 plot(0, type = "l", las = 1,
@@ -156,10 +107,9 @@ legend("topright", bty = "n", adj = c(0, NA),
                   "ONeil69",
                   "KO97",
                   "KO97-orig"))
-```
 
-```{r, include = FALSE}
+## ---- include = FALSE---------------------------------------------------------
 #> Reset to the user's options and parameters.
 par(oldpar)
 options(oldopt)
-```
+
