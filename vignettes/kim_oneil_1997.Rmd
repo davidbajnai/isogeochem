@@ -8,7 +8,12 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-#> oldopt = options()
+#> Save the user's options and parameters
+oldopt = options()
+oldpar = par()
+```
+
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -25,10 +30,9 @@ r = getOption("repos")
 r["CRAN"] = "http://cran.us.r-project.org"
 options(repos = r)
 ```
+
 ```{r, include = FALSE}
-#> Save the user's options and parameters...
-#> ... and set new ones for this vignette.
-#> oldpar = par()
+#> Set new parameters for this vignette.
 par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 ```
 
@@ -153,8 +157,9 @@ legend("topright", bty = "n", adj = c(0, NA),
                   "KO97",
                   "KO97-orig"))
 ```
+
 ```{r, include = FALSE}
 #> Reset to the user's options and parameters.
-#> par(oldpar)
-#> options(oldopt)
+par(oldpar)
+options(oldopt)
 ```

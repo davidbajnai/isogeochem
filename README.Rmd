@@ -51,11 +51,6 @@ The lists of available proxy–temperature calibrations and mineralogies are con
 
 ### Installation
 
-Install the released version of `isogeochem` from CRAN.
-``` {r, eval = FALSE}
-install.packages("isogeochem")
-```
-
 Install the development version of `isogeochem` from GitHub.
 ``` {r}
 if (!require("devtools")) install.packages("devtools")
