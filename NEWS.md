@@ -1,4 +1,5 @@
 # isogeochem 1.0.8
+The first CRAN release
 
 ## New functions
 * D17O() to calculate triple oxygen isotope value from d18O and d17O values
@@ -7,8 +8,10 @@
 * plot_york() returns silently
 
 ## Misc
-* preparing for CRAN release
+* vignettes reset to the user's parameters and options
 * updated DOI links
+* updated README
+* added webpage <https://davidbajnai.github.io/isogeochem/>
 
 # isogeochem 1.0.7
 
@@ -70,6 +73,6 @@
 
 * This is the first stable release of isogeochem.
 
-# isogeochem 0.0.0.9x
+# isogeochem 0.0.0.9
 
 * This is the first development version of the package.

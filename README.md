@@ -11,7 +11,7 @@
 [![repostatus](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project.org/package=isogeochem)
-<!-- [![DOI](https://zenodo.org/badge/401782303.svg)](https://zenodo.org/badge/latestdoi/401782303) -->
+[![DOI](https://zenodo.org/badge/401782303.svg)](https://zenodo.org/badge/latestdoi/401782303)
 <!-- badges: end -->
 
 `isogeochem` makes working with stable oxygen, carbon, and clumped

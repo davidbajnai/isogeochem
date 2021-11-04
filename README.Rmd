@@ -34,7 +34,7 @@ par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 [![CodeFactor](https://www.codefactor.io/repository/github/davidbajnai/isogeochem/badge)](https://www.codefactor.io/repository/github/davidbajnai/isogeochem)
 [![repostatus](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project.org/package=isogeochem)
-<!-- [![DOI](https://zenodo.org/badge/401782303.svg)](https://zenodo.org/badge/latestdoi/401782303) -->
+[![DOI](https://zenodo.org/badge/401782303.svg)](https://zenodo.org/badge/latestdoi/401782303)
 <!-- badges: end -->
 
 `isogeochem` makes working with stable oxygen, carbon, and clumped isotope data straightforward and reproducible. It offers tools to quickly calculate:
