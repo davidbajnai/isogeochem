@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8.3</span>
       </span>
     </div>
 
@@ -115,55 +115,22 @@
 <div id="package-setup" class="section level2">
 <h2 class="hasAnchor">
 <a href="#package-setup" class="anchor"></a>Package setup</h2>
-<p>First, download and install <code>isogeochem</code> (you have to only do this once):</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">"devtools"</span>)) <span class="kw">install.packages</span>(<span class="st">"devtools"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"davidbajnai/isogeochem"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#&gt;   </span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>   checking <span class="cf">for</span> file ‘<span class="op">/</span>tmp<span class="op">/</span>RtmpTpkuvR<span class="op">/</span>remotes30c029e058b9<span class="op">/</span>davidbajnai<span class="op">-</span>isogeochem<span class="op">-</span>984d8e2<span class="op">/</span>DESCRIPTION’ ...</span>
-<span id="cb1-5"><a href="#cb1-5"></a>  </span>
-<span id="cb1-6"><a href="#cb1-6"></a>✔  checking <span class="cf">for</span> file ‘<span class="op">/</span>tmp<span class="op">/</span>RtmpTpkuvR<span class="op">/</span>remotes30c029e058b9<span class="op">/</span>davidbajnai<span class="op">-</span>isogeochem<span class="op">-</span>984d8e2<span class="op">/</span>DESCRIPTION’</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#&gt; </span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>  </span>
-<span id="cb1-9"><a href="#cb1-9"></a>─  preparing ‘isogeochem’<span class="op">:</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#&gt; </span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="st">  </span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="st">   </span>checking DESCRIPTION meta<span class="op">-</span>information ...</span>
-<span id="cb1-13"><a href="#cb1-13"></a>  </span>
-<span id="cb1-14"><a href="#cb1-14"></a>✔  checking DESCRIPTION meta<span class="op">-</span>information</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#&gt; </span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>  </span>
-<span id="cb1-17"><a href="#cb1-17"></a>─  installing the package to process help pages</span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt; </span></span>
-<span id="cb1-19"><a href="#cb1-19"></a>  </span>
-<span id="cb1-20"><a href="#cb1-20"></a>─  saving partial Rd <span class="kw">database</span> (<span class="fl">2.2</span>s)</span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#&gt; </span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>  </span>
-<span id="cb1-23"><a href="#cb1-23"></a>─  checking <span class="cf">for</span> LF line<span class="op">-</span>endings <span class="cf">in</span> source and make files and shell scripts</span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="co">#&gt; </span></span>
-<span id="cb1-25"><a href="#cb1-25"></a>  </span>
-<span id="cb1-26"><a href="#cb1-26"></a>─  checking <span class="cf">for</span> empty or unneeded directories</span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co">#&gt; </span></span>
-<span id="cb1-28"><a href="#cb1-28"></a>  </span>
-<span id="cb1-29"><a href="#cb1-29"></a>─  building ‘isogeochem_<span class="dv">1</span>.<span class="dv">0</span>.<span class="dv">8</span>.<span class="fl">2.</span>tar.gz’</span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="co">#&gt; </span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>  </span>
-<span id="cb1-32"><a href="#cb1-32"></a>   </span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co">#&gt; </span></span></code></pre></div>
-<p>To use <code>isogeochem</code>, load the package to the current R session (you have to do this every time you close and re-open R):</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/">"isogeochem"</a></span><span class="op">)</span></code></pre></div>
+<p>Download, install, and load the <code>isogeochem</code> package:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/">"isogeochem"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"isogeochem"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/">"isogeochem"</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="load-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#load-data" class="anchor"></a>Load data</h2>
 <p>Data can be loaded into R in many ways. For example, to load data from an excel file you could use the <code>openxlsx</code> package. For this vignette, however, lets specify the measured <em>∆</em><sub>47</sub> values manually:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># D47(CDES90) values of Devils Hole carbonates </span>
 <span class="va">DH_D47</span>     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.573</span>, <span class="fl">0.575</span>, <span class="fl">0.572</span>, <span class="fl">0.581</span>, <span class="fl">0.575</span>, <span class="fl">0.575</span>, <span class="fl">0.570</span>, <span class="fl">0.574</span>, <span class="fl">0.568</span>, <span class="fl">0.575</span><span class="op">)</span>
 <span class="va">DH_D47_err</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.003</span>, <span class="fl">0.007</span>, <span class="fl">0.003</span>, <span class="fl">0.005</span>, <span class="fl">0.006</span>, <span class="fl">0.003</span>, <span class="fl">0.005</span>, <span class="fl">0.005</span>, <span class="fl">0.007</span>, <span class="fl">0.005</span><span class="op">)</span>
 <span class="va">DH_D47_age</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.70</span>, <span class="fl">36.00</span>, <span class="fl">90.35</span>, <span class="fl">122.75</span>, <span class="fl">180.45</span>, <span class="fl">236.65</span>, <span class="fl">295.15</span>, <span class="fl">355.65</span>, <span class="fl">380.05</span>, <span class="fl">496.65</span><span class="op">)</span></code></pre></div>
 <p>There are datasets available in <code>isogeochem</code>, which can be used simply by typing their name. For example, the <code>devilshole</code> dataset includes the original <em>δ</em><sup>18</sup>O composite time series from the Devils Hole caves.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">DH_age</span>        <span class="op">=</span> <span class="va">devilshole</span><span class="op">$</span><span class="va">age</span>
 <span class="va">DH_d18O_VSMOW</span> <span class="op">=</span> <span class="va">devilshole</span><span class="op">$</span><span class="va">d18O_VSMOW</span>
 <span class="va">DH_d18O_err</span>   <span class="op">=</span> <span class="va">devilshole</span><span class="op">$</span><span class="va">d18O_error</span></code></pre></div>
@@ -172,7 +139,7 @@
 <h2 class="hasAnchor">
 <a href="#carbonate-%CE%B418o-vs-age" class="anchor"></a>Carbonate <em>δ</em><sup>18</sup>O vs age</h2>
 <p>Lets visualize the carbonate <em>δ</em><sup>18</sup>O VPDB time series:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Convert d18O VSMOW values to the VPDB scale </span>
 <span class="va">DH_d18O_VPDB</span> <span class="op">=</span> <span class="fu"><a href="../reference/to_VPDB.html">to_VPDB</a></span><span class="op">(</span><span class="va">DH_d18O_VSMOW</span><span class="op">)</span>
 
@@ -203,7 +170,7 @@
 <h2 class="hasAnchor">
 <a href="#calculate-growth-temperatures-from-47" class="anchor"></a>Calculate growth temperatures from <em>∆</em><sub>47</sub>
 </h2>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Convert D47 values into temperatures using the equation in Fiebig et al. (2021)</span>
 <span class="va">DH_temp</span> <span class="op">=</span> <span class="fu"><a href="../reference/temp_D47.html">temp_D47</a></span><span class="op">(</span><span class="va">DH_D47</span>, <span class="va">DH_D47_err</span>, eq <span class="op">=</span> <span class="st">"Fiebig21"</span><span class="op">)</span>
 <span class="va">DH_temp_mean</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">DH_temp</span><span class="op">$</span><span class="va">temp</span><span class="op">)</span>
@@ -241,7 +208,7 @@
 <h2 class="hasAnchor">
 <a href="#groundwater-%CE%B418o-versus-age" class="anchor"></a>Groundwater <em>δ</em><sup>18</sup>O versus age</h2>
 <p>The calculated clumped isotope temperatures for the samples are statistically indistinguishable, which allows us to calculate a mean groundwater temperature and use that to reconstruct the variations in groundwater <em>δ</em><sup>18</sup>O.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Calculate groundwater d18O values and its error</span>
 <span class="va">DH_d18O_gw</span> <span class="op">=</span> <span class="fu"><a href="../reference/d18O_H2O.html">d18O_H2O</a></span><span class="op">(</span>
   temp <span class="op">=</span> <span class="va">DH_temp_mean</span>,
