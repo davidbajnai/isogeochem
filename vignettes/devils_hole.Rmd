@@ -47,16 +47,10 @@ This vignette demonstrates the usage of `isogeochem` using a case study based on
 
 ## Package setup
 
-First, download and install `isogeochem` (you have to only do this once):
+Download, install, and load the `isogeochem` package:
 
-```{r}
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("davidbajnai/isogeochem")
-```
-
-To use `isogeochem`, load the package to the current R session (you have to do this every time you close and re-open R):
-
-```{r}
+```{r, include = TRUE, message = FALSE, eval = TRUE}
+if (!require("isogeochem")) install.packages("isogeochem")
 library("isogeochem")
 ```
 

@@ -25,8 +25,7 @@ Daëron et al. (2019) equation, the original data has to be reprocessed.
 
 Download, install, and load the `isogeochem` package:
 
-    if (!require("devtools")) install.packages("devtools")
-    devtools::install_github("davidbajnai/isogeochem")
+    if (!require("isogeochem")) install.packages("isogeochem")
     library("isogeochem")
 
 ## Load data

@@ -20,15 +20,9 @@ time series to a groundwater *δ*<sup>18</sup>O time series.
 
 ## Package setup
 
-First, download and install `isogeochem` (you have to only do this
-once):
+Download, install, and load the `isogeochem` package:
 
-    if (!require("devtools")) install.packages("devtools")
-    devtools::install_github("davidbajnai/isogeochem")
-
-To use `isogeochem`, load the package to the current R session (you have
-to do this every time you close and re-open R):
-
+    if (!require("isogeochem")) install.packages("isogeochem")
     library("isogeochem")
 
 ## Load data

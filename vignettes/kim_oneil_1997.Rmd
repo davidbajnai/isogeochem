@@ -51,8 +51,7 @@ To be able to apply the Kim and O'Neil (1997) equation to calcite *δ*<sup>18</s
 Download, install, and load the `isogeochem` package:
 
 ```{r, include = TRUE, message = FALSE, eval = TRUE}
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("davidbajnai/isogeochem")
+if (!require("isogeochem")) install.packages("isogeochem")
 library("isogeochem")
 ```
 
