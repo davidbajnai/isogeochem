@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9</span>
       </span>
     </div>
 
@@ -185,34 +185,36 @@
 <h2 class="hasAnchor">
 <a href="#visualize-the-103ln%CE%B1-vs--temperature-relationships" class="anchor"></a>Visualize the 10<sup>3</sup>lnα vs. temperature relationships</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://sjmgarnier.github.io/viridisLite/">"viridisLite"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"viridisLite"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">0</span>, type <span class="op">=</span> <span class="st">"l"</span>, las <span class="op">=</span> <span class="fl">1</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">0</span>, type <span class="op">=</span> <span class="st">"l"</span>, las <span class="op">=</span> <span class="fl">1</span>,
      ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">33</span><span class="op">)</span>,
      xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span><span class="op">)</span>,
      ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="st">"1000 ln "</span> <span class="op">*</span> <span class="va">alpha</span><span class="op">[</span><span class="va">calcite</span> <span class="op">/</span> <span class="va">water</span><span class="op">]</span> <span class="op">^</span> <span class="fl">18</span> <span class="op">*</span> <span class="st">" (‰)"</span><span class="op">)</span>,
      xlab <span class="op">=</span> <span class="st">"Temperature (°C)"</span><span class="op">)</span>
 
 <span class="va">temp</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span>, <span class="fl">1</span><span class="op">)</span>
-<span class="va">cols</span> <span class="op">=</span> <span class="fu">viridisLite</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html">viridis</a></span><span class="op">(</span><span class="fl">6</span>, option <span class="op">=</span> <span class="st">"D"</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"Daeron19"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="va">cols</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+      col <span class="op">=</span> <span class="st">"#440154FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"Watkins13"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="va">cols</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+      col <span class="op">=</span> <span class="st">"#414487FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"Tremaine11"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="va">cols</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+      col <span class="op">=</span> <span class="st">"#2A788EFF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"ONeil69"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="va">cols</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+      col <span class="op">=</span> <span class="st">"#22A884FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"KO97"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="va">cols</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+      col <span class="op">=</span> <span class="st">"#7AD151FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"KO97-orig"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="va">cols</span><span class="op">[</span><span class="fl">6</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+      col <span class="op">=</span> <span class="st">"#FDE725FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, bty <span class="op">=</span> <span class="st">"n"</span>, adj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="cn">NA</span><span class="op">)</span>, 
        lty <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>,
        lwd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span>,  
-       col <span class="op">=</span> <span class="va">cols</span>,
+       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#440154FF"</span>,
+               <span class="st">"#414487FF"</span>,
+               <span class="st">"#2A788EFF"</span>,
+               <span class="st">"#22A884FF"</span>,
+               <span class="st">"#7AD151FF"</span>,
+               <span class="st">"#FDE725FF"</span><span class="op">)</span>,
        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Daeron19"</span>,
                   <span class="st">"Watkins13"</span>,
                   <span class="st">"Tremaine11"</span>,
