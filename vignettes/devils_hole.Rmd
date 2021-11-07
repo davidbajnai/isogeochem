@@ -9,7 +9,6 @@ vignette: >
 
 ```{r, include = FALSE}
 #> Save the user's options and parameters
-oldopt = options()
 oldpar = par()
 ```
 
@@ -26,9 +25,6 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 knitr::opts_knit$set(global.par = TRUE)
-r = getOption("repos")
-r["CRAN"] = "https://stat.ethz.ch/CRAN/"
-options(repos = r)
 ```
 
 ```{r, include = FALSE}
@@ -181,5 +177,4 @@ lines(DH_age, DH_d18O_gw, lwd = 2, col = "gray10")
 ```{r, include = FALSE}
 #> Reset to the user's options and parameters.
 par(oldpar)
-options(oldopt)
 ```

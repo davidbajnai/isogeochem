@@ -1,3 +1,8 @@
+# isogeochem 1.0.9
+
+## Misc
+* vignette updates
+
 # isogeochem 1.0.8
 The first CRAN release
 

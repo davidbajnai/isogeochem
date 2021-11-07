@@ -90,8 +90,6 @@ Consequently, the reprocessed equation is:
 
 ## Visualize the 10<sup>3</sup>lnα vs. temperature relationships
 
-    if (!require("viridisLite")) install.packages("viridisLite")
-
     plot(0, type = "l", las = 1,
          ylim = c(28, 33),
          xlim = c(10, 30),
@@ -99,25 +97,29 @@ Consequently, the reprocessed equation is:
          xlab = "Temperature (°C)")
 
     temp = seq(10, 30, 1)
-    cols = viridisLite::viridis(6, option = "D")
 
     lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Daeron19")),
-          col = cols[1], lwd = 2)
+          col = "#440154FF", lwd = 2)
     lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Watkins13")),
-          col = cols[2], lwd = 2)
+          col = "#414487FF", lwd = 2)
     lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "Tremaine11")),
-          col = cols[3], lwd = 2)
+          col = "#2A788EFF", lwd = 2)
     lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "ONeil69")),
-          col = cols[4], lwd = 2)
+          col = "#22A884FF", lwd = 2)
     lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97")),
-          col = cols[5], lwd = 2)
+          col = "#7AD151FF", lwd = 2)
     lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97-orig")),
-          col = cols[6], lwd = 2, lty = 2)
+          col = "#FDE725FF", lwd = 2, lty = 2)
 
     legend("topright", bty = "n", adj = c(0, NA), 
            lty = c(1, 1, 1, 1, 1, 3),
            lwd = c(2, 2, 2, 2, 3, 3),  
-           col = cols,
+           col = c("#440154FF",
+                   "#414487FF",
+                   "#2A788EFF",
+                   "#22A884FF",
+                   "#7AD151FF",
+                   "#FDE725FF"),
            legend = c("Daeron19",
                       "Watkins13",
                       "Tremaine11",
