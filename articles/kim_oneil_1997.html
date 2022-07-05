@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,23 +40,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -74,7 +70,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/davidbajnai/isogeochem/">
+  <a href="https://github.com/davidbajnai/isogeochem/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -95,132 +91,132 @@
       <h1 data-toc-skip>Kim and O’Neil (1997) recalculation</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/davidbajnai/isogeochem/blob/master/vignettes/kim_oneil_1997.Rmd"><code>vignettes/kim_oneil_1997.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/davidbajnai/isogeochem/blob/HEAD/vignettes/kim_oneil_1997.Rmd" class="external-link"><code>vignettes/kim_oneil_1997.Rmd</code></a></small>
       <div class="hidden name"><code>kim_oneil_1997.Rmd</code></div>
 
     </div>
 
     
     
-<div id="introduction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>This vignette provides a detailed description of the reprocessing of the <sup>18</sup>O/<sup>16</sup>O fractionation factor between calcite and water provided by <a href="https://doi.org/10.1016/S0016-7037(97)00169-5">Kim and O’Neil (1997)</a>:</p>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>This vignette provides a detailed description of the reprocessing of the <sup>18</sup>O/<sup>16</sup>O fractionation factor between calcite and water provided by <a href="https://doi.org/10.1016/S0016-7037(97)00169-5" class="external-link">Kim and O’Neil (1997)</a>:</p>
 <p><strong>10<sup>3</sup>lnα = 18.03 x 1000 / T - 32.42</strong></p>
 <p>To calculate calcite <em>δ</em><sup>18</sup>O values from the <em>δ</em><sup>18</sup>O values of CO<sub>2</sub> produced from acid digestion, Kim and O’Neil (1997) used an <sup>18</sup>O/<sup>16</sup>O acid fractionation factor (AFF) of 1.01050 at 25 °C. However, the current IUPAC recommendation for an AFF at 25°C is 1.010254 (see Kim et al. 2007 and 2015). The difference between calcite <em>δ</em><sup>18</sup>O values calculated using the two acid fractionation factors is ca. 0.24‰.</p>
 <p>To be able to apply the Kim and O’Neil (1997) equation to calcite <em>δ</em><sup>18</sup>O data produced with the IUPAC-recommended acid fractionation factors and to compare the Kim and O’Neil (1997) equation with more recent oxygen isotope paleothermometry equations, such as the Daëron et al. (2019) equation, the original data has to be reprocessed.</p>
 </div>
-<div id="package-setup" class="section level2">
-<h2 class="hasAnchor">
-<a href="#package-setup" class="anchor"></a>Package setup</h2>
+<div class="section level2">
+<h2 id="package-setup">Package setup<a class="anchor" aria-label="anchor" href="#package-setup"></a>
+</h2>
 <p>Download, install, and load the <code>isogeochem</code> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/">"isogeochem"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"isogeochem"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/">"isogeochem"</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/" class="external-link">"isogeochem"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"isogeochem"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/" class="external-link">"isogeochem"</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="load-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#load-data" class="anchor"></a>Load data</h2>
+<div class="section level2">
+<h2 id="load-data">Load data<a class="anchor" aria-label="anchor" href="#load-data"></a>
+</h2>
 <p>The data is from Table 1 in Kim and O’Neil (1997). All <em>δ</em><sup>18</sup>O values are expressed on the VSMOW scale.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">TinC</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">25</span>, <span class="fl">25</span>, <span class="fl">25</span>, <span class="fl">25</span>, <span class="fl">40</span>, <span class="fl">40</span>, <span class="fl">40</span><span class="op">)</span>
-<span class="va">TinK</span> <span class="op">=</span> <span class="fl">1000</span> <span class="op">/</span> <span class="op">(</span><span class="va">TinC</span> <span class="op">+</span> <span class="fl">273.15</span><span class="op">)</span>
-<span class="va">d18O_H2O</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8.12</span>, <span class="op">-</span><span class="fl">8.23</span>, <span class="op">-</span><span class="fl">8.30</span>, <span class="op">-</span><span class="fl">8.25</span>, <span class="op">-</span><span class="fl">8.12</span>, <span class="op">-</span><span class="fl">8.23</span>, <span class="op">-</span><span class="fl">8.20</span>, <span class="op">-</span><span class="fl">8.12</span>, <span class="op">-</span><span class="fl">8.23</span><span class="op">)</span>
-<span class="va">d18O_calcite</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">23.47</span>, <span class="fl">23.21</span>, <span class="fl">19.73</span>, <span class="fl">20.23</span>, <span class="fl">20.00</span>, <span class="fl">20.03</span>, <span class="fl">17.06</span>, <span class="fl">17.24</span>, <span class="fl">17.01</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">TinC</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">25</span>, <span class="fl">25</span>, <span class="fl">25</span>, <span class="fl">25</span>, <span class="fl">40</span>, <span class="fl">40</span>, <span class="fl">40</span><span class="op">)</span></span>
+<span><span class="va">TinK</span> <span class="op">=</span> <span class="fl">1000</span> <span class="op">/</span> <span class="op">(</span><span class="va">TinC</span> <span class="op">+</span> <span class="fl">273.15</span><span class="op">)</span></span>
+<span><span class="va">d18O_H2O</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8.12</span>, <span class="op">-</span><span class="fl">8.23</span>, <span class="op">-</span><span class="fl">8.30</span>, <span class="op">-</span><span class="fl">8.25</span>, <span class="op">-</span><span class="fl">8.12</span>, <span class="op">-</span><span class="fl">8.23</span>, <span class="op">-</span><span class="fl">8.20</span>, <span class="op">-</span><span class="fl">8.12</span>, <span class="op">-</span><span class="fl">8.23</span><span class="op">)</span></span>
+<span><span class="va">d18O_calcite</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">23.47</span>, <span class="fl">23.21</span>, <span class="fl">19.73</span>, <span class="fl">20.23</span>, <span class="fl">20.00</span>, <span class="fl">20.03</span>, <span class="fl">17.06</span>, <span class="fl">17.24</span>, <span class="fl">17.01</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="the-original-equation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#the-original-equation" class="anchor"></a>The original equation</h2>
+<div class="section level2">
+<h2 id="the-original-equation">The original equation<a class="anchor" aria-label="anchor" href="#the-original-equation"></a>
+</h2>
 <p>Lets reproduce the slope and intercept of the original equation.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Calculate the fractionation factor between calcite and water</span>
-<span class="va">a18_calcite_H2O</span> <span class="op">=</span> <span class="fu"><a href="../reference/a_A_B.html">a_A_B</a></span><span class="op">(</span>A <span class="op">=</span> <span class="va">d18O_calcite</span>, B <span class="op">=</span> <span class="va">d18O_H2O</span><span class="op">)</span>
-
-<span class="co"># Calculate the 1000ln alpha values, abbreviated here as "elena"</span>
-<span class="co"># Kim and O'Neil (1997) used values rounded to two decimals</span>
-<span class="va">elena_orig</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">a18_calcite_H2O</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>
-
-<span class="co"># Fit a linear regression on the values </span>
-<span class="va">lm_orig</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">elena_orig</span> <span class="op">~</span> <span class="va">TinK</span><span class="op">)</span>
-<span class="va">slope_orig</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">lm_orig</span><span class="op">)</span><span class="op">[</span><span class="st">"TinK"</span><span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>
-<span class="va">intercept_orig</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">lm_orig</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>
-
-<span class="co"># The original equation:</span>
-<span class="va">slope_orig</span>
-<span class="co">#&gt; [1] 18.03</span>
-<span class="va">intercept_orig</span>
-<span class="co">#&gt; [1] -32.42</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Calculate the fractionation factor between calcite and water</span></span>
+<span><span class="va">a18_calcite_H2O</span> <span class="op">=</span> <span class="fu"><a href="../reference/a_A_B.html">a_A_B</a></span><span class="op">(</span>A <span class="op">=</span> <span class="va">d18O_calcite</span>, B <span class="op">=</span> <span class="va">d18O_H2O</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calculate the 1000ln alpha values, abbreviated here as "elena"</span></span>
+<span><span class="co"># Kim and O'Neil (1997) used values rounded to two decimals</span></span>
+<span><span class="va">elena_orig</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">a18_calcite_H2O</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit a linear regression on the values </span></span>
+<span><span class="va">lm_orig</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">elena_orig</span> <span class="op">~</span> <span class="va">TinK</span><span class="op">)</span></span>
+<span><span class="va">slope_orig</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">lm_orig</span><span class="op">)</span><span class="op">[</span><span class="st">"TinK"</span><span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">intercept_orig</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">lm_orig</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The original equation:</span></span>
+<span><span class="va">slope_orig</span></span>
+<span><span class="co">#&gt; [1] 18.03</span></span>
+<span><span class="va">intercept_orig</span></span>
+<span><span class="co">#&gt; [1] -32.42</span></span></code></pre></div>
 </div>
-<div id="reprocess-the-calcite-δ18o-values" class="section level2">
-<h2 class="hasAnchor">
-<a href="#reprocess-the-calcite-%CE%B418o-values" class="anchor"></a>Reprocess the calcite <em>δ</em><sup>18</sup>O values</h2>
+<div class="section level2">
+<h2 id="reprocess-the-calcite-δ18o-values">Reprocess the calcite <em>δ</em><sup>18</sup>O values<a class="anchor" aria-label="anchor" href="#reprocess-the-calcite-%CE%B418o-values"></a>
+</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Convert d18O_calcite to d18O_CO2acid using the "old" AFF</span>
-<span class="va">d18O_CO2acid</span> <span class="op">=</span> <span class="fu"><a href="../reference/A_from_a.html">A_from_a</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1.01050</span>, B <span class="op">=</span> <span class="va">d18O_calcite</span><span class="op">)</span>
-
-<span class="co"># Convert d18O_CO2acid to d18O_calcite using the "new" AFF</span>
-<span class="va">AFF_new</span> <span class="op">=</span> <span class="fu"><a href="../reference/a18_CO2acid_c.html">a18_CO2acid_c</a></span><span class="op">(</span><span class="fl">25</span>, <span class="st">"calcite"</span><span class="op">)</span>
-<span class="va">d18O_calcite_newAFF</span> <span class="op">=</span> <span class="fu"><a href="../reference/B_from_a.html">B_from_a</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">AFF_new</span>, <span class="va">d18O_CO2acid</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Convert d18O_calcite to d18O_CO2acid using the "old" AFF</span></span>
+<span><span class="va">d18O_CO2acid</span> <span class="op">=</span> <span class="fu"><a href="../reference/A_from_a.html">A_from_a</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1.01050</span>, B <span class="op">=</span> <span class="va">d18O_calcite</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Convert d18O_CO2acid to d18O_calcite using the "new" AFF</span></span>
+<span><span class="va">AFF_new</span> <span class="op">=</span> <span class="fu"><a href="../reference/a18_CO2acid_c.html">a18_CO2acid_c</a></span><span class="op">(</span><span class="fl">25</span>, <span class="st">"calcite"</span><span class="op">)</span></span>
+<span><span class="va">d18O_calcite_newAFF</span> <span class="op">=</span> <span class="fu"><a href="../reference/B_from_a.html">B_from_a</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">AFF_new</span>, <span class="va">d18O_CO2acid</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="determine-the-slope-and-intercept-using-the-new-δ18o-values" class="section level2">
-<h2 class="hasAnchor">
-<a href="#determine-the-slope-and-intercept-using-the-new-%CE%B418o-values" class="anchor"></a>Determine the slope and intercept using the new <em>δ</em><sup>18</sup>O values</h2>
+<div class="section level2">
+<h2 id="determine-the-slope-and-intercept-using-the-new-δ18o-values">Determine the slope and intercept using the new <em>δ</em><sup>18</sup>O values<a class="anchor" aria-label="anchor" href="#determine-the-slope-and-intercept-using-the-new-%CE%B418o-values"></a>
+</h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Calculate the new alpha and 1000ln alpha values</span>
-<span class="va">a18_calcite_H2O_new</span> <span class="op">=</span> <span class="fu"><a href="../reference/a_A_B.html">a_A_B</a></span><span class="op">(</span>A <span class="op">=</span> <span class="va">d18O_calcite_newAFF</span>, B <span class="op">=</span> <span class="va">d18O_H2O</span><span class="op">)</span>
-<span class="va">elena_new</span> <span class="op">=</span> <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">a18_calcite_H2O_new</span><span class="op">)</span>
-
-<span class="co"># Calculate new slope and intercept</span>
-<span class="va">lm_new</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">elena_new</span> <span class="op">~</span> <span class="va">TinK</span><span class="op">)</span>
-<span class="va">slope_new</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">lm_new</span><span class="op">)</span><span class="op">[</span><span class="st">"TinK"</span><span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>
-<span class="va">intercept_new</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">lm_new</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>
-<span class="va">slope_new</span>
-<span class="co">#&gt; [1] 18.04</span>
-<span class="va">intercept_new</span>
-<span class="co">#&gt; [1] -32.18</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Calculate the new alpha and 1000ln alpha values</span></span>
+<span><span class="va">a18_calcite_H2O_new</span> <span class="op">=</span> <span class="fu"><a href="../reference/a_A_B.html">a_A_B</a></span><span class="op">(</span>A <span class="op">=</span> <span class="va">d18O_calcite_newAFF</span>, B <span class="op">=</span> <span class="va">d18O_H2O</span><span class="op">)</span></span>
+<span><span class="va">elena_new</span> <span class="op">=</span> <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">a18_calcite_H2O_new</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calculate new slope and intercept</span></span>
+<span><span class="va">lm_new</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">elena_new</span> <span class="op">~</span> <span class="va">TinK</span><span class="op">)</span></span>
+<span><span class="va">slope_new</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">lm_new</span><span class="op">)</span><span class="op">[</span><span class="st">"TinK"</span><span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">intercept_new</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">lm_new</span><span class="op">)</span><span class="op">[</span><span class="st">"(Intercept)"</span><span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">slope_new</span></span>
+<span><span class="co">#&gt; [1] 18.04</span></span>
+<span><span class="va">intercept_new</span></span>
+<span><span class="co">#&gt; [1] -32.18</span></span></code></pre></div>
 <p>Consequently, the reprocessed equation is:</p>
 <p><strong>10<sup>3</sup> ln α = 18.04 x 1000 / T - 32.18</strong></p>
 </div>
-<div id="visualize-the-103lnα-vs--temperature-relationships" class="section level2">
-<h2 class="hasAnchor">
-<a href="#visualize-the-103ln%CE%B1-vs--temperature-relationships" class="anchor"></a>Visualize the 10<sup>3</sup>lnα vs. temperature relationships</h2>
+<div class="section level2">
+<h2 id="visualize-the-103lnα-vs--temperature-relationships">Visualize the 10<sup>3</sup>lnα vs. temperature relationships<a class="anchor" aria-label="anchor" href="#visualize-the-103ln%CE%B1-vs--temperature-relationships"></a>
+</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">0</span>, type <span class="op">=</span> <span class="st">"l"</span>, las <span class="op">=</span> <span class="fl">1</span>,
-     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">33</span><span class="op">)</span>,
-     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span><span class="op">)</span>,
-     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="st">"1000 ln "</span> <span class="op">*</span> <span class="va">alpha</span><span class="op">[</span><span class="va">calcite</span> <span class="op">/</span> <span class="va">water</span><span class="op">]</span> <span class="op">^</span> <span class="fl">18</span> <span class="op">*</span> <span class="st">" (‰)"</span><span class="op">)</span>,
-     xlab <span class="op">=</span> <span class="st">"Temperature (°C)"</span><span class="op">)</span>
-
-<span class="va">temp</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span>, <span class="fl">1</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"Daeron19"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="st">"#440154FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"Watkins13"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="st">"#414487FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"Tremaine11"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="st">"#2A788EFF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"ONeil69"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="st">"#22A884FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"KO97"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="st">"#7AD151FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"KO97-orig"</span><span class="op">)</span><span class="op">)</span>,
-      col <span class="op">=</span> <span class="st">"#FDE725FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, bty <span class="op">=</span> <span class="st">"n"</span>, adj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="cn">NA</span><span class="op">)</span>, 
-       lty <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>,
-       lwd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span>,  
-       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#440154FF"</span>,
-               <span class="st">"#414487FF"</span>,
-               <span class="st">"#2A788EFF"</span>,
-               <span class="st">"#22A884FF"</span>,
-               <span class="st">"#7AD151FF"</span>,
-               <span class="st">"#FDE725FF"</span><span class="op">)</span>,
-       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Daeron19"</span>,
-                  <span class="st">"Watkins13"</span>,
-                  <span class="st">"Tremaine11"</span>,
-                  <span class="st">"ONeil69"</span>,
-                  <span class="st">"KO97"</span>,
-                  <span class="st">"KO97-orig"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">0</span>, type <span class="op">=</span> <span class="st">"l"</span>, las <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">33</span><span class="op">)</span>,</span>
+<span>     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span><span class="op">)</span>,</span>
+<span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"1000 ln "</span> <span class="op">*</span> <span class="va">alpha</span><span class="op">[</span><span class="va">calcite</span> <span class="op">/</span> <span class="va">water</span><span class="op">]</span> <span class="op">^</span> <span class="fl">18</span> <span class="op">*</span> <span class="st">" (‰)"</span><span class="op">)</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"Temperature (°C)"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">temp</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"Daeron19"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      col <span class="op">=</span> <span class="st">"#440154FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"Watkins13"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      col <span class="op">=</span> <span class="st">"#414487FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"Tremaine11"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      col <span class="op">=</span> <span class="st">"#2A788EFF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"ONeil69"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      col <span class="op">=</span> <span class="st">"#22A884FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"KO97"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      col <span class="op">=</span> <span class="st">"#7AD151FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">temp</span>, <span class="fl">1000</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fu"><a href="../reference/a18_c_H2O.html">a18_c_H2O</a></span><span class="op">(</span><span class="va">temp</span>, <span class="st">"calcite"</span>, <span class="st">"KO97-orig"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      col <span class="op">=</span> <span class="st">"#FDE725FF"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, bty <span class="op">=</span> <span class="st">"n"</span>, adj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="cn">NA</span><span class="op">)</span>, </span>
+<span>       lty <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>       lwd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span>,  </span>
+<span>       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#440154FF"</span>,</span>
+<span>               <span class="st">"#414487FF"</span>,</span>
+<span>               <span class="st">"#2A788EFF"</span>,</span>
+<span>               <span class="st">"#22A884FF"</span>,</span>
+<span>               <span class="st">"#7AD151FF"</span>,</span>
+<span>               <span class="st">"#FDE725FF"</span><span class="op">)</span>,</span>
+<span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Daeron19"</span>,</span>
+<span>                  <span class="st">"Watkins13"</span>,</span>
+<span>                  <span class="st">"Tremaine11"</span>,</span>
+<span>                  <span class="st">"ONeil69"</span>,</span>
+<span>                  <span class="st">"KO97"</span>,</span>
+<span>                  <span class="st">"KO97-orig"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures/kim_oneil_1997-Figure1-1.png" width="55%"></p>
 </div>
   </div>
@@ -236,11 +232,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://davidbajnai.eu">David Bajnai</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://davidbajnai.eu" class="external-link">David Bajnai</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
@@ -248,6 +246,8 @@
 
   
 
+
+  
 
   </body>
 </html>
