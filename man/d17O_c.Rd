@@ -2,18 +2,31 @@
 % Please edit documentation in R/d17O.R
 \name{d17O_c}
 \alias{d17O_c}
-\title{Triple oxygen isotope values}
+\title{Triple oxygen isotope values of carbonates}
 \usage{
-d17O_c(temp, d18O_H2O_VSMOW, eq18 = "Daeron19", lambda = 0.528)
+d17O_c(
+  temp,
+  d18O_H2O_VSMOW,
+  D17O_H2O = 0,
+  min = "calcite",
+  eq18 = "Daeron19",
+  lambda = 0.528
+)
 }
 \arguments{
 \item{temp}{Calcite growth temperature (°C).}
 
 \item{d18O_H2O_VSMOW}{Water d18O value expressed on the VSMOW scale (‰).}
 
+\item{D17O_H2O}{D17O value of ambient water calculated using
+a lambda of \code{0.528}. Default \code{0}.}
+
+\item{min}{Mineralogy. Options are \code{"calcite"} (default), \code{"aragonite"},
+\code{apatite}, \code{siderite}, and \code{"dolomite"}.}
+
 \item{eq18}{Equation used to calculate the 18O/16O fractionation factor
-between calcite and water. Options are like those for calcite
-in \code{\link[=a18_c_H2O]{a18_c_H2O()}} with \code{"Daeron19"} being here the default.}
+between calcite and water. Options are like in \code{\link[=a18_c_H2O]{a18_c_H2O()}}.
+Default \code{"Daeron19"}.}
 
 \item{lambda}{Triple oxygen isotope reference slope. Default \code{0.528}.}
 }
@@ -38,6 +51,10 @@ calcite grown at a given temperature.
 
 \deqn{\Delta^{17}O_{CaCO3,VSMOW} = \delta'^{17}O_{CaCO3,VSMOW} -
 \lambda \times \delta'^{18}O_{CaCO3,VSMOW} }
+
+\strong{NOTE:} Due to a lack of experimental and theoretical data,
+the theta values for all carbonate mineralogies are calculated with the
+calcite equitation from Guo & Zhou (2019).
 }
 \examples{
 d17O_c(temp = 10, d18O_H2O_VSMOW = -1) # Returns the data frame (length = 3)

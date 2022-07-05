@@ -1,3 +1,19 @@
+# isogeochem 1.0.9.9
+
+## Function updates
+* a18_c_H2O(temp = 25, min = "dolomite", eq = "Muller19")
+New equation: dolomite-water 18O/16O fractionation factor, based on Müller et al. (2019)
+* a18_CO2acid_c(temp = 25, min = "dolomite")
+New mineral: 18O/16O acid fractionation factor for dolomites, based on Rosenbaum & Sheppard (1986)
+* d17O_c() Can now take into account a non-zero D17O value for the ambient water.
+* mix_d17O() Now allows to adjust the resolution of the output.
+
+## New functions
+* d17O_qz()
+
+## Misc
+* Readme updates
+
 # isogeochem 1.0.9
 
 ## Misc

@@ -4,7 +4,7 @@
 \alias{mix_d17O}
 \title{Mixing curves in triple oxygen isotope space}
 \usage{
-mix_d17O(d18O_A, d17O_A, d18O_B, d17O_B, lambda = 0.528)
+mix_d17O(d18O_A, d17O_A, d18O_B, d17O_B, lambda = 0.528, step = 10)
 }
 \arguments{
 \item{d18O_A}{d18O value of component A (‰).}
@@ -16,6 +16,8 @@ mix_d17O(d18O_A, d17O_A, d18O_B, d17O_B, lambda = 0.528)
 \item{d17O_B}{d17O value of component B (‰).}
 
 \item{lambda}{Triple oxygen isotope reference slope. Default \code{0.528}.}
+
+\item{step}{Resolution of the output. Default \code{10}\%.}
 }
 \value{
 Returns a data frame:

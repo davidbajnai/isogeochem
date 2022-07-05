@@ -90,6 +90,11 @@
 #' \deqn{\alpha^{18}_{dolomite/water} =
 #' e^{(2.73 \times \frac{1000}{T^{2}} + 0.00026)}}
 #'
+#' `"Muller19"`: Müller et al. (2019):
+#'
+#' \deqn{\alpha^{18}_{dolomite/water} =
+#' e^{(2.9923 \times \frac{1000}{T^{2}} + 0.0023592)}}
+#'
 #' @return
 #' Returns the 18O/16O fractionation factor.
 #'
@@ -168,11 +173,19 @@
 #' Nature Communications, 10, 429.
 #' \doi{10.1038/s41467-019-08336-5}
 #'
+#' Müller, I.A., Rodriguez-Blanco, J.D., Storck, J.-C., do Nascimento, G.S.,
+#' Bontognali, T.R.R., Vasconcelos, C.,
+#' Benning, L.G. & Bernasconi, S.M. (2019).
+#' Calibration of the oxygen and clumped isotope thermometers for
+#' (proto-)dolomite based on synthetic and natural carbonates.
+#' Chemical Geology, 525, 1–17.
+#' \doi{10.1016/j.chemgeo.2019.07.014}
+#'
 #' @family fractionation_factors
 #'
 #' @examples
 #' a18_c_H2O(temp = 25, min = "calcite", eq = "Coplen07")
-#' a18_c_H2O(temp = 25, min = "aragonite", "GK86")
+#' a18_c_H2O(temp = 25, min = "aragonite", eq = "GK86")
 #'
 #' @export
 
@@ -194,7 +207,7 @@ a18_c_H2O = function(temp, min, eq) {
     } else if (eq == "Watkins13") {
       # Watkins et al. (2013)
       exp((17.747 * 1000 / TinK - 29.777) / 1000)
-    } else if (eq == "ONeil69" | eq == "FO77" ) {
+    } else if (eq == "ONeil69" | eq == "FO77") {
       # O'Neil et al. (1969) modified by Friedman and O'Neil (1977)
       exp((2.78 * 10 ^ 6 / TinK ^ 2 - 2.89) / 1000)
     } else if (eq == "Tremaine11") {
@@ -231,6 +244,9 @@ a18_c_H2O = function(temp, min, eq) {
     if (eq == "Vasconcelos05")  {
       # Vasconcelos et al. (2005)
       exp((2.73 * 10 ^ 6 / TinK ^ 2 + 0.26) / 1000)
+    } else if (eq == "Muller19")  {
+      # Müller et al. (2019)
+      exp((2.9923 * 10 ^ 6 / TinK ^ 2 - 2.3592) / 1000)
     } else {
       stop("Invalid input for eq")
     }

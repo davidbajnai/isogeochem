@@ -19,7 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Carbonate isotope geochemistry">
 <meta property="og:description" content="
-    This toolbox makes working with carbonate oxygen,
+    This toolbox makes working with oxygen,
     carbon, and clumped isotope data reproducible and straightforward.
     Use it to quickly calculate isotope fractionation factors,
     and apply paleothermometry equations.">
@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9.9</span>
       </span>
     </div>
 
@@ -95,16 +95,16 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="isogeochem----tools-for-carbonate-isotope-geochemistry" class="section level1">
+<div id="isogeochem----tools-for-stable-isotope-geochemistry" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#isogeochem----tools-for-carbonate-isotope-geochemistry" class="anchor"></a>isogeochem: <img src="reference/figures/logo.png" align="right" width="140"><br> Tools for Carbonate Isotope Geochemistry</h1></div>
+<a href="#isogeochem----tools-for-stable-isotope-geochemistry" class="anchor"></a>isogeochem: <img src="reference/figures/logo.png" align="right" width="140"><br> Tools for Stable Isotope Geochemistry</h1></div>
 <!-- badges: start -->
 
 <p><code>isogeochem</code> makes working with stable oxygen, carbon, and clumped isotope data straightforward and reproducible. It offers tools to quickly calculate:</p>
 <ul>
 <li>carbonate <em>δ</em><sup>18</sup>O, <em>δ</em><sup>17</sup>O, <em>∆</em><sub>47</sub>, and <em>∆</em><sub>48</sub> values at a given temperature</li>
 <li>carbonate growth temperatures from <em>δ</em><sup>18</sup>O, <em>∆</em><sub>47</sub>, and <em>∆</em><sub>48</sub> values</li>
-<li>isotope fractionation factors, e.g., between carbonate and water</li>
+<li>isotope fractionation factors, e.g., carbonate/water, quartz/water</li>
 <li>model DIC speciation as a function of temperature, pH, and salinity</li>
 <li>convert between the VSMOW and VPDB scales</li>
 </ul>
@@ -122,7 +122,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/">"devtools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
 <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://github.com/rstudio/rmarkdown">"rmarkdown"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"rmarkdown"</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"davidbajnai/isogeochem"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"davidbajnai/isogeochem"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="vignettes" class="section level3">
 <h3 class="hasAnchor">
@@ -190,7 +190,7 @@
 <span class="va">temp</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span> <span class="co"># temperature range: 0—50 °C</span>
 <span class="va">d18O_H2O</span> <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>
 <span class="va">d18Op</span> <span class="op">=</span> <span class="fu"><a href="reference/prime.html">prime</a></span><span class="op">(</span><span class="fu"><a href="reference/d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="va">temp</span>, <span class="va">d18O_H2O</span>, eq18 <span class="op">=</span> <span class="st">"Daeron19"</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-<span class="va">D17O</span>  <span class="op">=</span> <span class="fu"><a href="reference/prime.html">prime</a></span><span class="op">(</span><span class="fu"><a href="reference/d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="va">temp</span>, <span class="va">d18O_H2O</span>, eq18 <span class="op">=</span> <span class="st">"Daeron19"</span><span class="op">)</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span><span class="op">)</span>
+<span class="va">D17O</span>  <span class="op">=</span> <span class="fu"><a href="reference/d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="va">temp</span>, <span class="va">d18O_H2O</span>, eq18 <span class="op">=</span> <span class="st">"Daeron19"</span><span class="op">)</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span>
 
 <span class="co"># Model progressing meteoric diagenetic alteration </span>
 <span class="va">em_equi</span> <span class="op">=</span> <span class="fu"><a href="reference/d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="va">d18O_H2O</span>, eq18 <span class="op">=</span> <span class="st">"Daeron19"</span><span class="op">)</span> <span class="co"># equilibrium endmember</span>

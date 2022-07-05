@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Triple oxygen isotope values — d17O_c • isogeochem</title>
+<title>Triple oxygen isotope values of carbonates — d17O_c • isogeochem</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Triple oxygen isotope values — d17O_c" />
+<meta property="og:title" content="Triple oxygen isotope values of carbonates — d17O_c" />
 <meta property="og:description" content="d17O_c() calculates the equilibrium d18O, d17O, and D17O values of a
 calcite grown at a given temperature." />
 <meta property="og:image" content="/logo.png" />
@@ -81,7 +81,7 @@ calcite grown at a given temperature." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9.9</span>
       </span>
     </div>
 
@@ -135,7 +135,7 @@ calcite grown at a given temperature." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Triple oxygen isotope values</h1>
+    <h1>Triple oxygen isotope values of carbonates</h1>
     <small class="dont-index">Source: <a href='https://github.com/davidbajnai/isogeochem/blob/master/R/d17O.R'><code>R/d17O.R</code></a></small>
     <div class="hidden name"><code>d17O_c.Rd</code></div>
     </div>
@@ -145,7 +145,14 @@ calcite grown at a given temperature." />
 calcite grown at a given temperature.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>d17O_c</span><span class='op'>(</span><span class='va'>temp</span>, <span class='va'>d18O_H2O_VSMOW</span>, eq18 <span class='op'>=</span> <span class='st'>"Daeron19"</span>, lambda <span class='op'>=</span> <span class='fl'>0.528</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>d17O_c</span><span class='op'>(</span>
+  <span class='va'>temp</span>,
+  <span class='va'>d18O_H2O_VSMOW</span>,
+  D17O_H2O <span class='op'>=</span> <span class='fl'>0</span>,
+  min <span class='op'>=</span> <span class='st'>"calcite"</span>,
+  eq18 <span class='op'>=</span> <span class='st'>"Daeron19"</span>,
+  lambda <span class='op'>=</span> <span class='fl'>0.528</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,10 +166,20 @@ calcite grown at a given temperature.</p>
       <td><p>Water d18O value expressed on the VSMOW scale (‰).</p></td>
     </tr>
     <tr>
+      <th>D17O_H2O</th>
+      <td><p>D17O value of ambient water calculated using
+a lambda of <code>0.528</code>. Default <code>0</code>.</p></td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td><p>Mineralogy. Options are <code>"calcite"</code> (default), <code>"aragonite"</code>,
+<code>apatite</code>, <code>siderite</code>, and <code>"dolomite"</code>.</p></td>
+    </tr>
+    <tr>
       <th>eq18</th>
       <td><p>Equation used to calculate the 18O/16O fractionation factor
-between calcite and water. Options are like those for calcite
-in <code><a href='a18_c_H2O.html'>a18_c_H2O()</a></code> with <code>"Daeron19"</code> being here the default.</p></td>
+between calcite and water. Options are like in <code><a href='a18_c_H2O.html'>a18_c_H2O()</a></code>.
+Default <code>"Daeron19"</code>.</p></td>
     </tr>
     <tr>
       <th>lambda</th>
@@ -186,6 +203,9 @@ in <code><a href='a18_c_H2O.html'>a18_c_H2O()</a></code> with <code>"Daeron19"</
 \textrm{ , where } \beta=0.528 \textrm{ and } \gamma = 0 $$</p>
 <p>$$\Delta^{17}O_{CaCO3,VSMOW} = \delta'^{17}O_{CaCO3,VSMOW} -
 \lambda \times \delta'^{18}O_{CaCO3,VSMOW} $$</p>
+<p><strong>NOTE:</strong> Due to a lack of experimental and theoretical data,
+the theta values for all carbonate mineralogies are calculated with the
+calcite equitation from Guo &amp; Zhou (2019).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Guo, W., &amp; Zhou, C. (2019).

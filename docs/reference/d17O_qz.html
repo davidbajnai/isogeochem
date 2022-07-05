@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Isotope fractionation value — epsilon • isogeochem</title>
+<title>Triple oxygen isotope values of quartz — d17O_qz • isogeochem</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Isotope fractionation value — epsilon" />
-<meta property="og:description" content="epsilon() converts isotope fractionation factors to isotope fractionation values." />
+<meta property="og:title" content="Triple oxygen isotope values of quartz — d17O_qz" />
+<meta property="og:description" content="d17O_qz() calculates the equilibrium d18O, d17O, and D17O values of
+quartz grown at a given temperature." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -134,39 +135,71 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Isotope fractionation value</h1>
-    <small class="dont-index">Source: <a href='https://github.com/davidbajnai/isogeochem/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>epsilon.Rd</code></div>
+    <h1>Triple oxygen isotope values of quartz</h1>
+    <small class="dont-index">Source: <a href='https://github.com/davidbajnai/isogeochem/blob/master/R/quartz.R'><code>R/quartz.R</code></a></small>
+    <div class="hidden name"><code>d17O_qz.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>epsilon()</code> converts isotope fractionation factors to isotope fractionation values.</p>
+    <p><code>d17O_qz()</code> calculates the equilibrium d18O, d17O, and D17O values of
+quartz grown at a given temperature.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>epsilon</span><span class='op'>(</span><span class='va'>alpha</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>d17O_qz</span><span class='op'>(</span><span class='va'>temp</span>, <span class='va'>d18O_H2O_VSMOW</span>, D17O_H2O <span class='op'>=</span> <span class='fl'>0</span>, lambda <span class='op'>=</span> <span class='fl'>0.528</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>alpha</th>
-      <td><p>Isotope fractionation factor</p></td>
+      <th>temp</th>
+      <td><p>Quartz growth temperature (°C).</p></td>
+    </tr>
+    <tr>
+      <th>d18O_H2O_VSMOW</th>
+      <td><p>Water d18O value expressed on the VSMOW scale (‰).</p></td>
+    </tr>
+    <tr>
+      <th>D17O_H2O</th>
+      <td><p>D17O value of ambient water calculated using
+a lambda of <code>0.528</code>. Default <code>0</code>.</p></td>
+    </tr>
+    <tr>
+      <th>lambda</th>
+      <td><p>Triple oxygen isotope reference slope. Default <code>0.528</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns the isotope fractionation value (‰).</p>
+    <p>Returns a data frame:</p><ol>
+<li><p>d18O value of the quartz expressed on the VSMOW scale (‰).</p></li>
+<li><p>d18O value of the quartz expressed on the VSMOW scale (‰).</p></li>
+<li><p>D17O value of the quartz expressed on the VSMOW scale (‰).</p></li>
+</ol>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>$$\epsilon^{i}E_{A/B} = \alpha^{i}E_{A/B} - 1$$</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>$$\theta_{A/B} = \frac{\alpha^{17}_{A/B}}{\alpha^{18}_{A/B}}$$</p>
+<p>$$ \delta'^{17}O_{H2O,VSMOW} =
+\beta \times \delta'^{18}O_{H2O,VSMOW} + \gamma
+\textrm{ , where } \beta=0.528 \textrm{ and } \gamma = 0 $$</p>
+<p>$$\Delta^{17}O_{SiO2,VSMOW} = \delta'^{17}O_{SiO2,VSMOW} -
+\lambda \times \delta'^{18}O_{SiO2,VSMOW} $$</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <div class='dont-index'><p>a_A_B() calculates the isotope fractionation factor between A and B.</p></div>
+    <p>Sharp, Z.D., Gibbons, J.A., Maltsev, O., Atudorei, V., Pack, A.,
+Sengupta, S., Shock, E.L. and Knauth, L.P. (2016).
+A calibration of the triple oxygen isotope fractionation in the
+SiO2–H2O system and applications to natural samples.
+Geochimica et Cosmochimica Acta, 186, 105–119.
+doi: <a href='https://doi.org/10.1016/j.gca.2016.04.047'>10.1016/j.gca.2016.04.047</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='fu'>epsilon</span><span class='op'>(</span><span class='fu'><a href='a18_H2O_OH.html'>a18_H2O_OH</a></span><span class='op'>(</span><span class='fl'>25</span>, <span class='st'>"Z20-X3LYP"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 23.45194</span>
+    <pre class="examples"><span class='r-in'><span class='fu'>d17O_qz</span><span class='op'>(</span>temp <span class='op'>=</span> <span class='fl'>10</span>, d18O_H2O_VSMOW <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='co'># Returns the data frame (length = 3)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    d18O_qz  d17O_qz   D17O_qz</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 41.87607 21.72735 -0.165472</span>
+<span class='r-in'><span class='fu'>d17O_qz</span><span class='op'>(</span>temp <span class='op'>=</span> <span class='fl'>10</span>, d18O_H2O_VSMOW <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>[</span>, <span class='fl'>3</span><span class='op'>]</span> <span class='co'># Returns the D17O value</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] -0.165472</span>
 <span class='r-in'></span>
 </pre>
   </div>

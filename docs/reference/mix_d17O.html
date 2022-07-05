@@ -81,7 +81,7 @@ triple oxygen isotope space (d18O vs. D17O)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9.9</span>
       </span>
     </div>
 
@@ -145,7 +145,7 @@ triple oxygen isotope space (d18O vs. D17O)." />
 triple oxygen isotope space (d18O vs. D17O).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mix_d17O</span><span class='op'>(</span><span class='va'>d18O_A</span>, <span class='va'>d17O_A</span>, <span class='va'>d18O_B</span>, <span class='va'>d17O_B</span>, lambda <span class='op'>=</span> <span class='fl'>0.528</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>mix_d17O</span><span class='op'>(</span><span class='va'>d18O_A</span>, <span class='va'>d17O_A</span>, <span class='va'>d18O_B</span>, <span class='va'>d17O_B</span>, lambda <span class='op'>=</span> <span class='fl'>0.528</span>, step <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,6 +169,10 @@ triple oxygen isotope space (d18O vs. D17O).</p>
     <tr>
       <th>lambda</th>
       <td><p>Triple oxygen isotope reference slope. Default <code>0.528</code>.</p></td>
+    </tr>
+    <tr>
+      <th>step</th>
+      <td><p>Resolution of the output. Default <code>10</code>%.</p></td>
     </tr>
     </table>
 

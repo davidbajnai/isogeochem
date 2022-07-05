@@ -2,7 +2,7 @@
 
 ##———————————————————————————————————————————————————————————————————————————##
 #### d17O_c ####
-#' @title Triple oxygen isotope values
+#' @title Triple oxygen isotope values of carbonates
 #'
 #' @description
 #' `d17O_c()` calculates the equilibrium d18O, d17O, and D17O values of a
@@ -10,9 +10,13 @@
 #'
 #' @param temp Calcite growth temperature (°C).
 #' @param d18O_H2O_VSMOW Water d18O value expressed on the VSMOW scale (‰).
+#' @param D17O_H2O D17O value of ambient water calculated using
+#'   a lambda of `0.528`. Default `0`.
+#' @param min Mineralogy. Options are `"calcite"` (default), `"aragonite"`,
+#'   `apatite`, `siderite`, and `"dolomite"`.
 #' @param eq18 Equation used to calculate the 18O/16O fractionation factor
-#'   between calcite and water. Options are like those for calcite
-#'   in [a18_c_H2O()] with `"Daeron19"` being here the default.
+#'   between calcite and water. Options are like in [a18_c_H2O()].
+#'   Default `"Daeron19"`.
 #' @param lambda Triple oxygen isotope reference slope. Default `0.528`.
 #'
 #' @return
@@ -31,6 +35,10 @@
 #' \deqn{\Delta^{17}O_{CaCO3,VSMOW} = \delta'^{17}O_{CaCO3,VSMOW} -
 #' \lambda \times \delta'^{18}O_{CaCO3,VSMOW} }
 #'
+#' **NOTE:** Due to a lack of experimental and theoretical data,
+#' the theta values for all carbonate mineralogies are calculated with the
+#' calcite equitation from Guo & Zhou (2019).
+#'
 #' @references
 #' Guo, W., & Zhou, C. (2019).
 #' Triple oxygen isotope fractionation in the DIC-H2O-CO2 system:
@@ -47,18 +55,26 @@
 #'
 #' @export
 
-d17O_c = function(temp, d18O_H2O_VSMOW, eq18 = "Daeron19", lambda = 0.528) {
+d17O_c = function(temp, d18O_H2O_VSMOW, D17O_H2O = 0, min = "calcite", eq18 = "Daeron19", lambda = 0.528) {
+
+  TinK = temp + 273.15
 
   # Guo and Zhou (2019)
-  theta = 59.1047 / (temp + 273.15) ^ 2+-1.4089 / (temp + 273.15) + 0.5297
+  theta = 59.1047 / TinK ^ 2 - 1.4089 / TinK + 0.5297
 
-  a18_c_H2O = isogeochem::a18_c_H2O(temp = temp, min = "calcite", eq = eq18)
-  a17c_H2O  = a18_c_H2O ^ theta
+  a18_c_H2O = isogeochem::a18_c_H2O(temp = temp, min = min, eq = eq18)
+  a17_c_H2O  = a18_c_H2O ^ theta
 
-  d18O_c   = d18O_c(temp, d18O_H2O_VSMOW, min = "calcite", eq18)
-  d17Ow_p = 0.528 * prime(d18O_H2O_VSMOW)
+  d18O_c   = d18O_c(temp, d18O_H2O_VSMOW, min = min, eq18)
 
-  d17O_c = (unprime(d17Ow_p) + 1000) * a17c_H2O - 1000
+  # calculating the d17O prime value of ambient water
+  if (class(D17O_H2O) == "numeric" && is.finite(D17O_H2O)) {
+    d17Ow_p = D17O_H2O + lambda * prime(d18O_H2O_VSMOW)
+  } else {
+    stop("Invalid input for D17O_H2O")
+  }
+
+  d17O_c = (unprime(d17Ow_p) + 1000) * a17_c_H2O - 1000
   D17O_c  = prime(d17O_c) - lambda * prime(d18O_c)
 
   data.frame(d18O_c, d17O_c, D17O_c)
@@ -77,6 +93,7 @@ d17O_c = function(temp, d18O_H2O_VSMOW, eq18 = "Daeron19", lambda = 0.528) {
 #' @param d18O_B d18O value of component B (‰).
 #' @param d17O_B d17O value of component B (‰).
 #' @param lambda Triple oxygen isotope reference slope. Default `0.528`.
+#' @param step Resolution of the output. Default `10`%.
 #'
 #' @return
 #' Returns a data frame:
@@ -94,8 +111,8 @@ d17O_c = function(temp, d18O_H2O_VSMOW, eq18 = "Daeron19", lambda = 0.528) {
 #'
 #' @export
 
-mix_d17O = function (d18O_A, d17O_A, d18O_B, d17O_B, lambda = 0.528) {
-  ratio_B = seq(0, 1, 0.1)
+mix_d17O = function (d18O_A, d17O_A, d18O_B, d17O_B, lambda = 0.528, step = 10) {
+  ratio_B = seq(0, 1, step / 100)
   mix_d18O = ratio_B*as.numeric(d18O_B) + (1-ratio_B)*as.numeric(d18O_A)
   mix_d17O = ratio_B*as.numeric(d17O_B) + (1-ratio_B)*as.numeric(d17O_A)
   mix_D17O = (prime(mix_d17O) - lambda * prime(mix_d18O))

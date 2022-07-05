@@ -26,7 +26,7 @@ options(repos = r)
 par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 ```
 
-# isogeochem: <img src="man/figures/logo.png" align="right" width="140"/> <br/> Tools for Carbonate Isotope Geochemistry
+# isogeochem: <img src="man/figures/logo.png" align="right" width="140"/> <br/> Tools for Stable Isotope Geochemistry
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/davidbajnai/isogeochem/workflows/R-CMD-check/badge.svg)](https://github.com/davidbajnai/isogeochem/actions)
@@ -41,7 +41,7 @@ par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 
 * carbonate *δ*<sup>18</sup>O, *δ*<sup>17</sup>O, *∆*<sub>47</sub>, and *∆*<sub>48</sub> values at a given temperature
 * carbonate growth temperatures from *δ*<sup>18</sup>O, *∆*<sub>47</sub>, and *∆*<sub>48</sub> values
-* isotope fractionation factors, e.g., between carbonate and water
+* isotope fractionation factors, e.g., carbonate/water, quartz/water
 * model DIC speciation as a function of temperature, pH, and salinity
 * convert between the VSMOW and VPDB scales
 
@@ -135,7 +135,7 @@ if (!require("shades")) install.packages("shades")
 temp  = seq(0, 50, 10) # temperature range: 0—50 °C
 d18O_H2O = -1
 d18Op = prime(d17O_c(temp, d18O_H2O, eq18 = "Daeron19")[, 1])
-D17O  = prime(d17O_c(temp, d18O_H2O, eq18 = "Daeron19")[, 3])
+D17O  = d17O_c(temp, d18O_H2O, eq18 = "Daeron19")[, 3]
 
 # Model progressing meteoric diagenetic alteration 
 em_equi = d17O_c(10, d18O_H2O, eq18 = "Daeron19") # equilibrium endmember

@@ -46,12 +46,14 @@ test_that("a18_c_H2O produces accurate values", {
   expect_equal(elena(a18_c_H2O(25, min = "aragonite", eq = "Kim07")), 28.8)
   expect_equal(elena(a18_c_H2O(25, min = "apatite", eq = "Lecuyer10")), 28.0)
   expect_equal(elena(a18_c_H2O(25, min = "dolomite", eq = "Vasconcelos05")), 31.0)
+  expect_equal(elena(a18_c_H2O(25, min = "dolomite", eq = "Muller19")), 31.3)
   expect_equal(elena(a18_c_H2O(25, min = "siderite", eq = "vanDijk18")), 29.7)
 })
 
 test_that("a18_CO2acid_c produces accurate values", {
   expect_equal(elena(a18_CO2acid_c(temp = 90, min = "calcite")), 8.1)
   expect_equal(elena(a18_CO2acid_c(temp = 90, min = "aragonite")), 8.5)
+  expect_equal(elena(a18_CO2acid_c(temp = 90, min = "dolomite")), 9.3)
 })
 
 test_that("a18_CO2g_H2O produce accurate values", {

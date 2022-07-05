@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9.9</span>
       </span>
     </div>
 
@@ -137,15 +137,44 @@
       <small>Source: <a href='https://github.com/davidbajnai/isogeochem/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="isogeochem-109" class="section level1">
-<h1 class="page-header" data-toc-text="1.0.9">
-<a href="#isogeochem-109" class="anchor"></a>isogeochem 1.0.9<small> Unreleased </small>
+    <div id="isogeochem-1099" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.9.9">
+<a href="#isogeochem-1099" class="anchor"></a>isogeochem 1.0.9.9<small> Unreleased </small>
 </h1>
+<div id="function-updates" class="section level2">
+<h2 class="hasAnchor">
+<a href="#function-updates" class="anchor"></a>Function updates</h2>
+<ul>
+<li>a18_c_H2O(temp = 25, min = “dolomite”, eq = “Muller19”) New equation: dolomite-water 18O/16O fractionation factor, based on Müller et al. (2019)</li>
+<li>a18_CO2acid_c(temp = 25, min = “dolomite”) New mineral: 18O/16O acid fractionation factor for dolomites, based on Rosenbaum &amp; Sheppard (1986)</li>
+<li>d17O_c() Can now take into account a non-zero D17O value for the ambient water.</li>
+<li>mix_d17O() Now allows to adjust the resolution of the output.</li>
+</ul>
+</div>
+<div id="new-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h2>
+<ul>
+<li>d17O_qz()</li>
+</ul>
+</div>
 <div id="misc" class="section level2">
 <h2 class="hasAnchor">
 <a href="#misc" class="anchor"></a>Misc</h2>
 <ul>
-<li>vignette update</li>
+<li>Readme updates</li>
+</ul>
+</div>
+</div>
+    <div id="isogeochem-109" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.9">
+<a href="#isogeochem-109" class="anchor"></a>isogeochem 1.0.9<small> 2021-11-07 </small>
+</h1>
+<div id="misc-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#misc-1" class="anchor"></a>Misc</h2>
+<ul>
+<li>vignette updates</li>
 </ul>
 </div>
 </div>
@@ -154,23 +183,23 @@
 <a href="#isogeochem-108" class="anchor"></a>isogeochem 1.0.8<small> Unreleased </small>
 </h1>
 <p>The first CRAN release</p>
-<div id="new-functions" class="section level2">
+<div id="new-functions-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h2>
+<a href="#new-functions-1" class="anchor"></a>New functions</h2>
 <ul>
 <li>D17O() to calculate triple oxygen isotope value from d18O and d17O values</li>
 </ul>
 </div>
-<div id="function-updates" class="section level2">
+<div id="function-updates-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#function-updates" class="anchor"></a>Function updates</h2>
+<a href="#function-updates-1" class="anchor"></a>Function updates</h2>
 <ul>
 <li>plot_york() returns silently</li>
 </ul>
 </div>
-<div id="misc-1" class="section level2">
+<div id="misc-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#misc-1" class="anchor"></a>Misc</h2>
+<a href="#misc-2" class="anchor"></a>Misc</h2>
 <ul>
 <li>vignettes reset to the user’s parameters and options</li>
 <li>updated DOI links</li>
@@ -184,18 +213,18 @@
 <h1 class="page-header" data-toc-text="1.0.7">
 <a href="#isogeochem-107" class="anchor"></a>isogeochem 1.0.7<small> Unreleased </small>
 </h1>
-<div id="function-updates-1" class="section level2">
+<div id="function-updates-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#function-updates-1" class="anchor"></a>Function updates</h2>
+<a href="#function-updates-2" class="anchor"></a>Function updates</h2>
 <ul>
 <li>xDIC() renamed to X_DIC()</li>
 <li>xabs() renamed to X_absorption()</li>
 <li>temp_D47() and temp_D48() both result in a similar data frame (length = 2) if errors are specified</li>
 </ul>
 </div>
-<div id="misc-2" class="section level2">
+<div id="misc-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#misc-2" class="anchor"></a>Misc</h2>
+<a href="#misc-3" class="anchor"></a>Misc</h2>
 <ul>
 <li>README updates</li>
 <li>Vignette updates</li>
@@ -207,9 +236,9 @@
 <h1 class="page-header" data-toc-text="1.0.6">
 <a href="#isogeochem-106" class="anchor"></a>isogeochem 1.0.6<small> Unreleased </small>
 </h1>
-<div id="new-functions-1" class="section level2">
+<div id="new-functions-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functions-1" class="anchor"></a>New functions</h2>
+<a href="#new-functions-2" class="anchor"></a>New functions</h2>
 <ul>
 <li>a18_CO2g_H2O()</li>
 <li>a18_CO2aq_H2O()</li>
@@ -218,9 +247,9 @@
 <li>a13_CO2g_CO2aq()</li>
 </ul>
 </div>
-<div id="misc-3" class="section level2">
+<div id="misc-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#misc-3" class="anchor"></a>Misc</h2>
+<a href="#misc-4" class="anchor"></a>Misc</h2>
 <ul>
 <li>Added CodeFactor badge to README</li>
 <li>Adjusted the logo</li>

@@ -81,7 +81,7 @@ between carbonate and water." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9.9</span>
       </span>
     </div>
 
@@ -215,6 +215,9 @@ e^{(19.67 \times \frac{1}{T} - 0.03627)}$$</p>
 <p><code>"Vasconcelos05"</code>: Vasconcelos et al. (2005):</p>
 <p>$$\alpha^{18}_{dolomite/water} =
 e^{(2.73 \times \frac{1000}{T^{2}} + 0.00026)}$$</p>
+<p><code>"Muller19"</code>: Müller et al. (2019):</p>
+<p>$$\alpha^{18}_{dolomite/water} =
+e^{(2.9923 \times \frac{1000}{T^{2}} + 0.0023592)}$$</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>O'Neil, J. R., Clayton, R. N., &amp; Mayeda, T. K. (1969).
@@ -279,6 +282,13 @@ Coplen, T. B., et al. (2019).
 Most Earth-surface calcites precipitate out of isotopic equilibrium.
 Nature Communications, 10, 429.
 doi: <a href='https://doi.org/10.1038/s41467-019-08336-5'>10.1038/s41467-019-08336-5</a></p>
+<p>Müller, I.A., Rodriguez-Blanco, J.D., Storck, J.-C., do Nascimento, G.S.,
+Bontognali, T.R.R., Vasconcelos, C.,
+Benning, L.G. &amp; Bernasconi, S.M. (2019).
+Calibration of the oxygen and clumped isotope thermometers for
+(proto-)dolomite based on synthetic and natural carbonates.
+Chemical Geology, 525, 1–17.
+doi: <a href='https://doi.org/10.1016/j.chemgeo.2019.07.014'>10.1016/j.chemgeo.2019.07.014</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other fractionation_factors: 
@@ -294,7 +304,7 @@ doi: <a href='https://doi.org/10.1038/s41467-019-08336-5'>10.1038/s41467-019-083
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='fu'>a18_c_H2O</span><span class='op'>(</span>temp <span class='op'>=</span> <span class='fl'>25</span>, min <span class='op'>=</span> <span class='st'>"calcite"</span>, eq <span class='op'>=</span> <span class='st'>"Coplen07"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1.030207</span>
-<span class='r-in'><span class='fu'>a18_c_H2O</span><span class='op'>(</span>temp <span class='op'>=</span> <span class='fl'>25</span>, min <span class='op'>=</span> <span class='st'>"aragonite"</span>, <span class='st'>"GK86"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>a18_c_H2O</span><span class='op'>(</span>temp <span class='op'>=</span> <span class='fl'>25</span>, min <span class='op'>=</span> <span class='st'>"aragonite"</span>, eq <span class='op'>=</span> <span class='st'>"GK86"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1.029942</span>
 <span class='r-in'></span>
 </pre>

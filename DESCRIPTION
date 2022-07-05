@@ -1,7 +1,7 @@
 Package: isogeochem
 Type: Package
-Title: Tools for Carbonate Isotope Geochemistry
-Version: 1.0.9
+Title: Tools for Stable Isotope Geochemistry
+Version: 1.0.9.9
 Authors@R:
     c(person(given = "David", family = "Bajnai",
     email = "david.bajnai@uni-goettingen.de",
@@ -11,7 +11,7 @@ Authors@R:
     role = "ctb")
     )
 Description:
-    This toolbox makes working with carbonate oxygen,
+    This toolbox makes working with oxygen,
     carbon, and clumped isotope data reproducible and straightforward.
     Use it to quickly calculate isotope fractionation factors,
     and apply paleothermometry equations.

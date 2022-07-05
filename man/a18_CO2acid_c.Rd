@@ -9,7 +9,8 @@ a18_CO2acid_c(temp, min)
 \arguments{
 \item{temp}{Acid digestion temperature (°C).}
 
-\item{min}{Mineralogy. Options are \code{"calcite"} and \code{"aragonite"}.}
+\item{min}{Mineralogy. Options are \code{"calcite"}, \code{"aragonite"},
+and \code{"dolomite"}.}
 }
 \value{
 Returns the 18O/16O fractionation factor.
@@ -28,6 +29,11 @@ e^{(3.48 \times \frac{1}{T} - 0.00147)}}
 
 \deqn{\alpha^{18}_{CO2acid/aragonite} =
 e^{(3.39 \times \frac{1}{T} - 0.00083)}}
+
+\strong{dolomite} (Rosenbaum & Sheppard 1986):
+
+\deqn{\alpha^{18}_{CO2acid/dolomite} =
+e^{(665 \times \frac{1}{T^{2}} + 0.00423)}}
 }
 \examples{
 a18_CO2acid_c(temp = 90, min = "calcite")
@@ -39,6 +45,12 @@ Sharma, T., and Clayton, R. N. (1965).
 Measurement of ratios of total oxygen of carbonates.
 Geochimica et Cosmochimica Acta, 29(12), 1347-1353.
 \doi{10.1016/0016-7037(65)90011-6}
+
+Rosenbaum, J. and Sheppard, S.M.F. (1986).
+An isotopic study of siderites, dolomites and ankerites
+at high temperatures.
+Geochimica et Cosmochimica Acta, 50, 1147–1150.
+\doi{10.1016/0016-7037(86)90396-0}
 
 Kim, S.-T., Mucci, A., and Taylor, B. E. (2007).
 Phosphoric acid fractionation factors for calcite and aragonite
