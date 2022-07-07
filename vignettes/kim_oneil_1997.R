@@ -25,8 +25,7 @@ options(repos = r)
 par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 
 ## ---- include = TRUE, message = FALSE, eval = TRUE----------------------------
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("davidbajnai/isogeochem")
+install.packages("isogeochem")
 library("isogeochem")
 
 ## ---- include = TRUE, message = FALSE, eval = TRUE----------------------------
@@ -43,7 +42,7 @@ a18_calcite_H2O = a_A_B(A = d18O_calcite, B = d18O_H2O)
 # Kim and O'Neil (1997) used values rounded to two decimals
 elena_orig = round(1000 * log(a18_calcite_H2O), 2)
 
-# Fit a linear regression on the values 
+# Fit a linear regression on the values
 lm_orig = lm(elena_orig ~ TinK)
 slope_orig = round(as.numeric(coef(lm_orig)["TinK"]), 2)
 intercept_orig = round(as.numeric(coef(lm_orig)["(Intercept)"]), 2)
@@ -97,9 +96,9 @@ lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97")),
 lines(temp, 1000 * log(a18_c_H2O(temp, "calcite", "KO97-orig")),
       col = cols[6], lwd = 2, lty = 2)
 
-legend("topright", bty = "n", adj = c(0, NA), 
+legend("topright", bty = "n", adj = c(0, NA),
        lty = c(1, 1, 1, 1, 1, 3),
-       lwd = c(2, 2, 2, 2, 3, 3),  
+       lwd = c(2, 2, 2, 2, 3, 3),
        col = cols,
        legend = c("Daeron19",
                   "Watkins13",

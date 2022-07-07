@@ -25,14 +25,11 @@ options(repos = r)
 par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 
 ## -----------------------------------------------------------------------------
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("davidbajnai/isogeochem")
-
-## -----------------------------------------------------------------------------
+install.packages("isogeochem")
 library("isogeochem")
 
 ## -----------------------------------------------------------------------------
-# D47(CDES90) values of Devils Hole carbonates 
+# D47(CDES90) values of Devils Hole carbonates
 DH_D47     = c(0.573, 0.575, 0.572, 0.581, 0.575, 0.575, 0.570, 0.574, 0.568, 0.575)
 DH_D47_err = c(0.003, 0.007, 0.003, 0.005, 0.006, 0.003, 0.005, 0.005, 0.007, 0.005)
 DH_D47_age = c(10.70, 36.00, 90.35, 122.75, 180.45, 236.65, 295.15, 355.65, 380.05, 496.65)
@@ -43,7 +40,7 @@ DH_d18O_VSMOW = devilshole$d18O_VSMOW
 DH_d18O_err   = devilshole$d18O_error
 
 ## ---- label = "Figure1"-------------------------------------------------------
-# Convert d18O VSMOW values to the VPDB scale 
+# Convert d18O VSMOW values to the VPDB scale
 DH_d18O_VPDB = to_VPDB(DH_d18O_VSMOW)
 
 # Calculate the errors
@@ -51,9 +48,9 @@ DH_d18O_VPDB_err1 = to_VPDB(DH_d18O_VSMOW + DH_d18O_err)
 DH_d18O_VPDB_err2 = to_VPDB(DH_d18O_VSMOW - DH_d18O_err)
 
 # Plot the results
-plot(0, type = "l" , las = 1, xaxs = "i", xaxt = "n", 
+plot(0, type = "l" , las = 1, xaxs = "i", xaxt = "n",
      ylim = c(-17.5, -14.5),
-     xlim = c(0, 570), 
+     xlim = c(0, 570),
      ylab = expression(delta ^ 18 * "O"[calcite] * " (‰, VPDB)"),
      xlab = "Age (ka)")
 

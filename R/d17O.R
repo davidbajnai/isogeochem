@@ -68,7 +68,7 @@ d17O_c = function(temp, d18O_H2O_VSMOW, D17O_H2O = 0, min = "calcite", eq18 = "D
   d18O_c   = d18O_c(temp, d18O_H2O_VSMOW, min = min, eq18)
 
   # calculating the d17O prime value of ambient water
-  if (class(D17O_H2O) == "numeric" && is.finite(D17O_H2O)) {
+  if (methods::is(D17O_H2O, "numeric") && is.finite(D17O_H2O)) {
     d17Ow_p = D17O_H2O + lambda * prime(d18O_H2O_VSMOW)
   } else {
     stop("Invalid input for D17O_H2O")

@@ -39,12 +39,12 @@
 #' Rosenbaum, J. and Sheppard, S.M.F. (1986).
 #' An isotopic study of siderites, dolomites and ankerites
 #' at high temperatures.
-#' Geochimica et Cosmochimica Acta, 50, 1147–1150.
+#' Geochimica et Cosmochimica Acta, 50, 1147-1150.
 #' \doi{10.1016/0016-7037(86)90396-0}
 #'
 #' Kim, S.-T., Mucci, A., and Taylor, B. E. (2007).
 #' Phosphoric acid fractionation factors for calcite and aragonite
-#' between 25 and 75 °C: Revisited.
+#' between 25 and 75 °C: Revisited.
 #' Chemical Geology, 246(3-4), 135-146.
 #' \doi{10.1016/j.chemgeo.2007.08.005}
 #'

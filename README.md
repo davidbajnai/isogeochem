@@ -11,6 +11,8 @@
 [![repostatus](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project.org/package=isogeochem)
+[![CRAN
+count](https://cranlogs.r-pkg.org/badges/grand-total/isogeochem)](https://cranlogs.r-pkg.org/badges/grand-total/isogeochem)
 [![DOI](https://zenodo.org/badge/401782303.svg)](https://zenodo.org/badge/latestdoi/401782303)
 <!-- badges: end -->
 

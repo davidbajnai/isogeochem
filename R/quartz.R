@@ -1,4 +1,4 @@
-# Functions in this file: d17O_qz(),
+# Functions in this file: d17O_qz()
 
 ##———————————————————————————————————————————————————————————————————————————##
 #### d17O_qz ####
@@ -11,7 +11,7 @@
 #' @param temp Quartz growth temperature (°C).
 #' @param d18O_H2O_VSMOW Water d18O value expressed on the VSMOW scale (‰).
 #' @param D17O_H2O D17O value of ambient water calculated using
-#'   a lambda of `0.528`. Default `0`.
+#'        a lambda of `0.528`. Default `0`.
 #' @param lambda Triple oxygen isotope reference slope. Default `0.528`.
 #'
 #' @return
@@ -34,8 +34,8 @@
 #' Sharp, Z.D., Gibbons, J.A., Maltsev, O., Atudorei, V., Pack, A.,
 #' Sengupta, S., Shock, E.L. and Knauth, L.P. (2016).
 #' A calibration of the triple oxygen isotope fractionation in the
-#' SiO2–H2O system and applications to natural samples.
-#' Geochimica et Cosmochimica Acta, 186, 105–119.
+#' SiO2-H2O system and applications to natural samples.
+#' Geochimica et Cosmochimica Acta, 186, 105-119.
 #' \doi{10.1016/j.gca.2016.04.047}
 #'
 #' @family quartz
@@ -53,13 +53,13 @@ d17O_qz = function(temp, d18O_H2O_VSMOW, D17O_H2O = 0, lambda = 0.528) {
   # Sharp et al. (2016)
   theta = -1.85 / (temp + 273.15) + 0.5305
 
-  a18_qz_H2O = exp((4.28 * 10 ** 6 / TinK ^ 2 - 3.5 * 10 ** 3 / TinK) / 1000)
+  a18_qz_H2O = exp((4.28 * 10 ** 6 / TinK ** 2 - 3.5 * 10 ** 3 / TinK) / 1000)
   a17_qz_H2O  = a18_qz_H2O ^ theta
 
   d18O_qz   = a18_qz_H2O * (d18O_H2O_VSMOW + 1000) - 1000
 
   # calculating the d17O prime value of ambient water
-  if (class(D17O_H2O) == "numeric" && is.finite(D17O_H2O)) {
+  if (methods::is(D17O_H2O, "numeric") && is.finite(D17O_H2O)) {
     d17Ow_p = D17O_H2O + lambda * prime(d18O_H2O_VSMOW)
   } else {
     stop("Invalid input for D17O_H2O")

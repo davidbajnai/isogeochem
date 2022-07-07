@@ -21,7 +21,7 @@ BugReports: https://github.com/davidbajnai/isogeochem/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Suggests:
     shades,
     viridisLite,
@@ -35,6 +35,7 @@ VignetteBuilder: knitr
 Imports: 
     stats,
     graphics,
+    methods,
     grDevices
 Depends: 
     R (>= 3.1.0)

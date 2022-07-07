@@ -140,11 +140,11 @@ Geology, 33(4), 317-320.
 
 Kim, S.-T., Mucci, A., & Taylor, B. E. (2007).
 Phosphoric acid fractionation factors for calcite and aragonite between
-25 and 75 °C: Revisited. Chemical Geology, 246(3-4), 135-146.
+25 and 75 °C: Revisited. Chemical Geology, 246(3-4), 135-146.
 \doi{10.1016/j.chemgeo.2007.08.005}
 
 Coplen, T. B. (2007).
-Calibration of the calcite–water oxygen-isotope geothermometer
+Calibration of the calcite-water oxygen-isotope geothermometer
 at Devils Hole, Nevada, a natural laboratory.
 Geochimica et Cosmochimica Acta, 71(16), 3948-3957.
 \doi{10.1016/j.gca.2007.05.028}
@@ -153,7 +153,7 @@ Lécuyer, C., Balter, V., Martineau, F., Fourel, F., Bernard, A.,
 Amiot, R., et al. (2010).
 Oxygen isotope fractionation between apatite-bound carbonate
 and water determined from controlled experiments with synthetic
-apatites precipitated at 10–37°C.
+apatites precipitated at 10-37°C.
 Geochimica et Cosmochimica Acta, 74(7), 2072-2081.
 \doi{10.1016/j.gca.2009.12.024}
 
@@ -187,7 +187,7 @@ Bontognali, T.R.R., Vasconcelos, C.,
 Benning, L.G. & Bernasconi, S.M. (2019).
 Calibration of the oxygen and clumped isotope thermometers for
 (proto-)dolomite based on synthetic and natural carbonates.
-Chemical Geology, 525, 1–17.
+Chemical Geology, 525, 1-17.
 \doi{10.1016/j.chemgeo.2019.07.014}
 }
 \seealso{

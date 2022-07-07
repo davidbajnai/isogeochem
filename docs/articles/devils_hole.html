@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,23 +40,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.9.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -74,7 +70,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/davidbajnai/isogeochem/">
+  <a href="https://github.com/davidbajnai/isogeochem/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -89,160 +85,184 @@
 
       
 
-      </header><script src="devils_hole_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Devils Hole</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/davidbajnai/isogeochem/blob/master/vignettes/devils_hole.Rmd"><code>vignettes/devils_hole.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/davidbajnai/isogeochem/blob/HEAD/vignettes/devils_hole.Rmd" class="external-link"><code>vignettes/devils_hole.Rmd</code></a></small>
       <div class="hidden name"><code>devils_hole.Rmd</code></div>
 
     </div>
 
     
     
-<div id="introduction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>This vignette demonstrates the usage of <code>isogeochem</code> using a case study based on <a href="https://doi.org/10.1029/2021GL093257">Bajnai et al. (2021)</a>.</p>
-<div id="background" class="section level4">
-<h4 class="hasAnchor">
-<a href="#background" class="anchor"></a>Background:</h4>
-<p><a href="https://doi.org/10.1016/j.yqres.2006.06.003">Winograd et al. (2006)</a> acquired a <em>δ</em><sup>18</sup>O time series from carbonates that precipitated underwater in the Devils Hole caves spanning the last ca. 570 thousand years. Now, we are interested in the variations in the <em>δ</em><sup>18</sup>O value of the groundwater in this period. To reconstruct a groundwater <em>δ</em><sup>18</sup>O time series from the carbonate <em>δ</em><sup>18</sup>O values, we have to know the temperature of the groundwater. Therefore, we measured the clumped isotope values of ten calcite samples. First, we convert the measured <em>∆</em><sub>47</sub> values to carbonate growth temperatures. Then, using the mean of the clumped isotope temperatures, we convert the carbonate <em>δ</em><sup>18</sup>O time series to a groundwater <em>δ</em><sup>18</sup>O time series.</p>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>This vignette demonstrates the usage of <code>isogeochem</code> using
+a case study based on <a href="https://doi.org/10.1029/2021GL093257" class="external-link">Bajnai et
+al. (2021)</a>.</p>
+<div class="section level4">
+<h4 id="background">Background:<a class="anchor" aria-label="anchor" href="#background"></a>
+</h4>
+<p><a href="https://doi.org/10.1016/j.yqres.2006.06.003" class="external-link">Winograd et
+al. (2006)</a> acquired a <em>δ</em><sup>18</sup>O time series from
+carbonates that precipitated underwater in the Devils Hole caves
+spanning the last ca. 570 thousand years. Now, we are interested in the
+variations in the <em>δ</em><sup>18</sup>O value of the groundwater in
+this period. To reconstruct a groundwater <em>δ</em><sup>18</sup>O time
+series from the carbonate <em>δ</em><sup>18</sup>O values, we have to
+know the temperature of the groundwater. Therefore, we measured the
+clumped isotope values of ten calcite samples. First, we convert the
+measured <em>∆</em><sub>47</sub> values to carbonate growth
+temperatures. Then, using the mean of the clumped isotope temperatures,
+we convert the carbonate <em>δ</em><sup>18</sup>O time series to a
+groundwater <em>δ</em><sup>18</sup>O time series.</p>
 </div>
 </div>
-<div id="package-setup" class="section level2">
-<h2 class="hasAnchor">
-<a href="#package-setup" class="anchor"></a>Package setup</h2>
+<div class="section level2">
+<h2 id="package-setup">Package setup<a class="anchor" aria-label="anchor" href="#package-setup"></a>
+</h2>
 <p>Download, install, and load the <code>isogeochem</code> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/">"isogeochem"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"isogeochem"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/">"isogeochem"</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/" class="external-link">"isogeochem"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"isogeochem"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://davidbajnai.github.io/isogeochem/" class="external-link">"isogeochem"</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="load-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#load-data" class="anchor"></a>Load data</h2>
-<p>Data can be loaded into R in many ways. For example, to load data from an excel file you could use the <code>openxlsx</code> package. For this vignette, however, lets specify the measured <em>∆</em><sub>47</sub> values manually:</p>
+<div class="section level2">
+<h2 id="load-data">Load data<a class="anchor" aria-label="anchor" href="#load-data"></a>
+</h2>
+<p>Data can be loaded into R in many ways. For example, to load data
+from an excel file you could use the <code>openxlsx</code> package. For
+this vignette, however, lets specify the measured
+<em>∆</em><sub>47</sub> values manually:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># D47(CDES90) values of Devils Hole carbonates </span>
-<span class="va">DH_D47</span>     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.573</span>, <span class="fl">0.575</span>, <span class="fl">0.572</span>, <span class="fl">0.581</span>, <span class="fl">0.575</span>, <span class="fl">0.575</span>, <span class="fl">0.570</span>, <span class="fl">0.574</span>, <span class="fl">0.568</span>, <span class="fl">0.575</span><span class="op">)</span>
-<span class="va">DH_D47_err</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.003</span>, <span class="fl">0.007</span>, <span class="fl">0.003</span>, <span class="fl">0.005</span>, <span class="fl">0.006</span>, <span class="fl">0.003</span>, <span class="fl">0.005</span>, <span class="fl">0.005</span>, <span class="fl">0.007</span>, <span class="fl">0.005</span><span class="op">)</span>
-<span class="va">DH_D47_age</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10.70</span>, <span class="fl">36.00</span>, <span class="fl">90.35</span>, <span class="fl">122.75</span>, <span class="fl">180.45</span>, <span class="fl">236.65</span>, <span class="fl">295.15</span>, <span class="fl">355.65</span>, <span class="fl">380.05</span>, <span class="fl">496.65</span><span class="op">)</span></code></pre></div>
-<p>There are datasets available in <code>isogeochem</code>, which can be used simply by typing their name. For example, the <code>devilshole</code> dataset includes the original <em>δ</em><sup>18</sup>O composite time series from the Devils Hole caves.</p>
+<code class="sourceCode R"><span><span class="co"># D47(CDES90) values of Devils Hole carbonates </span></span>
+<span><span class="va">DH_D47</span>     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.573</span>, <span class="fl">0.575</span>, <span class="fl">0.572</span>, <span class="fl">0.581</span>, <span class="fl">0.575</span>, <span class="fl">0.575</span>, <span class="fl">0.570</span>, <span class="fl">0.574</span>, <span class="fl">0.568</span>, <span class="fl">0.575</span><span class="op">)</span></span>
+<span><span class="va">DH_D47_err</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.003</span>, <span class="fl">0.007</span>, <span class="fl">0.003</span>, <span class="fl">0.005</span>, <span class="fl">0.006</span>, <span class="fl">0.003</span>, <span class="fl">0.005</span>, <span class="fl">0.005</span>, <span class="fl">0.007</span>, <span class="fl">0.005</span><span class="op">)</span></span>
+<span><span class="va">DH_D47_age</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10.70</span>, <span class="fl">36.00</span>, <span class="fl">90.35</span>, <span class="fl">122.75</span>, <span class="fl">180.45</span>, <span class="fl">236.65</span>, <span class="fl">295.15</span>, <span class="fl">355.65</span>, <span class="fl">380.05</span>, <span class="fl">496.65</span><span class="op">)</span></span></code></pre></div>
+<p>There are datasets available in <code>isogeochem</code>, which can be
+used simply by typing their name. For example, the
+<code>devilshole</code> dataset includes the original
+<em>δ</em><sup>18</sup>O composite time series from the Devils Hole
+caves.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">DH_age</span>        <span class="op">=</span> <span class="va">devilshole</span><span class="op">$</span><span class="va">age</span>
-<span class="va">DH_d18O_VSMOW</span> <span class="op">=</span> <span class="va">devilshole</span><span class="op">$</span><span class="va">d18O_VSMOW</span>
-<span class="va">DH_d18O_err</span>   <span class="op">=</span> <span class="va">devilshole</span><span class="op">$</span><span class="va">d18O_error</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">DH_age</span>        <span class="op">=</span> <span class="va">devilshole</span><span class="op">$</span><span class="va">age</span></span>
+<span><span class="va">DH_d18O_VSMOW</span> <span class="op">=</span> <span class="va">devilshole</span><span class="op">$</span><span class="va">d18O_VSMOW</span></span>
+<span><span class="va">DH_d18O_err</span>   <span class="op">=</span> <span class="va">devilshole</span><span class="op">$</span><span class="va">d18O_error</span></span></code></pre></div>
 </div>
-<div id="carbonate-δ18o-vs-age" class="section level2">
-<h2 class="hasAnchor">
-<a href="#carbonate-%CE%B418o-vs-age" class="anchor"></a>Carbonate <em>δ</em><sup>18</sup>O vs age</h2>
-<p>Lets visualize the carbonate <em>δ</em><sup>18</sup>O VPDB time series:</p>
+<div class="section level2">
+<h2 id="carbonate-δ18o-vs-age">Carbonate <em>δ</em><sup>18</sup>O vs age<a class="anchor" aria-label="anchor" href="#carbonate-%CE%B418o-vs-age"></a>
+</h2>
+<p>Lets visualize the carbonate <em>δ</em><sup>18</sup>O VPDB time
+series:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Convert d18O VSMOW values to the VPDB scale </span>
-<span class="va">DH_d18O_VPDB</span> <span class="op">=</span> <span class="fu"><a href="../reference/to_VPDB.html">to_VPDB</a></span><span class="op">(</span><span class="va">DH_d18O_VSMOW</span><span class="op">)</span>
-
-<span class="co"># Calculate the errors</span>
-<span class="va">DH_d18O_VPDB_err1</span> <span class="op">=</span> <span class="fu"><a href="../reference/to_VPDB.html">to_VPDB</a></span><span class="op">(</span><span class="va">DH_d18O_VSMOW</span> <span class="op">+</span> <span class="va">DH_d18O_err</span><span class="op">)</span>
-<span class="va">DH_d18O_VPDB_err2</span> <span class="op">=</span> <span class="fu"><a href="../reference/to_VPDB.html">to_VPDB</a></span><span class="op">(</span><span class="va">DH_d18O_VSMOW</span> <span class="op">-</span> <span class="va">DH_d18O_err</span><span class="op">)</span>
-
-<span class="co"># Plot the results</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">0</span>, type <span class="op">=</span> <span class="st">"l"</span> , las <span class="op">=</span> <span class="fl">1</span>, xaxs <span class="op">=</span> <span class="st">"i"</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, 
-     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">17.5</span>, <span class="op">-</span><span class="fl">14.5</span><span class="op">)</span>,
-     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span><span class="op">)</span>, 
-     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">delta</span> <span class="op">^</span> <span class="fl">18</span> <span class="op">*</span> <span class="st">"O"</span><span class="op">[</span><span class="va">calcite</span><span class="op">]</span> <span class="op">*</span> <span class="st">" (‰, VPDB)"</span><span class="op">)</span>,
-     xlab <span class="op">=</span> <span class="st">"Age (ka)"</span><span class="op">)</span>
-
-<span class="co"># Set up the x axis with ticks and labels</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, labels<span class="op">=</span><span class="cn">NA</span><span class="op">)</span>
-
-<span class="co"># Add the error interval the plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">DH_age</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="va">DH_age</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">DH_d18O_VPDB_err1</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="va">DH_d18O_VPDB_err2</span><span class="op">)</span><span class="op">)</span>,
-        col<span class="op">=</span><span class="st">"wheat"</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>
-
-<span class="co"># Add the carbonate d18O VPDB time series to the plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">DH_age</span>, <span class="va">DH_d18O_VPDB</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"gray10"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Convert d18O VSMOW values to the VPDB scale </span></span>
+<span><span class="va">DH_d18O_VPDB</span> <span class="op">=</span> <span class="fu"><a href="../reference/to_VPDB.html">to_VPDB</a></span><span class="op">(</span><span class="va">DH_d18O_VSMOW</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calculate the errors</span></span>
+<span><span class="va">DH_d18O_VPDB_err1</span> <span class="op">=</span> <span class="fu"><a href="../reference/to_VPDB.html">to_VPDB</a></span><span class="op">(</span><span class="va">DH_d18O_VSMOW</span> <span class="op">+</span> <span class="va">DH_d18O_err</span><span class="op">)</span></span>
+<span><span class="va">DH_d18O_VPDB_err2</span> <span class="op">=</span> <span class="fu"><a href="../reference/to_VPDB.html">to_VPDB</a></span><span class="op">(</span><span class="va">DH_d18O_VSMOW</span> <span class="op">-</span> <span class="va">DH_d18O_err</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot the results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">0</span>, type <span class="op">=</span> <span class="st">"l"</span> , las <span class="op">=</span> <span class="fl">1</span>, xaxs <span class="op">=</span> <span class="st">"i"</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, </span>
+<span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">17.5</span>, <span class="op">-</span><span class="fl">14.5</span><span class="op">)</span>,</span>
+<span>     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span><span class="op">)</span>, </span>
+<span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">delta</span> <span class="op">^</span> <span class="fl">18</span> <span class="op">*</span> <span class="st">"O"</span><span class="op">[</span><span class="va">calcite</span><span class="op">]</span> <span class="op">*</span> <span class="st">" (‰, VPDB)"</span><span class="op">)</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"Age (ka)"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Set up the x axis with ticks and labels</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, labels<span class="op">=</span><span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add the error interval the plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html" class="external-link">polygon</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">DH_age</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">DH_age</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">DH_d18O_VPDB_err1</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">DH_d18O_VPDB_err2</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>        col<span class="op">=</span><span class="st">"wheat"</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add the carbonate d18O VPDB time series to the plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">DH_age</span>, <span class="va">DH_d18O_VPDB</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"gray10"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures/devils_hole-Figure1-1.png" width="100%"></p>
 </div>
-<div id="calculate-growth-temperatures-from-47" class="section level2">
-<h2 class="hasAnchor">
-<a href="#calculate-growth-temperatures-from-47" class="anchor"></a>Calculate growth temperatures from <em>∆</em><sub>47</sub>
+<div class="section level2">
+<h2 id="calculate-growth-temperatures-from-47">Calculate growth temperatures from <em>∆</em><sub>47</sub><a class="anchor" aria-label="anchor" href="#calculate-growth-temperatures-from-47"></a>
 </h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Convert D47 values into temperatures using the equation in Fiebig et al. (2021)</span>
-<span class="va">DH_temp</span> <span class="op">=</span> <span class="fu"><a href="../reference/temp_D47.html">temp_D47</a></span><span class="op">(</span><span class="va">DH_D47</span>, <span class="va">DH_D47_err</span>, eq <span class="op">=</span> <span class="st">"Fiebig21"</span><span class="op">)</span>
-<span class="va">DH_temp_mean</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">DH_temp</span><span class="op">$</span><span class="va">temp</span><span class="op">)</span>
-<span class="va">DH_temp_mean</span>
-<span class="co">#&gt; [1] 32.75</span>
-<span class="va">DH_temp_err</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">DH_temp</span><span class="op">$</span><span class="va">temp_err</span><span class="op">)</span>
-<span class="va">DH_temp_err</span>
-<span class="co">#&gt; [1] 1.83</span>
-
-<span class="co"># Plot the results</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">0</span>, type <span class="op">=</span> <span class="st">"l"</span>, las <span class="op">=</span> <span class="fl">1</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, xaxs <span class="op">=</span> <span class="st">"i"</span>,
-     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">38</span><span class="op">)</span>,
-     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span><span class="op">)</span>,
-     ylab <span class="op">=</span> <span class="st">"Temperature (°C)"</span>,
-     xlab <span class="op">=</span> <span class="st">"Age (ka)"</span><span class="op">)</span>
-
-<span class="co"># Set up the x axis with ticks and labels</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, labels <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>
-
-<span class="co"># Add mean error range</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/rect.html">rect</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">DH_temp_mean</span> <span class="op">-</span> <span class="va">DH_temp_err</span>,
-     <span class="fl">570</span>, <span class="va">DH_temp_mean</span> <span class="op">+</span> <span class="va">DH_temp_err</span>,
-     col <span class="op">=</span> <span class="st">"wheat"</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>
-
-<span class="co"># Add error bars</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">DH_D47_age</span>, <span class="va">DH_temp</span><span class="op">$</span><span class="va">temp</span> <span class="op">-</span> <span class="va">DH_temp</span><span class="op">$</span><span class="va">temp_err</span>,
-         <span class="va">DH_D47_age</span>, <span class="va">DH_temp</span><span class="op">$</span><span class="va">temp</span> <span class="op">+</span> <span class="va">DH_temp</span><span class="op">$</span><span class="va">temp_err</span>, col <span class="op">=</span> <span class="st">"gray50"</span><span class="op">)</span>
-
-<span class="co"># Add points</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">DH_D47_age</span>, <span class="va">DH_temp</span><span class="op">$</span><span class="va">temp</span>, col <span class="op">=</span> <span class="st">"gray10"</span>, pch <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Convert D47 values into temperatures using the equation in Fiebig et al. (2021)</span></span>
+<span><span class="va">DH_temp</span> <span class="op">=</span> <span class="fu"><a href="../reference/temp_D47.html">temp_D47</a></span><span class="op">(</span><span class="va">DH_D47</span>, <span class="va">DH_D47_err</span>, eq <span class="op">=</span> <span class="st">"Fiebig21"</span><span class="op">)</span></span>
+<span><span class="va">DH_temp_mean</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">DH_temp</span><span class="op">$</span><span class="va">temp</span><span class="op">)</span></span>
+<span><span class="va">DH_temp_mean</span></span>
+<span><span class="co">#&gt; [1] 32.75</span></span>
+<span><span class="va">DH_temp_err</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">DH_temp</span><span class="op">$</span><span class="va">temp_err</span><span class="op">)</span></span>
+<span><span class="va">DH_temp_err</span></span>
+<span><span class="co">#&gt; [1] 1.83</span></span>
+<span></span>
+<span><span class="co"># Plot the results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">0</span>, type <span class="op">=</span> <span class="st">"l"</span>, las <span class="op">=</span> <span class="fl">1</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, xaxs <span class="op">=</span> <span class="st">"i"</span>,</span>
+<span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">38</span><span class="op">)</span>,</span>
+<span>     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span><span class="op">)</span>,</span>
+<span>     ylab <span class="op">=</span> <span class="st">"Temperature (°C)"</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"Age (ka)"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Set up the x axis with ticks and labels</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, labels <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add mean error range</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/rect.html" class="external-link">rect</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">DH_temp_mean</span> <span class="op">-</span> <span class="va">DH_temp_err</span>,</span>
+<span>     <span class="fl">570</span>, <span class="va">DH_temp_mean</span> <span class="op">+</span> <span class="va">DH_temp_err</span>,</span>
+<span>     col <span class="op">=</span> <span class="st">"wheat"</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add error bars</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html" class="external-link">segments</a></span><span class="op">(</span><span class="va">DH_D47_age</span>, <span class="va">DH_temp</span><span class="op">$</span><span class="va">temp</span> <span class="op">-</span> <span class="va">DH_temp</span><span class="op">$</span><span class="va">temp_err</span>,</span>
+<span>         <span class="va">DH_D47_age</span>, <span class="va">DH_temp</span><span class="op">$</span><span class="va">temp</span> <span class="op">+</span> <span class="va">DH_temp</span><span class="op">$</span><span class="va">temp_err</span>, col <span class="op">=</span> <span class="st">"gray50"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add points</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">DH_D47_age</span>, <span class="va">DH_temp</span><span class="op">$</span><span class="va">temp</span>, col <span class="op">=</span> <span class="st">"gray10"</span>, pch <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures/devils_hole-Figure2-1.png" width="100%"></p>
 </div>
-<div id="groundwater-δ18o-versus-age" class="section level2">
-<h2 class="hasAnchor">
-<a href="#groundwater-%CE%B418o-versus-age" class="anchor"></a>Groundwater <em>δ</em><sup>18</sup>O versus age</h2>
-<p>The calculated clumped isotope temperatures for the samples are statistically indistinguishable, which allows us to calculate a mean groundwater temperature and use that to reconstruct the variations in groundwater <em>δ</em><sup>18</sup>O.</p>
+<div class="section level2">
+<h2 id="groundwater-δ18o-versus-age">Groundwater <em>δ</em><sup>18</sup>O versus age<a class="anchor" aria-label="anchor" href="#groundwater-%CE%B418o-versus-age"></a>
+</h2>
+<p>The calculated clumped isotope temperatures for the samples are
+statistically indistinguishable, which allows us to calculate a mean
+groundwater temperature and use that to reconstruct the variations in
+groundwater <em>δ</em><sup>18</sup>O.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Calculate groundwater d18O values and its error</span>
-<span class="va">DH_d18O_gw</span> <span class="op">=</span> <span class="fu"><a href="../reference/d18O_H2O.html">d18O_H2O</a></span><span class="op">(</span>
-  temp <span class="op">=</span> <span class="va">DH_temp_mean</span>,
-  d18O_c_VSMOW <span class="op">=</span> <span class="va">DH_d18O_VSMOW</span>,
-  min <span class="op">=</span> <span class="st">"calcite"</span>,
-  eq <span class="op">=</span> <span class="st">"Coplen07"</span><span class="op">)</span>
-<span class="va">DH_d18O_gw_err_low</span> <span class="op">=</span> <span class="fu"><a href="../reference/d18O_H2O.html">d18O_H2O</a></span><span class="op">(</span>
-  temp <span class="op">=</span> <span class="va">DH_temp_mean</span> <span class="op">+</span> <span class="va">DH_temp_err</span>,
-  d18O_c_VSMOW <span class="op">=</span> <span class="va">DH_d18O_VSMOW</span> <span class="op">-</span> <span class="va">DH_d18O_err</span>,
-  min <span class="op">=</span> <span class="st">"calcite"</span>,
-  eq <span class="op">=</span> <span class="st">"Coplen07"</span><span class="op">)</span>
-<span class="va">DH_d18O_gw_err_high</span> <span class="op">=</span> <span class="fu"><a href="../reference/d18O_H2O.html">d18O_H2O</a></span><span class="op">(</span>
-  <span class="va">DH_temp_mean</span> <span class="op">-</span> <span class="va">DH_temp_err</span>,
-  <span class="va">DH_d18O_VSMOW</span> <span class="op">+</span> <span class="va">DH_d18O_err</span>,
-  min <span class="op">=</span> <span class="st">"calcite"</span>,
-  eq <span class="op">=</span> <span class="st">"Coplen07"</span><span class="op">)</span>
-
-<span class="co"># Plot the results</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">0</span>, type <span class="op">=</span> <span class="st">"l"</span>, las <span class="op">=</span> <span class="fl">1</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, xaxs <span class="op">=</span> <span class="st">"i"</span>,
-     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">16</span>, <span class="op">-</span><span class="fl">12</span><span class="op">)</span>,
-     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span><span class="op">)</span>,
-     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">delta</span> <span class="op">^</span> <span class="fl">18</span> <span class="op">*</span> <span class="st">"O"</span><span class="op">[</span><span class="va">groundwater</span><span class="op">]</span> <span class="op">*</span> <span class="st">" (‰, VSMOW)"</span><span class="op">)</span>,
-     xlab <span class="op">=</span> <span class="st">"Age (ka)"</span><span class="op">)</span>
-
-<span class="co"># Set up the x axis with ticks and labels</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, labels <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>
-
-<span class="co"># Add the error interval the plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">DH_age</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="va">DH_age</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">DH_d18O_gw_err_low</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="va">DH_d18O_gw_err_high</span><span class="op">)</span><span class="op">)</span>,
-        col <span class="op">=</span> <span class="st">"wheat"</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>
-
-<span class="co"># Add the carbonate d18O time series to the plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">DH_age</span>, <span class="va">DH_d18O_gw</span>, lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"gray10"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Calculate groundwater d18O values and its error</span></span>
+<span><span class="va">DH_d18O_gw</span> <span class="op">=</span> <span class="fu"><a href="../reference/d18O_H2O.html">d18O_H2O</a></span><span class="op">(</span></span>
+<span>  temp <span class="op">=</span> <span class="va">DH_temp_mean</span>,</span>
+<span>  d18O_c_VSMOW <span class="op">=</span> <span class="va">DH_d18O_VSMOW</span>,</span>
+<span>  min <span class="op">=</span> <span class="st">"calcite"</span>,</span>
+<span>  eq <span class="op">=</span> <span class="st">"Coplen07"</span><span class="op">)</span></span>
+<span><span class="va">DH_d18O_gw_err_low</span> <span class="op">=</span> <span class="fu"><a href="../reference/d18O_H2O.html">d18O_H2O</a></span><span class="op">(</span></span>
+<span>  temp <span class="op">=</span> <span class="va">DH_temp_mean</span> <span class="op">+</span> <span class="va">DH_temp_err</span>,</span>
+<span>  d18O_c_VSMOW <span class="op">=</span> <span class="va">DH_d18O_VSMOW</span> <span class="op">-</span> <span class="va">DH_d18O_err</span>,</span>
+<span>  min <span class="op">=</span> <span class="st">"calcite"</span>,</span>
+<span>  eq <span class="op">=</span> <span class="st">"Coplen07"</span><span class="op">)</span></span>
+<span><span class="va">DH_d18O_gw_err_high</span> <span class="op">=</span> <span class="fu"><a href="../reference/d18O_H2O.html">d18O_H2O</a></span><span class="op">(</span></span>
+<span>  <span class="va">DH_temp_mean</span> <span class="op">-</span> <span class="va">DH_temp_err</span>,</span>
+<span>  <span class="va">DH_d18O_VSMOW</span> <span class="op">+</span> <span class="va">DH_d18O_err</span>,</span>
+<span>  min <span class="op">=</span> <span class="st">"calcite"</span>,</span>
+<span>  eq <span class="op">=</span> <span class="st">"Coplen07"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot the results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">0</span>, type <span class="op">=</span> <span class="st">"l"</span>, las <span class="op">=</span> <span class="fl">1</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, xaxs <span class="op">=</span> <span class="st">"i"</span>,</span>
+<span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">16</span>, <span class="op">-</span><span class="fl">12</span><span class="op">)</span>,</span>
+<span>     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span><span class="op">)</span>,</span>
+<span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">delta</span> <span class="op">^</span> <span class="fl">18</span> <span class="op">*</span> <span class="st">"O"</span><span class="op">[</span><span class="va">groundwater</span><span class="op">]</span> <span class="op">*</span> <span class="st">" (‰, VSMOW)"</span><span class="op">)</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"Age (ka)"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Set up the x axis with ticks and labels</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">570</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, labels <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add the error interval the plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html" class="external-link">polygon</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">DH_age</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">DH_age</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">DH_d18O_gw_err_low</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">DH_d18O_gw_err_high</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>        col <span class="op">=</span> <span class="st">"wheat"</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add the carbonate d18O time series to the plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">DH_age</span>, <span class="va">DH_d18O_gw</span>, lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"gray10"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures/devils_hole-Figure3-1.png" width="100%"></p>
 </div>
   </div>
@@ -258,11 +278,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://davidbajnai.eu">David Bajnai</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://davidbajnai.eu" class="external-link">David Bajnai</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
@@ -270,6 +292,8 @@
 
   
 
+
+  
 
   </body>
 </html>

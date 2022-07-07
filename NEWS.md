@@ -9,10 +9,12 @@ New mineral: 18O/16O acid fractionation factor for dolomites, based on Rosenbaum
 * mix_d17O() Now allows to adjust the resolution of the output.
 
 ## New functions
-* d17O_qz()
+* d17O_qz() to calculate equilibrium oxygen isotope values for quartz
 
 ## Misc
 * Readme updates
+* vignette updates
+* Description updates
 
 # isogeochem 1.0.9
 

@@ -47,8 +47,8 @@ d17O_qz(temp = 10, d18O_H2O_VSMOW = 0)[, 3] # Returns the D17O value
 Sharp, Z.D., Gibbons, J.A., Maltsev, O., Atudorei, V., Pack, A.,
 Sengupta, S., Shock, E.L. and Knauth, L.P. (2016).
 A calibration of the triple oxygen isotope fractionation in the
-SiO2–H2O system and applications to natural samples.
-Geochimica et Cosmochimica Acta, 186, 105–119.
+SiO2-H2O system and applications to natural samples.
+Geochimica et Cosmochimica Acta, 186, 105-119.
 \doi{10.1016/j.gca.2016.04.047}
 }
 \concept{quartz}
