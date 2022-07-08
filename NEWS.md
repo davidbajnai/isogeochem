@@ -11,6 +11,9 @@ New mineral: 18O/16O acid fractionation factor for dolomites, based on Rosenbaum
 ## New functions
 * d17O_qz() to calculate equilibrium oxygen isotope values for quartz
 
+## New dataset
+* meteoric_waters is a compilation of d17O and d18O values for meteoric waters.
+
 ## Misc
 * Readme updates
 * vignette updates

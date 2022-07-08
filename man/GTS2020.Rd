@@ -42,7 +42,8 @@ Geologic Time Scale 2020: Volume 1 (pp. 279-307): Elsevier.
 \seealso{
 Other "datasets": 
 \code{\link{LR04}},
-\code{\link{devilshole}}
+\code{\link{devilshole}},
+\code{\link{meteoric_water}}
 }
 \concept{"datasets"}
 \keyword{datasets}

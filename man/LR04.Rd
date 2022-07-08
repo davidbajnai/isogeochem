@@ -32,7 +32,8 @@ Paleoceanography, 20(1), PA1003.
 \seealso{
 Other "datasets": 
 \code{\link{GTS2020}},
-\code{\link{devilshole}}
+\code{\link{devilshole}},
+\code{\link{meteoric_water}}
 }
 \concept{"datasets"}
 \keyword{datasets}

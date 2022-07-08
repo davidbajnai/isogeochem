@@ -33,7 +33,8 @@ Quaternary Research, 66(2), 202-212.
 \seealso{
 Other "datasets": 
 \code{\link{GTS2020}},
-\code{\link{LR04}}
+\code{\link{LR04}},
+\code{\link{meteoric_water}}
 }
 \concept{"datasets"}
 \keyword{datasets}

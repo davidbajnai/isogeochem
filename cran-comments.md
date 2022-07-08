@@ -6,6 +6,7 @@
 
 ### Local:
 * Apple Silicon (M1), macOS 12.4 Monterey, R 4.2.1
+* Microsoft Windows 10 Pro 19044, R 4.2.1
 
 ### rhub
 * macOS 10.13.6 High Sierra, R-release, CRAN's setup
@@ -13,4 +14,4 @@
 * Oracle Solaris 10, x86, 32 bit, R-release
 
 ## Comments
-* All links are correct in the package. However, in case of a server error, the Zenodo and DOI links may prompt a WARNING.
+* All links are correct in the package. However, in case of a server error, the Zenodo links may prompt a WARNING.
