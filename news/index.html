@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.92</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.93</span>
       </span>
     </div>
 
@@ -61,24 +61,24 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.0.9.9" id="isogeochem-1099">isogeochem 1.0.9.9<a class="anchor" aria-label="anchor" href="#isogeochem-1099"></a></h2>
+<h2 class="page-header" data-toc-text="1.1.0" id="isogeochem-110">isogeochem 1.1.0<a class="anchor" aria-label="anchor" href="#isogeochem-110"></a></h2>
 <div class="section level3">
-<h3 id="function-updates-1-0-9-9">Function updates<a class="anchor" aria-label="anchor" href="#function-updates-1-0-9-9"></a></h3>
-<ul><li>a18_c_H2O(temp = 25, min = “dolomite”, eq = “Muller19”) New equation: dolomite-water 18O/16O fractionation factor, based on Müller et al. (2019)</li>
-<li>a18_CO2acid_c(temp = 25, min = “dolomite”) New mineral: 18O/16O acid fractionation factor for dolomites, based on Rosenbaum &amp; Sheppard (1986)</li>
-<li>d17O_c() Can now take into account a non-zero D17O value for the ambient water.</li>
-<li>mix_d17O() Now allows to adjust the resolution of the output.</li>
+<h3 id="function-updates-1-1-0">Function updates<a class="anchor" aria-label="anchor" href="#function-updates-1-1-0"></a></h3>
+<ul><li>a18_c_H2O(temp = 25, min = “dolomite”, eq = “Muller19”) Can now calculate the dolomite/water 18O/16O fractionation factor.</li>
+<li>a18_CO2acid_c(temp = 25, min = “dolomite”) Can now calculate the dolomite/CO2 18O/16O AFF.</li>
+<li>d17O_c(D17O_H2O = 0.025) Can now take into account a non-zero D17O value for the ambient water.</li>
+<li>mix_d17O(step = 20) Now allows to adjust the resolution of the output.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="new-functions-1-0-9-9">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-0-9-9"></a></h3>
+<h3 id="new-functions-1-1-0">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-1-0"></a></h3>
 <ul><li>d17O_qz() to calculate equilibrium oxygen isotope values for quartz</li></ul></div>
 <div class="section level3">
-<h3 id="new-dataset-1-0-9-9">New dataset<a class="anchor" aria-label="anchor" href="#new-dataset-1-0-9-9"></a></h3>
+<h3 id="new-dataset-1-1-0">New dataset<a class="anchor" aria-label="anchor" href="#new-dataset-1-1-0"></a></h3>
 <ul><li>meteoric_waters is a compilation of d17O and d18O values for meteoric waters.</li></ul></div>
 <div class="section level3">
-<h3 id="misc-1-0-9-9">Misc<a class="anchor" aria-label="anchor" href="#misc-1-0-9-9"></a></h3>
+<h3 id="misc-1-1-0">Misc<a class="anchor" aria-label="anchor" href="#misc-1-1-0"></a></h3>
 <ul><li>Readme updates</li>
-<li>vignette updates</li>
+<li>Vignette updates</li>
 <li>Description updates</li>
 </ul></div>
 </div>
