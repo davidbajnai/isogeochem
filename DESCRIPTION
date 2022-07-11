@@ -1,7 +1,7 @@
 Package: isogeochem
 Type: Package
 Title: Tools for Stable Isotope Geochemistry
-Version: 1.0.9.92
+Version: 1.0.9.93
 Authors@R:
     c(person(given = "David", family = "Bajnai",
     email = "david.bajnai@uni-goettingen.de",

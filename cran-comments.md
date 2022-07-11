@@ -14,4 +14,4 @@
 * Oracle Solaris 10, x86, 32 bit, R-release
 
 ## Comments
-* All links are correct in the package. However, in case of a server error, the Zenodo links may prompt a WARNING.
+* All links are correct in the package. However, in case of a server error, the DOI and Zenodo links may prompt a WARNING.

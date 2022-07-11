@@ -124,40 +124,57 @@ modeling diagenesis.
 ``` r
 if (!require("shades")) install.packages("shades")
 
-# Model equilibrium calcite
-temp  = seq(0, 50, 10) # temperature range: 0—50 °C
-d18O_H2O = -1
-d18Op = prime(d17O_c(temp, d18O_H2O, eq18 = "Daeron19")[, 1])
-D17O  = d17O_c(temp, d18O_H2O, eq18 = "Daeron19")[, 3]
+# Model equilibrium calcite precipitating from seawater
+temp_sw  = seq(0, 50, 10) # temperature range: 0—50 °C
+d18O_sw = 0 # d18O value of seawater
+D17O_sw = -0.004 # D17O value of seawater
+d18Op = prime(d17O_c(temp_sw, d18O_sw, D17O_sw, eq18 = "Daeron19")[, 1])
+D17O  = d17O_c(temp_sw, d18O_sw, D17O_sw, eq18 = "Daeron19")[, 3]
 
-# Model progressing meteoric diagenetic alteration 
-em_equi = d17O_c(10, d18O_H2O, eq18 = "Daeron19") # equilibrium endmember
-em_diag = d17O_c(25, -10, eq18 = "Daeron19") # diagenetic endmember
+# Model progressing meteoric diagenetic alteration
+d18O_ds = -8 # d18O value of diagenetic fluid
+D17O_ds = 0.020 # D17O value of diagenetic fluid
+em_equi = d17O_c(temp = 10, d18O_H2O = d18O_sw, D17O_H2O = D17O_sw,
+                 eq18 = "Daeron19") # equilibrium endmember
+em_diag = d17O_c(temp = 80, d18O_H2O = d18O_ds, D17O_H2O = D17O_ds,
+                 eq18 = "Daeron19") # diagenetic endmember
 mix = mix_d17O(d18O_A = em_equi[1], d17O_A = em_equi[2],
-               d18O_B = em_diag[1], d17O_B = em_diag[2])
+               d18O_B = em_diag[1], d17O_B = em_diag[2], step = 25)
 
 ## Plot in ∆17O vs d'18O space ##
-plot(0, type = "l", ylim = c(-0.1,-0.04), xlim = c(15, 40),
-     xlab = expression(delta * "'" ^ 18 * "O"[c] * " (‰, VSMOW)"),
+plot(0, type = "l", ylim = c(-0.1, 0.05), xlim = c(-10, 40), 
+     xlab = expression(delta * "'" ^ 18 * "O (‰, VSMOW)"),
      ylab = expression(Delta ^ 17 * "O (‰, VSMOW)"),
      lty = 0, font = 1, cex.lab = 1, las = 1)
 
+# Plot meteoric waters from the build-in dataset
+points(prime(meteoric_water$d18O), D17O(meteoric_water$d18O, meteoric_water$d17O),
+       col = "lightblue1", pch = 20)
+text(-4, 0.05, "meteoric water", pos = 4, col = "lightblue1")
+
+# Plot the composition of the fluids
+points(prime(d18O_sw), D17O_sw, col = "darkmagenta", pch = 8) # seawater
+text(prime(d18O_sw), D17O_sw, "seawater", pos = 4, col = "darkmagenta")
+points(prime(d18O_ds), D17O_ds, col = "deeppink", pch = 8) # diagenetic fluid
+text(prime(d18O_ds), D17O_ds, "diagenetic fluid", pos = 4, col = "deeppink")
+
 # Plot the equilibrium curve and points
-lines(d18Op, D17O, col = "purple", lwd = 2)
-points(d18Op, D17O, col = shades::gradient(c("blue", "red"), length(temp)),
-       pch = 19, cex = 1.2)
+lines(d18Op, D17O, col = "darkmagenta", lwd = 2)
+points(d18Op, D17O, pch = 19, cex = 1.2, 
+       col = shades::gradient(c("blue", "red"), length(temp_sw)))
+text(d18Op, D17O, paste(temp_sw, "°C"), pos = 4, cex = 0.8, 
+     col = shades::gradient(c("blue", "red"), length(temp_sw)))
+text(30, -0.05, paste("equilibrium calcite \nfrom seawater"),
+     pos = 3, col = "darkmagenta")
 
 # Plot the mixing model between the equilibrium and diagenetic endmembers
-lines(prime(mix[, 1]), mix[, 2], col = "tan4", lty = 2, lwd = 2)
-points(prime(mix[, 1]), mix[, 2],
-       col = shades::gradient(c("#3300CC", "tan4"), length(seq(0, 10, 1))),
-       pch = 18, cex = 1.2)
-
-# Add labels to the plot
-text(d18Op + 0.5, D17O, paste(temp, "°C"), pos = 4, cex = 1,
-     col = shades::gradient(c("blue", "red"), length(temp)))
-text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%"), pos = 1, cex = 0.5,
-     col = shades::gradient(c("#3300CC", "tan4"), length(seq(0, 10, 1))))
+lines(prime(mix[, 1]), mix[, 2], col = "deeppink", lty = 3, lwd = 2)
+points(prime(mix[, 1]), mix[, 2], pch = 18, cex = 1.5, 
+       col = shades::gradient(c("#3300CC", "deeppink"), length(mix[, 2])))
+text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%", sep = ""), pos = 2, cex = 0.8, 
+     col = shades::gradient(c("#3300CC", "deeppink"), length(mix[, 3])))
+text(22, -0.09, paste("progressing", "\ndiagenetic alteration", "\nat 80°C", sep =""),
+     pos = 2, col = "deeppink")
 ```
 
 <img src="man/figures/README-Figure2-1.png" width="60%" />
@@ -252,11 +269,12 @@ epsilon(a_A_B(A = 30.40, B = 0.15))
 
 Within `isogeochem` you have quick access to important datasets.
 
-| Name         | Description                                                      | Reference                    |
-|--------------|------------------------------------------------------------------|------------------------------|
-| `devilshole` | The original Devils Hole carbonate *δ*<sup>18</sup>O time series | Winograd et al. (2006)       |
-| `LR04`       | A benthic foraminifera *δ*<sup>18</sup>O stack                   | Lisiecki & Raymo (2005)      |
-| `GTS2020`    | An abridged version of the GTS2020 oxygen isotope stack          | Grossman & Joachimski (2020) |
+| Name             | Description                                                                    | Reference                               |
+|------------------|--------------------------------------------------------------------------------|-----------------------------------------|
+| `devilshole`     | The original Devils Hole carbonate *δ*<sup>18</sup>O time series               | Winograd et al. (2006)                  |
+| `LR04`           | A benthic foraminifera *δ*<sup>18</sup>O stack                                 | Lisiecki & Raymo (2005)                 |
+| `GTS2020`        | An abridged version of the GTS2020 oxygen isotope stack                        | Grossman & Joachimski (2020)            |
+| `meteoric_water` | A compilation of meteoric water *δ*<sup>18</sup>O and *δ*<sup>17</sup>O values | Barkan & Luz (2010), Aron et al. (2021) |
 
 For more information on the datasets please have a look at the
 corresponding documentation, e.g., `?devilshole`
