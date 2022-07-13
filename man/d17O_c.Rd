@@ -34,7 +34,7 @@ Default \code{"Daeron19"}.}
 Returns a data frame:
 \enumerate{
 \item d18O value of the carbonate expressed on the VSMOW scale (‰).
-\item d18O value of the carbonate expressed on the VSMOW scale (‰).
+\item d17O value of the carbonate expressed on the VSMOW scale (‰).
 \item D17O value of the carbonate expressed on the VSMOW scale (‰).
 }
 }

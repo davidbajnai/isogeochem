@@ -4,7 +4,7 @@
 * a18_c_H2O(temp = 25, min = "dolomite", eq = "Muller19") Can now calculate the dolomite/water 18O/16O fractionation factor.
 * a18_CO2acid_c(temp = 25, min = "dolomite") Can now calculate the dolomite/CO2 18O/16O AFF.
 * d17O_c(D17O_H2O = 0.025) Can now take into account a non-zero D17O value for the ambient water.
-* mix_d17O(step = 20) Now allows to adjust the resolution of the output.
+* mix_d17O(step = 20) was overhauled. It now allows D17O values as input and specifying the resolution of the output. The output of the function now returns the d17O values as the fourth element in the data frame.
 
 ## New functions
 * d17O_qz() to calculate equilibrium oxygen isotope values for quartz

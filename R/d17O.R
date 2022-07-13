@@ -22,7 +22,7 @@
 #' @return
 #' Returns a data frame:
 #' 1. d18O value of the carbonate expressed on the VSMOW scale (‰).
-#' 2. d18O value of the carbonate expressed on the VSMOW scale (‰).
+#' 2. d17O value of the carbonate expressed on the VSMOW scale (‰).
 #' 3. D17O value of the carbonate expressed on the VSMOW scale (‰).
 #'
 #' @details
@@ -90,34 +90,50 @@ d17O_c = function(temp, d18O_H2O_VSMOW, D17O_H2O = 0, min = "calcite", eq18 = "D
 #'
 #' @param d18O_A d18O value of component A (‰).
 #' @param d17O_A d17O value of component A (‰).
+#' @param D17O_A Alternatively, the D17O value of component A (‰).
 #' @param d18O_B d18O value of component B (‰).
 #' @param d17O_B d17O value of component B (‰).
+#' @param D17O_B Alternatively, the D17O value of component B (‰).
 #' @param lambda Triple oxygen isotope reference slope. Default `0.528`.
-#' @param step Resolution of the output. Default `10`%.
+#' @param step Output resolution, i.e., step size. Default `10`%.
 #'
 #' @return
 #' Returns a data frame:
 #' 1. d18O value of the mixture at x% mixing (‰).
-#' 2. d18O value of the mixture x% mixing (‰).
+#' 2. D17O value of the mixture x% mixing (‰).
 #' 3. relative amount of component B in the mixture (%):
 #'   from 100% A and 0% B to 0% A and 100% B.
+#' 4. d17O value of the mixture x% mixing (‰).
 #'
 #' @examples
+#' # The two functions below yield the same output.
 #' mix_d17O(d18O_A = d17O_c(10, -1)[1], d17O_A = d17O_c(10, -1)[2],
 #'          d18O_B = d17O_c(100,0)[1], d17O_B = d17O_c(100, 0)[2])
+#' mix_d17O(d18O_A = d17O_c(10, -1)[1], D17O_A = d17O_c(10, -1)[3],
+#'          d18O_B = d17O_c(100,0)[1], D17O_B = d17O_c(100, 0)[3])
 #'
 #' @seealso [d17O_c()] calculates equilibrium calcite d18O, d17O, and D17O
 #'   values for a given temperature.
 #'
 #' @export
 
-mix_d17O = function (d18O_A, d17O_A, d18O_B, d17O_B, lambda = 0.528, step = 10) {
+mix_d17O = function (d18O_A, d17O_A, D17O_A, d18O_B, d17O_B, D17O_B, lambda = 0.528, step = 10) {
+
   ratio_B = seq(0, 1, step / 100)
-  mix_d18O = ratio_B*as.numeric(d18O_B) + (1-ratio_B)*as.numeric(d18O_A)
-  mix_d17O = ratio_B*as.numeric(d17O_B) + (1-ratio_B)*as.numeric(d17O_A)
+
+  if (missing(d17O_A)) {
+    d17O_A = unprime(D17O_A + lambda * prime(d18O_A))
+  }
+
+  if (missing(d17O_B)) {
+    d17O_B = unprime(D17O_B + lambda * prime(d18O_B))
+  }
+
+  mix_d18O = ratio_B * as.numeric(d18O_B) + (1 - ratio_B) * as.numeric(d18O_A)
+  mix_d17O = ratio_B * as.numeric(d17O_B) + (1 - ratio_B) * as.numeric(d17O_A)
   mix_D17O = (prime(mix_d17O) - lambda * prime(mix_d18O))
   xB = ratio_B * 100
 
-  data.frame(mix_d18O, mix_D17O, xB)
+  data.frame(mix_d18O, mix_D17O, xB, mix_d17O)
 
-  }
+}

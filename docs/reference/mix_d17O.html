@@ -18,7 +18,7 @@ triple oxygen isotope space (d18O vs. D17O)."><meta property="og:image" content=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">isogeochem</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.93</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.94</span>
       </span>
     </div>
 
@@ -68,7 +68,16 @@ triple oxygen isotope space (d18O vs. D17O).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mix_d17O</span><span class="op">(</span><span class="va">d18O_A</span>, <span class="va">d17O_A</span>, <span class="va">d18O_B</span>, <span class="va">d17O_B</span>, lambda <span class="op">=</span> <span class="fl">0.528</span>, step <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mix_d17O</span><span class="op">(</span></span>
+<span>  <span class="va">d18O_A</span>,</span>
+<span>  <span class="va">d17O_A</span>,</span>
+<span>  <span class="va">D17O_A</span>,</span>
+<span>  <span class="va">d18O_B</span>,</span>
+<span>  <span class="va">d17O_B</span>,</span>
+<span>  <span class="va">D17O_B</span>,</span>
+<span>  lambda <span class="op">=</span> <span class="fl">0.528</span>,</span>
+<span>  step <span class="op">=</span> <span class="fl">10</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -81,6 +90,10 @@ triple oxygen isotope space (d18O vs. D17O).</p>
 <dd><p>d17O value of component A (‰).</p></dd>
 
 
+<dt>D17O_A</dt>
+<dd><p>Alternatively, the D17O value of component A (‰).</p></dd>
+
+
 <dt>d18O_B</dt>
 <dd><p>d18O value of component B (‰).</p></dd>
 
@@ -89,12 +102,16 @@ triple oxygen isotope space (d18O vs. D17O).</p>
 <dd><p>d17O value of component B (‰).</p></dd>
 
 
+<dt>D17O_B</dt>
+<dd><p>Alternatively, the D17O value of component B (‰).</p></dd>
+
+
 <dt>lambda</dt>
 <dd><p>Triple oxygen isotope reference slope. Default <code>0.528</code>.</p></dd>
 
 
 <dt>step</dt>
-<dd><p>Resolution of the output. Default <code>10</code>%.</p></dd>
+<dd><p>Output resolution, i.e., step size. Default <code>10</code>%.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -102,9 +119,10 @@ triple oxygen isotope space (d18O vs. D17O).</p>
     
 
 <p>Returns a data frame:</p><ol><li><p>d18O value of the mixture at x% mixing (‰).</p></li>
-<li><p>d18O value of the mixture x% mixing (‰).</p></li>
+<li><p>D17O value of the mixture x% mixing (‰).</p></li>
 <li><p>relative amount of component B in the mixture (%):
 from 100% A and 0% B to 0% A and 100% B.</p></li>
+<li><p>d17O value of the mixture x% mixing (‰).</p></li>
 </ol></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -114,20 +132,35 @@ values for a given temperature.</p></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">mix_d17O</span><span class="op">(</span>d18O_A <span class="op">=</span> <span class="fu"><a href="d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, d17O_A <span class="op">=</span> <span class="fu"><a href="d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># The two functions below yield the same output.</span></span></span>
+<span class="r-in"><span><span class="fu">mix_d17O</span><span class="op">(</span>d18O_A <span class="op">=</span> <span class="fu"><a href="d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, d17O_A <span class="op">=</span> <span class="fu"><a href="d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span></span>
 <span class="r-in"><span>         d18O_B <span class="op">=</span> <span class="fu"><a href="d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fl">0</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, d17O_B <span class="op">=</span> <span class="fu"><a href="d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    mix_d18O    mix_D17O  xB</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  32.43637 -0.08357564   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  31.00451 -0.08039343  10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  29.57265 -0.07672552  20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  28.14080 -0.07256988  30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  26.70894 -0.06792442  40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  25.27708 -0.06278707  50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  23.84522 -0.05715575  60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  22.41337 -0.05102835  70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  20.98151 -0.04440278  80</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 19.54965 -0.03727690  90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 18.11779 -0.02964860 100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    mix_d18O    mix_D17O  xB  mix_d17O</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  32.43637 -0.08357564   0 16.912353</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  31.00451 -0.08039343  10 16.170690</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  29.57265 -0.07672552  20 15.429027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  28.14080 -0.07256988  30 14.687364</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  26.70894 -0.06792442  40 13.945700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  25.27708 -0.06278707  50 13.204037</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  23.84522 -0.05715575  60 12.462374</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  22.41337 -0.05102835  70 11.720711</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  20.98151 -0.04440278  80 10.979047</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 19.54965 -0.03727690  90 10.237384</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 18.11779 -0.02964860 100  9.495721</span>
+<span class="r-in"><span><span class="fu">mix_d17O</span><span class="op">(</span>d18O_A <span class="op">=</span> <span class="fu"><a href="d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, D17O_A <span class="op">=</span> <span class="fu"><a href="d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>         d18O_B <span class="op">=</span> <span class="fu"><a href="d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fl">0</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, D17O_B <span class="op">=</span> <span class="fu"><a href="d17O_c.html">d17O_c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    mix_d18O    mix_D17O  xB  mix_d17O</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  32.43637 -0.08357564   0 16.912353</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  31.00451 -0.08039343  10 16.170690</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  29.57265 -0.07672552  20 15.429027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  28.14080 -0.07256988  30 14.687364</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  26.70894 -0.06792442  40 13.945700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  25.27708 -0.06278707  50 13.204037</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  23.84522 -0.05715575  60 12.462374</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  22.41337 -0.05102835  70 11.720711</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  20.98151 -0.04440278  80 10.979047</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 19.54965 -0.03727690  90 10.237384</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 18.11779 -0.02964860 100  9.495721</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

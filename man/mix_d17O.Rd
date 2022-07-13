@@ -4,28 +4,42 @@
 \alias{mix_d17O}
 \title{Mixing curves in triple oxygen isotope space}
 \usage{
-mix_d17O(d18O_A, d17O_A, d18O_B, d17O_B, lambda = 0.528, step = 10)
+mix_d17O(
+  d18O_A,
+  d17O_A,
+  D17O_A,
+  d18O_B,
+  d17O_B,
+  D17O_B,
+  lambda = 0.528,
+  step = 10
+)
 }
 \arguments{
 \item{d18O_A}{d18O value of component A (‰).}
 
 \item{d17O_A}{d17O value of component A (‰).}
 
+\item{D17O_A}{Alternatively, the D17O value of component A (‰).}
+
 \item{d18O_B}{d18O value of component B (‰).}
 
 \item{d17O_B}{d17O value of component B (‰).}
 
+\item{D17O_B}{Alternatively, the D17O value of component B (‰).}
+
 \item{lambda}{Triple oxygen isotope reference slope. Default \code{0.528}.}
 
-\item{step}{Resolution of the output. Default \code{10}\%.}
+\item{step}{Output resolution, i.e., step size. Default \code{10}\%.}
 }
 \value{
 Returns a data frame:
 \enumerate{
 \item d18O value of the mixture at x\% mixing (‰).
-\item d18O value of the mixture x\% mixing (‰).
+\item D17O value of the mixture x\% mixing (‰).
 \item relative amount of component B in the mixture (\%):
 from 100\% A and 0\% B to 0\% A and 100\% B.
+\item d17O value of the mixture x\% mixing (‰).
 }
 }
 \description{
@@ -33,8 +47,11 @@ from 100\% A and 0\% B to 0\% A and 100\% B.
 triple oxygen isotope space (d18O vs. D17O).
 }
 \examples{
+# The two functions below yield the same output.
 mix_d17O(d18O_A = d17O_c(10, -1)[1], d17O_A = d17O_c(10, -1)[2],
          d18O_B = d17O_c(100,0)[1], d17O_B = d17O_c(100, 0)[2])
+mix_d17O(d18O_A = d17O_c(10, -1)[1], D17O_A = d17O_c(10, -1)[3],
+         d18O_B = d17O_c(100,0)[1], D17O_B = d17O_c(100, 0)[3])
 
 }
 \seealso{

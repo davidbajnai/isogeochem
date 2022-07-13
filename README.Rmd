@@ -181,7 +181,7 @@ points(prime(mix[, 1]), mix[, 2], pch = 18, cex = 1.5,
        col = shades::gradient(c("#3300CC", "deeppink"), length(mix[, 2])))
 text(prime(mix[, 1]), mix[, 2], paste(mix[, 3], "%", sep = ""), pos = 2, cex = 0.8, 
      col = shades::gradient(c("#3300CC", "deeppink"), length(mix[, 3])))
-text(22, -0.09, paste("progressing", "\ndiagenetic alteration", "\nat 80°C", sep =""),
+text(22, -0.09, paste("progressing", "\ndiagenetic alteration", "\n(recrystallisation) at 80°C", sep =""),
      pos = 2, col = "deeppink")
 ```
 

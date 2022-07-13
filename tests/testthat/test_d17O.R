@@ -24,6 +24,8 @@ test_that("d17O_qz error if D17O_H2O is wrongly specified", {
 })
 
 test_that("mix_d17O returns a data.frame", {
-  expect_s3_class(mix_d17O(10, 11, 14, 12), "data.frame")
-  expect_length(mix_d17O(10, 11, 14, 12), 3)
+  expect_s3_class(mix_d17O(d18O_A = 10, d17O_A = 11, d18O_B = 14, d17O_B = 12), "data.frame")
+  expect_length(mix_d17O(d18O_A = 10, d17O_A = 11, d18O_B = 14, d17O_B = 12), 4)
+  expect_s3_class(mix_d17O(d18O_A = 10, d17O_A = 11, d18O_B = 14, d17O_B = 12), "data.frame")
+  expect_length(mix_d17O(d18O_A = 10, D17O_A = 11, d18O_B = 14, D17O_B = 12), 4)
 })
