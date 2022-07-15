@@ -71,7 +71,8 @@ a18_CO2acid_c = function(temp, min) {
   } else if (min == "dolomite") {
     exp( (6.65 * 10 ^ 5 / TinK ^ 2 + 4.23) / 1000)
   } else {
-    stop("Invalid input for min")
+    stop("Invalid input for min. Options are calcite, aragonite,
+         and dolomite.")
   }
 }
 
@@ -112,7 +113,7 @@ a18_H2O_OH = function(temp, eq) {
   } else if (eq == "Z20-MP2") {
     e18_H2O_OH = (-4.0771 + (9.8350 * 10^3) / TinK + (-0.8729 * 10^6) / TinK^2)
   } else {
-    stop("Invalid input for eq")
+    stop("Invalid input for eq. Options are Z20-X3LYP and Z20-MP2.")
   }
   e18_H2O_OH / 1000 + 1
 }

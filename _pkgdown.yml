@@ -3,6 +3,19 @@ url: ~
 home:
   title: Carbonate isotope geochemistry
 
+template:
+  bootstrap: 5
+  bootswatch: superhero
+
+navbar:
+  structure:
+    right: [twitter, github]
+  components:
+    twitter:
+      icon: fa-twitter
+      href: http://twitter.com/davidbajnai
+      aria-label: Twitter
+
 authors:
   David Bajnai:
     href: https://davidbajnai.eu

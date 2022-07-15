@@ -214,7 +214,8 @@ a18_c_H2O = function(temp, min, eq) {
       # Tremaine et al. (2011)
       exp((16.1 * 1000 / TinK - 24.6) / 1000)
     } else {
-      stop("Invalid input for eq")
+      stop("Invalid input for eq. Options for calcite are Daeron19,
+           Coplen07, KO97-orig, KO97, Watkins13, ONeil69, and Tremaine11.")
     }
   } else if (min == "aragonite") {
     if (eq == "GK86")  {
@@ -224,21 +225,22 @@ a18_c_H2O = function(temp, min, eq) {
       # Kim et al. (2007)
       exp((17.880 * 1000 / TinK - 31.14) / 1000)
     } else {
-      stop("Invalid input for eq")
+      stop("Invalid input for eq. Options for aragonite are GK86
+           and Kim07.")
     }
   } else if (min == "apatite") {
     if (eq == "Lecuyer10")  {
       # Lécuyer et al. (2010)
       exp((25.19 * 1000 / TinK  - 56.47) / 1000)
     } else {
-      stop("Invalid input for eq")
+      stop("Invalid input for eq. Use Lecuyer10 for apatite.")
     }
   } else if (min == "siderite") {
     if (eq == "vanDijk18")  {
       # van Dijk et al. (2018)
       exp((19.67 * 1000 / TinK  - 36.27) / 1000)
     } else {
-      stop("Invalid input for eq")
+      stop("Invalid input for eq. Use vanDijk18 for siderite.")
     }
   } else if (min == "dolomite") {
     if (eq == "Vasconcelos05")  {
@@ -248,9 +250,11 @@ a18_c_H2O = function(temp, min, eq) {
       # Müller et al. (2019)
       exp((2.9923 * 10 ^ 6 / TinK ^ 2 - 2.3592) / 1000)
     } else {
-      stop("Invalid input for eq")
+      stop("Invalid input for eq. Options for dolomite are Vasconcelos05
+           and Muller19.")
     }
   } else {
-    stop("Invalid input for min")
+    stop("Invalid input for min. Options are calcite, aragonite, siderite,
+         and dolomite.")
   }
 }

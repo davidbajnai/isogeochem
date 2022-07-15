@@ -53,8 +53,12 @@ calcite grown at a given temperature.
 \lambda \times \delta'^{18}O_{CaCO3,VSMOW} }
 
 \strong{NOTE:} Due to a lack of experimental and theoretical data,
-the theta values for all carbonate mineralogies are calculated with the
-calcite equitation from Guo & Zhou (2019).
+the theta values for all carbonate mineralogies - except aragonite -
+are calculated with the calcite equitation from Guo & Zhou (2019):
+
+\deqn{\theta_{aragonite/water} = \frac{78.1173}{T^{2}} - \frac{1.5152}{T} + 0.5299}
+
+\deqn{\theta_{calcite/water} = \frac{59.1047}{T^{2}} - \frac{1.4089}{T} + 0.5297}
 }
 \examples{
 d17O_c(temp = 10, d18O_H2O_VSMOW = -1) # Returns the data frame (length = 3)

@@ -3,25 +3,25 @@
 
 # ----- Test warnings -----
 
-test_that("a18_c_H2O errors if eq is not or wrongly specified", {
-  expect_error(a18_c_H2O(10, "calcite", "cheese"), "Invalid input for eq")
-  expect_error(a18_c_H2O(10, "dolomite", "cheese"), "Invalid input for eq")
-  expect_error(a18_c_H2O(10, "aragonite", "cheese"), "Invalid input for eq")
-  expect_error(a18_c_H2O(10, "siderite", "cheese"), "Invalid input for eq")
-  expect_error(a18_c_H2O(10, "apatite", "cheese"), "Invalid input for eq")
+test_that("a18_c_H2O errors if eq is wrongly specified", {
+  expect_error(a18_c_H2O(10, "calcite", "cheese"))
+  expect_error(a18_c_H2O(10, "dolomite", "cheese"))
+  expect_error(a18_c_H2O(10, "aragonite", "cheese"))
+  expect_error(a18_c_H2O(10, "siderite", "cheese"))
+  expect_error(a18_c_H2O(10, "apatite", "cheese"))
 })
 
-test_that("a18_c_H2O errors if parameters are not or wrongly specified", {
-  expect_error(a18_c_H2O(10, "cheese", eq = "Daeron19"), "Invalid input for min")
+test_that("a18_c_H2O errors if min is wrongly specified", {
+  expect_error(a18_c_H2O(10, "cheese", eq = "Daeron19"))
 })
 
 
 test_that("a18_CO2acid_c errors if parameters are not or wrongly specified", {
-  expect_error(a18_CO2acid_c(10, min = "cheese"), "Invalid input for min")
+  expect_error(a18_CO2acid_c(10, min = "cheese"))
 })
 
 test_that("a18_H2O_OH errors if parameters are not or wrongly specified", {
-  expect_error(a18_H2O_OH(10, eq = "cheese"), "Invalid input for eq")
+  expect_error(a18_H2O_OH(10, eq = "cheese"))
 })
 
 

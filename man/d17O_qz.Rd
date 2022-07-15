@@ -20,7 +20,7 @@ a lambda of \code{0.528}. Default \code{0}.}
 Returns a data frame:
 \enumerate{
 \item d18O value of the quartz expressed on the VSMOW scale (‰).
-\item d18O value of the quartz expressed on the VSMOW scale (‰).
+\item d17O value of the quartz expressed on the VSMOW scale (‰).
 \item D17O value of the quartz expressed on the VSMOW scale (‰).
 }
 }
@@ -37,6 +37,13 @@ quartz grown at a given temperature.
 
 \deqn{\Delta^{17}O_{SiO2,VSMOW} = \delta'^{17}O_{SiO2,VSMOW} -
 \lambda \times \delta'^{18}O_{SiO2,VSMOW} }
+
+\strong{NOTE:}
+
+\deqn{\theta_{quartz/water} = -\frac{1.85}{T} + 0.5305}
+
+\deqn{\alpha^{18}_{quartz/water} =
+e^{(\frac{4280}{T^{2}} - \frac{3.5}{T})}}
 }
 \examples{
 d17O_qz(temp = 10, d18O_H2O_VSMOW = 0) # Returns the data frame (length = 3)

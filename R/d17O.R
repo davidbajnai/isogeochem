@@ -36,8 +36,12 @@
 #' \lambda \times \delta'^{18}O_{CaCO3,VSMOW} }
 #'
 #' **NOTE:** Due to a lack of experimental and theoretical data,
-#' the theta values for all carbonate mineralogies are calculated with the
-#' calcite equitation from Guo & Zhou (2019).
+#' the theta values for all carbonate mineralogies - except aragonite -
+#' are calculated with the calcite equitation from Guo & Zhou (2019):
+#'
+#' \deqn{\theta_{aragonite/water} = \frac{78.1173}{T^{2}} - \frac{1.5152}{T} + 0.5299}
+#'
+#' \deqn{\theta_{calcite/water} = \frac{59.1047}{T^{2}} - \frac{1.4089}{T} + 0.5297}
 #'
 #' @references
 #' Guo, W., & Zhou, C. (2019).
@@ -59,8 +63,13 @@ d17O_c = function(temp, d18O_H2O_VSMOW, D17O_H2O = 0, min = "calcite", eq18 = "D
 
   TinK = temp + 273.15
 
-  # Guo and Zhou (2019)
-  theta = 59.1047 / TinK ^ 2 - 1.4089 / TinK + 0.5297
+  if (min == "aragonite") {
+    # Guo and Zhou (2019)
+    theta = 78.1173 / TinK ^ 2 - 1.5152 / TinK + 0.5299
+  } else {
+    # Guo and Zhou (2019)
+    theta = 59.1047 / TinK ^ 2 - 1.4089 / TinK + 0.5297
+  }
 
   a18_c_H2O = isogeochem::a18_c_H2O(temp = temp, min = min, eq = eq18)
   a17_c_H2O  = a18_c_H2O ^ theta

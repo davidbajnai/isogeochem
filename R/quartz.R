@@ -17,7 +17,7 @@
 #' @return
 #' Returns a data frame:
 #' 1. d18O value of the quartz expressed on the VSMOW scale (‰).
-#' 2. d18O value of the quartz expressed on the VSMOW scale (‰).
+#' 2. d17O value of the quartz expressed on the VSMOW scale (‰).
 #' 3. D17O value of the quartz expressed on the VSMOW scale (‰).
 #'
 #' @details
@@ -29,6 +29,13 @@
 #'
 #' \deqn{\Delta^{17}O_{SiO2,VSMOW} = \delta'^{17}O_{SiO2,VSMOW} -
 #' \lambda \times \delta'^{18}O_{SiO2,VSMOW} }
+#'
+#'**NOTE:**
+#'
+#'\deqn{\theta_{quartz/water} = -\frac{1.85}{T} + 0.5305}
+#'
+#' \deqn{\alpha^{18}_{quartz/water} =
+#' e^{(\frac{4280}{T^{2}} - \frac{3.5}{T})}}
 #'
 #' @references
 #' Sharp, Z.D., Gibbons, J.A., Maltsev, O., Atudorei, V., Pack, A.,
@@ -51,7 +58,7 @@ d17O_qz = function(temp, d18O_H2O_VSMOW, D17O_H2O = 0, lambda = 0.528) {
   TinK = temp + 273.15
 
   # Sharp et al. (2016)
-  theta = -1.85 / (temp + 273.15) + 0.5305
+  theta = -1.85 / TinK + 0.5305
 
   a18_qz_H2O = exp((4.28 * 10 ** 6 / TinK ** 2 - 3.5 * 10 ** 3 / TinK) / 1000)
   a17_qz_H2O  = a18_qz_H2O ^ theta
