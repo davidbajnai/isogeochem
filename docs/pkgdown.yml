@@ -1,8 +1,8 @@
 pandoc: 2.17.1.1
-pkgdown: 2.0.5
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   devils_hole: devils_hole.html
   kim_oneil_1997: kim_oneil_1997.html
-last_built: 2022-07-15T12:55Z
+last_built: 2022-07-19T10:48Z
 

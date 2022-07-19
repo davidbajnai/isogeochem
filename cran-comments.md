@@ -6,12 +6,12 @@
 
 ### Local:
 * Apple Silicon (M1), macOS 12.4 Monterey, R 4.2.1
-* Microsoft Windows 10 Pro 19044, R 4.2.1
 
 ### rhub
+* Debian Linux, R-release, GCC
 * macOS 10.13.6 High Sierra, R-release, CRAN's setup
-* Apple Silicon (M1), macOS 11.6 Big Sur, R-release
-* Oracle Solaris 10, x86, 32 bit, R-release
+* Ubuntu Linux 20.04.1 LTS, R-release, GCC
+* Windows Server 2022, R-release, 32/64 bit
 
 ## Comments
 * All links are correct in the package. However, in case of a server error, the DOI and Zenodo links may prompt a WARNING.

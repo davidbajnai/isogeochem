@@ -28,9 +28,9 @@ quickly calculate:
 -   model DIC speciation as a function of temperature, pH, and salinity
 -   convert between the VSMOW and VPDB scales
 
-The lists of available proxy–temperature calibrations and mineralogies
-are constantly growing. Check out the manual for the current catalog.
-Please get in touch if you have suggestions to include!
+The list of available proxy–temperature calibrations is growing with
+each new released version.</br> <b>Please get in touch if you have
+suggestions to include!</b>
 
 ## Getting started
 

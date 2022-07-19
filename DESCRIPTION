@@ -1,7 +1,7 @@
 Package: isogeochem
 Type: Package
 Title: Tools for Stable Isotope Geochemistry
-Version: 1.0.9.95
+Version: 1.1.0
 Authors@R:
     c(person(given = "David", family = "Bajnai",
     email = "david.bajnai@uni-goettingen.de",
@@ -21,7 +21,7 @@ BugReports: https://github.com/davidbajnai/isogeochem/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Suggests:
     shades,
     viridisLite,

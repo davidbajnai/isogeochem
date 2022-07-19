@@ -106,13 +106,17 @@ d17O_c = function(temp, d18O_H2O_VSMOW, D17O_H2O = 0, min = "calcite", eq18 = "D
 #' @param lambda Triple oxygen isotope reference slope. Default `0.528`.
 #' @param step Output resolution, i.e., step size. Default `10`%.
 #'
+#' @details
+#' If both d17O and D17O values are specified for a component,
+#' the function uses the d17O values for the calculations.
+#'
 #' @return
 #' Returns a data frame:
 #' 1. d18O value of the mixture at x% mixing (‰).
-#' 2. D17O value of the mixture x% mixing (‰).
+#' 2. D17O value of the mixture at x% mixing (‰).
 #' 3. relative amount of component B in the mixture (%):
 #'   from 100% A and 0% B to 0% A and 100% B.
-#' 4. d17O value of the mixture x% mixing (‰).
+#' 4. d17O value of the mixture at x% mixing (‰).
 #'
 #' @examples
 #' # The two functions below yield the same output.
@@ -140,7 +144,7 @@ mix_d17O = function (d18O_A, d17O_A, D17O_A, d18O_B, d17O_B, D17O_B, lambda = 0.
 
   mix_d18O = ratio_B * as.numeric(d18O_B) + (1 - ratio_B) * as.numeric(d18O_A)
   mix_d17O = ratio_B * as.numeric(d17O_B) + (1 - ratio_B) * as.numeric(d17O_A)
-  mix_D17O = (prime(mix_d17O) - lambda * prime(mix_d18O))
+  mix_D17O = D17O(mix_d18O, mix_d17O, lambda)
   xB = ratio_B * 100
 
   data.frame(mix_d18O, mix_D17O, xB, mix_d17O)

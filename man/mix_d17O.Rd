@@ -36,15 +36,19 @@ mix_d17O(
 Returns a data frame:
 \enumerate{
 \item d18O value of the mixture at x\% mixing (‰).
-\item D17O value of the mixture x\% mixing (‰).
+\item D17O value of the mixture at x\% mixing (‰).
 \item relative amount of component B in the mixture (\%):
 from 100\% A and 0\% B to 0\% A and 100\% B.
-\item d17O value of the mixture x\% mixing (‰).
+\item d17O value of the mixture at x\% mixing (‰).
 }
 }
 \description{
 \code{mix_d17O()} produces mixing curves between two endmembers (A and B) in
 triple oxygen isotope space (d18O vs. D17O).
+}
+\details{
+If both d17O and D17O values are specified for a component,
+the function uses the d17O values for the calculations.
 }
 \examples{
 # The two functions below yield the same output.
