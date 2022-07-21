@@ -6,7 +6,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark"><div class="container">
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">isogeochem</a>
 
@@ -58,23 +58,36 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.1.0" id="isogeochem-110">isogeochem 1.1.0<a class="anchor" aria-label="anchor" href="#isogeochem-110"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.1.0.9000" id="isogeochem-1109000">isogeochem 1.1.0.9000<a class="anchor" aria-label="anchor" href="#isogeochem-1109000"></a></h2>
+<div class="section level3">
+<h3 id="minor-improvements-1-1-0-9000">Minor improvements<a class="anchor" aria-label="anchor" href="#minor-improvements-1-1-0-9000"></a></h3>
+<ul><li>Reformatted <code>NEWS.md</code> and Changelog</li></ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.1.0" id="isogeochem-110">isogeochem 1.1.0<a class="anchor" aria-label="anchor" href="#isogeochem-110"></a></h2><p class="text-muted">CRAN release: 2022-07-19</p>
+<p><a href="https://doi.org/10.5281/zenodo.6861261" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6861261.svg" alt="DOI"></a></p>
 <div class="section level3">
 <h3 id="function-updates-1-1-0">Function updates<a class="anchor" aria-label="anchor" href="#function-updates-1-1-0"></a></h3>
-<ul><li>a18_c_H2O(temp = 25, min = “dolomite”, eq = “Muller19”) Can now calculate the dolomite/water 18O/16O fractionation factor.</li>
-<li>a18_CO2acid_c(temp = 25, min = “dolomite”) Can now calculate the dolomite/CO2 18O/16O AFF.</li>
-<li>a18…() functions now return meaningful errors.</li>
-<li>d17O_c(D17O_H2O = 0.025) Can now take into account a non-zero D17O value for the ambient water.</li>
-<li>mix_d17O(step = 20) was overhauled. It now allows D17O values as input and specifying the resolution of the output. The output of the function now returns the d17O values as the fourth element in the data frame.</li>
+<ul><li>
+<code><a href="../reference/a18_c_H2O.html">a18_c_H2O()</a></code> Can now calculate the dolomite/water 18O/16O fractionation factor.</li>
+<li>
+<code><a href="../reference/a18_CO2acid_c.html">a18_CO2acid_c()</a></code> Can now calculate the dolomite/CO2 18O/16O AFF.</li>
+<li>
+<code>a18...()</code> functions now return meaningful errors.</li>
+<li>
+<code><a href="../reference/d17O_c.html">d17O_c()</a></code> Can now take into account a non-zero D17O value for the ambient water.</li>
+<li>
+<code><a href="../reference/mix_d17O.html">mix_d17O()</a></code> was overhauled. It now allows D17O values as input and specifying the resolution of the output. The output of the function now returns the d17O values as the fourth element in the data frame.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="new-functions-1-1-0">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-1-0"></a></h3>
-<ul><li>d17O_qz() to calculate equilibrium oxygen isotope values for quartz.</li></ul></div>
+<h3 id="new-features-1-1-0">New features<a class="anchor" aria-label="anchor" href="#new-features-1-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/d17O_qz.html">d17O_qz()</a></code> to calculate equilibrium oxygen isotope values for quartz.</li>
+<li>
+<code>meteoric_waters</code> is a compilation of d17O and d18O values for meteoric waters.</li>
+</ul></div>
 <div class="section level3">
-<h3 id="new-dataset-1-1-0">New dataset<a class="anchor" aria-label="anchor" href="#new-dataset-1-1-0"></a></h3>
-<ul><li>meteoric_waters is a compilation of d17O and d18O values for meteoric waters.</li></ul></div>
-<div class="section level3">
-<h3 id="misc-1-1-0">Misc<a class="anchor" aria-label="anchor" href="#misc-1-1-0"></a></h3>
+<h3 id="minor-improvements-1-1-0">Minor improvements<a class="anchor" aria-label="anchor" href="#minor-improvements-1-1-0"></a></h3>
 <ul><li>Readme updates</li>
 <li>Vignette updates</li>
 <li>Description updates</li>
@@ -82,21 +95,24 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.9" id="isogeochem-109">isogeochem 1.0.9<a class="anchor" aria-label="anchor" href="#isogeochem-109"></a></h2><p class="text-muted">CRAN release: 2021-11-07</p>
+<p><a href="https://doi.org/10.5281/zenodo.5665966" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5665966.svg" alt="DOI"></a></p>
 <div class="section level3">
-<h3 id="misc-1-0-9">Misc<a class="anchor" aria-label="anchor" href="#misc-1-0-9"></a></h3>
-<ul><li>vignette updates</li></ul></div>
+<h3 id="minor-improvements-1-0-9">Minor improvements<a class="anchor" aria-label="anchor" href="#minor-improvements-1-0-9"></a></h3>
+<ul><li>Vignette updates</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.8" id="isogeochem-108">isogeochem 1.0.8<a class="anchor" aria-label="anchor" href="#isogeochem-108"></a></h2>
-<p>The first CRAN release</p>
+<p><a href="https://doi.org/10.5281/zenodo.5644934" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5644934.svg" alt="DOI"></a></p>
 <div class="section level3">
-<h3 id="new-functions-1-0-8">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-0-8"></a></h3>
-<ul><li>D17O() to calculate triple oxygen isotope value from d18O and d17O values</li></ul></div>
+<h3 id="new-features-1-0-8">New features<a class="anchor" aria-label="anchor" href="#new-features-1-0-8"></a></h3>
+<ul><li>
+<code><a href="../reference/D17O.html">D17O()</a></code> calculates triple oxygen isotope value from d18O and d17O values</li></ul></div>
 <div class="section level3">
 <h3 id="function-updates-1-0-8">Function updates<a class="anchor" aria-label="anchor" href="#function-updates-1-0-8"></a></h3>
-<ul><li>plot_york() returns silently</li></ul></div>
+<ul><li>
+<code>plot_york()</code> returns silently</li></ul></div>
 <div class="section level3">
-<h3 id="misc-1-0-8">Misc<a class="anchor" aria-label="anchor" href="#misc-1-0-8"></a></h3>
+<h3 id="minor-improvements-1-0-8">Minor improvements<a class="anchor" aria-label="anchor" href="#minor-improvements-1-0-8"></a></h3>
 <ul><li>Vignettes reset to the user’s parameters and options</li>
 <li>Updated DOI links</li>
 <li>Readme updates</li>
@@ -106,39 +122,45 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.7" id="isogeochem-107">isogeochem 1.0.7<a class="anchor" aria-label="anchor" href="#isogeochem-107"></a></h2>
+<p><a href="https://doi.org/10.5281/zenodo.5552274" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5552274.svg" alt="DOI"></a></p>
 <div class="section level3">
-<h3 id="new-functions-1-0-7">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-0-7"></a></h3>
-<ul><li>a18_CO2g_H2O()</li>
-<li>a18_CO2aq_H2O()</li>
-<li>a18_CO3_H2O()</li>
-<li>a18_HCO3_H2O()</li>
-<li>a13_CO2g_CO2aq()</li>
-<li>X_absorption()</li>
-<li>X_DIC()</li>
+<h3 id="new-features-1-0-7">New features<a class="anchor" aria-label="anchor" href="#new-features-1-0-7"></a></h3>
+<ul><li><code><a href="../reference/a18_CO2g_H2O.html">a18_CO2g_H2O()</a></code></li>
+<li><code><a href="../reference/a18_CO2aq_H2O.html">a18_CO2aq_H2O()</a></code></li>
+<li><code><a href="../reference/a18_CO3_H2O.html">a18_CO3_H2O()</a></code></li>
+<li><code><a href="../reference/a18_HCO3_H2O.html">a18_HCO3_H2O()</a></code></li>
+<li><code><a href="../reference/a13_CO2g_CO2aq.html">a13_CO2g_CO2aq()</a></code></li>
+<li><code><a href="../reference/X_absorption.html">X_absorption()</a></code></li>
+<li><code><a href="../reference/X_DIC.html">X_DIC()</a></code></li>
 </ul></div>
 <div class="section level3">
 <h3 id="function-updates-1-0-7">Function updates<a class="anchor" aria-label="anchor" href="#function-updates-1-0-7"></a></h3>
-<ul><li>Update to temp_D48() i: the curve_intersect() part was slimmed down</li>
+<ul><li>In <code><a href="../reference/temp_D48.html">temp_D48()</a></code> the curve_intersect() part was slimmed down</li>
 <li>Update to temp_D48() ii: temperatures are now calculated with the “Fiebig21” eq</li>
 <li>Added the “Anderson21” option to D47() and temp_D47()</li>
-<li>temp_D47() and temp_D48() both result in a similar data frame (length = 2) if errors are specified</li>
-<li>temp_D47(), temp_D48(), and temp_d18O() are optimize-d</li>
-<li>Added the “Kim07” eq to “aragonite” in a18_c_H2O()</li>
-<li>Added the “vanDijk18” eq to “siderite” in a18_c_H2O()</li>
-<li>Typo corrected in a18_H2O_OH(): “Z21-X3LYP” —&gt; “Z20-X3LYP”</li>
+<li>
+<code><a href="../reference/temp_D47.html">temp_D47()</a></code> and <code><a href="../reference/temp_D48.html">temp_D48()</a></code> both result in a similar data frame (length = 2) if errors are specified</li>
+<li>
+<code><a href="../reference/temp_D47.html">temp_D47()</a></code>, <code><a href="../reference/temp_D48.html">temp_D48()</a></code>, and <code><a href="../reference/temp_d18O.html">temp_d18O()</a></code> are <code>optimize</code>-d</li>
+<li>Added the “Kim07” eq to “aragonite” in <code><a href="../reference/a18_c_H2O.html">a18_c_H2O()</a></code>
+</li>
+<li>Added the “vanDijk18” eq to “siderite” in <code><a href="../reference/a18_c_H2O.html">a18_c_H2O()</a></code>
+</li>
+<li>Typo corrected in <code><a href="../reference/a18_H2O_OH.html">a18_H2O_OH()</a></code>: “Z21-X3LYP” —&gt; “Z20-X3LYP”</li>
 </ul></div>
 <div class="section level3">
-<h3 id="misc-1-0-7">Misc<a class="anchor" aria-label="anchor" href="#misc-1-0-7"></a></h3>
+<h3 id="minor-improvements-1-0-7">Minor improvements<a class="anchor" aria-label="anchor" href="#minor-improvements-1-0-7"></a></h3>
 <ul><li>Description updates</li>
 <li>Readme updates</li>
 <li>Vignette updates</li>
-<li>Installing isogeochem with vignettes now works (<a href="https://github.com/davidbajnai/isogeochem/issues/2" class="external-link">#2</a>, <a href="https://github.com/japhir" class="external-link">@japhir</a>)</li>
+<li>Installing <code>isogeochem</code> with vignettes now works (<a href="https://github.com/davidbajnai/isogeochem/issues/2" class="external-link">#2</a>, <a href="https://github.com/japhir" class="external-link">@japhir</a>)</li>
 <li>Improved and increased test coverage</li>
 <li>Updated logo</li>
 </ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.1" id="isogeochem-101">isogeochem 1.0.1<a class="anchor" aria-label="anchor" href="#isogeochem-101"></a></h2>
+<p><a href="https://doi.org/10.5281/zenodo.5507225" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5507225.svg" alt="DOI"></a></p>
 <ul><li>This is the first stable release of isogeochem.</li></ul></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
