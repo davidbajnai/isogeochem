@@ -29,7 +29,7 @@ quickly calculate:
 -   convert between the VSMOW and VPDB scales
 
 The list of available proxy–temperature calibrations is growing with
-each new released version.</br> <b>Please get in touch if you have
+each new released version. </br> <b>Please get in touch if you have
 suggestions to include!</b>
 
 ## Getting started

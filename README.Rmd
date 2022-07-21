@@ -23,7 +23,7 @@ options(repos = r)
 ```
 ```{r, include = FALSE}
 #> Set global graphic parameters. This code has to be in its own chunk.
-par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
+par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3), bg = "white")
 ```
 
 # isogeochem: <img src="man/figures/logo.png" align="right" width="140"/> <br/> Tools for Stable Isotope Geochemistry
@@ -46,7 +46,7 @@ par(mfrow = c(1, 1), mar = c(4.5, 4.5, 0.3, 0.3))
 * model DIC speciation as a function of temperature, pH, and salinity
 * convert between the VSMOW and VPDB scales
 
-The list of available proxy–temperature calibrations is growing with each new released version.</br>
+The list of available proxy–temperature calibrations is growing with each new released version. </br>
 <b>Please get in touch if you have suggestions to include!</b>
 
 ## Getting started
