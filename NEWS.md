@@ -38,7 +38,7 @@
 * `D17O()` calculates triple oxygen isotope value from d18O and d17O values
 
 ## Function updates
-* `plot_york()` returns silently
+* `york_plot()` returns silently
 
 ## Minor improvements
 * Vignettes reset to the user's parameters and options
