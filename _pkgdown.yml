@@ -1,13 +1,7 @@
-url: https://davidbajnai.github.io/isogeochem
-
 home:
   title: Carbonate isotope geochemistry
 
 template:
-  params:
-    docsearch:
-      api_key: ba7bab65d5b2dd2dea443b18811455fa
-      index_name: isogeochem
   bootstrap: 5
   bootswatch: superhero
   theme: atom-one-dark
@@ -15,6 +9,12 @@ template:
     primary: "#74ADEA"
     code-color: "#74ADEA"
     code-bg: "#142435"
+  params:
+    docsearch:
+      api_key: 06de82a3230feb6148eed1e868250c27
+      index_name: isogeochem
+
+url: https://davidbajnai.github.io/isogeochem/
 
 navbar:
   type: light

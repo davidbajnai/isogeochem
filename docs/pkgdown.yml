@@ -1,10 +1,10 @@
-pandoc: 2.17.1.1
+pandoc: '2.18'
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   devils_hole: devils_hole.html
   kim_oneil_1997: kim_oneil_1997.html
-last_built: 2022-07-29T16:00Z
+last_built: 2022-08-01T16:13Z
 urls:
   reference: https://davidbajnai.github.io/isogeochem/reference
   article: https://davidbajnai.github.io/isogeochem/articles
