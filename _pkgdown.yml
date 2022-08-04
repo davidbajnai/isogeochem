@@ -3,17 +3,17 @@ home:
 
 template:
   bootstrap: 5
-  bootswatch: superhero
-  theme: atom-one-dark
-  bslib:
-    primary: "#74ADEA"
-    code-color: "#74ADEA"
-    code-bg: "#142435"
   params:
     docsearch:
       api_key: 06de82a3230feb6148eed1e868250c27
       index_name: isogeochem
       app_id: OAQSQ4UWPT
+    bootswatch: superhero
+  theme: atom-one-dark
+  bslib:
+    primary: "#74ADEA"
+    code-color: "#74ADEA"
+    code-bg: "#142435"
 
 url: https://davidbajnai.github.io/isogeochem/
 
