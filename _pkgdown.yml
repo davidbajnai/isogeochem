@@ -13,6 +13,7 @@ template:
     docsearch:
       api_key: 06de82a3230feb6148eed1e868250c27
       index_name: isogeochem
+      app_id: OAQSQ4UWPT
 
 url: https://davidbajnai.github.io/isogeochem/
 
@@ -20,7 +21,7 @@ navbar:
   type: light
   bg: dark
   structure:
-    right: [twitter, github]
+    right: [search, github, twitter]
   components:
     twitter:
       icon: fa-twitter
