@@ -14,6 +14,7 @@ status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project
 [![CRAN
 count](https://cranlogs.r-pkg.org/badges/grand-total/isogeochem)](https://cranlogs.r-pkg.org/badges/grand-total/isogeochem)
 [![DOI](https://zenodo.org/badge/401782303.svg)](https://zenodo.org/badge/latestdoi/401782303)
+[![R-CMD-check](https://github.com/davidbajnai/isogeochem/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/davidbajnai/isogeochem/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `isogeochem` makes working with stable oxygen, carbon, and clumped
