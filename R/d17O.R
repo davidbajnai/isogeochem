@@ -49,7 +49,8 @@
 #' \deqn{\theta_{calcite/water} = \frac{59.1047}{T^{2}} - \frac{1.4089}{T} + 0.5297}
 #'
 #' @references
-#' Wostbrock, J.A.G., Brand, U., Coplen, T.B., Swart, P.K., Carlson, S.J., Brearley, A.J., and Sharp, Z.D. (2020).
+#' Wostbrock, J.A.G., Brand, U., Coplen, T.B., Swart, P.K.,
+#' Carlson, S.J., Brearley, A.J., and Sharp, Z.D. (2020).
 #' Calibration of carbonate-water triple oxygen isotope fractionation:
 #' Seeing through diagenesis in ancient carbonates.
 #' Geochimica et Cosmochimica Acta, 288, 369-388.
