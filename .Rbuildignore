@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
+^\.gitattributes$
 ^README\.Rmd$
 ^README\.html$
 [.]png$

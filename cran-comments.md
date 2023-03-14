@@ -1,11 +1,11 @@
 ## R CMD check results
 
-0 ERRORs | 0 WARNINGs | 0 NOTES.
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
 ## Test environments
 
 ### Local:
-* Apple Silicon (M1), macOS 12.4 Monterey, R 4.2.1
+* Apple Silicon (M1), macOS 13.2.1 Ventura, R 4.2.2
 
 ### rhub
 * Debian Linux, R-release, GCC
