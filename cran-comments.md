@@ -8,8 +8,8 @@
 * Apple Silicon (M1), macOS 13.2.1 Ventura, R 4.2.2
 
 ### rhub
-* Debian Linux, R-release, GCC
 * macOS 10.13.6 High Sierra, R-release, CRAN's setup
+* Debian Linux, R-release, GCC
 * Ubuntu Linux 20.04.1 LTS, R-release, GCC
 * Windows Server 2022, R-release, 32/64 bit
 
