@@ -7,13 +7,10 @@ template:
   bootstrap: 5
   params:
     bootswatch: superhero
-    docsearch:
-      api_key: 06de82a3230feb6148eed1e868250c27
-      index_name: isogeochem
-      app_id: OAQSQ4UWPT
   theme: atom-one-dark
   bslib:
     primary: "#74ADEA"
+    form-select-indicator-color: "#FFFFFF"
     code-color: "#74ADEA"
     code-bg: "#142435"
 
