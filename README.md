@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/davidbajnai/isogeochem/workflows/R-CMD-check/badge.svg)](https://github.com/davidbajnai/isogeochem/actions)
+[![R-CMD-check](https://github.com/davidbajnai/isogeochem/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/davidbajnai/isogeochem/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/davidbajnai/isogeochem/branch/main/graph/badge.svg?token=srtusVq2Im)](https://app.codecov.io/gh/davidbajnai/isogeochem)
 [![CodeFactor](https://www.codefactor.io/repository/github/davidbajnai/isogeochem/badge)](https://www.codefactor.io/repository/github/davidbajnai/isogeochem)
 [![repostatus](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -14,7 +14,6 @@ status](https://www.r-pkg.org/badges/version/isogeochem)](https://CRAN.R-project
 [![CRAN
 count](https://cranlogs.r-pkg.org/badges/grand-total/isogeochem)](https://cranlogs.r-pkg.org/badges/grand-total/isogeochem)
 [![DOI](https://zenodo.org/badge/401782303.svg)](https://zenodo.org/badge/latestdoi/401782303)
-[![R-CMD-check](https://github.com/davidbajnai/isogeochem/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/davidbajnai/isogeochem/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `isogeochem` makes working with stable oxygen, carbon, and clumped
