@@ -1,10 +1,14 @@
 # tests of the d17O functions #
 
 test_that("d17O_c returns a data.frame", {
+  expect_s3_class(d17O_c(temp = 10, 0, min = "aragonite", eq17 = "Wostbrock20", eq18 = "GK86"), "data.frame")
+  expect_length(d17O_c(temp = 10, 0, min = "aragonite", eq17 = "Wostbrock20", eq18 = "GK86"), 3)
   expect_s3_class(d17O_c(temp = 10, 0, min = "calcite", eq17 = "Wostbrock20", eq18 = "Daeron19"), "data.frame")
   expect_length(d17O_c(temp = 10, 0, min = "calcite", eq17 = "Wostbrock20", eq18 = "Daeron19"), 3)
   expect_s3_class(d17O_c(temp = 10, 0, min = "aragonite", eq17 = "GZ19", eq18 = "GK86"), "data.frame")
   expect_length(d17O_c(temp = 10, 0, min = "aragonite", eq17 = "GZ19", eq18 = "GK86"), 3)
+  expect_s3_class(d17O_c(temp = 10, 0, min = "calcite", eq17 = "GZ19", eq18 = "Daeron19"), "data.frame")
+  expect_length(d17O_c(temp = 10, 0, min = "calcite", eq17 = "GZ19", eq18 = "Daeron19"), 3)
 })
 
 test_that("d17O_qz returns a data.frame", {

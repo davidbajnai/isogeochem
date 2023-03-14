@@ -1,7 +1,10 @@
-# isogeochem 1.1.0.9000
+# isogeochem 1.1.1
+
+## Function updates
+* `d17O_c()` now allows to choose from two different 17O/18O fractionation factors.
 
 ## Minor improvements
-* Reformatted `NEWS.md` and Changelog
+* Reformatted `NEWS.md`
 
 # isogeochem 1.1.0
 
