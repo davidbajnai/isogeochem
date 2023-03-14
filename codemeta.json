@@ -7,13 +7,13 @@
   "codeRepository": "https://davidbajnai.github.io/isogeochem/",
   "issueTracker": "https://github.com/davidbajnai/isogeochem/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "runtimePlatform": "R version 4.2.2 (2022-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -173,5 +173,5 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "859.433KB"
+  "fileSize": "877.083KB"
 }

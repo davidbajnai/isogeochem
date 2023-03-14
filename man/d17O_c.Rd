@@ -9,6 +9,7 @@ d17O_c(
   d18O_H2O_VSMOW,
   D17O_H2O = 0,
   min = "calcite",
+  eq17 = "Wostbrock20",
   eq18 = "Daeron19",
   lambda = 0.528
 )
@@ -21,11 +22,13 @@ d17O_c(
 \item{D17O_H2O}{D17O value of ambient water calculated using
 a lambda of \code{0.528}. Default \code{0}.}
 
-\item{min}{Mineralogy. Options are \code{"calcite"} (default), \code{"aragonite"},
-\code{apatite}, \code{siderite}, and \code{"dolomite"}.}
+\item{min}{Mineralogy. Options are \code{"calcite"} (default) and \code{"aragonite"}.}
+
+\item{eq17}{Equation used to calculate the 17O/16O fractionation factor
+between carbonate and water. Options are \code{"Wostbrock20"} (default) and \code{"GZ19"}.}
 
 \item{eq18}{Equation used to calculate the 18O/16O fractionation factor
-between calcite and water. Options are like in \code{\link[=a18_c_H2O]{a18_c_H2O()}}.
+between carbonate and water. Options are like in \code{\link[=a18_c_H2O]{a18_c_H2O()}}.
 Default \code{"Daeron19"}.}
 
 \item{lambda}{Triple oxygen isotope reference slope. Default \code{0.528}.}
@@ -52,9 +55,13 @@ calcite grown at a given temperature.
 \deqn{\Delta^{17}O_{CaCO3,VSMOW} = \delta'^{17}O_{CaCO3,VSMOW} -
 \lambda \times \delta'^{18}O_{CaCO3,VSMOW} }
 
-\strong{NOTE:} Due to a lack of experimental and theoretical data,
-the theta values for all carbonate mineralogies - except aragonite -
-are calculated with the calcite equitation from Guo & Zhou (2019):
+\code{"Wostbrock20"}: Wostbrock et al. (2020):
+
+\deqn{\theta_{aragonite/water} = \frac{-1.53}{T} + 0.5305}
+
+\deqn{\theta_{calcite/water} = \frac{-1.39}{T} + 0.5305}
+
+\code{"GZ19"}: Guo and Zhou (2019):
 
 \deqn{\theta_{aragonite/water} = \frac{78.1173}{T^{2}} - \frac{1.5152}{T} + 0.5299}
 
@@ -67,7 +74,13 @@ d17O_c(temp = 10, d18O_H2O_VSMOW = -1)[, 3] # Returns the D17O value
 
 }
 \references{
-Guo, W., & Zhou, C. (2019).
+Wostbrock, J.A.G., Brand, U., Coplen, T.B., Swart, P.K., Carlson, S.J., Brearley, A.J., and Sharp, Z.D. (2020).
+Calibration of carbonate-water triple oxygen isotope fractionation:
+Seeing through diagenesis in ancient carbonates.
+Geochimica et Cosmochimica Acta, 288, 369-388.
+\doi{10.1016/j.gca.2020.07.045}
+
+Guo, W., and Zhou, C. (2019).
 Triple oxygen isotope fractionation in the DIC-H2O-CO2 system:
 A numerical framework and its implications.
 Geochimica et Cosmochimica Acta, 246, 541-564.

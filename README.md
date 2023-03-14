@@ -20,13 +20,13 @@ count](https://cranlogs.r-pkg.org/badges/grand-total/isogeochem)](https://cranlo
 isotope data straightforward and reproducible. It offers tools to
 quickly calculate:
 
--   carbonate *δ*<sup>18</sup>O, *δ*<sup>17</sup>O, *∆*<sub>47</sub>,
-    and *∆*<sub>48</sub> values at a given temperature
--   carbonate growth temperatures from *δ*<sup>18</sup>O,
-    *∆*<sub>47</sub>, and *∆*<sub>48</sub> values
--   isotope fractionation factors, e.g., carbonate/water, quartz/water
--   model DIC speciation as a function of temperature, pH, and salinity
--   convert between the VSMOW and VPDB scales
+- carbonate *δ*<sup>18</sup>O, *δ*<sup>17</sup>O, *∆*<sub>47</sub>, and
+  *∆*<sub>48</sub> values at a given temperature
+- carbonate growth temperatures from *δ*<sup>18</sup>O,
+  *∆*<sub>47</sub>, and *∆*<sub>48</sub> values
+- isotope fractionation factors, e.g., carbonate/water, quartz/water
+- model DIC speciation as a function of temperature, pH, and salinity
+- convert between the VSMOW and VPDB scales
 
 The list of available proxy–temperature calibrations is growing with
 each new released version. </br> <b>Please get in touch if you have
@@ -124,20 +124,20 @@ modeling diagenesis.
 ``` r
 if (!require("shades")) install.packages("shades")
 
-# Model equilibrium calcite precipitating from seawater
+# Model equilibrium *calcite* precipitating from seawater
 temp_sw  = seq(0, 50, 10) # temperature range: 0—50 °C
 d18O_sw = 0 # d18O value of seawater
 D17O_sw = -0.004 # D17O value of seawater
 d18Op = prime(d17O_c(temp_sw, d18O_sw, D17O_sw, eq18 = "Daeron19")[, 1])
-D17O  = d17O_c(temp_sw, d18O_sw, D17O_sw, eq18 = "Daeron19")[, 3]
+D17O  = d17O_c(temp_sw, d18O_sw, D17O_sw, eq17 = "Wostbrock20", eq18 = "Daeron19")[, 3]
 
 # Model progressing meteoric diagenetic alteration
 d18O_ds = -8 # d18O value of diagenetic fluid
 D17O_ds = 0.020 # D17O value of diagenetic fluid
 em_equi = d17O_c(temp = 10, d18O_H2O = d18O_sw, D17O_H2O = D17O_sw,
-                 eq18 = "Daeron19") # equilibrium endmember
+                 eq17 = "Wostbrock20", eq18 = "Daeron19") # equilibrium endmember
 em_diag = d17O_c(temp = 80, d18O_H2O = d18O_ds, D17O_H2O = D17O_ds,
-                 eq18 = "Daeron19") # diagenetic endmember
+                 eq17 = "Wostbrock20", eq18 = "Daeron19") # diagenetic endmember
 mix = mix_d17O(d18O_A = em_equi[1], d17O_A = em_equi[2],
                d18O_B = em_diag[1], d17O_B = em_diag[2], step = 25)
 
