@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: isogeochem
+title: 'isogeochem: An R package'
 message: 'If you use this R package, you can cite it as below'
 type: software
 authors:
