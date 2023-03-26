@@ -281,6 +281,21 @@ corresponding documentation, e.g., `?devilshole`
 
 ------------------------------------------------------------------------
 
+## License and citation
+
+This program is free software: you can redistribute it and/or modify it
+under the terms of the [GNU General Public License version
+3](LICENSE.md), or (at your option) any later version. This program is
+distributed in the hope that it will be useful, but without any
+warranty.
+
+Copyright (C) 2023 David Bajnai
+
+Follow the citation format provided in [CITATION](CITATION.cff) when
+referencing ‘isogeochem’.
+
+------------------------------------------------------------------------
+
 ## See also
 
 There are several other R packages that complement `isogeochem` and are

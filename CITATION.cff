@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: isogeochem
+message: 'If you use this R package, you can cite it as below'
+type: software
+authors:
+  - given-names: David
+    family-names: Bajnai
+    orcid: 'https://orcid.org/0000-0002-4053-5056'
+    affiliation: Georg-August-Universität Göttingen
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.7754760
+    description: Zenodo
+repository-code: 'https://github.com/davidbajnai/isogeochem'
+abstract: >-
+  The isogeochem R package makes working with carbonate
+  oxygen, carbon, and clumped isotope data reproducible and
+  straightforward. Use it to quickly calculate isotope
+  fractionation factors and apply paleothermometry
+  equations.
+keywords:
+  - isotope
+  - fractionation
+  - oxygen
+  - carbon
+  - carbonate
+  - thermometry
+  - clumped
+license: GPL-3.0-or-later
+version: v1.1.1
+date-released: '2023-03-21'
