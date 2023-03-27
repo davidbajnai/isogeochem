@@ -9,8 +9,11 @@ authors:
     affiliation: Georg-August-Universität Göttingen
 identifiers:
   - type: doi
+    value: 10.5281/zenodo.5507224
+    description: Concept DOI for all isogeochem versions
+  - type: doi
     value: 10.5281/zenodo.7754760
-    description: Zenodo
+    description: Versioned DOI for isogeochem v1.1.1
 repository-code: 'https://github.com/davidbajnai/isogeochem'
 abstract: >-
   The isogeochem R package makes working with carbonate
